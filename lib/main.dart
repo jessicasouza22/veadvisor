@@ -27,25 +27,23 @@ class _MyAppState extends State<MyApp> {
            child: Column(
 
           children:[
-              Container(
-                TextField(
+              TextField(
 
-                  obscureText: true,
-                  decoration: InputDecoration(
-                    fillColor: Colors.white,
-                    border: OutlineInputBorder(
-                      borderRadius: BorderRadius.circular(10.0),
-                      borderSide: BorderSide(
-                        color: Color(0xFF3C10BB),
-                        width: 1.0,
-                      ),
+                obscureText: true,
+                decoration: InputDecoration(
+                  fillColor: Colors.white,
+                  border: OutlineInputBorder(
+                    borderRadius: BorderRadius.circular(10.0),
+                    borderSide: BorderSide(
+                      color: Color(0xFF3C10BB),
+                      width: 1.0,
                     ),
-                    labelText: 'E-mail',
-//contentPadding: EdgeInsets.all(50),
                   ),
+                  labelText: 'E-mail',
+//contentPadding: EdgeInsets.all(50),
                 ),
-                ),
-              ],
+              ),
+
               Center(
                 child: Image(
                   image: AssetImage('imagens/logo2.png'),
@@ -68,7 +66,6 @@ class _MyAppState extends State<MyApp> {
 
 
             ],
-
 
             ),
           ),

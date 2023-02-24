@@ -27,31 +27,46 @@ class _MyAppState extends State<MyApp> {
            child: Column(
 
           children:[
-              TextField(
-
-                obscureText: true,
-                decoration: InputDecoration(
-                  fillColor: Colors.white,
-                  border: OutlineInputBorder(
-                    borderRadius: BorderRadius.circular(10.0),
-                    borderSide: BorderSide(
-                      color: Color(0xFF3C10BB),
-                      width: 1.0,
-                    ),
-                  ),
-                  labelText: 'E-mail',
-//contentPadding: EdgeInsets.all(50),
-                ),
+            Container(
+              decoration: const BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.all(Radius.circular(10)),
               ),
 
-              Center(
+               child: TextFormField(
+
+
+                 obscureText: true,
+                 textAlign: TextAlign.center,
+                 decoration: InputDecoration(
+                   fillColor: Colors.white,
+                   border: OutlineInputBorder(
+                     borderRadius: BorderRadius.circular(10.0),
+                     borderSide: const BorderSide(
+                       color: Color(0xFF3C10BB),
+                       width: 1.0,
+                     ),
+                   ),
+                     hintText: 'E-mail',
+
+                     hintStyle: TextStyle(
+
+                     )
+//contentPadding: EdgeInsets.all(50),
+                 ),
+               ),
+            )
+            ,
+
+              const Center(
                 child: Image(
                   image: AssetImage('imagens/logo2.png'),
                 ),
               ),
-              Padding(
+              const Padding(
                   padding: EdgeInsets.fromLTRB(50, 20, 50, 20),
               ),
+
               const Text(
                   'Crie sua conta',
                 style: TextStyle(

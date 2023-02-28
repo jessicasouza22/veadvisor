@@ -1,4 +1,5 @@
 import 'package:flutter/material.dart';
+import 'package:vetadvisor/tutor/perfil.dart';
 
 void main() {
   runApp(const MyApp());
@@ -135,10 +136,12 @@ class _MyAppState extends State<MyApp> {
 
               const Padding(
                   padding: EdgeInsets.all(10.0)),
+              Builder(
+                builder: (context) =>
 
               ElevatedButton(
                   onPressed: () {},
-                  child: const Text('ENTRAR')),
+                  child: const Text('ENTRAR'))),
             ],
 
           ),

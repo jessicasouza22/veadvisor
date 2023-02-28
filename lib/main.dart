@@ -21,46 +21,32 @@ class _MyAppState extends State<MyApp> {
           child: Column(
             children: [
 
-              Padding(
-                  padding: const EdgeInsets.all(10.0)),
-              Center(child:
-              Container(
-                padding: EdgeInsets.only(top:0.1, bottom: 0.1),
-                height: 90,
-                width: 90,
-                //color: Colors.greenAccent,
-                child: Image(
-                  image: AssetImage('imagens/logo1.png'),
+              const Padding(
+                  padding: EdgeInsets.all(10.0)),
 
+              Center(
+                child: Container(
+                  padding: EdgeInsets.only(top:0, bottom: 0),
+                  child: const Image(
+                    image: AssetImage('imagens/logo1.png'),
+                  ),
                 ),
               ),
-              ),
-
               Container(
-                padding: EdgeInsets.only(top:0.1, bottom: 0.1),
-                height: 90,
-                width: 90,
-                child: Image(
+                padding: const EdgeInsets.only(top:10, bottom: 0),
+                //height: 90,
+                //width: 90,
+                child: const Image(
                   image: AssetImage('imagens/logo2.png'),
                 ),
               ),
               Container(
-                  padding: EdgeInsets.only(top:0.1, bottom: 0.1),
-                  child: Divider(
-
-                    height: 100,
+                  padding: const EdgeInsets.only(left:50, right: 50, top: 10),
+                  child: const Divider(
                     color: Colors.white,
-                    thickness: 0.2,
-                    indent: 120,
-                    endIndent: 120,
-
-
+                    thickness: 1,
                   )
               ),
-
-
-
-
               const Text(
                 'Crie sua conta',
                 style: TextStyle(
@@ -69,20 +55,16 @@ class _MyAppState extends State<MyApp> {
                 ),
               ),
 
+              const Padding(
+                  padding: EdgeInsets.all(10.0)),
 
-              Padding(
-                  padding: const EdgeInsets.all(15.0)),
-              //codigo para o textFiel de email
               Container(
                 width: 300,
                 decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                 ),
-
                 child: TextFormField(
-
-
                   obscureText: true,
                   textAlign: TextAlign.center,
                   decoration: InputDecoration(
@@ -98,9 +80,8 @@ class _MyAppState extends State<MyApp> {
                   ),
                 ),
               ),
-              Padding(
-                  padding: const EdgeInsets.all(15.0)),
-              // codigo textField senha
+              const Padding(
+                  padding: EdgeInsets.all(15.0)),
               Container(
                 width: 300,
 
@@ -127,20 +108,15 @@ class _MyAppState extends State<MyApp> {
                   ),
                 ),
               ),
-              Padding(
-                  padding: const EdgeInsets.all(15.0)),
-              //codigo do textField confirme a senha
-
+              const Padding(
+                  padding: EdgeInsets.all(15.0)),
               Container(
                 width: 300,
                 decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.all(Radius.circular(10)),
                 ),
-
                 child: TextFormField(
-
-
                   obscureText: true,
                   textAlign: TextAlign.center,
                   decoration: InputDecoration(
@@ -157,27 +133,17 @@ class _MyAppState extends State<MyApp> {
                 ),
               ),
 
-
-              Padding(
-                  padding: const EdgeInsets.all(15.0)),
-
+              const Padding(
+                  padding: EdgeInsets.all(10.0)),
 
               ElevatedButton(
-
-
-
                   onPressed: () {},
-                  child: Text('ENTRAR')),
-
-
-
-
+                  child: const Text('ENTRAR')),
             ],
 
           ),
         ),
-
-      ),);
-
+      )
+    );
   }
 }

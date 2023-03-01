@@ -19,15 +19,6 @@ class Perfil extends StatelessWidget {
   }
 }
 
-/*
-
-Navigator.push(context,
-                    MaterialPageRoute(builder: (context) => const Perfil()),
-                    //MaterialPageRoute(builder: (context) => const AnamneseRetaFinal()),
-                    //MaterialPageRoute(builder: (context) => const AnamneseSaude()),
-                  );
-
- */
 
 
 

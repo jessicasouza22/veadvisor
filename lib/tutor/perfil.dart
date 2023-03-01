@@ -34,6 +34,12 @@ class _PerfilPageState extends State<PerfilPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
+      appBar: AppBar(
+
+          title: Text("Vet Advisor")
+
+
+      ),
         backgroundColor: const Color(0xFF3C10BB),
         body: SingleChildScrollView(
           child: Column(

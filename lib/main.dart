@@ -27,7 +27,7 @@ class _MyAppState extends State<MyApp> {
 
               Center(
                 child: Container(
-                  padding: EdgeInsets.only(top:0, bottom: 0),
+                  padding: EdgeInsets.only(top:10, bottom: 0),
                   child: const Image(
                     image: AssetImage('imagens/logo1.png'),
                   ),
@@ -45,7 +45,9 @@ class _MyAppState extends State<MyApp> {
                   padding: const EdgeInsets.only(left:50, right: 50, top: 10),
                   child: const Divider(
                     color: Colors.white,
-                    thickness: 1,
+                    thickness: 0.2,
+                    endIndent: 60,
+                    indent: 60,
                   )
               ),
               const Text(
@@ -136,12 +138,45 @@ class _MyAppState extends State<MyApp> {
 
               const Padding(
                   padding: EdgeInsets.all(10.0)),
-              Builder(
+
+        Container(
+          width: 200,
+
+          decoration: const BoxDecoration(
+            color: Colors.red,
+            borderRadius: BorderRadius.all(Radius.circular(10)),
+          ),
+              child: Builder(
                 builder: (context) =>
 
               ElevatedButton(
+                  style: TextButton.styleFrom(
+                    padding: EdgeInsets.all(15.0),
+                    primary: Colors.white,
+                    backgroundColor: Colors.blue, // Background Color
+                  ),
                   onPressed: () {},
                   child: const Text('ENTRAR'))),
+        ),
+              Container(
+                child: Checkbox(
+                  value: false,
+                  onChanged: (Checkbox){},
+                ),
+               // Text('');
+
+                ),
+              Container(
+                child: Radio(
+                  //fillColor: Color.white,
+                  value: false,
+                  groupValue: false,
+
+                  onChanged: (value){},
+                ),
+
+              )
+
             ],
 
           ),

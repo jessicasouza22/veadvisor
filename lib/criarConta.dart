@@ -30,23 +30,37 @@ class _CriarContaPageState extends State<CriarContaPage> {
 
 
           ),
-      backgroundColor: Color(0xFF3C10BB),
+
       body: SingleChildScrollView(
-        child: Column(
+        child: Container(
+          decoration: const BoxDecoration(
+            gradient: LinearGradient(
+              begin: Alignment.topRight,
+              end: Alignment.bottomLeft,
+              colors: <Color>[
+                 Color(0xFFF9F9F9),
+                 Color(0xFF0E02B7),
+                 Color(0xFF4116B4),
+                 Color(0xFF4116B4),
+                 Color(0xFF4756EF),
+                 Color(0xFFDB51FD)
+                              ],
+            )
+
+          ),
+          child: Column(
           children: [
             const Padding(padding: EdgeInsets.all(10.0)),
             Center(
               child: Container(
-                padding: EdgeInsets.only(top: 10, bottom: 0),
+                padding: const EdgeInsets.only(right: 150, left: 150),
                 child: const Image(
                   image: AssetImage('imagens/logo1.png'),
                 ),
               ),
             ),
             Container(
-              padding: const EdgeInsets.only(top: 10, bottom: 0),
-              //height: 90,
-              //width: 90,
+              padding: const EdgeInsets.only(top:15, right: 150, left: 150),
               child: const Image(
                 image: AssetImage('imagens/logo2.png'),
               ),
@@ -137,9 +151,11 @@ class _CriarContaPageState extends State<CriarContaPage> {
             Builder(
                   builder: (context) => ElevatedButton(
                       style: TextButton.styleFrom(
-                        padding: EdgeInsets.all(15.0),
-                        primary: Colors.white,
-                        backgroundColor: Colors.blue, // Background Color
+                        padding: EdgeInsets.only(top: 10, right: 50, left: 50, bottom: 10),
+                        primary: Colors.blue,
+                        backgroundColor: Colors.white,
+                          shape: new RoundedRectangleBorder(borderRadius: new BorderRadius.circular(30.0)),
+                        // Background Color
                       ),
                       onPressed: () {
                         Navigator.push(
@@ -149,26 +165,33 @@ class _CriarContaPageState extends State<CriarContaPage> {
 
                         );
                       },
-                      child: const Text('ENTRAR'))),
+                      child: const Text('ENTRAR'))
 
 
-            Container(
-              child: Checkbox(
+            ),
+
+
+              Checkbox(
+
                 value: false,
                 onChanged: (Checkbox) {},
+
               ),
-              // Text('');
-            ),
-            Container(
-              child: Radio(
+               Text('Os presentes termos, a seguir, regulamentam o uso da plataforma, VETADVISOR'
+                   'por qualquer pessoa física ou juridica. Política de'
+                   'privacidade'),
+
+             Radio(
                 //fillColor: Color.white,
                 value: false,
                 groupValue: false,
 
                 onChanged: (value) {},
               ),
-            )
+            Text('Quero receber novidades, promoções e ofertas personalizadas da VetAdvisor'),
+
           ],
+        ),
         ),
       ),
     ));

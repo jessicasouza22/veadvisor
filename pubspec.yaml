@@ -92,3 +92,9 @@ flutter:
   # see https://flutter.dev/custom-fonts/#from-packages
   assets:
     - imagens/
+
+
+  fonts:
+    - family: Inter Variable Font
+      fonts:
+        - asset: font/Inter-ExtraLight.ttf

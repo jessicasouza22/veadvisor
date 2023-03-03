@@ -180,13 +180,13 @@ class _CriarContaPageState extends State<CriarContaPage> {
 
                       child:*/
                       Checkbox(
-                        value: false,
+                        value: true,
 
                         activeColor: Colors.blue,
                         //cor do v
                         checkColor: Colors.black,
                         // cor do quadrado qnd ativado
-                        fillColor: MaterialStateProperty.all(Colors.orange),
+                        fillColor: MaterialStateProperty.all(Colors.white),
                         shape: RoundedRectangleBorder(
                         borderRadius: BorderRadius.circular(5)),
 
@@ -198,7 +198,7 @@ class _CriarContaPageState extends State<CriarContaPage> {
 
                   ),
                      ),
-                  
+
 
 
                       //),

@@ -2,6 +2,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:vetadvisor/tutor/perfil.dart';
+import 'termos.dart';
 
 class CriarConta extends StatelessWidget {
   const CriarConta({super.key});
@@ -19,6 +20,41 @@ class CriarContaPage extends StatefulWidget {
   State<CriarContaPage> createState() => _CriarContaPageState();
 }
 
+/*class corDeFundo extends StatefulWidget {
+  const corDeFundo({Key? key}) : super(key: key);
+
+  @override
+  State<corDeFundo> createState() => _corDeFundoState();
+}
+
+class _corDeFundoState extends State<corDeFundo> {
+  @override
+  Widget build(BuildContext context) {
+    return Container(
+      decoration: const BoxDecoration(
+          gradient: LinearGradient(
+            begin: Alignment.topLeft,
+            end: Alignment.bottomRight,
+            //stops: [0.1, 0.3, 0.7, 1],
+            colors: <Color>[
+              Colors.blue,
+              Color(0xFF0E02B7),
+              Color(0xFF0E02B7),
+              Color(0xFF0E02B7),
+              Color(0xFF0E02B7),
+              Color(0xFF0E02B7),
+              //Color(0xFF4116B4),
+              //Color(0xFFF9F9F9),
+
+              Color(0xFF4756EF),
+              Color(0xFFDB51FD),
+            ],
+          )),
+
+    );
+  }
+}
+*/
 class _CriarContaPageState extends State<CriarContaPage> {
   @override
   Widget build(BuildContext context) {
@@ -32,6 +68,7 @@ class _CriarContaPageState extends State<CriarContaPage> {
                 child:
                 Container(
 
+
                     decoration: const BoxDecoration(
                         gradient: LinearGradient(
                           begin: Alignment.topLeft,
@@ -43,14 +80,14 @@ class _CriarContaPageState extends State<CriarContaPage> {
                             Color(0xFF0E02B7),
                             Color(0xFF0E02B7),
                             Color(0xFF0E02B7),
-                            Color(0xFF0E02B7),
-                            //Color(0xFF4116B4),
-                            //Color(0xFFF9F9F9),
+                  Color(0xFF0E02B7),
+                  //Color(0xFF4116B4),
+                  //Color(0xFFF9F9F9),
 
-                            Color(0xFF4756EF),
-                            Color(0xFFDB51FD),
-                          ],
-                        )),
+                  Color(0xFF4756EF),
+                  Color(0xFFDB51FD),
+                  ],
+                )),
                     child: Padding(
                       padding: const EdgeInsets.only(left: 30, right: 30),
                       child: SingleChildScrollView(
@@ -61,7 +98,7 @@ class _CriarContaPageState extends State<CriarContaPage> {
                             Center(
                               child: Container(
                                 padding: const EdgeInsets.only(
-                                    top: 100, right: 120, left: 120),
+                                    top: 50, right: 120, left: 120),
                                 child: const Image(
                                   image: AssetImage('imagens/logo1.png'),
                                 ),
@@ -91,7 +128,7 @@ class _CriarContaPageState extends State<CriarContaPage> {
                             Container(
                               decoration: const BoxDecoration(
                                 color: Colors.white,
-                                borderRadius: BorderRadius.all(Radius.circular(10)),
+                                borderRadius: BorderRadius.all(Radius.circular(17)),
                               ),
                               child: TextFormField(
                                 obscureText: true,
@@ -99,7 +136,7 @@ class _CriarContaPageState extends State<CriarContaPage> {
                                 decoration: InputDecoration(
                                   //fillColor: Colors.orange,
                                   border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10.0),
+                                    borderRadius: BorderRadius.circular(17),
                                     borderSide: const BorderSide(
                                       color: Color(0xFF3C10BB),
                                       width: 1.0,
@@ -113,7 +150,7 @@ class _CriarContaPageState extends State<CriarContaPage> {
                             Container(
                               decoration: const BoxDecoration(
                                 color: Colors.white,
-                                borderRadius: BorderRadius.all(Radius.circular(10)),
+                                borderRadius: BorderRadius.all(Radius.circular(17)),
                               ),
                               child: TextFormField(
                                 obscureText: true,
@@ -121,7 +158,7 @@ class _CriarContaPageState extends State<CriarContaPage> {
                                 decoration: InputDecoration(
                                   //fillColor: Colors.orange,
                                   border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10.0),
+                                    borderRadius: BorderRadius.circular(17),
                                     borderSide: const BorderSide(
                                       color: Color(0xFF3C10BB),
                                       width: 1.0,
@@ -135,7 +172,7 @@ class _CriarContaPageState extends State<CriarContaPage> {
                             Container(
                               decoration: const BoxDecoration(
                                 color: Colors.white,
-                                borderRadius: BorderRadius.all(Radius.circular(10)),
+                                borderRadius: BorderRadius.all(Radius.circular(17)),
                               ),
                               child: TextFormField(
                                 obscureText: true,
@@ -143,7 +180,7 @@ class _CriarContaPageState extends State<CriarContaPage> {
                                 decoration: InputDecoration(
                                   //fillColor: Colors.orange,
                                   border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(10.0),
+                                    borderRadius: BorderRadius.circular(17),
                                     borderSide: const BorderSide(
                                       color: Color(0xFF3C10BB),
                                       width: 1.0,
@@ -169,7 +206,7 @@ class _CriarContaPageState extends State<CriarContaPage> {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => const Perfil()),
+                                            builder: (context) => const Termos()),
                                       );
                                     },
                                     child: const Text('ENTRAR'))),
@@ -220,8 +257,20 @@ class _CriarContaPageState extends State<CriarContaPage> {
                                 ]
                             ),
                             const Padding(padding: EdgeInsets.all(10.0)),
-                            const Divider(color: Colors.white),
-                            const Icon(MdiIcons.chevronDown, color: Colors.white, size: 40.0,),
+                            const Divider(
+                              color: Colors.white,
+                              thickness: 0.2,
+                              endIndent: 5,
+                              indent: 30,),
+                           IconButton( onPressed: () {
+                             Navigator.push(
+                               context,
+                               MaterialPageRoute(
+                                   builder: (context) => const Termos ()),
+                             );
+                           },
+                               icon: Icon(MdiIcons.chevronDown, color: Colors.white, size: 40.0)
+                           ),
 
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.start,

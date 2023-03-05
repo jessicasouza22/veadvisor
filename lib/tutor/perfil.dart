@@ -3,6 +3,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 
+
 import '../recursos/Constants.dart';
 enum SingingCharacterFormacao { Graduado, Pos, Mestre }
 enum SingingCharacterEstado { Casado, Divorciado, Outro }
@@ -101,14 +102,14 @@ class _PerfilPageState extends State<PerfilPage> {
                   Container(
                     decoration: const BoxDecoration(
                       color: Colors.white,
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      borderRadius: BorderRadius.all(Radius.circular(17)),
                     ),
                     child: TextFormField(
                       obscureText: true,
                       textAlign: TextAlign.center,
                       decoration: InputDecoration(
                         border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(10.0),
+                          borderRadius: BorderRadius.circular(17),
                           borderSide: const BorderSide(
                             color: Color(0xFF3C10BB),
                             width: 1.0,
@@ -134,14 +135,14 @@ class _PerfilPageState extends State<PerfilPage> {
                     Container(
                       decoration: const BoxDecoration(
                         color: Colors.white,
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        borderRadius: BorderRadius.all(Radius.circular(17)),
                       ),
                       child: TextFormField(
                         obscureText: true,
                         textAlign: TextAlign.center,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10.0),
+                            borderRadius: BorderRadius.circular(17),
                             borderSide: const BorderSide(
                               color: Color(0xFF3C10BB),
                               width: 1.0,
@@ -167,14 +168,14 @@ class _PerfilPageState extends State<PerfilPage> {
                     Container(
                       decoration: const BoxDecoration(
                         color: Colors.white,
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        borderRadius: BorderRadius.all(Radius.circular(17)),
                       ),
                       child: TextFormField(
                         obscureText: true,
                         textAlign: TextAlign.center,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10.0),
+                            borderRadius: BorderRadius.circular(17),
                             borderSide: const BorderSide(
                               color: Color(0xFF3C10BB),
                               width: 1.0,
@@ -200,14 +201,14 @@ class _PerfilPageState extends State<PerfilPage> {
                     Container(
                       decoration: const BoxDecoration(
                         color: Colors.white,
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        borderRadius: BorderRadius.all(Radius.circular(17)),
                       ),
                       child: TextFormField(
                         obscureText: true,
                         textAlign: TextAlign.center,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10.0),
+                            borderRadius: BorderRadius.circular(17),
                             borderSide: const BorderSide(
                               color: Color(0xFF3C10BB),
                               width: 1.0,
@@ -233,14 +234,14 @@ class _PerfilPageState extends State<PerfilPage> {
                     Container(
                       decoration: const BoxDecoration(
                         color: Colors.white,
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        borderRadius: BorderRadius.all(Radius.circular(17)),
                       ),
                       child: TextFormField(
                         obscureText: true,
                         textAlign: TextAlign.center,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10.0),
+                            borderRadius: BorderRadius.circular(17),
                             borderSide: const BorderSide(
                               color: Color(0xFF3C10BB),
                               width: 1.0,
@@ -266,14 +267,14 @@ class _PerfilPageState extends State<PerfilPage> {
                     Container(
                       decoration: const BoxDecoration(
                         color: Colors.white,
-                        borderRadius: BorderRadius.all(Radius.circular(10)),
+                        borderRadius: BorderRadius.all(Radius.circular(17)),
                       ),
                       child: TextFormField(
                         obscureText: true,
                         textAlign: TextAlign.center,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(10.0),
+                            borderRadius: BorderRadius.circular(17),
                             borderSide: const BorderSide(
                               color: Color(0xFF3C10BB),
                               width: 1.0,

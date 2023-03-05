@@ -1,8 +1,6 @@
 
 
 import 'dart:io';
-
-import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 
 import '../recursos/Constants.dart';
@@ -35,8 +33,14 @@ class _PerfilPageState extends State<PerfilPage> {
   Widget build(BuildContext context) {
     return Scaffold(
       appBar: AppBar(
+        elevation: 0,
+          leading: const Icon(Icons.arrow_circle_left,
+              color: Colors.white),
 
-          title: Text("Vet Advisor")
+          backgroundColor: const Color(0xFF3C10BB),
+
+          title: const Text("Perfil"),
+        centerTitle: true,
 
 
       ),
@@ -45,31 +49,7 @@ class _PerfilPageState extends State<PerfilPage> {
           child: Column(
             children: [
 
-              Padding(
-                  padding: EdgeInsets.all(0),
-                  child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      IconButton(
-                          onPressed: () {},
-                          icon: const Icon(Icons.arrow_circle_left,
-                            color: Colors.white)
-                      ),
 
-                      const Text('Perfil',
-                        style: TextStyle(
-                            color: Colors.white),
-                      ),
-
-                      IconButton(
-                          onPressed: () {},
-                          icon: const Icon(Icons.arrow_back, color: Colors.transparent)
-                      ),
-                    ],
-                  )
-
-
-              ),
 
               CircleAvatar(
                 radius: 35,

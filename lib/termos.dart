@@ -1,6 +1,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:vetadvisor/recursos/Constants.dart';
 import 'package:vetadvisor/tutor/perfil.dart';
 import 'criarConta.dart';
 
@@ -14,8 +15,8 @@ class Termos extends StatelessWidget {
       home: Scaffold(
         body: CustomScrollView(
             slivers: [
-            SliverFillRemaining(
-            hasScrollBody: true,
+            //hasScrollBody: true,
+          SliverFillRemaining(
             child:
             Container(
 
@@ -77,21 +78,21 @@ class Termos extends StatelessWidget {
                     child: //Flexible(child:
                     Column(
                         children: [
-                          Text(
-
-                              'TERMOS E CONDIÇÕES GERAIS DE USO PARA USUÁRIOS E PROFISSIONAIS: PERFIL BÁSICO VETZCO SERVIÇOS ONLINE E SOFTWARE LTDA. (“VETADVISOR”), pessoa jurídica de direito privado, inscrita no CNPJ sob o no 00.000.000/0001-00, endereço eletrônico vetadvisor.com.br, com sede na Rua XXXX , 100, apt. 00, Maringá, Rio grande do Sul/RS e CEP: 00.000-000, é criadora e titular da propriedade intelectual sobre software, website, aplicativos, conteúdos e demais ativos relacionados à plataforma digital VETADVISOR. Os presentes termos e condições, a seguir, regulamentam o uso da plataforma VETADVISOR por qualquer pessoa física ou jurídica.',
+                           Flexible(child: AutoSizeText(
+                              Constants.termo03,
                               maxLines: 15,
                               textAlign: TextAlign.center,
                               style: TextStyle(
-                                fontSize: 16,
+                                //fontSize: 16,
                                 fontFamily: 'Inter Variable Font',
-                                color: Colors.black26,
+                                color: Color(0xFF59616E),
                               )
                           ),
+                           ),
 
                           const Padding(padding: EdgeInsets.all(10.0)),
                           const Divider(
-                            color: Colors.black26, //0xFF8F90A6
+                            color: Color(0xFF59616E),
                             thickness: 0.2,
                             endIndent: 5,
                             indent: 30,),
@@ -102,7 +103,9 @@ class Termos extends StatelessWidget {
                             );
                           },
                               icon: Icon(
-                                  MdiIcons.chevronDown, color: Colors.black26,
+                                  MdiIcons.chevronDown,
+
+                                  color: Color(0xFF6F767E),
                                   size: 40.0)
                           ),
 
@@ -129,9 +132,9 @@ class Termos extends StatelessWidget {
                           textAlign: TextAlign.justify,
                           maxLines: 2,
                           style: TextStyle(
-                            fontSize: 12,
+                            //fontSize: 12,
                             fontFamily: 'Inter Variable Font',
-                            color: Colors.black26,
+                            color: Color(0xFF6F767E),
                           ),
                         ))
 
@@ -160,9 +163,9 @@ class Termos extends StatelessWidget {
                                 textAlign: TextAlign.justify,
                                 maxLines: 2,
                                 style: TextStyle(
-                                  fontSize: 12,
+                                  //fontSize: 12,
                                   fontFamily: 'Inter Variable Font',
-                                  color: Colors.black26,
+                                  color: Color(0xFF6F767E),
                                 ),
                               ))
 
@@ -175,7 +178,7 @@ class Termos extends StatelessWidget {
                                     padding: const EdgeInsets.only(
                                         top: 10, right: 80, left: 80, bottom: 10),
                                     primary: Colors.blue,
-                                    backgroundColor: Colors.black12, //F5F5F5
+                                    backgroundColor: Color(0xFF6F767E), //F5F5F5
                                     shape: RoundedRectangleBorder(
                                         borderRadius: BorderRadius.circular(30.0)),
                                     // Background Color
@@ -191,7 +194,7 @@ class Termos extends StatelessWidget {
                                   style: TextStyle(
                                     fontSize: 12,
                                     fontFamily: 'Inter Variable Font',
-                                    color: Colors.deepPurple,// 0xFF0E02B7)
+                                    color: Color(0xFF4116B4),// 0xFF0E02B7)
                                   )
 
 

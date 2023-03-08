@@ -59,6 +59,7 @@ class _PerfilPageState extends State<PerfilPage> {
                     child: GestureDetector(
                       child: File('${Constants.diretorioVetAdvisor}/avatar.png').existsSync() ?
                       Image.file(File('${Constants.diretorioVetAdvisor}/avatar.png'),
+                        // um condicional
 
                         //maxSizeBytes: 3000 * 1000,
                         fit: BoxFit.cover,

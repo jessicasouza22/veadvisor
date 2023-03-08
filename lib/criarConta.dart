@@ -1,8 +1,12 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:vetadvisor/helper.dart';
+import 'package:vetadvisor/menu.dart';
+import 'package:vetadvisor/recursos/Constants.dart';
 import 'package:vetadvisor/tutor/perfil.dart';
 import 'termos.dart';
+
 
 class CriarConta extends StatelessWidget {
   const CriarConta({super.key});
@@ -20,74 +24,28 @@ class CriarContaPage extends StatefulWidget {
   State<CriarContaPage> createState() => _CriarContaPageState();
 }
 
-/*class corDeFundo extends StatefulWidget {
-  const corDeFundo({Key? key}) : super(key: key);
 
-  @override
-  State<corDeFundo> createState() => _corDeFundoState();
-}
-
-class _corDeFundoState extends State<corDeFundo> {
-  @override
-  Widget build(BuildContext context) {
-    return Container(
-      decoration: const BoxDecoration(
-          gradient: LinearGradient(
-            begin: Alignment.topLeft,
-            end: Alignment.bottomRight,
-            //stops: [0.1, 0.3, 0.7, 1],
-            colors: <Color>[
-              Colors.blue,
-              Color(0xFF0E02B7),
-              Color(0xFF0E02B7),
-              Color(0xFF0E02B7),
-              Color(0xFF0E02B7),
-              Color(0xFF0E02B7),
-              //Color(0xFF4116B4),
-              //Color(0xFFF9F9F9),
-
-              Color(0xFF4756EF),
-              Color(0xFFDB51FD),
-            ],
-          )),
-
-    );
-  }
-}
-*/
 class _CriarContaPageState extends State<CriarContaPage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
         debugShowCheckedModeBanner: false,
         home: Scaffold(
-          body: CustomScrollView(
+          body: Container(
+              decoration: BoxDecoration(
+                  image: DecorationImage(
+                      image: AssetImage('imagens/homeGeral.png'),
+                      fit: BoxFit.fill,
+                      //colorFilter: new ColorFilter.mode(Cores.azulSafe.withOpacity(1), BlendMode.dstATop))
+              ),
+              ),
+
+        child: CustomScrollView(
             slivers: [
               SliverFillRemaining(
                 hasScrollBody: true,
                 child:
                 Container(
-
-
-                    decoration: const BoxDecoration(
-                        gradient: LinearGradient(
-                          begin: Alignment.topLeft,
-                          end: Alignment.bottomRight,
-                          //stops: [0.1, 0.3, 0.7, 1],
-                          colors: <Color>[
-                            Colors.blue,
-                            Color(0xFF0E02B7),
-                            Color(0xFF0E02B7),
-                            Color(0xFF0E02B7),
-                            Color(0xFF0E02B7),
-                  Color(0xFF0E02B7),
-                  //Color(0xFF4116B4),
-                  //Color(0xFFF9F9F9),
-
-                  Color(0xFF4756EF),
-                  Color(0xFFDB51FD),
-                  ],
-                )),
                     child: Padding(
                       padding: const EdgeInsets.only(left: 30, right: 30),
                       child: SingleChildScrollView(
@@ -206,7 +164,7 @@ class _CriarContaPageState extends State<CriarContaPage> {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => const Termos()),
+                                            builder: (context) => const Menu()),
                                       );
                                     },
                                     child: const Text('ENTRAR'))),
@@ -241,8 +199,8 @@ class _CriarContaPageState extends State<CriarContaPage> {
                                     ),
                                   ),
                                   const Padding(padding: EdgeInsets.all(5.0)),
-                                  const Flexible(child: AutoSizeText(
-                                      'Os presentes termos, a seguir, regulamentam o uso da plataforma, VETADVISOR por qualquer pessoa física ou juridica. Política de privacidade',
+                                  Flexible(child: AutoSizeText(
+                                     Constants.termo,
                                       maxLines: 4,
                                       textAlign: TextAlign.justify,
                                       style: TextStyle(
@@ -262,7 +220,10 @@ class _CriarContaPageState extends State<CriarContaPage> {
                               thickness: 0.2,
                               endIndent: 5,
                               indent: 30,),
-                           IconButton( onPressed: () {
+                      Builder(
+                        builder: (context) =>
+
+                            IconButton( onPressed: () {
                              Navigator.push(
                                context,
                                MaterialPageRoute(
@@ -271,6 +232,7 @@ class _CriarContaPageState extends State<CriarContaPage> {
                            },
                                icon: Icon(MdiIcons.chevronDown, color: Colors.white, size: 40.0)
                            ),
+                      ),
 
                             Row(
                               crossAxisAlignment: CrossAxisAlignment.start,
@@ -320,6 +282,7 @@ class _CriarContaPageState extends State<CriarContaPage> {
           )
 
 
-        ));
+        ))
+    );
   }
 }

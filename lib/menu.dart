@@ -25,6 +25,7 @@ class _MenuPageState extends State<MenuPage> {
       debugShowCheckedModeBanner: false,
       home: Scaffold(
         //backgroundColor: Color(0xFF0E02B7),
+
        drawer: Drawer(
             backgroundColor: Color(0xFF0E02B7),
             child: ListView(
@@ -292,6 +293,7 @@ class _MenuPageState extends State<MenuPage> {
 
         appBar: AppBar(
 
+
           backgroundColor: Color(0xFF0E02B7),
           title: Text(
             "Olá ----- ",
@@ -299,19 +301,31 @@ class _MenuPageState extends State<MenuPage> {
             style: TextStyle(),
           ),
           actions: [
-            Builder(
-              builder: (context) => IconButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const Termos()),
-                  );
-                },
-                padding:
-                    const EdgeInsets.only(bottom: 10, right: 300, left: 50, top: 10),
-                icon: Icon(MdiIcons.arrowLeft, color: Colors.white, size: 20),
-              ),
-            ),
+            Expanded(
+
+              child: Padding(
+                padding: EdgeInsets.only(left: 40),
+                child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    IconButton(onPressed: (){
+                      print("clicado na seta");
+                    }, icon: Icon(Icons.arrow_back)),
+                    Text(
+                      "Olá ----- ",
+
+                      style: TextStyle(),
+                    ),
+                    IconButton(onPressed: (){
+                      print("clicado no mais");
+                    }, icon: Icon(Icons.add))
+                  ],
+                ),
+              )
+            )
+
+
+
 
          /*   Builder(
               builder: (context) => IconButton(

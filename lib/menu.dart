@@ -24,9 +24,11 @@ class _MenuPageState extends State<MenuPage> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
+
         //backgroundColor: Color(0xFF0E02B7),
 
-       drawer: Drawer(
+
+        drawer: Drawer(
             backgroundColor: Color(0xFF0E02B7),
             child: ListView(
               children: [
@@ -42,17 +44,18 @@ class _MenuPageState extends State<MenuPage> {
                 Row(
                   children: [
                     Builder(
-                      builder: (context) => IconButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const Termos()),
-                          );
-                        },
-                        icon: Icon(MdiIcons.bellOffOutline,
-                            color: Colors.white, size: 20),
-                      ),
+                      builder: (context) =>
+                          IconButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const Termos()),
+                              );
+                            },
+                            icon: Icon(MdiIcons.bellOffOutline,
+                                color: Colors.white, size: 20),
+                          ),
                     ),
                     Text(
                       "Notificações",
@@ -66,17 +69,18 @@ class _MenuPageState extends State<MenuPage> {
                 Row(
                   children: [
                     Builder(
-                      builder: (context) => IconButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const Termos()),
-                          );
-                        },
-                        icon: Icon(MdiIcons.stethoscope,
-                            color: Colors.white, size: 20),
-                      ),
+                      builder: (context) =>
+                          IconButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const Termos()),
+                              );
+                            },
+                            icon: Icon(MdiIcons.stethoscope,
+                                color: Colors.white, size: 20),
+                          ),
                     ),
                     Text(
                       "Minhas consultas",
@@ -90,17 +94,18 @@ class _MenuPageState extends State<MenuPage> {
                 Row(
                   children: [
                     Builder(
-                      builder: (context) => IconButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const Termos()),
-                          );
-                        },
-                        icon: Icon(MdiIcons.calendarClockOutline,
-                            color: Colors.white, size: 20),
-                      ),
+                      builder: (context) =>
+                          IconButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const Termos()),
+                              );
+                            },
+                            icon: Icon(MdiIcons.calendarClockOutline,
+                                color: Colors.white, size: 20),
+                          ),
                     ),
                     Text(
                       "Agendar consulta",
@@ -114,17 +119,18 @@ class _MenuPageState extends State<MenuPage> {
                 Row(
                   children: [
                     Builder(
-                      builder: (context) => IconButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const Termos()),
-                          );
-                        },
-                        icon: Icon(MdiIcons.stethoscope,
-                            color: Colors.white, size: 20),
-                      ),
+                      builder: (context) =>
+                          IconButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const Termos()),
+                              );
+                            },
+                            icon: Icon(MdiIcons.stethoscope,
+                                color: Colors.white, size: 20),
+                          ),
                     ),
                     Text(
                       "Ver procedimentos",
@@ -138,17 +144,18 @@ class _MenuPageState extends State<MenuPage> {
                 Row(
                   children: [
                     Builder(
-                      builder: (context) => IconButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const Termos()),
-                          );
-                        },
-                        icon: Icon(MdiIcons.stethoscope,
-                            color: Colors.white, size: 20),
-                      ),
+                      builder: (context) =>
+                          IconButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const Termos()),
+                              );
+                            },
+                            icon: Icon(MdiIcons.stethoscope,
+                                color: Colors.white, size: 20),
+                          ),
                     ),
                     Text(
                       "Dicas de cuidados",
@@ -162,17 +169,18 @@ class _MenuPageState extends State<MenuPage> {
                 Row(
                   children: [
                     Builder(
-                      builder: (context) => IconButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const Termos()),
-                          );
-                        },
-                        icon: Icon(MdiIcons.cartMinus,
-                            color: Colors.white, size: 20),
-                      ),
+                      builder: (context) =>
+                          IconButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const Termos()),
+                              );
+                            },
+                            icon: Icon(MdiIcons.cartMinus,
+                                color: Colors.white, size: 20),
+                          ),
                     ),
                     Text(
                       "Ofertas",
@@ -186,17 +194,18 @@ class _MenuPageState extends State<MenuPage> {
                 Row(
                   children: [
                     Builder(
-                      builder: (context) => IconButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const Termos()),
-                          );
-                        },
-                        icon: Icon(MdiIcons.bottleTonicPlusOutline,
-                            color: Colors.white, size: 20),
-                      ),
+                      builder: (context) =>
+                          IconButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const Termos()),
+                              );
+                            },
+                            icon: Icon(MdiIcons.bottleTonicPlusOutline,
+                                color: Colors.white, size: 20),
+                          ),
                     ),
                     Text(
                       "Telemedicina",
@@ -210,17 +219,18 @@ class _MenuPageState extends State<MenuPage> {
                 Row(
                   children: [
                     Builder(
-                      builder: (context) => IconButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const Termos()),
-                          );
-                        },
-                        icon: Icon(MdiIcons.bottleTonicPlusOutline,
-                            color: Colors.white, size: 20),
-                      ),
+                      builder: (context) =>
+                          IconButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const Termos()),
+                              );
+                            },
+                            icon: Icon(MdiIcons.bottleTonicPlusOutline,
+                                color: Colors.white, size: 20),
+                          ),
                     ),
                     Text(
                       "Add novo pet",
@@ -234,17 +244,18 @@ class _MenuPageState extends State<MenuPage> {
                 Row(
                   children: [
                     Builder(
-                      builder: (context) => IconButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const Termos()),
-                          );
-                        },
-                        icon: Icon(MdiIcons.bottleTonicPlusOutline,
-                            color: Colors.white, size: 20),
-                      ),
+                      builder: (context) =>
+                          IconButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const Termos()),
+                              );
+                            },
+                            icon: Icon(MdiIcons.bottleTonicPlusOutline,
+                                color: Colors.white, size: 20),
+                          ),
                     ),
                     Text(
                       "Suporte técnico",
@@ -258,17 +269,18 @@ class _MenuPageState extends State<MenuPage> {
                 Row(
                   children: [
                     Builder(
-                      builder: (context) => IconButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const Termos()),
-                          );
-                        },
-                        icon: Icon(MdiIcons.bottleTonicPlusOutline,
-                            color: Colors.white, size: 20),
-                      ),
+                      builder: (context) =>
+                          IconButton(
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) => const Termos()),
+                              );
+                            },
+                            icon: Icon(MdiIcons.bottleTonicPlusOutline,
+                                color: Colors.white, size: 20),
+                          ),
                     ),
                     Text(
                       "Sair da conta",
@@ -292,42 +304,53 @@ class _MenuPageState extends State<MenuPage> {
 
 
         appBar: AppBar(
+            toolbarHeight: 100,
+            elevation: 50,
+            backgroundColor: Color(0xFF0E02B7),
+            title: Text(
+              "Olá ----- ",
 
+              style: TextStyle(),
+            ),
+            // elevation: 0,
+            shape: RoundedRectangleBorder(
+              borderRadius: BorderRadius.vertical(
+                bottom: Radius.circular(30),
+              ),
+            ),
 
-          backgroundColor: Color(0xFF0E02B7),
-          title: Text(
-            "Olá ----- ",
-
-            style: TextStyle(),
-          ),
-          actions: [
-            Expanded(
+        actions: [
+          Expanded(
 
               child: Padding(
                 padding: EdgeInsets.only(left: 40),
                 child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceBetween,
                   children: [
-                    IconButton(onPressed: (){
+                    IconButton(onPressed: () {
                       print("clicado na seta");
-                    }, icon: Icon(Icons.arrow_back)),
+                    },
+                        icon: Icon(Icons.arrow_back)),
                     Text(
                       "Olá ----- ",
 
                       style: TextStyle(),
                     ),
-                    IconButton(onPressed: (){
-                      print("clicado no mais");
-                    }, icon: Icon(Icons.add))
+                    IconButton(onPressed: () {
+                      print("clicado no notificacao");
+                    },
+                        icon: Icon(Icons.doorbell)),
+                    /* Container(
+                      color: Colors.orange,
+                      padding: EdgeInsets.only(bottom: 500),
+                    )*/
                   ],
                 ),
               )
-            )
+          )
 
 
-
-
-         /*   Builder(
+          /*   Builder(
               builder: (context) => IconButton(
                 onPressed: () {
                   Navigator.push(
@@ -340,10 +363,11 @@ class _MenuPageState extends State<MenuPage> {
                     color: Colors.white, size: 20),
               ),
             ),*/
-          ],
-        ),
+        ],
+      ),
 
-        /*body: Container(
+
+      /*body: Container(
           // padding: EdgeInsets.only(bottom: 10, left: 200, right: 200),
             decoration: new BoxDecoration(
               color: Colors.orange,
@@ -400,7 +424,6 @@ class _MenuPageState extends State<MenuPage> {
                            child: const Text('IR'))),*/
 
          */
-      ),
-    );
+    ),);
   }
 }

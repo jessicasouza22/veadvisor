@@ -24,10 +24,10 @@ class _MenuPageState extends State<MenuPage> {
     return MaterialApp(
       debugShowCheckedModeBanner: false,
       home: Scaffold(
-        backgroundColor: Color(0xFF0E02B7),
+        //backgroundColor: Color(0xFF0E02B7),
        drawer: Drawer(
             backgroundColor: Color(0xFF0E02B7),
-            child: Column(
+            child: ListView(
               children: [
                 // aqui ele está dividindo o menu em duas partes
                 UserAccountsDrawerHeader(
@@ -313,7 +313,7 @@ class _MenuPageState extends State<MenuPage> {
               ),
             ),
 
-            Builder(
+         /*   Builder(
               builder: (context) => IconButton(
                 onPressed: () {
                   Navigator.push(
@@ -325,7 +325,7 @@ class _MenuPageState extends State<MenuPage> {
                 icon: Icon(MdiIcons.bellOffOutline,
                     color: Colors.white, size: 20),
               ),
-            ),
+            ),*/
           ],
         ),
 

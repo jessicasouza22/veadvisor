@@ -4,6 +4,7 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:vetadvisor/helper.dart';
 import 'package:vetadvisor/menu.dart';
 import 'package:vetadvisor/recursos/Constants.dart';
+import 'package:vetadvisor/tutor/agendamentos.dart';
 import 'package:vetadvisor/tutor/perfil.dart';
 import 'termos.dart';
 
@@ -165,7 +166,7 @@ class _CriarContaPageState extends State<CriarContaPage> {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => const Menu()),
+                                            builder: (context) => const Agendamentos()),
                                       );
                                     },
                                     child: const Text('ENTRAR'))),

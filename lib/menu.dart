@@ -340,90 +340,16 @@ class _MenuPageState extends State<MenuPage> {
                       print("clicado no notificacao");
                     },
                         icon: Icon(Icons.doorbell)),
-                    /* Container(
-                      color: Colors.orange,
-                      padding: EdgeInsets.only(bottom: 500),
-                    )*/
+
                   ],
                 ),
               )
           )
-
-
-          /*   Builder(
-              builder: (context) => IconButton(
-                onPressed: () {
-                  Navigator.push(
-                    context,
-                    MaterialPageRoute(builder: (context) => const Termos()),
-                  );
-                },
-                //padding: const EdgeInsets.only(bottom: 25, left: 300, right: 50,top: 20),
-                icon: Icon(MdiIcons.bellOffOutline,
-                    color: Colors.white, size: 20),
-              ),
-            ),*/
         ],
       ),
 
 
-      /*body: Container(
-          // padding: EdgeInsets.only(bottom: 10, left: 200, right: 200),
-            decoration: new BoxDecoration(
-              color: Colors.orange,
-              //borderRadius: BorderRadius.only(
-              //topLeft: const Radius.circular(40.0),
-              //topRight: const Radius.circular(40.0),
-            ),
-            child: Row(
-              children: [
 
-                /*   const Padding(padding: EdgeInsets.all(15.0)),
-                Container(
-                  decoration: const BoxDecoration(
-                    color: Colors.white,
-                    borderRadius: BorderRadius.all(Radius.circular(17)),
-                  ),
-                  child: TextFormField(
-                    obscureText: true,
-                    textAlign: TextAlign.center,
-                    decoration: InputDecoration(
-                      //fillColor: Colors.orange,
-                      border: OutlineInputBorder(
-                        borderRadius: BorderRadius.circular(17),
-                        borderSide: const BorderSide(
-                          color: Color(0xFF3C10BB),
-                          width: 1.0,
-                        ),
-                      ),
-                      hintText: 'Digite os sintomas do seu pet',
-                    ),
-                  ),
-                ),
-                const Icon(
-                    MdiIcons.magnify, color: Colors.black, size: 40.0),
-*/
-                /*   Builder(
-                       builder: (context) => ElevatedButton(
-                           style: TextButton.styleFrom(
-                             padding: const EdgeInsets.only(
-                                 top: 10, right:20, left: 20, bottom: 10),
-                             primary: Colors.blue,
-                             backgroundColor:  Color(0xFF3C10BB),
-                             shape: RoundedRectangleBorder(
-                                 borderRadius: BorderRadius.circular(30.0)),
-                             // Background Color
-                           ),
-                           onPressed: () {
-                             Navigator.push(
-                               context,
-                               MaterialPageRoute(
-                                   builder: (context) => const Menu()),
-                             );
-                           },
-                           child: const Text('IR'))),*/
-
-         */
     ),);
   }
 }

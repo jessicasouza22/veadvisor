@@ -2,6 +2,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:vetadvisor/termos.dart';
+import 'package:carousel_slider/carousel_slider.dart';
+
 
 class Agendamentos extends StatelessWidget {
   const Agendamentos({super.key});
@@ -91,6 +93,8 @@ class _AgendamentosPageState extends State<AgendamentosPage> {
                                 Center(
                                    // crossAxisAlignment: CrossAxisAlignment.center,
                                   child: Row(
+                                    mainAxisAlignment: MainAxisAlignment
+                                        .center,
                                   children: [
                                     Padding(padding: EdgeInsets.only(left: 10)),
                                     Icon(Icons.circle,
@@ -126,7 +130,7 @@ class _AgendamentosPageState extends State<AgendamentosPage> {
                                 )
                                 ),
 
-                                const Padding(padding: EdgeInsets.only(top: 20)),
+                                const Padding(padding: EdgeInsets.only(top: 25)),
                                 Material(
 
                                   child: Container(
@@ -152,18 +156,112 @@ class _AgendamentosPageState extends State<AgendamentosPage> {
                                       ),
                                      // icon: ,
                                       hintText: "Digite os sintomas do seu pet",
+                                      suffixIcon: ElevatedButton(
+                                        style: TextButton.styleFrom(
+
+                                          padding: const EdgeInsets.only(
+                                              top: 5, right: 5, left: 1, bottom: 5),
+                                          primary: Colors.white,
+                                          backgroundColor: Color(0xFF3C10BB),
+                                          shape: RoundedRectangleBorder(
+                                              borderRadius: BorderRadius.circular(15.0)),
+                                          // Background Color
+                                        ),
+                                        onPressed: () {
+                                          /*Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (context) => const Agendamentos()),
+                                          );*/
+                                        }, child: Text("IR",
+                                      style: TextStyle(
+                                        fontSize: 10,
+                                      )),
+
+
                                     ),
 
                                   ),
 
                                 ),
                                 ),
-                              ]
+
                           ),
-                        ))),
+                                Padding(padding: EdgeInsets.only(top: 10)),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment
+                                      .center,
+                                  children: [
+                                    Icon(Icons.calendar_month,
+                                    color: Color(0xFF3C10BB),),
+                                    Text(" Agende sua consulta com especialista",
+                                    style: TextStyle(
+                                      color: Color(0xFF3C10BB),
+                                      fontSize: 14,
+                                    ),)
+                                  ],
+                                ),
+                               // Material(
+                                //  child: Row(
+
+                                 // children: [
+                                    CarouselSlider(
+                               // auto
+
+                                items:[ Container(
+                                      decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(30),
+                                        image: const DecorationImage(
+                                          image: AssetImage("imagens/med01.jpg"),
+                                        )
+                                      ),
+                                    ),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(30),
+                                        image: const DecorationImage(
+                                          image: AssetImage("imagens/med02.jfif"),
+                                        )
+                                    ),
+                                  ),
+                                  Container(
+                                    decoration: BoxDecoration(
+                                        borderRadius: BorderRadius.circular(30),
+                                        image: const DecorationImage(
+                                          image: AssetImage("imagens/med03.jfif"),
+                                        )
+                                    ),
+                                  ),
+                ], options: CarouselOptions(
+                                      height: 100,
+                                      aspectRatio: 16/9,
+                                      //viewportFraction: 0.8,
+                                      //initialPage: 0,
+                                      //enableInfiniteScroll: true,
+                                      //reverse: false,
+                                      autoPlay: true,
+                                      autoPlayInterval: Duration(seconds: 4),
+                                      autoPlayAnimationDuration: Duration(milliseconds: 800),
+                                      autoPlayCurve: Curves.fastOutSlowIn,
+                                      enlargeCenterPage: true,
+                                      enlargeFactor: 0.3,
+                                      //onPageChanged: callbackFunction,
+                                      scrollDirection: Axis.horizontal,
+                                    ),),
+
+                                   //   ],
+                                 // )),
+
+                                  ],
+                                )
+
+                       ))),
+
+
         ]
             ),
-    ),
+    )
+
     );
   }
 }

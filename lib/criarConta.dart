@@ -36,7 +36,7 @@ class _CriarContaPageState extends State<CriarContaPage> {
               decoration: BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage('imagens/homeGeral.png'),
-                      fit: BoxFit.fill,
+                      //fit: BoxFit.fifll,
                       //colorFilter: new ColorFilter.mode(Cores.azulSafe.withOpacity(1), BlendMode.dstATop))
               ),
               ),
@@ -166,7 +166,7 @@ class _CriarContaPageState extends State<CriarContaPage> {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => const Agendamentos()),
+                                            builder: (context) => const Perfil()),
                                       );
                                     },
                                     child: const Text('ENTRAR'))),

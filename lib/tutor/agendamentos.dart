@@ -4,7 +4,6 @@ import 'package:flutter/material.dart';
 import 'package:vetadvisor/termos.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
-
 class Agendamentos extends StatelessWidget {
   const Agendamentos({super.key});
 
@@ -25,243 +24,271 @@ class _AgendamentosPageState extends State<AgendamentosPage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        debugShowCheckedModeBanner: false,
-       // body: Scaffold(
-        home: Container(
-            child: CustomScrollView(
-                slivers: [
-                SliverFillRemaining(
-                hasScrollBody: true,
-                child:
-                Container(
-                  color: Colors.white,
+      debugShowCheckedModeBanner: false,
+      // body: Scaffold(
+      home: Container(
+          child: CustomScrollView(slivers: [
+        SliverFillRemaining(
+            hasScrollBody: true,
+            child: Container(
+                color: Colors.white,
 
-                        //padding: const EdgeInsets.only(left: 30, right: 30),
-                        child: SingleChildScrollView(
-                          child: Column(
-                              children: [
-                                // appBar:
-                               AppBar(
-                                    toolbarHeight: 100,
-                                    elevation: 50,
-                                    backgroundColor: Color(0xFF0E02B7),
-                                    title: Text(
+                //padding: const EdgeInsets.only(left: 30, right: 30),
+                child: SingleChildScrollView(
+                    child: Column(children: [
+                  // appBar:
+                  AppBar(
+                      toolbarHeight: 100,
+                      elevation: 50,
+
+                      backgroundColor: Color(0xFF0E02B7),
+                      title: Text(
+                        "Olá ----- ",
+                        style: TextStyle(
+                          decoration: TextDecoration.none,
+                        ),
+                      ),
+                      // elevation: 0,
+                      shape: RoundedRectangleBorder(
+                        borderRadius: BorderRadius.vertical(
+                          bottom: Radius.circular(30),
+                        ),
+                      ),
+                      actions: [
+                        Expanded(
+                            child: Padding(
+                                padding: EdgeInsets.only(left: 40),
+                                child: Row(
+                                  mainAxisAlignment:
+                                      MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    IconButton(
+                                        onPressed: () {
+                                          print("clicado na seta");
+                                        },
+                                        icon: Icon(Icons.arrow_back)),
+                                    Text(
                                       "Olá ----- ",
-
                                       style: TextStyle(),
                                     ),
-                                    // elevation: 0,
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.vertical(
-                                        bottom: Radius.circular(30),
-                                      ),
-                                    ),
-
-                                    actions: [
-                                      Expanded(
-
-                                          child: Padding(
-                                              padding: EdgeInsets.only(
-                                                  left: 40),
-                                              child: Row(
-                                                mainAxisAlignment: MainAxisAlignment
-                                                    .spaceBetween,
-                                                children: [
-                                                  IconButton(onPressed: () {
-                                                    print("clicado na seta");
-                                                  },
-                                                      icon: Icon(
-                                                          Icons.arrow_back)),
-                                                  Text(
-                                                    "Olá ----- ",
-
-                                                    style: TextStyle(),
-                                                  ),
-                                                  IconButton(onPressed: () {
-                                                    print(
-                                                        "clicado no notificacao");
-                                                  },
-                                                      icon: Icon(
-                                                          Icons.doorbell)),
-                                                ]
-                                                ,
-
-                                              )))
-                                    ]
-                                ),
-                                Padding(padding: EdgeInsets.only(top: 10)),
-                                Center(
-                                   // crossAxisAlignment: CrossAxisAlignment.center,
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment
-                                        .center,
-                                  children: [
-                                    Padding(padding: EdgeInsets.only(left: 10)),
-                                    Icon(Icons.circle,
-                                    size: 12,
-                                    color: Colors.green),
-                                    Padding(padding: EdgeInsets.only(left: 10)),
-                                    Text("Cães",
-                                      style: TextStyle(
-                                        fontSize: 16,
-                                        color: Colors.grey,
-                                      ),),
-                                    Padding(padding: EdgeInsets.only(left: 10)),
-                                    Icon(Icons.circle,
-                                        size: 12,
-                                        color: Colors.grey),
-                                    Padding(padding: EdgeInsets.only(left: 10)),
-                                    Text("Gatos",
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        color: Colors.grey,
-                                      ),),
-                                    Padding(padding: EdgeInsets.only(left: 10)),
-                                    Icon(Icons.circle,
-                                        size: 12,
-                                        color: Colors.grey),
-                                    Padding(padding: EdgeInsets.only(left: 10)),
-                                    Text("Pets exóticos",
-                                      style: TextStyle(
-                                        fontSize: 14,
-                                        color: Colors.grey,
-                                      ),),
-                                  ],
-                                )
-                                ),
-
-                                const Padding(padding: EdgeInsets.only(top: 25)),
-                                Material(
-
-                                  child: Container(
-                                    padding: EdgeInsets.only(left: 50, right: 50),
-                                  decoration: const BoxDecoration(
-
-                                    color: Colors.white,
-                                    borderRadius: BorderRadius.all(Radius.circular(17)),
-                                  ),
-                                  child: TextFormField(
-
-                                   // obscureText: true,
-                                    textAlign: TextAlign.center,
-                                    decoration: InputDecoration(
-                                      //fillColor: Colors.orange,
-                                      prefixIcon: Icon(Icons.search),
-                                      border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(17),
-                                        borderSide: const BorderSide(
-                                          color: Color(0xFF3C10BB),
-                                          width: 1.0,
-                                        ),
-                                      ),
-                                     // icon: ,
-                                      hintText: "Digite os sintomas do seu pet",
-                                      suffixIcon: ElevatedButton(
-                                        style: TextButton.styleFrom(
-
-                                          padding: const EdgeInsets.only(
-                                              top: 5, right: 5, left: 1, bottom: 5),
-                                          primary: Colors.white,
-                                          backgroundColor: Color(0xFF3C10BB),
-                                          shape: RoundedRectangleBorder(
-                                              borderRadius: BorderRadius.circular(15.0)),
-                                          // Background Color
-                                        ),
+                                    IconButton(
                                         onPressed: () {
-                                          /*Navigator.push(
+                                          print("clicado no notificacao");
+                                        },
+                                        icon: Icon(Icons.doorbell)),
+                                  ],
+                                )))
+                      ]),
+                  Padding(padding: EdgeInsets.only(top: 10)),
+                  Center(
+                      // crossAxisAlignment: CrossAxisAlignment.center,
+                      child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Padding(padding: EdgeInsets.only(left: 10)),
+                      Icon(Icons.circle, size: 12, color: Colors.green),
+                      Padding(padding: EdgeInsets.only(left: 10)),
+                      Text(
+                        "Cães",
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.grey,
+                          decoration: TextDecoration.none,
+                        ),
+                      ),
+                      Padding(padding: EdgeInsets.only(left: 10)),
+                      Icon(Icons.circle, size: 12, color: Colors.grey),
+                      Padding(padding: EdgeInsets.only(left: 10)),
+                      Text(
+                        "Gatos",
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.grey,
+                          decoration: TextDecoration.none,
+                        ),
+                      ),
+                      Padding(padding: EdgeInsets.only(left: 10)),
+                      Icon(Icons.circle, size: 12, color: Colors.grey),
+                      Padding(padding: EdgeInsets.only(left: 10)),
+                      Text(
+                        "Pets exóticos",
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.grey,
+                          decoration: TextDecoration.none,
+                        ),
+                      ),
+                    ],
+                  )),
+
+                  const Padding(padding: EdgeInsets.only(top: 25)),
+                  Material(
+                    child: Container(
+                      padding: EdgeInsets.only(left: 50, right: 50),
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(Radius.circular(17)),
+                      ),
+                      child: TextFormField(
+                        // obscureText: true,
+                        textAlign: TextAlign.center,
+                        decoration: InputDecoration(
+                          //fillColor: Colors.orange,
+                          prefixIcon: Icon(Icons.search),
+                          border: OutlineInputBorder(
+                            borderRadius: BorderRadius.circular(17),
+                            borderSide: const BorderSide(
+                              color: Color(0xFF3C10BB),
+                              width: 1.0,
+                            ),
+                          ),
+                          // icon: ,
+                          hintText: "Digite os sintomas do seu pet",
+                          suffixIcon: ElevatedButton(
+                            style: TextButton.styleFrom(
+                              padding: const EdgeInsets.only(
+                                  top: 5, right: 5, left: 1, bottom: 5),
+                              primary: Colors.white,
+                              backgroundColor: Color(0xFF3C10BB),
+                              shape: RoundedRectangleBorder(
+                                  borderRadius: BorderRadius.circular(15.0)),
+                              // Background Color
+                            ),
+                            onPressed: () {
+                              /*Navigator.push(
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) => const Agendamentos()),
                                           );*/
-                                        }, child: Text("IR",
-                                      style: TextStyle(
-                                        fontSize: 10,
-                                      )),
-
-
-                                    ),
-
-                                  ),
-
-                                ),
-                                ),
-
+                            },
+                            child: Text("IR",
+                                style: TextStyle(
+                                    fontSize: 10,
+                                    decoration: TextDecoration.none)),
                           ),
-                                Padding(padding: EdgeInsets.only(top: 10)),
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment
-                                      .center,
-                                  children: [
-                                    Icon(Icons.calendar_month,
-                                    color: Color(0xFF3C10BB),),
-                                    Text(" Agende sua consulta com especialista",
-                                    style: TextStyle(
-                                      color: Color(0xFF3C10BB),
-                                      fontSize: 14,
-                                    ),)
-                                  ],
-                                ),
-                               // Material(
-                                //  child: Row(
+                        ),
+                      ),
+                    ),
+                  ),
+                  Padding(padding: EdgeInsets.only(top: 10)),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Icon(
+                        Icons.calendar_month,
+                        color: Color(0xFF3C10BB),
+                      ),
+                      Text(
+                        " Agende sua consulta com especialista",
+                        style: TextStyle(
+                          color: Color(0xFF3C10BB),
+                          decoration: TextDecoration.none,
+                          fontSize: 14,
+                        ),
+                      )
+                    ],
+                  ),
+                  // Material(
+                  //  child: Row(
 
-                                 // children: [
-                                    CarouselSlider(
-                               // auto
+                  // children: [
+                  Padding(padding: EdgeInsets.only(top: 10)),
+                  CarouselSlider(
+                    // auto
 
-                                items:[ Container(
-                                      decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(30),
-                                        image: const DecorationImage(
-                                          image: AssetImage("imagens/med01.jpg"),
-                                        )
-                                      ),
-                                    ),
-                                  Container(
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(30),
-                                        image: const DecorationImage(
-                                          image: AssetImage("imagens/med02.jfif"),
-                                        )
-                                    ),
-                                  ),
-                                  Container(
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(30),
-                                        image: const DecorationImage(
-                                          image: AssetImage("imagens/med03.jfif"),
-                                        )
-                                    ),
-                                  ),
-                ], options: CarouselOptions(
-                                      height: 100,
-                                      aspectRatio: 16/9,
-                                      //viewportFraction: 0.8,
-                                      //initialPage: 0,
-                                      //enableInfiniteScroll: true,
-                                      //reverse: false,
-                                      autoPlay: true,
-                                      autoPlayInterval: Duration(seconds: 4),
-                                      autoPlayAnimationDuration: Duration(milliseconds: 800),
-                                      autoPlayCurve: Curves.fastOutSlowIn,
-                                      enlargeCenterPage: true,
-                                      enlargeFactor: 0.3,
-                                      //onPageChanged: callbackFunction,
-                                      scrollDirection: Axis.horizontal,
-                                    ),),
+                    items: [
+                      Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(30)),
+                            image: const DecorationImage(
+                              image: AssetImage("imagens/med01.jpg"),
+                            )),
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(30)),
+                            image: const DecorationImage(
+                              image: AssetImage("imagens/med02.jfif"),
+                            )),
+                      ),
+                      Container(
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.all(Radius.circular(30)),
+                            image: const DecorationImage(
+                              image: AssetImage("imagens/med03.jfif"),
 
-                                   //   ],
-                                 // )),
+                            )),
+                      ),
+                    ],
+                    options: CarouselOptions(
+                      height: 100,
+                      aspectRatio: 16 / 9,
+                      //viewportFraction: 0.8,
+                      //initialPage: 0,
+                      //enableInfiniteScroll: true,
+                      //reverse: false,
+                      autoPlay: true,
+                      autoPlayInterval: Duration(seconds: 4),
+                      autoPlayAnimationDuration: Duration(milliseconds: 800),
+                      autoPlayCurve: Curves.fastOutSlowIn,
+                      enlargeCenterPage: true,
+                      enlargeFactor: 0.3,
+                      //onPageChanged: callbackFunction,
+                      scrollDirection: Axis.horizontal,
+                    ),
+                  ),
 
-                                  ],
-                                )
+                  //   ],
+                  // )),
 
-                       ))),
-
-
-        ]
-            ),
-    )
-
+                  Container(
+                      padding: EdgeInsets.only(bottom: 18, top: 18),
+                      margin: const EdgeInsets.only(left: 20.0, right: 20.0),
+                      color: Colors.white,
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            MdiIcons.stethoscope,
+                            color: Color(0xFF3C10BB),
+                          ),
+                          Text(
+                            " Consultas de meus PETS ",
+                            style: TextStyle(
+                                color: Color(0xFF3C10BB),
+                                fontSize: 14,
+                                decoration: TextDecoration.none),
+                          ),
+                          Icon(
+                            MdiIcons.chevronRight,
+                            color: Color(0xFF3C10BB),
+                          ),
+                        ],
+                      )),
+                  Container(
+                      padding: EdgeInsets.only(bottom: 18, top: 18),
+                      margin: const EdgeInsets.only(left: 10.0, right: 20.0),
+                      color: Colors.white,
+                      child: Row(
+                        //mainAxisAlignment: MainAxisAlignment.,
+                        children: [
+                          Icon(
+                            MdiIcons.stethoscope,
+                            color: Color(0xFF3C10BB),
+                          ),
+                          Text(
+                            " |  Dicas do especialista ",
+                            style: TextStyle(
+                                color: Color(0xFF3C10BB),
+                                fontSize: 14,
+                                decoration: TextDecoration.none),
+                          ),
+                        ],
+                      )),
+                ])))),
+      ])),
     );
   }
 }
+
+

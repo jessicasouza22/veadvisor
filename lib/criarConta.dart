@@ -166,7 +166,7 @@ class _CriarContaPageState extends State<CriarContaPage> {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => const Perfil()),
+                                            builder: (context) => const Agendamentos()),
                                       );
                                     },
                                     child: const Text('ENTRAR'))),

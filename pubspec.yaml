@@ -39,6 +39,7 @@ dependencies:
   auto_size_text: ^3.0.0
   material_design_icons_flutter: ^6.0.7096
   carousel_slider: ">0.0.4"
+  video_player: ^2.6.0
 
 dev_dependencies:
   flutter_test:

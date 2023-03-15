@@ -1,8 +1,8 @@
 import 'package:flutter/cupertino.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:vetadvisor/termos.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:video_player/video_player.dart';
 
 class Agendamentos extends StatelessWidget {
   const Agendamentos({super.key});
@@ -21,6 +21,19 @@ class AgendamentosPage extends StatefulWidget {
 }
 
 class _AgendamentosPageState extends State<AgendamentosPage> {
+  late VideoPlayerController _controller;
+
+  @override
+  // aqui inicia o vídeo controller
+  void initState() {
+    _controller = VideoPlayerController.network(
+        "hhttps://edisciplinas.usp.br/pluginfile.php/5196097/mod_resource/content/1/Teste.mp4")
+      ..initialize().then((_) {
+        setState(() {});
+      });
+    super.initState();
+  }
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -38,10 +51,22 @@ class _AgendamentosPageState extends State<AgendamentosPage> {
                     child: Column(children: [
                   // appBar:
                   AppBar(
-                      toolbarHeight: 100,
+                      toolbarHeight: 80,
                       elevation: 50,
+                      flexibleSpace: Container(
+                        decoration: BoxDecoration(
+                          gradient: LinearGradient(
+                           // begin: Alignment.topLeft,
+                           // end: Alignment(0.8, 1),
+                            colors: <Color>[
 
-                      backgroundColor: Color(0xFF0E02B7),
+                              Color(0xFF3C10BB),
+                              Color(0xffffb56b),
+                            ],
+                            //tileMode: TileMode.mirror,
+                          ),
+                        ),
+                      ),
                       title: Text(
                         "Olá ----- ",
                         style: TextStyle(
@@ -208,15 +233,14 @@ class _AgendamentosPageState extends State<AgendamentosPage> {
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(30)),
                             image: const DecorationImage(
-                              image: AssetImage("imagens/med02.jfif"),
+                              image: AssetImage("imagens/med02.jpeg"),
                             )),
                       ),
                       Container(
                         decoration: BoxDecoration(
                             borderRadius: BorderRadius.all(Radius.circular(30)),
                             image: const DecorationImage(
-                              image: AssetImage("imagens/med03.jfif"),
-
+                              image: AssetImage("imagens/med03.jpeg"),
                             )),
                       ),
                     ],
@@ -285,10 +309,45 @@ class _AgendamentosPageState extends State<AgendamentosPage> {
                           ),
                         ],
                       )),
+                  CarouselSlider(
+                    items: [
+                      Container(
+                        padding: EdgeInsets.only(bottom: 150, top: 150),
+                        margin: const EdgeInsets.only(left: 40.0, right: 40.0),
+                        //color: Colors.amber,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.all(Radius.circular(30)),
+                          color: Colors.amber,
+
+                          // image: const DecorationImage(
+                          // image: AssetImage("imagens/med03.jpeg")
+
+                          //  )
+                        ),
+                        child: _controller.value.isInitialized
+                            ? VideoPlayer(_controller)
+                            : Container(),
+                      )
+                    ],
+                    options: CarouselOptions(
+                      height: 100,
+                     // aspectRatio: 16 / 9,
+                      //viewportFraction: 0.8,
+                      //initialPage: 0,
+                      //enableInfiniteScroll: true,
+                      //reverse: false,
+                      autoPlay: true,
+                      autoPlayInterval: Duration(seconds: 4),
+                      autoPlayAnimationDuration: Duration(milliseconds: 800),
+                      autoPlayCurve: Curves.fastOutSlowIn,
+                      enlargeCenterPage: true,
+                      enlargeFactor: 0.3,
+                      //onPageChanged: callbackFunction,
+                      scrollDirection: Axis.horizontal,
+                    ),
+                  ),
                 ])))),
       ])),
     );
   }
 }
-
-

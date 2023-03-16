@@ -21,9 +21,9 @@ class LogadoPage extends StatefulWidget {
 }
 
 class _LogadoPageState extends State<LogadoPage> {
- late VideoPlayerController _controller;
+  late VideoPlayerController _controller;
 
- @override
+  @override
   // aqui inicia o vídeo controller
   void initState() {
     _controller = VideoPlayerController.network(
@@ -37,185 +37,172 @@ class _LogadoPageState extends State<LogadoPage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-        //debugShowCheckedModeBanner: false,
+      //debugShowCheckedModeBanner: false,
         home: Scaffold(
-          drawer: Drawer(
-
-              backgroundColor: Color(0xFF0E02B7),
-              child: ListView(
-                children: [
-                  // aqui ele está dividindo o menu em duas partes
-                 UserAccountsDrawerHeader(
-                    decoration: new BoxDecoration(
-                      color: Color(0xFF0E02B7),
+            drawer: Drawer(
+                backgroundColor: Color(0xFF0E02B7),
+                child: ListView(
+                  children: [
+                    // aqui ele está dividindo o menu em duas partes
+                    UserAccountsDrawerHeader(
+                      decoration: new BoxDecoration(
+                        color: Color(0xFF0E02B7),
+                      ),
+                      currentAccountPicture: Image.asset('imagens/user.png'),
+                      accountName: Text("Davies"),
+                      accountEmail: Text("davies@gmail.com"),
                     ),
-                    currentAccountPicture: Image.asset('imagens/user.png'),
-                    accountName: Text("Davies"),
-                    accountEmail: Text("davies@gmail.com"),
-                  ),
-                  Row(
-                    children: [
-                      Icon(MdiIcons.bellOffOutline,
-                          color: Colors.white, size: 20),
-                      Text(
-                        "Notificações",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                        ),
-                      )
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Icon(MdiIcons.stethoscope,
-                          color: Colors.white, size: 20),
-
-                      Text(
-                        "Minhas consultas",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                        ),
-                      )
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Icon(MdiIcons.calendarClockOutline,
-                          color: Colors.white, size: 20),
-
-                      Text(
-                        "Agendar consulta",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                        ),
-                      )
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Icon(MdiIcons.stethoscope,
-                          color: Colors.white, size: 20),
-
-                      Text(
-                        "Ver procedimentos",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                        ),
-                      )
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Icon(MdiIcons.stethoscope,
-                          color: Colors.white, size: 20),
-
-                      Text(
-                        "Dicas de cuidados",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                        ),
-                      )
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Icon(MdiIcons.cartMinus,
-                          color: Colors.white, size: 20),
-
-                      Text(
-                        "Ofertas",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                        ),
-                      )
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Icon(MdiIcons.bottleTonicPlusOutline,
-                          color: Colors.white, size: 20),
-
-                      Text(
-                        "Telemedicina",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                        ),
-                      )
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Icon(MdiIcons.bottleTonicPlusOutline,
-                          color: Colors.white, size: 20),
-
-                      Text(
-                        "Add novo pet",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                        ),
-                      )
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Icon(MdiIcons.bottleTonicPlusOutline,
-                          color: Colors.white, size: 20),
-
-                      Text(
-                        "Suporte técnico",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                        ),
-                      )
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Icon(MdiIcons.bottleTonicPlusOutline,
-                          color: Colors.white, size: 20),
-
-                      Text(
-                        "Sair da conta",
-                        style: TextStyle(
-                          color: Colors.white,
-                          fontSize: 18,
-                        ),
-                      )
-                    ],
-                  ),
-                  Divider(
-                    color: Colors.white,
-                    thickness: 0.2,
-                    endIndent: 28,
-                    indent: 18,
-                  )
-                ],
-
-              )),
-          body: CustomScrollView(slivers: [
-            SliverFillRemaining(
+                    Row(
+                      children: [
+                        Icon(MdiIcons.bellOffOutline,
+                            color: Colors.white, size: 20),
+                        Text(
+                          "Notificações",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                          ),
+                        )
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Icon(MdiIcons.stethoscope,
+                            color: Colors.white, size: 20),
+                        Text(
+                          "Minhas consultas",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                          ),
+                        )
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Icon(MdiIcons.calendarClockOutline,
+                            color: Colors.white, size: 20),
+                        Text(
+                          "Agendar consulta",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                          ),
+                        )
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Icon(MdiIcons.stethoscope,
+                            color: Colors.white, size: 20),
+                        Text(
+                          "Ver procedimentos",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                          ),
+                        )
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Icon(MdiIcons.stethoscope,
+                            color: Colors.white, size: 20),
+                        Text(
+                          "Dicas de cuidados",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                          ),
+                        )
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Icon(MdiIcons.cartMinus, color: Colors.white, size: 20),
+                        Text(
+                          "Ofertas",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                          ),
+                        )
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Icon(MdiIcons.bottleTonicPlusOutline,
+                            color: Colors.white, size: 20),
+                        Text(
+                          "Telemedicina",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                          ),
+                        )
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Icon(MdiIcons.bottleTonicPlusOutline,
+                            color: Colors.white, size: 20),
+                        Text(
+                          "Add novo pet",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                          ),
+                        )
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Icon(MdiIcons.bottleTonicPlusOutline,
+                            color: Colors.white, size: 20),
+                        Text(
+                          "Suporte técnico",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                          ),
+                        )
+                      ],
+                    ),
+                    Row(
+                      children: [
+                        Icon(MdiIcons.bottleTonicPlusOutline,
+                            color: Colors.white, size: 20),
+                        Text(
+                          "Sair da conta",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 18,
+                          ),
+                        )
+                      ],
+                    ),
+                    Divider(
+                      color: Colors.white,
+                      thickness: 0.2,
+                      endIndent: 28,
+                      indent: 18,
+                    )
+                  ],
+                )),
+            body: CustomScrollView(slivers: [
+                SliverFillRemaining(
                 hasScrollBody: true,
-                child:
-              Container(
-                    color: Colors.white,
+                child: Container(
+                  color: Colors.white,
 
-                    //padding: const EdgeInsets.only(left: 30, right: 30),
-                    child: SingleChildScrollView(
+                  //padding: const EdgeInsets.only(left: 30, right: 30),
+                  child: SingleChildScrollView(
                       child: Column(children: [
-                      //backgroundColor: Color(0xFF0E02B7),
+                          //backgroundColor: Color(0xFF0E02B7),
 
-                      // a partir daqui que comecou a mostrar a msg que estourou
+                          // a partir daqui que comecou a mostrar a msg que estourou
 
-                       AppBar(
+                          AppBar(
                           toolbarHeight: 80,
                           elevation: 30,
                           shadowColor: Color(0xFF3C10BB),
@@ -254,7 +241,7 @@ class _LogadoPageState extends State<LogadoPage> {
                                     padding: EdgeInsets.only(left: 40),
                                     child: Row(
                                       mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
+                                      MainAxisAlignment.spaceBetween,
                                       children: [
                                         IconButton(
                                             onPressed: () {
@@ -275,55 +262,54 @@ class _LogadoPageState extends State<LogadoPage> {
                           ]),
 
                       Padding(padding: EdgeInsets.only(top: 10)),
-                       Center(
-                          // crossAxisAlignment: CrossAxisAlignment.center,
+                      Center(
+                        // crossAxisAlignment: CrossAxisAlignment.center,
                           child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Padding(padding: EdgeInsets.only(left: 10)),
-                          Icon(Icons.circle, size: 12, color: Colors.green),
-                          Padding(padding: EdgeInsets.only(left: 10)),
-                          Text(
-                            "Cães",
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.grey,
-                              decoration: TextDecoration.none,
-                            ),
-                          ),
-                          Padding(padding: EdgeInsets.only(left: 10)),
-                          Icon(Icons.circle, size: 12, color: Colors.grey),
-                          Padding(padding: EdgeInsets.only(left: 10)),
-                          Text(
-                            "Gatos",
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.grey,
-                              decoration: TextDecoration.none,
-                            ),
-                          ),
-                          Padding(padding: EdgeInsets.only(left: 10)),
-                          Icon(Icons.circle, size: 12, color: Colors.grey),
-                          Padding(padding: EdgeInsets.only(left: 10)),
-                          Text(
-                            "Pets exóticos",
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.grey,
-                              decoration: TextDecoration.none,
-                            ),
-                          ),
-                        ],
-                      )),
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Padding(padding: EdgeInsets.only(left: 10)),
+                              Icon(Icons.circle, size: 12, color: Colors.green),
+                              Padding(padding: EdgeInsets.only(left: 10)),
+                              Text(
+                                "Cães",
+                                style: TextStyle(
+                                  fontSize: 16,
+                                  color: Colors.grey,
+                                  decoration: TextDecoration.none,
+                                ),
+                              ),
+                              Padding(padding: EdgeInsets.only(left: 10)),
+                              Icon(Icons.circle, size: 12, color: Colors.grey),
+                              Padding(padding: EdgeInsets.only(left: 10)),
+                              Text(
+                                "Gatos",
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.grey,
+                                  decoration: TextDecoration.none,
+                                ),
+                              ),
+                              Padding(padding: EdgeInsets.only(left: 10)),
+                              Icon(Icons.circle, size: 12, color: Colors.grey),
+                              Padding(padding: EdgeInsets.only(left: 10)),
+                              Text(
+                                "Pets exóticos",
+                                style: TextStyle(
+                                  fontSize: 14,
+                                  color: Colors.grey,
+                                  decoration: TextDecoration.none,
+                                ),
+                              ),
+                            ],
+                          )),
 
-                         const Padding(padding: EdgeInsets.all(10.0)),
-                      Material(
-                        child: Container(
-                         // padding: EdgeInsets.only(left: 50, right: 50),
+                      const Padding(padding: EdgeInsets.all(10.0)),
+                        Container(
+                          // padding: EdgeInsets.only(left: 50, right: 50),
                           decoration: const BoxDecoration(
                             color: Color(0xFFF2F2F2),
-
-                            borderRadius: BorderRadius.all(Radius.circular(17)),
+                            borderRadius:
+                            BorderRadius.all(Radius.circular(17)),
                           ),
                           child: TextFormField(
                             //para senha: obscureText: true,
@@ -343,15 +329,17 @@ class _LogadoPageState extends State<LogadoPage> {
                               // icon: ,
                               hintText: "Digite os sintomas do seu pet",
                               suffixIcon: ElevatedButton(
-
                                 style: TextButton.styleFrom(
                                   padding: const EdgeInsets.only(
-                                      top: 5, right: 10, left: 1, bottom: 5),
+                                      top: 5,
+                                      right: 10,
+                                      left: 1,
+                                      bottom: 5),
                                   // primary: Colors.white,
                                   backgroundColor: Color(0xFF3C10BB),
                                   shape: RoundedRectangleBorder(
                                       borderRadius:
-                                          BorderRadius.circular(15.0)),
+                                      BorderRadius.circular(15.0)),
                                   // Background Color
                                 ),
                                 onPressed: () {
@@ -369,29 +357,26 @@ class _LogadoPageState extends State<LogadoPage> {
                             ),
                           ),
                         ),
-                      ),
-                      Padding(padding: EdgeInsets.only(top: 10)),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Icon(
-                            Icons.calendar_month,
-                            color: Color(0xFF3C10BB),
+                               Padding(padding: EdgeInsets.only(top: 10)),
+                               Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                Icons.calendar_month,
+                                color: Color(0xFF3C10BB),
+                              ),
+                              Text(
+                                " Agende sua consulta com especialista",
+                                style: TextStyle(
+                                  color: Color(0xFF3C10BB),
+                                  decoration: TextDecoration.none,
+                                  fontSize: 14,
+                                ),
+                              )
+                            ],
                           ),
-                          Text(
-                            " Agende sua consulta com especialista",
-                            style: TextStyle(
-                              color: Color(0xFF3C10BB),
-                              decoration: TextDecoration.none,
-                              fontSize: 14,
-                            ),
-                          )
-                        ],
-                      ),
-                      // Material(
-                      //  child: Row(
-
-                      // children: [
+                       // ),
+                     // ),
                       Padding(padding: EdgeInsets.only(top: 10)),
                       CarouselSlider(
                         // auto
@@ -441,100 +426,103 @@ class _LogadoPageState extends State<LogadoPage> {
                         ),
                       ),
 
-                        // ],
-                      // )),
+                      // ],
+                      // )),*/
 
-                      Container(
-                          padding: EdgeInsets.only(bottom: 18, top: 18),
-                          margin:
-                              const EdgeInsets.only(left: 20.0, right: 20.0),
-                          color: Colors.white,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                MdiIcons.stethoscope,
-                                color: Color(0xFF3C10BB),
-                              ),
-                              Text(
-                                " Consultas de meus PETS ",
-                                style: TextStyle(
-                                    color: Color(0xFF3C10BB),
-                                    fontSize: 14,
-                                    decoration: TextDecoration.none),
-                              ),
-                              Icon(
-                                MdiIcons.chevronRight,
-                                color: Color(0xFF3C10BB),
-                              ),
-                            ],
-                          )),
-                      Container(
-                          padding: EdgeInsets.only(bottom: 18, top: 18),
-                          margin:
-                              const EdgeInsets.only(left: 10.0, right: 20.0),
-                          color: Colors.white,
-                          child: Row(
-                            //mainAxisAlignment: MainAxisAlignment.,
-                            children: [
-                              Icon(
-                                MdiIcons.stethoscope,
-                                color: Color(0xFF3C10BB),
-                              ),
-                              Text(
-                                " |  Dicas do especialista ",
-                                style: TextStyle(
-                                    color: Color(0xFF3C10BB),
-                                    fontSize: 14,
-                                    decoration: TextDecoration.none),
-                              ),
-                            ],
-                          )),
-                      CarouselSlider(
-                        items: [
-                          Container(
-                            padding:
-                                const EdgeInsets.only(bottom: 200, top: 200),
-                            margin:
-                                const EdgeInsets.only(left: 20.0, right: 20.0),
-                            //color: Colors.amber,
-                            decoration: BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(30)),
-                              color: Colors.amber,
+                              Container(
+                                  padding: EdgeInsets.only(bottom: 18, top: 18),
+                                  margin:
+                                  const EdgeInsets.only(
+                                      left: 20.0, right: 20.0),
+                                  color: Colors.white,
+                                  child: Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+                                      Icon(
+                                        MdiIcons.stethoscope,
+                                        color: Color(0xFF3C10BB),
+                                      ),
+                                      Text(
+                                        " Consultas de meus PETS ",
+                                        style: TextStyle(
+                                            color: Color(0xFF3C10BB),
+                                            fontSize: 14,
+                                            decoration: TextDecoration.none),
+                                      ),
+                                      Icon(
+                                        MdiIcons.chevronRight,
+                                        color: Color(0xFF3C10BB),
+                                      ),
+                                    ],
+                                  )),
+                              Container(
+                                  padding: EdgeInsets.only(bottom: 18, top: 18),
+                                  margin:
+                                  const EdgeInsets.only(
+                                      left: 10.0, right: 20.0),
+                                  color: Colors.white,
+                                  child: Row(
+                                    //mainAxisAlignment: MainAxisAlignment.,
+                                    children: [
+                                      Icon(
+                                        MdiIcons.stethoscope,
+                                        color: Color(0xFF3C10BB),
+                                      ),
+                                      Text(
+                                        " |  Dicas do especialista ",
+                                        style: TextStyle(
+                                            color: Color(0xFF3C10BB),
+                                            fontSize: 14,
+                                            decoration: TextDecoration.none),
+                                      ),
+                                    ],
+                                  )),
+                              CarouselSlider(
+                                items: [
+                                  Container(
+                                    padding:
+                                    const EdgeInsets.only(
+                                        bottom: 200, top: 200),
+                                    margin:
+                                    const EdgeInsets.only(
+                                        left: 20.0, right: 20.0),
+                                    //color: Colors.amber,
+                                    decoration: BoxDecoration(
+                                      borderRadius:
+                                      BorderRadius.all(Radius.circular(30)),
+                                      color: Colors.amber,
 
-                              // image: const DecorationImage(
-                              // image: AssetImage("imagens/med03.jpeg")
+                                      // image: const DecorationImage(
+                                      // image: AssetImage("imagens/med03.jpeg")
 
-                              //  )
-                            ),
-                            child: _controller.value.isInitialized
-                                ? VideoPlayer(_controller)
-                                : Container(),
-                          )
-                        ],
-                        options: CarouselOptions(
-                          height: 100,
-                          // aspectRatio: 16 / 9,
-                          //viewportFraction: 0.8,
-                          //initialPage: 0,
-                          //enableInfiniteScroll: true,
-                          //reverse: false,
-                          autoPlay: true,
-                          autoPlayInterval: Duration(seconds: 4),
-                          autoPlayAnimationDuration:
-                              Duration(milliseconds: 800),
-                          autoPlayCurve: Curves.fastOutSlowIn,
-                          enlargeCenterPage: true,
-                          enlargeFactor: 0.3,
-                          //onPageChanged: callbackFunction,
-                          scrollDirection: Axis.horizontal,
-                        ),
-                      ),
-                   // ])
-        ]))
-              ),
-            ) ]))
-    );
+                                      //  )
+                                    ),
+                                    child: _controller.value.isInitialized
+                                        ? VideoPlayer(_controller)
+                                        : Container(),
+                                  )
+                                ],
+                                options: CarouselOptions(
+                                  height: 100,
+                                  // aspectRatio: 16 / 9,
+                                  //viewportFraction: 0.8,
+                                  //initialPage: 0,
+                                  //enableInfiniteScroll: true,
+                                  //reverse: false,
+                                  autoPlay: true,
+                                  autoPlayInterval: Duration(seconds: 4),
+                                  autoPlayAnimationDuration:
+                                  Duration(milliseconds: 800),
+                                  autoPlayCurve: Curves.fastOutSlowIn,
+                                  enlargeCenterPage: true,
+                                  enlargeFactor: 0.3,
+                                  //onPageChanged: callbackFunction,
+                                  scrollDirection: Axis.horizontal,
+                                ),
+                              ),
+                              // ])
+                              ]))),
+                )
+                ])));
   }
 }

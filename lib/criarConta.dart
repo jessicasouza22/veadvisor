@@ -2,11 +2,13 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:vetadvisor/helper.dart';
+import 'package:vetadvisor/logado.dart';
 import 'package:vetadvisor/menu.dart';
 import 'package:vetadvisor/recursos/Constants.dart';
 import 'package:vetadvisor/tutor/agendamentos.dart';
 import 'package:vetadvisor/tutor/perfil.dart';
 import 'termos.dart';
+import 'logado.dart';
 
 
 class CriarConta extends StatelessWidget {
@@ -166,7 +168,7 @@ class _CriarContaPageState extends State<CriarContaPage> {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => const Agendamentos()),
+                                            builder: (context) => const Logado()),
                                       );
                                     },
                                     child: const Text('ENTRAR'))),

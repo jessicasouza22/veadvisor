@@ -52,8 +52,11 @@ class _LogadoPageState extends State<LogadoPage> {
                       accountName: Text("Davies"),
                       accountEmail: Text("davies@gmail.com"),
                     ),
+                    Padding(padding: EdgeInsets.all(10)),
                     Row(
+
                       children: [
+
                         Icon(MdiIcons.bellOffOutline,
                             color: Colors.white, size: 20),
                         Text(
@@ -65,6 +68,7 @@ class _LogadoPageState extends State<LogadoPage> {
                         )
                       ],
                     ),
+                    Padding(padding: EdgeInsets.all(10)),
                     Row(
                       children: [
                         Icon(MdiIcons.stethoscope,
@@ -193,7 +197,7 @@ class _LogadoPageState extends State<LogadoPage> {
                 SliverFillRemaining(
                 hasScrollBody: true,
                 child: Container(
-                  color: Colors.white,
+                  color: Color(0xFFF2F2F2),
 
                   //padding: const EdgeInsets.only(left: 30, right: 30),
                   child: SingleChildScrollView(
@@ -303,9 +307,10 @@ class _LogadoPageState extends State<LogadoPage> {
                             ],
                           )),
 
-                      const Padding(padding: EdgeInsets.all(10.0)),
+                      const Padding(padding: EdgeInsets.only(left: 50, right: 50, bottom: 10, top: 10)),
+
                         Container(
-                          // padding: EdgeInsets.only(left: 50, right: 50),
+                           padding: EdgeInsets.only(left: 50, right: 50, bottom: 10, top: 10),
                           decoration: const BoxDecoration(
                             color: Color(0xFFF2F2F2),
                             borderRadius:
@@ -357,8 +362,10 @@ class _LogadoPageState extends State<LogadoPage> {
                             ),
                           ),
                         ),
+
                                Padding(padding: EdgeInsets.only(top: 10)),
                                Row(
+
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
                               Icon(
@@ -390,7 +397,7 @@ class _LogadoPageState extends State<LogadoPage> {
                                   image: AssetImage("imagens/med01.jpg"),
                                 )),
                           ),
-                          Container(
+                          /*Container(
                             decoration: BoxDecoration(
                                 borderRadius:
                                     BorderRadius.all(Radius.circular(30)),
@@ -405,25 +412,35 @@ class _LogadoPageState extends State<LogadoPage> {
                                 image: const DecorationImage(
                                   image: AssetImage("imagens/med03.jpeg"),
                                 )),
-                          ),
+                          ),*/
                         ],
                         options: CarouselOptions(
                           height: 100,
                           aspectRatio: 16 / 9,
                           //viewportFraction: 0.8,
                           //initialPage: 0,
-                          //enableInfiniteScroll: true,
-                          //reverse: false,
                           autoPlay: true,
+                         // enableInfiniteScroll: true,
+                          //reverse: false,
+                            enlargeCenterPage: true,
                           autoPlayInterval: Duration(seconds: 4),
                           autoPlayAnimationDuration:
                               Duration(milliseconds: 800),
                           autoPlayCurve: Curves.fastOutSlowIn,
-                          enlargeCenterPage: true,
+
                           enlargeFactor: 0.3,
                           //onPageChanged: callbackFunction,
                           scrollDirection: Axis.horizontal,
                         ),
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+
+                          Icon(Icons.circle, size: 12, color: Colors.grey),
+                          Icon(Icons.circle, size: 12, color: Colors.grey),
+                          Icon(Icons.circle, size: 12, color: Colors.grey),
+                        ],
                       ),
 
                       // ],

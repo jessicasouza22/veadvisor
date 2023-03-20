@@ -37,7 +37,7 @@ class _LogadoPageState extends State<LogadoPage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
-      //debugShowCheckedModeBanner: false,
+        //debugShowCheckedModeBanner: false,
         home: Scaffold(
             drawer: Drawer(
                 backgroundColor: Color(0xFF0E02B7),
@@ -54,9 +54,7 @@ class _LogadoPageState extends State<LogadoPage> {
                     ),
                     Padding(padding: EdgeInsets.all(10)),
                     Row(
-
                       children: [
-
                         Icon(MdiIcons.bellOffOutline,
                             color: Colors.white, size: 20),
                         Text(
@@ -194,29 +192,29 @@ class _LogadoPageState extends State<LogadoPage> {
                   ],
                 )),
             body: CustomScrollView(slivers: [
-                SliverFillRemaining(
+              SliverFillRemaining(
                 hasScrollBody: true,
                 child: Container(
-                  color: Color(0xFFF2F2F2),
+                    color: Color(0xFFF2F2F2),
 
-                  //padding: const EdgeInsets.only(left: 30, right: 30),
-                  child: SingleChildScrollView(
-                      child: Column(children: [
-                          //backgroundColor: Color(0xFF0E02B7),
+                    //padding: const EdgeInsets.only(left: 30, right: 30),
+                    child: SingleChildScrollView(
+                        child: Column(children: [
+                      //backgroundColor: Color(0xFF0E02B7),
 
-                          // a partir daqui que comecou a mostrar a msg que estourou
+                      // a partir daqui que comecou a mostrar a msg que estourou
 
-                          AppBar(
+                      AppBar(
                           toolbarHeight: 80,
                           elevation: 30,
                           shadowColor: Color(0xFF3C10BB),
                           //   backgroundColor: Colors.lightGreenAccent,
                           //  cor da sombra
                           flexibleSpace: Container(
-                            decoration: BoxDecoration(
+                            decoration: const BoxDecoration(
                               gradient: LinearGradient(
                                 begin: Alignment.topRight,
-                                end: Alignment(0.8, 1),
+                                //end: Alignment(0.8, 1),
                                 colors: <Color>[
                                   Color(0xFF4116B4),
                                   Color(0xff7347EF),
@@ -245,7 +243,7 @@ class _LogadoPageState extends State<LogadoPage> {
                                     padding: EdgeInsets.only(left: 40),
                                     child: Row(
                                       mainAxisAlignment:
-                                      MainAxisAlignment.spaceBetween,
+                                          MainAxisAlignment.spaceBetween,
                                       children: [
                                         IconButton(
                                             onPressed: () {
@@ -267,135 +265,151 @@ class _LogadoPageState extends State<LogadoPage> {
 
                       Padding(padding: EdgeInsets.only(top: 10)),
                       Center(
-                        // crossAxisAlignment: CrossAxisAlignment.center,
+                          // crossAxisAlignment: CrossAxisAlignment.center,
                           child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Padding(padding: EdgeInsets.only(left: 10)),
-                              Icon(Icons.circle, size: 12, color: Colors.green),
-                              Padding(padding: EdgeInsets.only(left: 10)),
-                              Text(
-                                "Cães",
-                                style: TextStyle(
-                                  fontSize: 16,
-                                  color: Colors.grey,
-                                  decoration: TextDecoration.none,
-                                ),
-                              ),
-                              Padding(padding: EdgeInsets.only(left: 10)),
-                              Icon(Icons.circle, size: 12, color: Colors.grey),
-                              Padding(padding: EdgeInsets.only(left: 10)),
-                              Text(
-                                "Gatos",
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  color: Colors.grey,
-                                  decoration: TextDecoration.none,
-                                ),
-                              ),
-                              Padding(padding: EdgeInsets.only(left: 10)),
-                              Icon(Icons.circle, size: 12, color: Colors.grey),
-                              Padding(padding: EdgeInsets.only(left: 10)),
-                              Text(
-                                "Pets exóticos",
-                                style: TextStyle(
-                                  fontSize: 14,
-                                  color: Colors.grey,
-                                  decoration: TextDecoration.none,
-                                ),
-                              ),
-                            ],
-                          )),
-
-                      const Padding(padding: EdgeInsets.only(left: 50, right: 50, bottom: 10, top: 10)),
-
-                        Container(
-                           padding: EdgeInsets.only(left: 50, right: 50, bottom: 10, top: 10),
-                          decoration: const BoxDecoration(
-                            color: Color(0xFFF2F2F2),
-                            borderRadius:
-                            BorderRadius.all(Radius.circular(17)),
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Padding(padding: EdgeInsets.only(left: 10)),
+                          Icon(Icons.circle, size: 12, color: Colors.green),
+                          Padding(padding: EdgeInsets.only(left: 10)),
+                          Text(
+                            "Cães",
+                            style: TextStyle(
+                              fontSize: 16,
+                              color: Colors.grey,
+                              decoration: TextDecoration.none,
+                            ),
                           ),
-                          child: TextFormField(
-                            //para senha: obscureText: true,
+                          Padding(padding: EdgeInsets.only(left: 10)),
+                          Icon(Icons.circle, size: 12, color: Colors.grey),
+                          Padding(padding: EdgeInsets.only(left: 10)),
+                          Text(
+                            "Gatos",
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.grey,
+                              decoration: TextDecoration.none,
+                            ),
+                          ),
+                          Padding(padding: EdgeInsets.only(left: 10)),
+                          Icon(Icons.circle, size: 12, color: Colors.grey),
+                          Padding(padding: EdgeInsets.only(left: 10)),
+                          Text(
+                            "Pets exóticos",
+                            style: TextStyle(
+                              fontSize: 14,
+                              color: Colors.grey,
+                              decoration: TextDecoration.none,
+                            ),
+                          ),
+                        ],
+                      )),
 
-                            textAlign: TextAlign.center,
-                            decoration: InputDecoration(
-                              //fillColor: Color(0xFF3C10BB),
+                      const Padding(
+                          padding: EdgeInsets.only(
+                              left: 100, right: 50, bottom: 5, top: 5)),
+                      Container(
+                        color: Colors.green,
+                          padding: EdgeInsets.only(left: 50, right: 50, bottom: 5, top: 5),
+                        child: Container(
+                          padding: EdgeInsets.only(left: 2, right: 2, bottom: 5, top: 5),
+                          child: Container(
+                            // padding: EdgeInsets.only(left: , right: 5),
+                            decoration: const BoxDecoration(
+                              color: Colors.orange,
+                              //color: Color(0xFFF2F2F2),
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(17)),
+                            ),
+                            child: TextFormField(
+                              //para senha: obscureText: true,
 
-                              prefixIcon: Icon(Icons.search),
-                              border: OutlineInputBorder(
-                                borderRadius: BorderRadius.circular(17),
-                                borderSide: const BorderSide(
-                                  color: Color(0xFFBDBECB),
-                                  width: 1.0,
+                              textAlign: TextAlign.center,
+                              decoration: InputDecoration(
+                                //fillColor: Color(0xFF3C10BB),
+
+                                prefixIcon: Icon(Icons.search),
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(17),
+                                  borderSide: const BorderSide(
+                                    color: Color(0xFFBDBECB),
+                                    width: 1.0,
+                                  ),
                                 ),
-                              ),
-                              // icon: ,
-                              hintText: "Digite os sintomas do seu pet",
-                              suffixIcon: ElevatedButton(
-                                style: TextButton.styleFrom(
-                                  padding: const EdgeInsets.only(
-                                      top: 5,
-                                      right: 10,
-                                      left: 1,
-                                      bottom: 5),
-                                  // primary: Colors.white,
-                                  backgroundColor: Color(0xFF3C10BB),
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                      BorderRadius.circular(15.0)),
-                                  // Background Color
-                                ),
-                                onPressed: () {
-                                  /*Navigator.push(
+                                // icon: ,
+                                hintText: "Digite os sintomas do seu pet",
+                                suffixIcon: ElevatedButton(
+                                  style: TextButton.styleFrom(
+                                    padding: const EdgeInsets.only(
+                                        top: 5, right: 15, left: 1, bottom: 5),
+                                    // primary: Colors.white,
+                                    backgroundColor: Color(0xFF3C10BB),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius:
+                                            BorderRadius.circular(15.0)),
+                                    // Background Color
+                                  ),
+                                  onPressed: () {
+                                    /*Navigator.push(
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) => const Agendamentos()),
                                           );*/
-                                },
-                                child: Text("IR",
-                                    style: TextStyle(
-                                        fontSize: 10,
-                                        decoration: TextDecoration.none)),
+                                  },
+                                  child: Text("IR",
+                                      style: TextStyle(
+                                          fontSize: 10,
+                                          decoration: TextDecoration.none)),
+                                ),
                               ),
                             ),
                           ),
                         ),
+                      ),
 
-                               Padding(padding: EdgeInsets.only(top: 10)),
-                               Row(
-
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                Icons.calendar_month,
-                                color: Color(0xFF3C10BB),
-                              ),
-                              Text(
-                                " Agende sua consulta com especialista",
-                                style: TextStyle(
-                                  color: Color(0xFF3C10BB),
-                                  decoration: TextDecoration.none,
-                                  fontSize: 14,
-                                ),
-                              )
-                            ],
-                          ),
-                       // ),
-                     // ),
                       Padding(padding: EdgeInsets.only(top: 10)),
-                      CarouselSlider(
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Icon(
+                            Icons.calendar_month,
+                            color: Color(0xFF3C10BB),
+                          ),
+                          Text(
+                            " Agende sua consulta com especialista",
+                            style: TextStyle(
+                              color: Color(0xFF3C10BB),
+                              decoration: TextDecoration.none,
+                              fontSize: 14,
+                            ),
+                          )
+                        ],
+                      ),
+                      // ),
+                      // ),
+                          Padding(padding: EdgeInsets.only(top: 10)),
+
+
+
+
+
+
+                          /* CarouselSlider(
                         // auto
 
                         items: [
                           Container(
-                            decoration: BoxDecoration(
+                      child: ClipRRect(
+                      borderRadius: BorderRadius.circular(20),
+                        child:Image(
+                          image: AssetImage("imagens/med01.jpg"),
+                        /*decoration: const BoxDecoration(
                                 borderRadius:
-                                    BorderRadius.all(Radius.circular(30)),
-                                image: const DecorationImage(
+                                    BorderRadius.all(Radius.circular(8.0),),
+                                image: DecorationImage(
                                   image: AssetImage("imagens/med01.jpg"),
-                                )),
+                                */
+                    )),
                           ),
                           /*Container(
                             decoration: BoxDecoration(
@@ -420,9 +434,9 @@ class _LogadoPageState extends State<LogadoPage> {
                           //viewportFraction: 0.8,
                           //initialPage: 0,
                           autoPlay: true,
-                         // enableInfiniteScroll: true,
+                          // enableInfiniteScroll: true,
                           //reverse: false,
-                            enlargeCenterPage: true,
+                          enlargeCenterPage: true,
                           autoPlayInterval: Duration(seconds: 4),
                           autoPlayAnimationDuration:
                               Duration(milliseconds: 800),
@@ -432,114 +446,152 @@ class _LogadoPageState extends State<LogadoPage> {
                           //onPageChanged: callbackFunction,
                           scrollDirection: Axis.horizontal,
                         ),
-                      ),
+                      ),*/
+                      PageView.builder(
+                         itemCount: 3,
+                         itemBuilder: (_ , int correntIndex){
+                           return Container(
+                           color: Colors.green,
+                           );
+                     }
+
+
+                     ),
+
+
+                          Padding(padding: EdgeInsets.all(5)),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
+                         /*Icon(Icons.circle, size: 12, color: Colors.grey),
+                          Icon(Icons.circle, size: 12, color: Colors.grey),
+                          Icon(Icons.circle, size: 12, color: Colors.grey),*/
 
-                          Icon(Icons.circle, size: 12, color: Colors.grey),
-                          Icon(Icons.circle, size: 12, color: Colors.grey),
-                          Icon(Icons.circle, size: 12, color: Colors.grey),
+                          Container(
+                            margin: EdgeInsets.all(10),
+                            width:10,
+                            height: 10,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              color: Colors.red,
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.all(10),
+                            width:10,
+                            height: 10,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              color: Colors.grey,
+                            ),
+                          ),
+                          Container(
+                            margin: EdgeInsets.all(10),
+                            width:10,
+                            height: 10,
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                              color: Colors.grey,
+                            ),
+                          ),
                         ],
                       ),
 
                       // ],
                       // )),*/
-
-                              Container(
-                                  padding: EdgeInsets.only(bottom: 18, top: 18),
-                                  margin:
-                                  const EdgeInsets.only(
-                                      left: 20.0, right: 20.0),
-                                  color: Colors.white,
-                                  child: Row(
-                                    mainAxisAlignment: MainAxisAlignment.center,
-                                    children: [
-                                      Icon(
-                                        MdiIcons.stethoscope,
-                                        color: Color(0xFF3C10BB),
-                                      ),
-                                      Text(
-                                        " Consultas de meus PETS ",
-                                        style: TextStyle(
-                                            color: Color(0xFF3C10BB),
-                                            fontSize: 14,
-                                            decoration: TextDecoration.none),
-                                      ),
-                                      Icon(
-                                        MdiIcons.chevronRight,
-                                        color: Color(0xFF3C10BB),
-                                      ),
-                                    ],
-                                  )),
-                              Container(
-                                  padding: EdgeInsets.only(bottom: 18, top: 18),
-                                  margin:
-                                  const EdgeInsets.only(
-                                      left: 10.0, right: 20.0),
-                                  color: Colors.white,
-                                  child: Row(
-                                    //mainAxisAlignment: MainAxisAlignment.,
-                                    children: [
-                                      Icon(
-                                        MdiIcons.stethoscope,
-                                        color: Color(0xFF3C10BB),
-                                      ),
-                                      Text(
-                                        " |  Dicas do especialista ",
-                                        style: TextStyle(
-                                            color: Color(0xFF3C10BB),
-                                            fontSize: 14,
-                                            decoration: TextDecoration.none),
-                                      ),
-                                    ],
-                                  )),
-                              CarouselSlider(
-                                items: [
-                                  Container(
-                                    padding:
-                                    const EdgeInsets.only(
-                                        bottom: 200, top: 200),
-                                    margin:
-                                    const EdgeInsets.only(
-                                        left: 20.0, right: 20.0),
-                                    //color: Colors.amber,
-                                    decoration: BoxDecoration(
-                                      borderRadius:
-                                      BorderRadius.all(Radius.circular(30)),
-                                      color: Colors.amber,
-
-                                      // image: const DecorationImage(
-                                      // image: AssetImage("imagens/med03.jpeg")
-
-                                      //  )
-                                    ),
-                                    child: _controller.value.isInitialized
-                                        ? VideoPlayer(_controller)
-                                        : Container(),
-                                  )
-                                ],
-                                options: CarouselOptions(
-                                  height: 100,
-                                  // aspectRatio: 16 / 9,
-                                  //viewportFraction: 0.8,
-                                  //initialPage: 0,
-                                  //enableInfiniteScroll: true,
-                                  //reverse: false,
-                                  autoPlay: true,
-                                  autoPlayInterval: Duration(seconds: 4),
-                                  autoPlayAnimationDuration:
-                                  Duration(milliseconds: 800),
-                                  autoPlayCurve: Curves.fastOutSlowIn,
-                                  enlargeCenterPage: true,
-                                  enlargeFactor: 0.3,
-                                  //onPageChanged: callbackFunction,
-                                  scrollDirection: Axis.horizontal,
-                                ),
+Padding(padding: EdgeInsets.all(10)),
+                      Container(
+                          padding: EdgeInsets.only(bottom: 18, top: 18),
+                          margin:
+                              const EdgeInsets.only(left: 20.0, right: 20.0),
+                          color: Colors.white,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Icon(
+                                MdiIcons.stethoscope,
+                                color: Color(0xFF3C10BB),
                               ),
-                              // ])
-                              ]))),
-                )
-                ])));
+                              Text(
+                                " Consultas de meus PETS ",
+                                style: TextStyle(
+                                    color: Color(0xFF3C10BB),
+                                    fontSize: 14,
+                                    decoration: TextDecoration.none),
+                              ),
+                              Icon(
+                                MdiIcons.chevronRight,
+                                color: Color(0xFF3C10BB),
+                              ),
+                            ],
+                          )),
+                          Padding(padding: EdgeInsets.all(10)),
+                      Container(
+                          padding: EdgeInsets.only(bottom: 18, top: 18),
+                          margin:
+                              const EdgeInsets.only(left: 10.0, right: 20.0),
+                          color: Colors.white,
+                          child: Row(
+                            //mainAxisAlignment: MainAxisAlignment.,
+                            children: [
+                              Icon(
+                                MdiIcons.stethoscope,
+                                color: Color(0xFF3C10BB),
+                              ),
+                              Text(
+                                " |  Dicas do especialista ",
+                                style: TextStyle(
+                                    color: Color(0xFF3C10BB),
+                                    fontSize: 14,
+                                    decoration: TextDecoration.none),
+                              ),
+                            ],
+                          )),
+                          Padding(padding: EdgeInsets.all(10)),
+                      CarouselSlider(
+                        items: [
+                          Container(
+                            padding:
+                                const EdgeInsets.only(bottom: 200, top: 200),
+                            margin:
+                                const EdgeInsets.only(left: 20.0, right: 20.0),
+                            //color: Colors.amber,
+                            decoration: BoxDecoration(
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(30)),
+                              color: Colors.amber,
+
+                              // image: const DecorationImage(
+                              // image: AssetImage("imagens/med03.jpeg")
+
+                              //  )
+                            ),
+                            child: _controller.value.isInitialized
+                                ? VideoPlayer(_controller)
+                                : Container(),
+                          )
+                        ],
+                        options: CarouselOptions(
+                          height: 100,
+                          // aspectRatio: 16 / 9,
+                          //viewportFraction: 0.8,
+                          //initialPage: 0,
+                          //enableInfiniteScroll: true,
+                          //reverse: false,
+                          autoPlay: true,
+                          autoPlayInterval: Duration(seconds: 4),
+                          autoPlayAnimationDuration:
+                              Duration(milliseconds: 800),
+                          autoPlayCurve: Curves.fastOutSlowIn,
+                          enlargeCenterPage: true,
+                          enlargeFactor: 0.3,
+                          //onPageChanged: callbackFunction,
+                          scrollDirection: Axis.horizontal,
+                        ),
+                      ),
+                      // ])
+                    ]))),
+              )
+            ])));
   }
 }

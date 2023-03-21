@@ -26,11 +26,13 @@ class _LogadoPageState extends State<LogadoPage> {
   @override
   // aqui inicia o vídeo controller
   void initState() {
+
     _controller = VideoPlayerController.network(
-        "hhttps://edisciplinas.usp.br/pluginfile.php/5196097/mod_resource/content/1/Teste.mp4")
+        "https://firebasestorage.googleapis.com/v0/b/vetadvisor-2d900.appspot.com/o/Som%20de%20Cachorro%20e%20Cachorrinhos%20Latindo%20-%20Fatos%20Curiosos%20Sobre%20C%C3%A3es.mp4?alt=media&token=9a2d5805-0114-4cb5-b7da-38ff1fdfa16a")
       ..initialize().then((_) {
         setState(() {});
       });
+    _controller.play();
     super.initState();
   }
 
@@ -39,8 +41,11 @@ class _LogadoPageState extends State<LogadoPage> {
     return MaterialApp(
         //debugShowCheckedModeBanner: false,
         home: Scaffold(
+
             drawer: Drawer(
                 backgroundColor: Color(0xFF0E02B7),
+
+
                 child: ListView(
                   children: [
                     // aqui ele está dividindo o menu em duas partes
@@ -190,8 +195,73 @@ class _LogadoPageState extends State<LogadoPage> {
                       indent: 18,
                     )
                   ],
-                )),
+                )
+
+
+            ),
             body: CustomScrollView(slivers: [
+              SliverAppBar (
+                backgroundColor: Colors.transparent,
+                toolbarHeight: 80,
+                elevation: 30,
+                pinned: true,
+                expandedHeight: 50,
+                flexibleSpace: Container (
+
+                  decoration: BoxDecoration (
+                    borderRadius: BorderRadius.only(
+                  bottomRight: Radius.circular(45),
+                ),
+                    // LinearGradient
+                    gradient: LinearGradient (
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      // colors for gradient
+                      colors: [
+                        Color(0xFF4116B4),
+                        Color(0xff4116B4),
+                        Color(0xff7347EF),
+
+                        Color(0xffE3EDF7),
+                      ],
+                    ),
+
+                  ),
+                ),
+                // title of appbar
+                  title: Text(
+                    "Olá ----- ",
+                    style: TextStyle(
+                      decoration: TextDecoration.none,
+                    ),
+                  ),
+
+                  actions: [
+                    Expanded(
+                        child: Padding(
+                            padding: EdgeInsets.only(left: 40),
+                            child: Row(
+                              mainAxisAlignment:
+                              MainAxisAlignment.spaceBetween,
+                              children: [
+                                IconButton(
+                                    onPressed: () {
+                                      print("clicado na seta");
+                                    },
+                                    icon: Icon(Icons.arrow_back)),
+                                Text(
+                                  "Olá ----- ",
+                                  style: TextStyle(),
+                                ),
+                                IconButton(
+                                    onPressed: () {
+                                      print("clicado no notificacao");
+                                    },
+                                    icon: Icon(Icons.doorbell)),
+                              ],
+                            )))
+                  ]
+              ),
               SliverFillRemaining(
                 hasScrollBody: true,
                 child: Container(
@@ -204,10 +274,12 @@ class _LogadoPageState extends State<LogadoPage> {
 
                       // a partir daqui que comecou a mostrar a msg que estourou
 
+
+                          /*
                       AppBar(
                           toolbarHeight: 80,
                           elevation: 30,
-                          shadowColor: Color(0xFF3C10BB),
+                          //shadowColor: Color(0xFF3C10BB),
                           //   backgroundColor: Colors.lightGreenAccent,
                           //  cor da sombra
                           flexibleSpace: Container(
@@ -261,7 +333,7 @@ class _LogadoPageState extends State<LogadoPage> {
                                             icon: Icon(Icons.doorbell)),
                                       ],
                                     )))
-                          ]),
+                          ]),*/
 
                       Padding(padding: EdgeInsets.only(top: 10)),
                       Center(
@@ -308,18 +380,24 @@ class _LogadoPageState extends State<LogadoPage> {
                       const Padding(
                           padding: EdgeInsets.only(
                               left: 100, right: 50, bottom: 5, top: 5)),
-                      Container(
-                        color: Colors.green,
-                          padding: EdgeInsets.only(left: 50, right: 50, bottom: 5, top: 5),
+                      Padding(
+                        padding: EdgeInsets.only(left: 30, right: 30),
                         child: Container(
-                          padding: EdgeInsets.only(left: 2, right: 2, bottom: 5, top: 5),
+
+                          padding: EdgeInsets.only(left: 20, right: 20, bottom: 20, top: 20),
+                          decoration: const BoxDecoration(
+                            color: Colors.white,
+                            //color: Color(0xFFF2F2F2),
+                            borderRadius:
+                            BorderRadius.all(Radius.circular(17)),
+                          ),
                           child: Container(
                             // padding: EdgeInsets.only(left: , right: 5),
-                            decoration: const BoxDecoration(
-                              color: Colors.orange,
+                            decoration: BoxDecoration(
+                              color: Colors.grey.withOpacity(0.2),
                               //color: Color(0xFFF2F2F2),
                               borderRadius:
-                                  BorderRadius.all(Radius.circular(17)),
+                              BorderRadius.all(Radius.circular(17)),
                             ),
                             child: TextFormField(
                               //para senha: obscureText: true,
@@ -338,34 +416,40 @@ class _LogadoPageState extends State<LogadoPage> {
                                 ),
                                 // icon: ,
                                 hintText: "Digite os sintomas do seu pet",
-                                suffixIcon: ElevatedButton(
-                                  style: TextButton.styleFrom(
-                                    padding: const EdgeInsets.only(
-                                        top: 5, right: 15, left: 1, bottom: 5),
-                                    // primary: Colors.white,
-                                    backgroundColor: Color(0xFF3C10BB),
-                                    shape: RoundedRectangleBorder(
-                                        borderRadius:
-                                            BorderRadius.circular(15.0)),
-                                    // Background Color
-                                  ),
-                                  onPressed: () {
-                                    /*Navigator.push(
+                                suffixIcon: Padding(
+                                  padding: EdgeInsets.only(left: 10, right:10, top: 0, bottom: 0),
+                                  child: ElevatedButton(
+                                    style: TextButton.styleFrom(
+                                      padding: const EdgeInsets.only(
+                                          top: 5, right: 15, left: 1, bottom: 5),
+                                      // primary: Colors.white,
+                                      backgroundColor: Color(0xFF3C10BB),
+                                      shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                          BorderRadius.circular(15.0)),
+                                      // Background Color
+                                    ),
+                                    onPressed: () {
+                                      /*Navigator.push(
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) => const Agendamentos()),
                                           );*/
-                                  },
-                                  child: Text("IR",
-                                      style: TextStyle(
-                                          fontSize: 10,
-                                          decoration: TextDecoration.none)),
-                                ),
+                                    },
+                                    child: Text("IR",
+                                        style: TextStyle(
+                                            fontSize: 10,
+                                            decoration: TextDecoration.none), textAlign: TextAlign.center,),
+                                  ),
+                                )
+                                
+                                
                               ),
                             ),
                           ),
                         ),
                       ),
+
 
                       Padding(padding: EdgeInsets.only(top: 10)),
                       Row(
@@ -447,6 +531,8 @@ class _LogadoPageState extends State<LogadoPage> {
                           scrollDirection: Axis.horizontal,
                         ),
                       ),*/
+
+                          /*
                       PageView.builder(
                          itemCount: 3,
                          itemBuilder: (_ , int correntIndex){
@@ -457,7 +543,7 @@ class _LogadoPageState extends State<LogadoPage> {
 
 
                      ),
-
+*/
 
                           Padding(padding: EdgeInsets.all(5)),
                       Row(
@@ -548,29 +634,24 @@ Padding(padding: EdgeInsets.all(10)),
                             ],
                           )),
                           Padding(padding: EdgeInsets.all(10)),
+
+
                       CarouselSlider(
                         items: [
-                          Container(
-                            padding:
-                                const EdgeInsets.only(bottom: 200, top: 200),
-                            margin:
-                                const EdgeInsets.only(left: 20.0, right: 20.0),
-                            //color: Colors.amber,
-                            decoration: BoxDecoration(
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(30)),
-                              color: Colors.amber,
 
-                              // image: const DecorationImage(
-                              // image: AssetImage("imagens/med03.jpeg")
-
-                              //  )
-                            ),
+                          Center(
                             child: _controller.value.isInitialized
-                                ? VideoPlayer(_controller)
+                                ? AspectRatio(
+                              aspectRatio: _controller.value.aspectRatio,
+                              child: VideoPlayer(_controller),
+                            )
                                 : Container(),
-                          )
+                          ),
+
+
+
                         ],
+
                         options: CarouselOptions(
                           height: 100,
                           // aspectRatio: 16 / 9,
@@ -588,7 +669,11 @@ Padding(padding: EdgeInsets.all(10)),
                           //onPageChanged: callbackFunction,
                           scrollDirection: Axis.horizontal,
                         ),
+
+
                       ),
+
+
                       // ])
                     ]))),
               )

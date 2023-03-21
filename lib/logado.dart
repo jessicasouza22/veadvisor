@@ -2,7 +2,9 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:vetadvisor/tutor/slide_tile.dart';
 import 'package:video_player/video_player.dart';
+
 
 class Logado extends StatelessWidget {
   const Logado({super.key});
@@ -23,12 +25,21 @@ class LogadoPage extends StatefulWidget {
 class _LogadoPageState extends State<LogadoPage> {
   late VideoPlayerController _controller;
 
+  // declaracoes para o listView
+
+  int _corrrentPage =0; // _ significa privado
+  var _listSlide = [
+    { 'id': 0, 'image:': "imagens/med01.jpg"},
+    { 'id': 1, 'image:': "imagens/med02.jpeg"},
+    { 'id': 2, 'image:': "imagens/med03.jpeg"}
+  ];
+
   @override
   // aqui inicia o vídeo controller
   void initState() {
 
     _controller = VideoPlayerController.network(
-        "https://firebasestorage.googleapis.com/v0/b/vetadvisor-2d900.appspot.com/o/Som%20de%20Cachorro%20e%20Cachorrinhos%20Latindo%20-%20Fatos%20Curiosos%20Sobre%20C%C3%A3es.mp4?alt=media&token=9a2d5805-0114-4cb5-b7da-38ff1fdfa16a")
+        "https://firebasestorage.googleapis.com/v0/b/vetadvisor-2d900.appspot.com/o/Som%20de%20Cachorro%20e%20Cachorrinhos%20Latindo%20-%20Fatos%20Curiosos%20Sobre%20C%C3%A3es.mp4?alt=media&token=9a2d5805-0114-4cb5-b7da-38ff1fdfa16a",)
       ..initialize().then((_) {
         setState(() {});
       });
@@ -532,18 +543,22 @@ class _LogadoPageState extends State<LogadoPage> {
                         ),
                       ),*/
 
-                          /*
-                      PageView.builder(
-                         itemCount: 3,
+
+                      SizedBox(
+                        width: 150,
+                        height: 150,
+                        child:
+                          PageView.builder(
+
+                         itemCount: _listSlide.length,
+                         //aqui vou passar a imagens da lista
                          itemBuilder: (_ , int correntIndex){
-                           return Container(
-                           color: Colors.green,
-                           );
+                           return SlideTile(image: _listSlide[correntIndex] ['image'],);
                      }
 
 
                      ),
-*/
+                      ),
 
                           Padding(padding: EdgeInsets.all(5)),
                       Row(
@@ -645,7 +660,12 @@ Padding(padding: EdgeInsets.all(10)),
                               aspectRatio: _controller.value.aspectRatio,
                               child: VideoPlayer(_controller),
                             )
-                                : Container(),
+                                : Container(
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+
+                              ),
+                            ),
                           ),
 
 

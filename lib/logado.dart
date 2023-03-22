@@ -4,22 +4,18 @@ import 'package:flutter/cupertino.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:vetadvisor/tutor/slide_tile.dart';
 import 'package:video_player/video_player.dart';
+import 'package:vetadvisor/recursos/Constants.dart';
 
 
-class Logado extends StatefulWidget {
+
+class Logado extends StatelessWidget {
   const Logado({super.key});
 
-  @override
-  State<Logado> createState() => _LogadoState();
-}
-
-class _LogadoState extends State<Logado> {
   @override
   Widget build(BuildContext context) {
     return const LogadoPage();
   }
 }
-
 
 class LogadoPage extends StatefulWidget {
   const LogadoPage({Key? key}) : super(key: key);
@@ -30,23 +26,19 @@ class LogadoPage extends StatefulWidget {
 
 class _LogadoPageState extends State<LogadoPage> {
   late VideoPlayerController _controller;
-  final PageController _pageController = PageController(viewportFraction: 0.8);
+  //final PageController _pageController = PageController(viewportFraction: 0.8);
   // ele vai controlar o listView
-  int _currentPage = 0;
+  int posicaoSlide = 0;
+  List <MaterialColor> cores = [Colors.red, Colors.grey];
 
 
   // declaracoes para o listView
 
   //int _corrrentPage =0; // _ significa pread
-  var _listSlide = [
-    { 'id': 0, 'image': 'imagens/med01.jpg'},
-    { 'id': 1, 'image': 'imagens/med02.jpeg'},
-    { 'id': 2, 'image': 'imagens/med03.jpeg'}
-  ];
 
  // aqui ele vai mandar iniciar o estado antes de tudo para escutar o pagecontroller
 
-  @override
+ /* @override
   void initState() {
     _pageController.addListener(() {
       int next = _pageController.page!.round();
@@ -57,13 +49,13 @@ class _LogadoPageState extends State<LogadoPage> {
       }
     });
     super.initState();
-  }
+  }*/
 
  // get currentIndex => null;
 
   @override
   // aqui inicia o vídeo controller
-  void initState1() {
+  void initState() {
 
     _controller = VideoPlayerController.network(
         "https://firebasestorage.googleapis.com/v0/b/vetadvisor-2d900.appspot.com/o/Som%20de%20Cachorro%20e%20Cachorrinhos%20Latindo%20-%20Fatos%20Curiosos%20Sobre%20C%C3%A3es.mp4?alt=media&token=9a2d5805-0114-4cb5-b7da-38ff1fdfa16a",)
@@ -73,6 +65,15 @@ class _LogadoPageState extends State<LogadoPage> {
     _controller.play();
     super.initState();
   }
+
+  int _currentPage = 0;
+  final _listSlide = [
+    { 'id': 0, 'image': 'imagens/med01.jpg'},
+    { 'id': 1, 'image': 'imagens/med02.jpeg'},
+    { 'id': 2, 'image': 'imagens/med03.jpeg'}
+  ];
+
+  final _listSlide2 = ['imagens/med01.jpg','imagens/med02.jpeg','imagens/med03.jpeg'];
 
   @override
   Widget build(BuildContext context) {
@@ -87,16 +88,53 @@ class _LogadoPageState extends State<LogadoPage> {
                 child: ListView(
                   children: [
                     // aqui ele está dividindo o menu em duas partes
-                    UserAccountsDrawerHeader(
+                    /*UserAccountsDrawerHeader(
                       decoration: new BoxDecoration(
                         color: Color(0xFF0E02B7),
                       ),
+                     margin: EdgeInsets.only(bottom: 30
+                     ),
                       currentAccountPicture: Image.asset('imagens/user.png'),
                       accountName: Text("Davies"),
                       accountEmail: Text("davies@gmail.com"),
+                    ),*/
+                    Row(
+                      children: [
+                        const Padding(
+                          padding: EdgeInsets.only(bottom: 30, left: 30, top: 30),
+                          child: CircleAvatar(
+                          backgroundImage: AssetImage('imagens/user.png'),
+                          
+                        ),
+                        ),
+                        Padding(
+                          padding: EdgeInsets.only(bottom: 30, left: 30, top: 30),
+                          child: Text(Constants.nomeDr,
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.white
+                          ),),
+                        ),
+                      /*  Padding(
+                          padding: EdgeInsets.only(bottom: 20, top: 60, right: 10),
+                          child:Text("juliano@gmail.com")
+                        ),*/
+                      ],
                     ),
                     Padding(padding: EdgeInsets.all(10)),
-                    Row(
+
+                    ListTile(
+                      leading: Icon(MdiIcons.bellOffOutline),
+                      title: Text("Notificações",
+                      style: TextStyle(
+                        fontSize: 14,
+                        color: Colors.white,
+                      ),),
+
+                      onTap: (){},
+                    )
+
+                    /*Row(
                       children: [
                         Icon(MdiIcons.bellOffOutline,
                             color: Colors.white, size: 20),
@@ -225,13 +263,13 @@ class _LogadoPageState extends State<LogadoPage> {
                           ),
                         )
                       ],
-                    ),
-                    Divider(
+                    ),*/
+                   /* Divider(
                       color: Colors.white,
                       thickness: 0.2,
                       endIndent: 28,
                       indent: 18,
-                    )
+                    )*/
                   ],
                 )
 
@@ -576,15 +614,22 @@ class _LogadoPageState extends State<LogadoPage> {
                         height: 150,
                         child:
                           PageView.builder(
+                            onPageChanged: (posicao) {
+                              setState(() {
+                                posicaoSlide = posicao;
+                              });
 
-                            controller: _pageController,
-                            itemCount: _listSlide.length,
+                            },
+                           // controller: _pageController,
+                            itemCount: _listSlide2.length,
                             itemBuilder: (_, currentIndex) {
-                              bool activePage = currentIndex == _currentPage;
+                           //  bool activePage = currentIndex == _currentPage;
                               return SlideTile(
-                                activePage: activePage,
+
+                                image: _listSlide2[currentIndex],
+                               /* activePage: activePage,
                                 //image: _listSlide[currentIndex]['image'],
-                                image: _listSlide[currentIndex].toString()
+                                image: _listSlide[currentIndex]['immage']*/
 
                            );
                      },
@@ -607,7 +652,7 @@ class _LogadoPageState extends State<LogadoPage> {
                             height: 10,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(30),
-                              color: Colors.red,
+                              color: posicaoSlide == 0 ? cores[0] : cores[1],
                             ),
                           ),
                           Container(
@@ -616,7 +661,7 @@ class _LogadoPageState extends State<LogadoPage> {
                             height: 10,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(30),
-                              color: Colors.grey,
+                              color: posicaoSlide == 1 ? cores[0] : cores[1],
                             ),
                           ),
                           Container(
@@ -625,7 +670,7 @@ class _LogadoPageState extends State<LogadoPage> {
                             height: 10,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(30),
-                              color: Colors.grey,
+                              color: posicaoSlide == 2 ? cores[0] : cores[1],
                             ),
                           ),
                         ],

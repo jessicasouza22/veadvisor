@@ -6,14 +6,20 @@ import 'package:vetadvisor/tutor/slide_tile.dart';
 import 'package:video_player/video_player.dart';
 
 
-class Logado extends StatelessWidget {
+class Logado extends StatefulWidget {
   const Logado({super.key});
 
+  @override
+  State<Logado> createState() => _LogadoState();
+}
+
+class _LogadoState extends State<Logado> {
   @override
   Widget build(BuildContext context) {
     return const LogadoPage();
   }
 }
+
 
 class LogadoPage extends StatefulWidget {
   const LogadoPage({Key? key}) : super(key: key);
@@ -24,19 +30,40 @@ class LogadoPage extends StatefulWidget {
 
 class _LogadoPageState extends State<LogadoPage> {
   late VideoPlayerController _controller;
+  final PageController _pageController = PageController(viewportFraction: 0.8);
+  // ele vai controlar o listView
+  int _currentPage = 0;
+
 
   // declaracoes para o listView
 
-  int _corrrentPage =0; // _ significa privado
+  //int _corrrentPage =0; // _ significa pread
   var _listSlide = [
-    { 'id': 0, 'image:': "imagens/med01.jpg"},
-    { 'id': 1, 'image:': "imagens/med02.jpeg"},
-    { 'id': 2, 'image:': "imagens/med03.jpeg"}
+    { 'id': 0, 'image': 'imagens/med01.jpg'},
+    { 'id': 1, 'image': 'imagens/med02.jpeg'},
+    { 'id': 2, 'image': 'imagens/med03.jpeg'}
   ];
+
+ // aqui ele vai mandar iniciar o estado antes de tudo para escutar o pagecontroller
+
+  @override
+  void initState() {
+    _pageController.addListener(() {
+      int next = _pageController.page!.round();
+      if (_currentPage != next) {
+        setState(() {
+          _currentPage = next;
+        });
+      }
+    });
+    super.initState();
+  }
+
+ // get currentIndex => null;
 
   @override
   // aqui inicia o vídeo controller
-  void initState() {
+  void initState1() {
 
     _controller = VideoPlayerController.network(
         "https://firebasestorage.googleapis.com/v0/b/vetadvisor-2d900.appspot.com/o/Som%20de%20Cachorro%20e%20Cachorrinhos%20Latindo%20-%20Fatos%20Curiosos%20Sobre%20C%C3%A3es.mp4?alt=media&token=9a2d5805-0114-4cb5-b7da-38ff1fdfa16a",)
@@ -550,11 +577,17 @@ class _LogadoPageState extends State<LogadoPage> {
                         child:
                           PageView.builder(
 
-                         itemCount: _listSlide.length,
-                         //aqui vou passar a imagens da lista
-                         itemBuilder: (_ , int correntIndex){
-                           return SlideTile(image: _listSlide[correntIndex] ['image'],);
-                     }
+                            controller: _pageController,
+                            itemCount: _listSlide.length,
+                            itemBuilder: (_, currentIndex) {
+                              bool activePage = currentIndex == _currentPage;
+                              return SlideTile(
+                                activePage: activePage,
+                                //image: _listSlide[currentIndex]['image'],
+                                image: _listSlide[currentIndex].toString()
+
+                           );
+                     },
 
 
                      ),

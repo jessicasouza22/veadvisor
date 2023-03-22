@@ -1,12 +1,16 @@
 import 'package:flutter/material.dart';
+import 'package:vetadvisor/logado.dart';
 
 class SlideTile extends StatelessWidget {
 
- final String image;
+  final String image;
+  final bool activePage;
+
+  const SlideTile({super.key, required this.image, required this.activePage});
  //necessario para chamar as imagens
 
- //const SlideTile ({Key key, this.image}) : super(key: key);
- const SlideTile({Key key, this.image}) : super(key: key);
+
+
 
   @override
   Widget build(BuildContext context) {
@@ -24,10 +28,5 @@ class SlideTile extends StatelessWidget {
       ),
     );
   }
-  @override
-  void debugFillProperties(DiagnosticPropertiesBuilder properties) {
-    super.debugFillProperties(properties);
-    properties.add(StringProperty('image', image));
-    properties.add(StringProperty('image', image));
-  }
+
 }

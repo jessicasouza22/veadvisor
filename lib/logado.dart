@@ -110,7 +110,7 @@ class _LogadoPageState extends State<LogadoPage> {
                           padding:
                               EdgeInsets.only(bottom: 30, left: 30, top: 30),
                           child: Text(
-                            Constants.nomeDr,
+                            "${Constants.nomeDr}\n\n${Constants.emailDr}",
                             style: TextStyle(fontSize: 14, color: Colors.white),
                           ),
                         ),
@@ -121,20 +121,18 @@ class _LogadoPageState extends State<LogadoPage> {
                       ],
                     ),
                     Padding(padding: EdgeInsets.all(10)),
-                    Stack(children: [
+                    Stack( children: [
                       Positioned(
                         height: 56,
                         width: 288,
                         child: Container(
+                          margin: EdgeInsets.only(left:10 , right: 10, bottom: 5),
                           decoration: BoxDecoration(
                             color: Colors.orange,
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                           ),
                         ),
                       ),
-
-
-
                       ListTile(
                         leading: Icon(MdiIcons.bellOffOutline),
                         title: Text(
@@ -146,15 +144,14 @@ class _LogadoPageState extends State<LogadoPage> {
                         ),
                         onTap: () {},
                       ),
-    ]),
-
-
+                    ]),
 
                     Stack(children: [
                       Positioned(
                         height: 56,
                         width: 288,
                         child: Container(
+                          margin: EdgeInsets.only(left:15 , right: 10, bottom: 5),
                           decoration: BoxDecoration(
                             color: Colors.orange,
                             borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -174,143 +171,230 @@ class _LogadoPageState extends State<LogadoPage> {
                       )
                     ]),
 
-
-                    /*Row(
-                      children: [
-                        Icon(MdiIcons.bellOffOutline,
-                            color: Colors.white, size: 20),
-                        Text(
-                          "Notificações",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
+                    Stack(children: [
+                      Positioned(
+                        height: 56,
+                        width: 288,
+                        child: Container(
+                          margin: EdgeInsets.only(left:15  , right: 10, bottom: 5),
+                          decoration: BoxDecoration(
+                            color: Colors.orange,
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
                           ),
-                        )
-                      ],
-                    ),
-                    Padding(padding: EdgeInsets.all(10)),
-                    Row(
-                      children: [
-                        Icon(MdiIcons.stethoscope,
-                            color: Colors.white, size: 20),
-                        Text(
-                          "Minhas consultas",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 18,
-                          ),
-                        )
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Icon(MdiIcons.calendarClockOutline,
-                            color: Colors.white, size: 20),
-                        Text(
+                        ),
+                      ),
+                      ListTile(
+                        leading: Icon(MdiIcons.calendarClockOutline),
+                        title: Text(
                           "Agendar consulta",
                           style: TextStyle(
+                            fontSize: 14,
                             color: Colors.white,
-                            fontSize: 18,
                           ),
-                        )
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Icon(MdiIcons.stethoscope,
-                            color: Colors.white, size: 20),
-                        Text(
+                        ),
+                        onTap: () {},
+                      )
+                    ]),
+
+                    Stack(children: [
+                      Positioned(
+                        height: 56,
+                        width: 288,
+                        child: Container(
+                          margin: EdgeInsets.only(left:15 , right: 10, bottom: 5),
+                          decoration: BoxDecoration(
+                            color: Colors.orange,
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                          ),
+                        ),
+                      ),
+                      ListTile(
+                        leading: Icon(MdiIcons.stethoscope),
+                        title: Text(
                           "Ver procedimentos",
                           style: TextStyle(
+                            fontSize: 14,
                             color: Colors.white,
-                            fontSize: 18,
                           ),
-                        )
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Icon(MdiIcons.stethoscope,
-                            color: Colors.white, size: 20),
-                        Text(
+                        ),
+                        onTap: () {},
+                      )
+                    ]),
+
+                    Stack(children: [
+                      Positioned(
+                        height: 56,
+                        width: 288,
+                        child: Container(
+                          margin: EdgeInsets.only(left:15  , right: 10, bottom: 5),
+                          decoration: BoxDecoration(
+                            color: Colors.orange,
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                          ),
+                        ),
+                      ),
+                      ListTile(
+                        leading: Icon(MdiIcons.stethoscope),
+                        title: Text(
                           "Dicas de cuidados",
                           style: TextStyle(
+                            fontSize: 14,
                             color: Colors.white,
-                            fontSize: 18,
                           ),
-                        )
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Icon(MdiIcons.cartMinus, color: Colors.white, size: 20),
-                        Text(
+                        ),
+                        onTap: () {},
+                      )
+                    ]),
+
+                    Stack(children: [
+                      Positioned(
+                        height: 56,
+                        width: 288,
+                        child: Container(
+                          margin: EdgeInsets.only(left:15  , right: 10, bottom: 5),
+                          decoration: BoxDecoration(
+                            color: Colors.orange,
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                          ),
+                        ),
+                      ),
+                      ListTile(
+                        leading: Icon(MdiIcons.cartMinus),
+                        title: Text(
                           "Ofertas",
                           style: TextStyle(
+                            fontSize: 14,
                             color: Colors.white,
-                            fontSize: 18,
                           ),
-                        )
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Icon(MdiIcons.bottleTonicPlusOutline,
-                            color: Colors.white, size: 20),
-                        Text(
+                        ),
+                        onTap: () {},
+                      )
+                    ]),
+                    Stack(children: [
+                      Positioned(
+                        height: 56,
+                        width: 288,
+                        child: Container(
+                          margin: EdgeInsets.only(left:15  , right: 10, bottom: 5),
+                          decoration: BoxDecoration(
+                            color: Colors.orange,
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                          ),
+                        ),
+                      ),
+                      ListTile(
+                        leading: Icon(MdiIcons.bottleTonicPlusOutline),
+                        title: Text(
                           "Telemedicina",
                           style: TextStyle(
+                            fontSize: 14,
                             color: Colors.white,
-                            fontSize: 18,
                           ),
-                        )
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Icon(MdiIcons.bottleTonicPlusOutline,
-                            color: Colors.white, size: 20),
-                        Text(
+                        ),
+                        onTap: () {},
+                      )
+                    ]),
+
+                    Stack(children: [
+                      Positioned(
+                        height: 56,
+                        width: 288,
+                        child: Container(
+                          margin: EdgeInsets.only(left:15  , right: 10, bottom: 5),
+                          decoration: BoxDecoration(
+                            color: Colors.orange,
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                          ),
+                        ),
+                      ),
+                      ListTile(
+                        leading: Icon(MdiIcons.bottleTonicPlusOutline),
+                        title: Text(
                           "Add novo pet",
                           style: TextStyle(
+                            fontSize: 14,
                             color: Colors.white,
-                            fontSize: 18,
                           ),
-                        )
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Icon(MdiIcons.bottleTonicPlusOutline,
-                            color: Colors.white, size: 20),
-                        Text(
+                        ),
+                        onTap: () {},
+                      )
+                    ]),
+
+                    Stack(children: [
+                      Positioned(
+                        height: 56,
+                        width: 288,
+                        child: Container(
+                          margin: EdgeInsets.only(left:15  , right: 10, bottom: 5),
+                          decoration: BoxDecoration(
+                            color: Colors.orange,
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                          ),
+                        ),
+                      ),
+                      ListTile(
+                        leading: Icon(MdiIcons.bottleTonicPlusOutline),
+                        title: Text(
                           "Suporte técnico",
                           style: TextStyle(
+                            fontSize: 14,
                             color: Colors.white,
-                            fontSize: 18,
                           ),
-                        )
-                      ],
-                    ),
-                    Row(
-                      children: [
-                        Icon(MdiIcons.bottleTonicPlusOutline,
-                            color: Colors.white, size: 20),
-                        Text(
+                        ),
+                        onTap: () {},
+                      )
+                    ]),
+
+                    Stack(children: [
+                      Positioned(
+
+                        height: 56,
+                        width: 288,
+
+                        child: Container(
+                          margin: EdgeInsets.only(left:15  , right: 10, bottom: 5),
+
+                          decoration: BoxDecoration(
+                            color: Colors.orange,
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                          ),
+                        ),
+                      ),
+                      ListTile(
+
+                        leading: Icon(MdiIcons.bottleTonicPlusOutline),
+                        title: Text(
                           "Sair da conta",
                           style: TextStyle(
+                            fontSize: 14,
                             color: Colors.white,
-                            fontSize: 18,
                           ),
-                        )
-                      ],
-                    ),*/
-                    /* Divider(
+                        ),
+                        onTap: () {},
+                      )
+                    ]),
+
+                    Divider(
                       color: Colors.white,
                       thickness: 0.2,
                       endIndent: 28,
                       indent: 18,
-                    )*/
+                    ),
+                     Row(
+                       //mainAxisAlignment:MainAxisAlignment.center,
+
+                       children: [
+                         Icon(Icons.question_mark_outlined,
+                         color: Colors.white,
+                         size: 10,),
+                         Text("Cores de sua preferência",
+                         style: TextStyle(
+                           color: Colors.white,
+                           fontSize: 12,
+                         ),)
+                       ],
+                     )
+                    
                   ],
                 )),
             body: CustomScrollView(slivers: [
@@ -378,69 +462,7 @@ class _LogadoPageState extends State<LogadoPage> {
                     //padding: const EdgeInsets.only(left: 30, right: 30),
                     child: SingleChildScrollView(
                         child: Column(children: [
-                      //backgroundColor: Color(0xFF0E02B7),
 
-                      // a partir daqui que comecou a mostrar a msg que estourou
-
-                      /*
-                      AppBar(
-                          toolbarHeight: 80,
-                          elevation: 30,
-                          //shadowColor: Color(0xFF3C10BB),
-                          //   backgroundColor: Colors.lightGreenAccent,
-                          //  cor da sombra
-                          flexibleSpace: Container(
-                            decoration: const BoxDecoration(
-                              gradient: LinearGradient(
-                                begin: Alignment.topRight,
-                                //end: Alignment(0.8, 1),
-                                colors: <Color>[
-                                  Color(0xFF4116B4),
-                                  Color(0xff7347EF),
-                                  Color(0xff4116B4),
-                                  Color(0xffE3EDF7),
-                                ],
-                                //tileMode: TileMode.mirror,
-                              ),
-                            ),
-                          ),
-                          title: Text(
-                            "Olá ----- ",
-                            style: TextStyle(
-                              decoration: TextDecoration.none,
-                            ),
-                          ),
-                          // elevation: 0,
-                          shape: RoundedRectangleBorder(
-                            borderRadius: BorderRadius.vertical(
-                              bottom: Radius.circular(30),
-                            ),
-                          ),
-                          actions: [
-                            Expanded(
-                                child: Padding(
-                                    padding: EdgeInsets.only(left: 40),
-                                    child: Row(
-                                      mainAxisAlignment:
-                                          MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        IconButton(
-                                            onPressed: () {
-                                              print("clicado na seta");
-                                            },
-                                            icon: Icon(Icons.arrow_back)),
-                                        Text(
-                                          "Olá ----- ",
-                                          style: TextStyle(),
-                                        ),
-                                        IconButton(
-                                            onPressed: () {
-                                              print("clicado no notificacao");
-                                            },
-                                            icon: Icon(Icons.doorbell)),
-                                      ],
-                                    )))
-                          ]),*/
 
                       Padding(padding: EdgeInsets.only(top: 10)),
                       Center(
@@ -581,60 +603,6 @@ class _LogadoPageState extends State<LogadoPage> {
                       // ),
                       // ),
                       Padding(padding: EdgeInsets.only(top: 10)),
-
-                      /* CarouselSlider(
-                        // auto
-
-                        items: [
-                          Container(
-                      child: ClipRRect(
-                      borderRadius: BorderRadius.circular(20),
-                        child:Image(
-                          image: AssetImage("imagens/med01.jpg"),
-                        /*decoration: const BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(8.0),),
-                                image: DecorationImage(
-                                  image: AssetImage("imagens/med01.jpg"),
-                                */
-                    )),
-                          ),
-                          /*Container(
-                            decoration: BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(30)),
-                                image: const DecorationImage(
-                                  image: AssetImage("imagens/med02.jpeg"),
-                                )),
-                          ),
-                          Container(
-                            decoration: BoxDecoration(
-                                borderRadius:
-                                    BorderRadius.all(Radius.circular(30)),
-                                image: const DecorationImage(
-                                  image: AssetImage("imagens/med03.jpeg"),
-                                )),
-                          ),*/
-                        ],
-                        options: CarouselOptions(
-                          height: 100,
-                          aspectRatio: 16 / 9,
-                          //viewportFraction: 0.8,
-                          //initialPage: 0,
-                          autoPlay: true,
-                          // enableInfiniteScroll: true,
-                          //reverse: false,
-                          enlargeCenterPage: true,
-                          autoPlayInterval: Duration(seconds: 4),
-                          autoPlayAnimationDuration:
-                              Duration(milliseconds: 800),
-                          autoPlayCurve: Curves.fastOutSlowIn,
-
-                          enlargeFactor: 0.3,
-                          //onPageChanged: callbackFunction,
-                          scrollDirection: Axis.horizontal,
-                        ),
-                      ),*/
 
                       SizedBox(
                         width: 150,

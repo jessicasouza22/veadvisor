@@ -6,8 +6,6 @@ import 'package:vetadvisor/tutor/slide_tile.dart';
 import 'package:video_player/video_player.dart';
 import 'package:vetadvisor/recursos/Constants.dart';
 
-
-
 class Logado extends StatelessWidget {
   const Logado({super.key});
 
@@ -26,19 +24,19 @@ class LogadoPage extends StatefulWidget {
 
 class _LogadoPageState extends State<LogadoPage> {
   late VideoPlayerController _controller;
+
   //final PageController _pageController = PageController(viewportFraction: 0.8);
   // ele vai controlar o listView
   int posicaoSlide = 0;
-  List <MaterialColor> cores = [Colors.red, Colors.grey];
-
+  List<MaterialColor> cores = [Colors.red, Colors.grey];
 
   // declaracoes para o listView
 
   //int _corrrentPage =0; // _ significa pread
 
- // aqui ele vai mandar iniciar o estado antes de tudo para escutar o pagecontroller
+  // aqui ele vai mandar iniciar o estado antes de tudo para escutar o pagecontroller
 
- /* @override
+  /* @override
   void initState() {
     _pageController.addListener(() {
       int next = _pageController.page!.round();
@@ -51,15 +49,14 @@ class _LogadoPageState extends State<LogadoPage> {
     super.initState();
   }*/
 
- // get currentIndex => null;
+  // get currentIndex => null;
 
   @override
   // aqui inicia o vídeo controller
   void initState() {
-
     _controller = VideoPlayerController.network(
-        "https://firebasestorage.googleapis.com/v0/b/vetadvisor-2d900.appspot.com/o/Som%20de%20Cachorro%20e%20Cachorrinhos%20Latindo%20-%20Fatos%20Curiosos%20Sobre%20C%C3%A3es.mp4?alt=media&token=9a2d5805-0114-4cb5-b7da-38ff1fdfa16a",)
-      ..initialize().then((_) {
+      "https://firebasestorage.googleapis.com/v0/b/vetadvisor-2d900.appspot.com/o/Som%20de%20Cachorro%20e%20Cachorrinhos%20Latindo%20-%20Fatos%20Curiosos%20Sobre%20C%C3%A3es.mp4?alt=media&token=9a2d5805-0114-4cb5-b7da-38ff1fdfa16a",
+    )..initialize().then((_) {
         setState(() {});
       });
     _controller.play();
@@ -68,23 +65,25 @@ class _LogadoPageState extends State<LogadoPage> {
 
   int _currentPage = 0;
   final _listSlide = [
-    { 'id': 0, 'image': 'imagens/med01.jpg'},
-    { 'id': 1, 'image': 'imagens/med02.jpeg'},
-    { 'id': 2, 'image': 'imagens/med03.jpeg'}
+    {'id': 0, 'image': 'imagens/med01.jpg'},
+    {'id': 1, 'image': 'imagens/med02.jpeg'},
+    {'id': 2, 'image': 'imagens/med03.jpeg'}
   ];
 
-  final _listSlide2 = ['imagens/med01.jpg','imagens/med02.jpeg','imagens/med03.jpeg'];
+  final _listSlide2 = [
+    'imagens/med01.jpg',
+    'imagens/med02.jpeg',
+    'imagens/med03.jpeg'
+  ];
 
   @override
   Widget build(BuildContext context) {
+    final bool isActive;
     return MaterialApp(
         //debugShowCheckedModeBanner: false,
         home: Scaffold(
-
             drawer: Drawer(
                 backgroundColor: Color(0xFF0E02B7),
-
-
                 child: ListView(
                   children: [
                     // aqui ele está dividindo o menu em duas partes
@@ -101,38 +100,80 @@ class _LogadoPageState extends State<LogadoPage> {
                     Row(
                       children: [
                         const Padding(
-                          padding: EdgeInsets.only(bottom: 30, left: 30, top: 30),
+                          padding:
+                              EdgeInsets.only(bottom: 30, left: 30, top: 30),
                           child: CircleAvatar(
-                          backgroundImage: AssetImage('imagens/user.png'),
-                          
-                        ),
+                            backgroundImage: AssetImage('imagens/user.png'),
+                          ),
                         ),
                         Padding(
-                          padding: EdgeInsets.only(bottom: 30, left: 30, top: 30),
-                          child: Text(Constants.nomeDr,
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.white
-                          ),),
+                          padding:
+                              EdgeInsets.only(bottom: 30, left: 30, top: 30),
+                          child: Text(
+                            Constants.nomeDr,
+                            style: TextStyle(fontSize: 14, color: Colors.white),
+                          ),
                         ),
-                      /*  Padding(
+                        /*  Padding(
                           padding: EdgeInsets.only(bottom: 20, top: 60, right: 10),
                           child:Text("juliano@gmail.com")
                         ),*/
                       ],
                     ),
                     Padding(padding: EdgeInsets.all(10)),
+                    Stack(children: [
+                      Positioned(
+                        height: 56,
+                        width: 288,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.orange,
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                          ),
+                        ),
+                      ),
 
-                    ListTile(
-                      leading: Icon(MdiIcons.bellOffOutline),
-                      title: Text("Notificações",
-                      style: TextStyle(
-                        fontSize: 14,
-                        color: Colors.white,
-                      ),),
 
-                      onTap: (){},
-                    )
+
+                      ListTile(
+                        leading: Icon(MdiIcons.bellOffOutline),
+                        title: Text(
+                          "Notificações",
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.white,
+                          ),
+                        ),
+                        onTap: () {},
+                      ),
+    ]),
+
+
+
+                    Stack(children: [
+                      Positioned(
+                        height: 56,
+                        width: 288,
+                        child: Container(
+                          decoration: BoxDecoration(
+                            color: Colors.orange,
+                            borderRadius: BorderRadius.all(Radius.circular(10)),
+                          ),
+                        ),
+                      ),
+                      ListTile(
+                        leading: Icon(MdiIcons.stethoscope),
+                        title: Text(
+                          "Minhas consultas",
+                          style: TextStyle(
+                            fontSize: 14,
+                            color: Colors.white,
+                          ),
+                        ),
+                        onTap: () {},
+                      )
+                    ]),
+
 
                     /*Row(
                       children: [
@@ -264,61 +305,53 @@ class _LogadoPageState extends State<LogadoPage> {
                         )
                       ],
                     ),*/
-                   /* Divider(
+                    /* Divider(
                       color: Colors.white,
                       thickness: 0.2,
                       endIndent: 28,
                       indent: 18,
                     )*/
                   ],
-                )
-
-
-            ),
+                )),
             body: CustomScrollView(slivers: [
-              SliverAppBar (
-                backgroundColor: Colors.transparent,
-                toolbarHeight: 80,
-                elevation: 30,
-                pinned: true,
-                expandedHeight: 50,
-                flexibleSpace: Container (
-
-                  decoration: BoxDecoration (
-                    borderRadius: BorderRadius.only(
-                  bottomRight: Radius.circular(45),
-                ),
-                    // LinearGradient
-                    gradient: LinearGradient (
-                      begin: Alignment.topCenter,
-                      end: Alignment.bottomCenter,
-                      // colors for gradient
-                      colors: [
-                        Color(0xFF4116B4),
-                        Color(0xff4116B4),
-                        Color(0xff7347EF),
-
-                        Color(0xffE3EDF7),
-                      ],
+              SliverAppBar(
+                  backgroundColor: Colors.transparent,
+                  toolbarHeight: 80,
+                  elevation: 30,
+                  pinned: true,
+                  expandedHeight: 50,
+                  flexibleSpace: Container(
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.only(
+                        bottomRight: Radius.circular(45),
+                      ),
+                      // LinearGradient
+                      gradient: LinearGradient(
+                        begin: Alignment.topCenter,
+                        end: Alignment.bottomCenter,
+                        // colors for gradient
+                        colors: [
+                          Color(0xFF4116B4),
+                          Color(0xff4116B4),
+                          Color(0xff7347EF),
+                          Color(0xffE3EDF7),
+                        ],
+                      ),
                     ),
-
                   ),
-                ),
-                // title of appbar
+                  // title of appbar
                   title: Text(
                     "Olá ----- ",
                     style: TextStyle(
                       decoration: TextDecoration.none,
                     ),
                   ),
-
                   actions: [
                     Expanded(
                         child: Padding(
                             padding: EdgeInsets.only(left: 40),
                             child: Row(
-                              mainAxisAlignment:
-                              MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
                                 IconButton(
                                     onPressed: () {
@@ -336,8 +369,7 @@ class _LogadoPageState extends State<LogadoPage> {
                                     icon: Icon(Icons.doorbell)),
                               ],
                             )))
-                  ]
-              ),
+                  ]),
               SliverFillRemaining(
                 hasScrollBody: true,
                 child: Container(
@@ -350,8 +382,7 @@ class _LogadoPageState extends State<LogadoPage> {
 
                       // a partir daqui que comecou a mostrar a msg que estourou
 
-
-                          /*
+                      /*
                       AppBar(
                           toolbarHeight: 80,
                           elevation: 30,
@@ -459,13 +490,12 @@ class _LogadoPageState extends State<LogadoPage> {
                       Padding(
                         padding: EdgeInsets.only(left: 30, right: 30),
                         child: Container(
-
-                          padding: EdgeInsets.only(left: 20, right: 20, bottom: 20, top: 20),
+                          padding: EdgeInsets.only(
+                              left: 20, right: 20, bottom: 20, top: 20),
                           decoration: const BoxDecoration(
                             color: Colors.white,
                             //color: Color(0xFFF2F2F2),
-                            borderRadius:
-                            BorderRadius.all(Radius.circular(17)),
+                            borderRadius: BorderRadius.all(Radius.circular(17)),
                           ),
                           child: Container(
                             // padding: EdgeInsets.only(left: , right: 5),
@@ -473,59 +503,62 @@ class _LogadoPageState extends State<LogadoPage> {
                               color: Colors.grey.withOpacity(0.2),
                               //color: Color(0xFFF2F2F2),
                               borderRadius:
-                              BorderRadius.all(Radius.circular(17)),
+                                  BorderRadius.all(Radius.circular(17)),
                             ),
                             child: TextFormField(
                               //para senha: obscureText: true,
 
                               textAlign: TextAlign.center,
                               decoration: InputDecoration(
-                                //fillColor: Color(0xFF3C10BB),
+                                  //fillColor: Color(0xFF3C10BB),
 
-                                prefixIcon: Icon(Icons.search),
-                                border: OutlineInputBorder(
-                                  borderRadius: BorderRadius.circular(17),
-                                  borderSide: const BorderSide(
-                                    color: Color(0xFFBDBECB),
-                                    width: 1.0,
-                                  ),
-                                ),
-                                // icon: ,
-                                hintText: "Digite os sintomas do seu pet",
-                                suffixIcon: Padding(
-                                  padding: EdgeInsets.only(left: 10, right:10, top: 0, bottom: 0),
-                                  child: ElevatedButton(
-                                    style: TextButton.styleFrom(
-                                      padding: const EdgeInsets.only(
-                                          top: 5, right: 15, left: 1, bottom: 5),
-                                      // primary: Colors.white,
-                                      backgroundColor: Color(0xFF3C10BB),
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                          BorderRadius.circular(15.0)),
-                                      // Background Color
+                                  prefixIcon: Icon(Icons.search),
+                                  border: OutlineInputBorder(
+                                    borderRadius: BorderRadius.circular(17),
+                                    borderSide: const BorderSide(
+                                      color: Color(0xFFBDBECB),
+                                      width: 1.0,
                                     ),
-                                    onPressed: () {
-                                      /*Navigator.push(
+                                  ),
+                                  // icon: ,
+                                  hintText: "Digite os sintomas do seu pet",
+                                  suffixIcon: Padding(
+                                    padding: EdgeInsets.only(
+                                        left: 10, right: 10, top: 0, bottom: 0),
+                                    child: ElevatedButton(
+                                      style: TextButton.styleFrom(
+                                        padding: const EdgeInsets.only(
+                                            top: 5,
+                                            right: 15,
+                                            left: 1,
+                                            bottom: 5),
+                                        // primary: Colors.white,
+                                        backgroundColor: Color(0xFF3C10BB),
+                                        shape: RoundedRectangleBorder(
+                                            borderRadius:
+                                                BorderRadius.circular(15.0)),
+                                        // Background Color
+                                      ),
+                                      onPressed: () {
+                                        /*Navigator.push(
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) => const Agendamentos()),
                                           );*/
-                                    },
-                                    child: Text("IR",
+                                      },
+                                      child: Text(
+                                        "IR",
                                         style: TextStyle(
                                             fontSize: 10,
-                                            decoration: TextDecoration.none), textAlign: TextAlign.center,),
-                                  ),
-                                )
-                                
-                                
-                              ),
+                                            decoration: TextDecoration.none),
+                                        textAlign: TextAlign.center,
+                                      ),
+                                    ),
+                                  )),
                             ),
                           ),
                         ),
                       ),
-
 
                       Padding(padding: EdgeInsets.only(top: 10)),
                       Row(
@@ -547,14 +580,9 @@ class _LogadoPageState extends State<LogadoPage> {
                       ),
                       // ),
                       // ),
-                          Padding(padding: EdgeInsets.only(top: 10)),
+                      Padding(padding: EdgeInsets.only(top: 10)),
 
-
-
-
-
-
-                          /* CarouselSlider(
+                      /* CarouselSlider(
                         // auto
 
                         items: [
@@ -608,47 +636,40 @@ class _LogadoPageState extends State<LogadoPage> {
                         ),
                       ),*/
 
-
                       SizedBox(
                         width: 150,
                         height: 150,
-                        child:
-                          PageView.builder(
-                            onPageChanged: (posicao) {
-                              setState(() {
-                                posicaoSlide = posicao;
-                              });
-
-                            },
-                           // controller: _pageController,
-                            itemCount: _listSlide2.length,
-                            itemBuilder: (_, currentIndex) {
-                           //  bool activePage = currentIndex == _currentPage;
-                              return SlideTile(
-
-                                image: _listSlide2[currentIndex],
-                               /* activePage: activePage,
+                        child: PageView.builder(
+                          onPageChanged: (posicao) {
+                            setState(() {
+                              posicaoSlide = posicao;
+                            });
+                          },
+                          // controller: _pageController,
+                          itemCount: _listSlide2.length,
+                          itemBuilder: (_, currentIndex) {
+                            //  bool activePage = currentIndex == _currentPage;
+                            return SlideTile(
+                              image: _listSlide2[currentIndex],
+                              /* activePage: activePage,
                                 //image: _listSlide[currentIndex]['image'],
                                 image: _listSlide[currentIndex]['immage']*/
-
-                           );
-                     },
-
-
-                     ),
+                            );
+                          },
+                        ),
                       ),
 
-                          Padding(padding: EdgeInsets.all(5)),
+                      Padding(padding: EdgeInsets.all(5)),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
-                         /*Icon(Icons.circle, size: 12, color: Colors.grey),
+                          /*Icon(Icons.circle, size: 12, color: Colors.grey),
                           Icon(Icons.circle, size: 12, color: Colors.grey),
                           Icon(Icons.circle, size: 12, color: Colors.grey),*/
 
                           Container(
                             margin: EdgeInsets.all(10),
-                            width:10,
+                            width: 10,
                             height: 10,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(30),
@@ -657,7 +678,7 @@ class _LogadoPageState extends State<LogadoPage> {
                           ),
                           Container(
                             margin: EdgeInsets.all(10),
-                            width:10,
+                            width: 10,
                             height: 10,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(30),
@@ -666,7 +687,7 @@ class _LogadoPageState extends State<LogadoPage> {
                           ),
                           Container(
                             margin: EdgeInsets.all(10),
-                            width:10,
+                            width: 10,
                             height: 10,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(30),
@@ -678,7 +699,7 @@ class _LogadoPageState extends State<LogadoPage> {
 
                       // ],
                       // )),*/
-Padding(padding: EdgeInsets.all(10)),
+                      Padding(padding: EdgeInsets.all(10)),
                       Container(
                           padding: EdgeInsets.only(bottom: 18, top: 18),
                           margin:
@@ -704,7 +725,7 @@ Padding(padding: EdgeInsets.all(10)),
                               ),
                             ],
                           )),
-                          Padding(padding: EdgeInsets.all(10)),
+                      Padding(padding: EdgeInsets.all(10)),
                       Container(
                           padding: EdgeInsets.only(bottom: 18, top: 18),
                           margin:
@@ -726,30 +747,23 @@ Padding(padding: EdgeInsets.all(10)),
                               ),
                             ],
                           )),
-                          Padding(padding: EdgeInsets.all(10)),
-
+                      Padding(padding: EdgeInsets.all(10)),
 
                       CarouselSlider(
                         items: [
-
                           Center(
                             child: _controller.value.isInitialized
                                 ? AspectRatio(
-                              aspectRatio: _controller.value.aspectRatio,
-                              child: VideoPlayer(_controller),
-                            )
+                                    aspectRatio: _controller.value.aspectRatio,
+                                    child: VideoPlayer(_controller),
+                                  )
                                 : Container(
-                              decoration: BoxDecoration(
-                                borderRadius: BorderRadius.circular(20),
-
-                              ),
-                            ),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                    ),
+                                  ),
                           ),
-
-
-
                         ],
-
                         options: CarouselOptions(
                           height: 100,
                           // aspectRatio: 16 / 9,
@@ -767,10 +781,7 @@ Padding(padding: EdgeInsets.all(10)),
                           //onPageChanged: callbackFunction,
                           scrollDirection: Axis.horizontal,
                         ),
-
-
                       ),
-
 
                       // ])
                     ]))),

@@ -5,6 +5,9 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:vetadvisor/tutor/slide_tile.dart';
 import 'package:video_player/video_player.dart';
 import 'package:vetadvisor/recursos/Constants.dart';
+import 'package:switch_button/switch_button.dart';
+import 'package:custom_switch/custom_switch.dart';
+
 
 class Logado extends StatelessWidget {
   const Logado({super.key});
@@ -28,6 +31,7 @@ class _LogadoPageState extends State<LogadoPage> {
   //final PageController _pageController = PageController(viewportFraction: 0.8);
   // ele vai controlar o listView
   int posicaoSlide = 0;
+
   List<MaterialColor> cores = [Colors.red, Colors.grey];
 
   // declaracoes para o listView
@@ -79,6 +83,7 @@ class _LogadoPageState extends State<LogadoPage> {
   @override
   Widget build(BuildContext context) {
     final bool isActive;
+    bool status = false;
     return MaterialApp(
         //debugShowCheckedModeBanner: false,
         home: Scaffold(
@@ -101,14 +106,14 @@ class _LogadoPageState extends State<LogadoPage> {
                       children: [
                         const Padding(
                           padding:
-                              EdgeInsets.only(bottom: 30, left: 30, top: 30),
+                              EdgeInsets.only(bottom: 30, left: 18, top: 30),
                           child: CircleAvatar(
                             backgroundImage: AssetImage('imagens/user.png'),
                           ),
                         ),
                         Padding(
                           padding:
-                              EdgeInsets.only(bottom: 30, left: 30, top: 30),
+                              EdgeInsets.only(bottom: 30, left: 20, top: 30),
                           child: Text(
                             "${Constants.nomeDr}\n\n${Constants.emailDr}",
                             style: TextStyle(fontSize: 14, color: Colors.white),
@@ -121,12 +126,13 @@ class _LogadoPageState extends State<LogadoPage> {
                       ],
                     ),
                     Padding(padding: EdgeInsets.all(10)),
-                    Stack( children: [
+                    Stack(children: [
                       Positioned(
                         height: 56,
                         width: 288,
                         child: Container(
-                          margin: EdgeInsets.only(left:10 , right: 10, bottom: 5),
+                          margin:
+                              EdgeInsets.only(left: 15, right: 10, bottom: 5),
                           decoration: BoxDecoration(
                             color: Colors.orange,
                             borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -134,7 +140,7 @@ class _LogadoPageState extends State<LogadoPage> {
                         ),
                       ),
                       ListTile(
-                        leading: Icon(MdiIcons.bellOffOutline),
+                        leading: Icon(MdiIcons.bellOutline),
                         title: Text(
                           "Notificações",
                           style: TextStyle(
@@ -151,7 +157,8 @@ class _LogadoPageState extends State<LogadoPage> {
                         height: 56,
                         width: 288,
                         child: Container(
-                          margin: EdgeInsets.only(left:15 , right: 10, bottom: 5),
+                          margin:
+                              EdgeInsets.only(left: 15, right: 10, bottom: 5),
                           decoration: BoxDecoration(
                             color: Colors.orange,
                             borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -176,7 +183,8 @@ class _LogadoPageState extends State<LogadoPage> {
                         height: 56,
                         width: 288,
                         child: Container(
-                          margin: EdgeInsets.only(left:15  , right: 10, bottom: 5),
+                          margin:
+                              EdgeInsets.only(left: 15, right: 10, bottom: 5),
                           decoration: BoxDecoration(
                             color: Colors.orange,
                             borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -201,7 +209,8 @@ class _LogadoPageState extends State<LogadoPage> {
                         height: 56,
                         width: 288,
                         child: Container(
-                          margin: EdgeInsets.only(left:15 , right: 10, bottom: 5),
+                          margin:
+                              EdgeInsets.only(left: 15, right: 10, bottom: 5),
                           decoration: BoxDecoration(
                             color: Colors.orange,
                             borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -226,7 +235,8 @@ class _LogadoPageState extends State<LogadoPage> {
                         height: 56,
                         width: 288,
                         child: Container(
-                          margin: EdgeInsets.only(left:15  , right: 10, bottom: 5),
+                          margin:
+                              EdgeInsets.only(left: 15, right: 10, bottom: 5),
                           decoration: BoxDecoration(
                             color: Colors.orange,
                             borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -251,7 +261,8 @@ class _LogadoPageState extends State<LogadoPage> {
                         height: 56,
                         width: 288,
                         child: Container(
-                          margin: EdgeInsets.only(left:15  , right: 10, bottom: 5),
+                          margin:
+                              EdgeInsets.only(left: 15, right: 10, bottom: 5),
                           decoration: BoxDecoration(
                             color: Colors.orange,
                             borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -275,7 +286,8 @@ class _LogadoPageState extends State<LogadoPage> {
                         height: 56,
                         width: 288,
                         child: Container(
-                          margin: EdgeInsets.only(left:15  , right: 10, bottom: 5),
+                          margin:
+                              EdgeInsets.only(left: 15, right: 10, bottom: 5),
                           decoration: BoxDecoration(
                             color: Colors.orange,
                             borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -300,7 +312,8 @@ class _LogadoPageState extends State<LogadoPage> {
                         height: 56,
                         width: 288,
                         child: Container(
-                          margin: EdgeInsets.only(left:15  , right: 10, bottom: 5),
+                          margin:
+                              EdgeInsets.only(left: 15, right: 10, bottom: 5),
                           decoration: BoxDecoration(
                             color: Colors.orange,
                             borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -325,7 +338,8 @@ class _LogadoPageState extends State<LogadoPage> {
                         height: 56,
                         width: 288,
                         child: Container(
-                          margin: EdgeInsets.only(left:15  , right: 10, bottom: 5),
+                          margin:
+                              EdgeInsets.only(left: 15, right: 10, bottom: 5),
                           decoration: BoxDecoration(
                             color: Colors.orange,
                             borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -347,13 +361,11 @@ class _LogadoPageState extends State<LogadoPage> {
 
                     Stack(children: [
                       Positioned(
-
                         height: 56,
                         width: 288,
-
                         child: Container(
-                          margin: EdgeInsets.only(left:15  , right: 10, bottom: 5),
-
+                          margin:
+                              EdgeInsets.only(left: 15, right: 10, bottom: 5),
                           decoration: BoxDecoration(
                             color: Colors.orange,
                             borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -361,7 +373,6 @@ class _LogadoPageState extends State<LogadoPage> {
                         ),
                       ),
                       ListTile(
-
                         leading: Icon(MdiIcons.bottleTonicPlusOutline),
                         title: Text(
                           "Sair da conta",
@@ -380,21 +391,42 @@ class _LogadoPageState extends State<LogadoPage> {
                       endIndent: 28,
                       indent: 18,
                     ),
-                     Row(
-                       //mainAxisAlignment:MainAxisAlignment.center,
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(
+                          MdiIcons.helpCircleOutline,
+                          color: Colors.white,
+                          size: 16,
+                        ),
+                        Text(
+                          " Cores de sua preferência",
+                          style: TextStyle(
+                            color: Colors.white,
+                            fontSize: 14,
+                          ),
+                        )
+                      ],
+                    ),
+                    Row(
+                      children:
+                        [
+                          CustomSwitch(
+                            activeColor: Colors.pinkAccent,
+                            value: status,
+                            onChanged: (value) {
+                              print("VALUE : $value");
+                              setState(() {
+                                status = value;
+                              });
+                            },
+                          ),
+                        ]
 
-                       children: [
-                         Icon(Icons.question_mark_outlined,
-                         color: Colors.white,
-                         size: 10,),
-                         Text("Cores de sua preferência",
-                         style: TextStyle(
-                           color: Colors.white,
-                           fontSize: 12,
-                         ),)
-                       ],
-                     )
-                    
+
+
+
+                    )
                   ],
                 )),
             body: CustomScrollView(slivers: [
@@ -408,6 +440,9 @@ class _LogadoPageState extends State<LogadoPage> {
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.only(
                         bottomRight: Radius.circular(45),
+                        bottomLeft: Radius.circular(10),
+                        topRight: Radius.circular(20),
+                        topLeft: Radius.circular(20)
                       ),
                       // LinearGradient
                       gradient: LinearGradient(
@@ -435,22 +470,32 @@ class _LogadoPageState extends State<LogadoPage> {
                         child: Padding(
                             padding: EdgeInsets.only(left: 40),
                             child: Row(
-                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                IconButton(
+                                /* IconButton(
                                     onPressed: () {
                                       print("clicado na seta");
                                     },
-                                    icon: Icon(Icons.arrow_back)),
-                                Text(
-                                  "Olá ----- ",
-                                  style: TextStyle(),
+                                    icon: Icon(Icons.arrow_back)),*/
+                                Padding(
+                                  padding: EdgeInsets.only(left: 120),
+                                  child: Text(
+                                    "Olá ----- ",
+                                    //textAlign: TextAlign.center,
+
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                    ),
+                                  ),
                                 ),
-                                IconButton(
-                                    onPressed: () {
-                                      print("clicado no notificacao");
-                                    },
-                                    icon: Icon(Icons.doorbell)),
+                                Padding(
+                                  padding: EdgeInsets.only(left: 120),
+                                  child: IconButton(
+                                      onPressed: () {
+                                        print("clicado no notificacao");
+                                      },
+                                      icon: Icon(MdiIcons.bellBadgeOutline)),
+                                )
                               ],
                             )))
                   ]),
@@ -462,8 +507,6 @@ class _LogadoPageState extends State<LogadoPage> {
                     //padding: const EdgeInsets.only(left: 30, right: 30),
                     child: SingleChildScrollView(
                         child: Column(children: [
-
-
                       Padding(padding: EdgeInsets.only(top: 10)),
                       Center(
                           // crossAxisAlignment: CrossAxisAlignment.center,
@@ -517,7 +560,8 @@ class _LogadoPageState extends State<LogadoPage> {
                           decoration: const BoxDecoration(
                             color: Colors.white,
                             //color: Color(0xFFF2F2F2),
-                            borderRadius: BorderRadius.all(Radius.circular(17)),
+                            borderRadius: BorderRadius.all(Radius.circular(17),
+                            ),
                           ),
                           child: Container(
                             // padding: EdgeInsets.only(left: , right: 5),
@@ -530,15 +574,17 @@ class _LogadoPageState extends State<LogadoPage> {
                             child: TextFormField(
                               //para senha: obscureText: true,
 
+
                               textAlign: TextAlign.center,
                               decoration: InputDecoration(
-                                  //fillColor: Color(0xFF3C10BB),
+
+                                  fillColor: Color(0xFF3C10BB),
 
                                   prefixIcon: Icon(Icons.search),
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(17),
                                     borderSide: const BorderSide(
-                                      color: Color(0xFFBDBECB),
+                                      //color: Color(0xFFBDBECB),
                                       width: 1.0,
                                     ),
                                   ),
@@ -558,7 +604,9 @@ class _LogadoPageState extends State<LogadoPage> {
                                         backgroundColor: Color(0xFF3C10BB),
                                         shape: RoundedRectangleBorder(
                                             borderRadius:
-                                                BorderRadius.circular(15.0)),
+                                                BorderRadius.circular(15.0),
+
+                                        ),
                                         // Background Color
                                       ),
                                       onPressed: () {
@@ -584,12 +632,14 @@ class _LogadoPageState extends State<LogadoPage> {
 
                       Padding(padding: EdgeInsets.only(top: 10)),
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
+                        mainAxisAlignment: MainAxisAlignment.start,
                         children: [
-                          Icon(
+                          Padding(
+                          padding: EdgeInsets.only(left: 10),
+                          child: Icon(
                             Icons.calendar_month,
                             color: Color(0xFF3C10BB),
-                          ),
+                          ),),
                           Text(
                             " Agende sua consulta com especialista",
                             style: TextStyle(
@@ -717,7 +767,17 @@ class _LogadoPageState extends State<LogadoPage> {
                           )),
                       Padding(padding: EdgeInsets.all(10)),
 
-                      CarouselSlider(
+
+                 SizedBox(
+                   width: double.infinity,
+                   child:
+                  Container(
+                    margin: EdgeInsets.only(left: 120, right: 120),
+                      decoration: const BoxDecoration(
+                        color: Colors.orange,
+                        borderRadius: BorderRadius.all(Radius.circular(20))),
+
+                          child: CarouselSlider(
                         items: [
                           Center(
                             child: _controller.value.isInitialized
@@ -726,14 +786,13 @@ class _LogadoPageState extends State<LogadoPage> {
                                     child: VideoPlayer(_controller),
                                   )
                                 : Container(
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(20),
-                                    ),
+
                                   ),
                           ),
                         ],
                         options: CarouselOptions(
-                          height: 100,
+                          height: 120,
+
                           // aspectRatio: 16 / 9,
                           //viewportFraction: 0.8,
                           //initialPage: 0,
@@ -745,11 +804,11 @@ class _LogadoPageState extends State<LogadoPage> {
                               Duration(milliseconds: 800),
                           autoPlayCurve: Curves.fastOutSlowIn,
                           enlargeCenterPage: true,
-                          enlargeFactor: 0.3,
+                         // enlargeFactor: 0.3,
                           //onPageChanged: callbackFunction,
                           scrollDirection: Axis.horizontal,
                         ),
-                      ),
+                      ),),),
 
                       // ])
                     ]))),

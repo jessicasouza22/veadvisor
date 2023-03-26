@@ -41,10 +41,6 @@ dependencies:
   carousel_slider: ">0.0.4"
   video_player: ^2.4.0
   gradient_app_bar: ^0.1.2
-  firebase_auth: ^4.3.0
-  firebase_core: ^2.8.0
-  firebase_messaging: ^14.3.0
-  firebase_core_platform_interface: ^4.5.3
 
 
 dev_dependencies:

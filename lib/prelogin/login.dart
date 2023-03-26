@@ -1,7 +1,5 @@
 // Home Geral OK
  import 'package:auto_size_text/auto_size_text.dart';
-import 'package:firebase_auth/firebase_auth.dart';
-import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -10,7 +8,6 @@ import 'package:vetadvisor/prelogin/logado.dart';
 import 'package:vetadvisor/teste02.dart';
 import 'package:vetadvisor/recursos/Constants.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/perfil.dart';
-import '../recursos/firebase_options.dart';
 import 'termos.dart';
 import 'logado.dart';
 
@@ -153,22 +150,7 @@ class _LoginPageState extends State<LoginPage> {
                               ),
                             ),
                             const Padding(padding: EdgeInsets.all(15.0)),
-                            ElevatedButton(
-                                style: TextButton.styleFrom(
-                                  padding: const EdgeInsets.only(
-                                      top: 10, right: 80, left: 80, bottom: 10),
-                                  primary: Colors.blue,
-                                  backgroundColor: Colors.white,
-                                  shape: RoundedRectangleBorder(
-                                      borderRadius: BorderRadius.circular(30.0)),
-                                  // Background Color
-                                ),
-                                onPressed: () {
-                                  initializeDefault();
 
-
-                                },
-                                child: const Text('ENTRAR')),
                             Builder(
                                 builder: (context) => ElevatedButton(
                                     style: TextButton.styleFrom(
@@ -253,40 +235,7 @@ class _LoginPageState extends State<LoginPage> {
     );
   }
 
-  Future<void> initializeDefault() async {
-    FirebaseApp app = await Firebase.initializeApp(
-      options: DefaultFirebaseOptions.currentPlatform,
-    );
-    print('Initialized default app $app');
-  }
 
 
-  Future<void> initializeDefaultFromAndroidResource() async {
-    if (defaultTargetPlatform != TargetPlatform.android || kIsWeb) {
-      print('Not running on Android, skipping');
-      return;
-    }
-    FirebaseApp app = await Firebase.initializeApp();
-    print('Initialized default app $app from Android resource');
-  }
 
-  Future<void> initializeSecondary() async {
-    FirebaseApp app = await Firebase.initializeApp(
-      name: name,
-      options: DefaultFirebaseOptions.currentPlatform,
-    );
-
-    print('Initialized $app');
-  }
-
-  void apps() {
-    final List<FirebaseApp> apps = Firebase.apps;
-    print('Currently initialized apps: $apps');
-  }
-
-  void options() {
-    final FirebaseApp app = Firebase.app();
-    final options = app.options;
-    print('Current options for app ${app.name}: $options');
-  }
 }

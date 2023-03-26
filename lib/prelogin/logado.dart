@@ -2,11 +2,10 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:carousel_slider/carousel_slider.dart';
-import 'package:vetadvisor/tutor/slide_tile.dart';
+import 'package:vetadvisor/prelogin/slide_tile.dart';
 import 'package:video_player/video_player.dart';
 import 'package:vetadvisor/recursos/Constants.dart';
-import 'package:switch_button/switch_button.dart';
-import 'package:custom_switch/custom_switch.dart';
+
 
 
 class Logado extends StatelessWidget {
@@ -411,7 +410,7 @@ class _LogadoPageState extends State<LogadoPage> {
                     Row(
                       children:
                         [
-                          CustomSwitch(
+                          Switch(
                             activeColor: Colors.pinkAccent,
                             value: status,
                             onChanged: (value) {

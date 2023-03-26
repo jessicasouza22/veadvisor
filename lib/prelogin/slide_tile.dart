@@ -1,5 +1,5 @@
 import 'package:flutter/material.dart';
-import 'package:vetadvisor/logado.dart';
+import 'package:vetadvisor/prelogin/logado.dart';
 
 class SlideTile extends StatelessWidget {
 

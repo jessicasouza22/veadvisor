@@ -101,6 +101,7 @@ flutter:
   # see https://flutter.dev/custom-fonts/#from-packages
   assets:
     - imagens/
+    - videos/
 
 
   fonts:

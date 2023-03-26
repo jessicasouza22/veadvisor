@@ -6,8 +6,6 @@ import 'package:vetadvisor/prelogin/slide_tile.dart';
 import 'package:video_player/video_player.dart';
 import 'package:vetadvisor/recursos/Constants.dart';
 
-
-
 class Logado extends StatelessWidget {
   const Logado({super.key});
 
@@ -78,6 +76,30 @@ class _LogadoPageState extends State<LogadoPage> {
     'imagens/med02.jpeg',
     'imagens/med03.jpeg'
   ];
+
+  // teste 02 do video
+
+  late VideoPlayerController _controllerV;
+  late Future<void> _initializeVideoPlayerFuture;
+
+  @override
+  void initSate() {
+    _controllerV = VideoPlayerController.asset("videos/estimacao.mp4");
+    _initializeVideoPlayerFuture = _controllerV.initialize();
+    _controllerV.setLooping(true);
+    _controllerV.setVolume(1.0);
+    super.initState();
+  }
+
+  @override
+  void dispose() {
+    _controllerV.dispose();
+    super.dispose();
+  }
+
+  //do video
+  int _currentPageVideo = 0;
+  final _listSlideVideo = ['', '', ''];
 
   @override
   Widget build(BuildContext context) {
@@ -407,25 +429,18 @@ class _LogadoPageState extends State<LogadoPage> {
                         )
                       ],
                     ),
-                    Row(
-                      children:
-                        [
-                          Switch(
-                            activeColor: Colors.pinkAccent,
-                            value: status,
-                            onChanged: (value) {
-                              print("VALUE : $value");
-                              setState(() {
-                                status = value;
-                              });
-                            },
-                          ),
-                        ]
-
-
-
-
-                    )
+                    Row(children: [
+                      Switch(
+                        activeColor: Colors.pinkAccent,
+                        value: status,
+                        onChanged: (value) {
+                          print("VALUE : $value");
+                          setState(() {
+                            status = value;
+                          });
+                        },
+                      ),
+                    ])
                   ],
                 )),
             body: CustomScrollView(slivers: [
@@ -438,11 +453,10 @@ class _LogadoPageState extends State<LogadoPage> {
                   flexibleSpace: Container(
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.only(
-                        bottomRight: Radius.circular(45),
-                        bottomLeft: Radius.circular(10),
-                        topRight: Radius.circular(20),
-                        topLeft: Radius.circular(20)
-                      ),
+                          bottomRight: Radius.circular(45),
+                          bottomLeft: Radius.circular(10),
+                          topRight: Radius.circular(20),
+                          topLeft: Radius.circular(20)),
                       // LinearGradient
                       gradient: LinearGradient(
                         begin: Alignment.topCenter,
@@ -559,7 +573,8 @@ class _LogadoPageState extends State<LogadoPage> {
                           decoration: const BoxDecoration(
                             color: Colors.white,
                             //color: Color(0xFFF2F2F2),
-                            borderRadius: BorderRadius.all(Radius.circular(17),
+                            borderRadius: BorderRadius.all(
+                              Radius.circular(17),
                             ),
                           ),
                           child: Container(
@@ -573,12 +588,9 @@ class _LogadoPageState extends State<LogadoPage> {
                             child: TextFormField(
                               //para senha: obscureText: true,
 
-
                               textAlign: TextAlign.center,
                               decoration: InputDecoration(
-
                                   fillColor: Color(0xFF3C10BB),
-
                                   prefixIcon: Icon(Icons.search),
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(17),
@@ -602,9 +614,8 @@ class _LogadoPageState extends State<LogadoPage> {
                                         // primary: Colors.white,
                                         backgroundColor: Color(0xFF3C10BB),
                                         shape: RoundedRectangleBorder(
-                                            borderRadius:
-                                                BorderRadius.circular(15.0),
-
+                                          borderRadius:
+                                              BorderRadius.circular(15.0),
                                         ),
                                         // Background Color
                                       ),
@@ -634,11 +645,12 @@ class _LogadoPageState extends State<LogadoPage> {
                         mainAxisAlignment: MainAxisAlignment.start,
                         children: [
                           Padding(
-                          padding: EdgeInsets.only(left: 10),
-                          child: Icon(
-                            Icons.calendar_month,
-                            color: Color(0xFF3C10BB),
-                          ),),
+                            padding: EdgeInsets.only(left: 10),
+                            child: Icon(
+                              Icons.calendar_month,
+                              color: Color(0xFF3C10BB),
+                            ),
+                          ),
                           Text(
                             " Agende sua consulta com especialista",
                             style: TextStyle(
@@ -766,48 +778,75 @@ class _LogadoPageState extends State<LogadoPage> {
                           )),
                       Padding(padding: EdgeInsets.all(10)),
 
-
-                 SizedBox(
-                   width: double.infinity,
-                   child:
-                  Container(
-                    margin: EdgeInsets.only(left: 120, right: 120),
-                      decoration: const BoxDecoration(
-                        color: Colors.orange,
-                        borderRadius: BorderRadius.all(Radius.circular(20))),
-
+                      SizedBox(
+                        width: double.infinity,
+                        child: Container(
+                          margin: EdgeInsets.only(left: 120, right: 120),
+                          decoration: const BoxDecoration(
+                              color: Colors.orange,
+                              borderRadius:
+                                  BorderRadius.all(Radius.circular(20))),
                           child: CarouselSlider(
-                        items: [
-                          Center(
-                            child: _controller.value.isInitialized
-                                ? AspectRatio(
-                                    aspectRatio: _controller.value.aspectRatio,
-                                    child: VideoPlayer(_controller),
-                                  )
-                                : Container(
+                            items: [
+                              Center(
+                                child: _controller.value.isInitialized
+                                    ? AspectRatio(
+                                        aspectRatio:
+                                            _controller.value.aspectRatio,
+                                        child: VideoPlayer(_controller),
+                                      )
+                                    : Container(),
+                              ),
+                            ],
+                            options: CarouselOptions(
+                              height: 120,
 
-                                  ),
+                              // aspectRatio: 16 / 9,
+                              //viewportFraction: 0.8,
+                              //initialPage: 0,
+                              //enableInfiniteScroll: true,
+                              //reverse: false,
+                              autoPlay: true,
+                              autoPlayInterval: Duration(seconds: 4),
+                              autoPlayAnimationDuration:
+                                  Duration(milliseconds: 800),
+                              autoPlayCurve: Curves.fastOutSlowIn,
+                              enlargeCenterPage: true,
+                              // enlargeFactor: 0.3,
+                              //onPageChanged: callbackFunction,
+                              scrollDirection: Axis.horizontal,
+                            ),
                           ),
-                        ],
-                        options: CarouselOptions(
-                          height: 120,
-
-                          // aspectRatio: 16 / 9,
-                          //viewportFraction: 0.8,
-                          //initialPage: 0,
-                          //enableInfiniteScroll: true,
-                          //reverse: false,
-                          autoPlay: true,
-                          autoPlayInterval: Duration(seconds: 4),
-                          autoPlayAnimationDuration:
-                              Duration(milliseconds: 800),
-                          autoPlayCurve: Curves.fastOutSlowIn,
-                          enlargeCenterPage: true,
-                         // enlargeFactor: 0.3,
-                          //onPageChanged: callbackFunction,
-                          scrollDirection: Axis.horizontal,
                         ),
-                      ),),),
+                      ),
+
+                      // tentando fazer a parte de video de outra forma
+
+                      FutureBuilder(
+                          future: _initializeVideoPlayerFuture,
+                          builder: (context, snapshot) {
+                            if (snapshot.connectionState ==
+                                ConnectionState.done) {
+                              return AspectRatio(
+                                aspectRatio: _controllerV.value.aspectRatio,
+                                child: VideoPlayer(_controllerV),
+                              );
+                            } else {
+                              return Center(
+                                child: CircularProgressIndicator(),
+                              );
+                            }
+                          }),
+                      FloatingActionButton(onPressed: () {
+                        setState() {
+                          if (_controllerV.value.isPlaying) {
+                            _controllerV.pause();
+                          } else {
+                            _controllerV.play();
+                          }
+                          ;
+                        }
+                      })
 
                       // ])
                     ]))),

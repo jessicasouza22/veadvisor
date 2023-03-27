@@ -5,6 +5,8 @@ import 'package:carousel_slider/carousel_slider.dart';
 import 'package:vetadvisor/prelogin/slide_tile.dart';
 import 'package:video_player/video_player.dart';
 import 'package:vetadvisor/recursos/Constants.dart';
+import 'package:rolling_switch/rolling_switch.dart';
+import 'teste.dart';
 
 class Logado extends StatelessWidget {
   const Logado({super.key});
@@ -77,27 +79,7 @@ class _LogadoPageState extends State<LogadoPage> {
     'imagens/med03.jpeg'
   ];
 
-  // teste 02 do video
 
-  late VideoPlayerController _controllerV;
-  late Future<void> _initializeVideoPlayerFuture;
-
-  @override
-  void initSate() {
-    _controllerV = VideoPlayerController.asset("videos/estimacao.mp4");
-    _initializeVideoPlayerFuture = _controllerV.initialize();
-    _controllerV.setLooping(true);
-    _controllerV.setVolume(1.0);
-    super.initState();
-  }
-
-  @override
-  void dispose() {
-    _controllerV.dispose();
-    super.dispose();
-  }
-
-  //do video
   int _currentPageVideo = 0;
   final _listSlideVideo = ['', '', ''];
 
@@ -429,17 +411,30 @@ class _LogadoPageState extends State<LogadoPage> {
                         )
                       ],
                     ),
-                    Row(children: [
-                      Switch(
-                        activeColor: Colors.pinkAccent,
-                        value: status,
-                        onChanged: (value) {
-                          print("VALUE : $value");
-                          setState(() {
-                            status = value;
-                          });
+                    Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+
+                        children: [
+
+                      RollingSwitch.icon(
+
+
+                        onChanged: (bool state) {
+                         // print('turned ${(state) ? 'on' : 'off'}');
                         },
+                        rollingInfoRight: const RollingIconInfo(
+                          icon: Icons.light_mode,
+                          text: Text('Light'),
+                          backgroundColor: Colors.white,
+
+                        ),
+                        rollingInfoLeft: const RollingIconInfo(
+                          icon: Icons.dark_mode_outlined,
+                          backgroundColor: Color(0xff7347EF),
+                          text: Text('Dark'),
+                        ),
                       ),
+
                     ])
                   ],
                 )),
@@ -820,33 +815,7 @@ class _LogadoPageState extends State<LogadoPage> {
                         ),
                       ),
 
-                      // tentando fazer a parte de video de outra forma
 
-                      FutureBuilder(
-                          future: _initializeVideoPlayerFuture,
-                          builder: (context, snapshot) {
-                            if (snapshot.connectionState ==
-                                ConnectionState.done) {
-                              return AspectRatio(
-                                aspectRatio: _controllerV.value.aspectRatio,
-                                child: VideoPlayer(_controllerV),
-                              );
-                            } else {
-                              return Center(
-                                child: CircularProgressIndicator(),
-                              );
-                            }
-                          }),
-                      FloatingActionButton(onPressed: () {
-                        setState() {
-                          if (_controllerV.value.isPlaying) {
-                            _controllerV.pause();
-                          } else {
-                            _controllerV.play();
-                          }
-                          ;
-                        }
-                      })
 
                       // ])
                     ]))),

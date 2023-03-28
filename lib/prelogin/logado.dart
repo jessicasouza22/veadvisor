@@ -568,12 +568,12 @@ class _LogadoPageState extends State<LogadoPage> {
 
                       const Padding(
                           padding: EdgeInsets.only(
-                              left: 100, right: 50, bottom: 5, top: 5)),
+                              left: 100, right: 50, bottom: 2, top: 2)),
                       Padding(
-                        padding: EdgeInsets.only(left: 30, right: 30),
+                        padding: EdgeInsets.only(left: 15, right: 15),
                         child: Container(
                           padding: EdgeInsets.only(
-                              left: 20, right: 20, bottom: 20, top: 20),
+                              left: 30, right: 30, bottom: 10, top: 10),
                           decoration: const BoxDecoration(
                             color: Colors.white,
                             //color: Color(0xFFF2F2F2),
@@ -593,9 +593,12 @@ class _LogadoPageState extends State<LogadoPage> {
                               //para senha: obscureText: true,
 
                               textAlign: TextAlign.center,
+                              style: TextStyle(
+                                fontSize: 12,
+                              ),
                               decoration: InputDecoration(
                                   fillColor: Color(0xFF3C10BB),
-                                  prefixIcon: Icon(Icons.search),
+                                  prefixIcon: Icon(Icons.search, size: 18,),
                                   border: OutlineInputBorder(
                                     borderRadius: BorderRadius.circular(17),
                                     borderSide: const BorderSide(
@@ -607,13 +610,13 @@ class _LogadoPageState extends State<LogadoPage> {
                                   hintText: "Digite os sintomas do seu pet",
                                   suffixIcon: Padding(
                                     padding: EdgeInsets.only(
-                                        left: 10, right: 10, top: 0, bottom: 0),
+                                        left: 1, right: 4, top: 3, bottom: 3),
                                     child: ElevatedButton(
                                       style: TextButton.styleFrom(
                                         padding: const EdgeInsets.only(
                                             top: 5,
                                             right: 15,
-                                            left: 1,
+                                            left: 20,
                                             bottom: 5),
                                         // primary: Colors.white,
                                         backgroundColor: Color(0xFF3C10BB),
@@ -624,16 +627,16 @@ class _LogadoPageState extends State<LogadoPage> {
                                         // Background Color
                                       ),
                                       onPressed: () {
-                                        /*Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) => const Agendamentos()),
-                                          );*/
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => const Teste()),
+                                        );
                                       },
                                       child: Text(
                                         "IR",
                                         style: TextStyle(
-                                            fontSize: 10,
+                                            fontSize: 8,
                                             decoration: TextDecoration.none),
                                         textAlign: TextAlign.center,
                                       ),
@@ -667,11 +670,11 @@ class _LogadoPageState extends State<LogadoPage> {
                       ),
                       // ),
                       // ),
-                      Padding(padding: EdgeInsets.only(top: 10)),
+                      Padding(padding: EdgeInsets.only(top: 8)),
 
                       SizedBox(
-                        width: 150,
-                        height: 150,
+                        width: 120,
+                        height: 120,
                         child: PageView.builder(
                           onPageChanged: (posicao) {
                             setState(() {
@@ -692,7 +695,7 @@ class _LogadoPageState extends State<LogadoPage> {
                         ),
                       ),
 
-                      Padding(padding: EdgeInsets.all(5)),
+                      Padding(padding: EdgeInsets.all(4)),
                       Row(
                         mainAxisAlignment: MainAxisAlignment.center,
                         children: [
@@ -701,27 +704,27 @@ class _LogadoPageState extends State<LogadoPage> {
                           Icon(Icons.circle, size: 12, color: Colors.grey),*/
 
                           Container(
-                            margin: EdgeInsets.all(10),
-                            width: 10,
-                            height: 10,
+                            margin: EdgeInsets.all(5),
+                            width: 8,
+                            height: 8,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(30),
                               color: posicaoSlide == 0 ? cores[0] : cores[1],
                             ),
                           ),
                           Container(
-                            margin: EdgeInsets.all(10),
-                            width: 10,
-                            height: 10,
+                            margin: EdgeInsets.all(5),
+                            width: 8,
+                            height: 8,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(30),
                               color: posicaoSlide == 1 ? cores[0] : cores[1],
                             ),
                           ),
                           Container(
-                            margin: EdgeInsets.all(10),
-                            width: 10,
-                            height: 10,
+                            margin: EdgeInsets.all(5),
+                            width: 8,
+                            height: 8,
                             decoration: BoxDecoration(
                               borderRadius: BorderRadius.circular(30),
                               color: posicaoSlide == 2 ? cores[0] : cores[1],
@@ -732,9 +735,9 @@ class _LogadoPageState extends State<LogadoPage> {
 
                       // ],
                       // )),*/
-                      Padding(padding: EdgeInsets.all(10)),
+                      Padding(padding: EdgeInsets.all(5)),
                       Container(
-                          padding: EdgeInsets.only(bottom: 18, top: 18),
+                          padding: EdgeInsets.only(bottom: 18, top: 10),
                           margin:
                               const EdgeInsets.only(left: 20.0, right: 20.0),
                           color: Colors.white,
@@ -743,10 +746,11 @@ class _LogadoPageState extends State<LogadoPage> {
                             children: [
                               Icon(
                                 MdiIcons.stethoscope,
+                                size: 18,
                                 color: Color(0xFF3C10BB),
                               ),
                               Text(
-                                " Consultas de meus PETS ",
+                                "   Consultas de meus PETS   ",
                                 style: TextStyle(
                                     color: Color(0xFF3C10BB),
                                     fontSize: 14,
@@ -754,23 +758,21 @@ class _LogadoPageState extends State<LogadoPage> {
                               ),
                               Icon(
                                 MdiIcons.chevronRight,
+                                size: 18,
                                 color: Color(0xFF3C10BB),
                               ),
                             ],
                           )),
                       Padding(padding: EdgeInsets.all(10)),
                       Container(
-                          padding: EdgeInsets.only(bottom: 18, top: 18),
+                          padding: EdgeInsets.only(bottom: 10, top: 10),
                           margin:
                               const EdgeInsets.only(left: 10.0, right: 20.0),
-                          color: Colors.white,
+                          //color: Colors.white,
                           child: Row(
                             //mainAxisAlignment: MainAxisAlignment.,
                             children: [
-                              Icon(
-                                MdiIcons.stethoscope,
-                                color: Color(0xFF3C10BB),
-                              ),
+
                               Text(
                                 " |  Dicas do especialista ",
                                 style: TextStyle(
@@ -780,7 +782,7 @@ class _LogadoPageState extends State<LogadoPage> {
                               ),
                             ],
                           )),
-                      Padding(padding: EdgeInsets.all(10)),
+                     // Padding(padding: EdgeInsets.all(5)),
 
                       SizedBox(
                         width: double.infinity,
@@ -791,6 +793,7 @@ class _LogadoPageState extends State<LogadoPage> {
                               borderRadius:
                                   BorderRadius.all(Radius.circular(20))),
                           child: CarouselSlider(
+
                             items: [
                               Center(
                                 child: _controller.value.isInitialized
@@ -823,6 +826,48 @@ class _LogadoPageState extends State<LogadoPage> {
                           ),
                         ),
                       ),
+
+                          Container(
+                              padding: EdgeInsets.only(bottom: 10, top: 10),
+                              margin:
+                              const EdgeInsets.only(left: 10.0, right: 20.0),
+                              //color: Colors.white,
+                              child: Row(
+                                //mainAxisAlignment: MainAxisAlignment.,
+                                children: [
+
+                                  Text(
+                                    " |  Dicas do especialista ",
+                                    style: TextStyle(
+                                        color: Color(0xFF3C10BB),
+                                        fontSize: 14,
+                                        decoration: TextDecoration.none),
+                                  ),
+                                ],
+                              )),
+                          SizedBox(
+                            width: 260,
+                            height: 120,
+                            child: PageView.builder(
+                              onPageChanged: (posicao) {
+                                setState(() {
+                                  posicaoSlide = posicao;
+                                });
+                              },
+                              // controller: _pageController,
+                              itemCount: _listSlide2.length,
+                              itemBuilder: (_, currentIndex) {
+                                //  bool activePage = currentIndex == _currentPage;
+                                return SlideTile(
+                                  image: _listSlide2[currentIndex],
+                                  /* activePage: activePage,
+                                //image: _listSlide[currentIndex]['image'],
+                                image: _listSlide[currentIndex]['immage']*/
+                                );
+                              },
+                            ),
+                          ),
+
 
 
 

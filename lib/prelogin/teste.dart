@@ -26,7 +26,8 @@ class _TestePageState extends State<TestePage> {
 
   @override
   void initSate() {
-    _controllerV = VideoPlayerController.asset("videos/cuidados.mp4");
+   _controllerV = VideoPlayerController.asset("videos/borboletas.mp4");
+   // _controllerV = VideoPlayerController.network("https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4");
     _initializeVideoPlayerFuture = _controllerV.initialize();
     _controllerV.setLooping(true);
     _controllerV.setVolume(1.0);

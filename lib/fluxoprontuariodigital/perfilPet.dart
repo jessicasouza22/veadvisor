@@ -55,12 +55,7 @@ class _PerfilPetState extends State<PerfilPetPage> {
             ),
           ),
           // title of appbar
-          title: Text(
-            "Olá ----- ",
-            style: TextStyle(
-              decoration: TextDecoration.none,
-            ),
-          ),
+
           actions: [
             Expanded(
                 child: Padding(
@@ -129,10 +124,11 @@ children: [
                 ],
 
               ),
-              child: Row(
+              child: Column(
+                  mainAxisAlignment: MainAxisAlignment.spaceAround,
               children: [
-              Column(
-               // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              Row(
+
                // crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
 
@@ -140,7 +136,9 @@ children: [
 
                 radius: 35,
                 backgroundColor: Colors.white,
-                child: ClipOval(
+                child:
+
+                ClipOval(
                     child: GestureDetector(
                       child:
                       File('${Constants.diretorioVetAdvisor}/avatar.png')
@@ -158,11 +156,9 @@ children: [
                           : Image.asset("imagens/user.png"),
                       onTap: () {},
                     )),
+
                    ),
-                  Text("ID: 000000",
-                      style: TextStyle(
-                        color: Colors.deepPurple
-                      ),),
+
     ]
     ),
 
@@ -218,8 +214,10 @@ children: [
                 )
               ],
             ),
-  Container(
-    child: TabBar(
+ Row(
+    children:
+    [
+      TabBar(
       tabs: <Widget>[
         Tab(
           icon: Icon(Icons.cloud_outlined),
@@ -232,6 +230,13 @@ children: [
         ),
       ],
     ),
+  TabBarView(
+        children: <Widget>[
+          Text("Primeira guia selecionada"),
+          Text("Segunda guia selecionada")
+        ],
+      ),
+    ]
   ),
 
           ]

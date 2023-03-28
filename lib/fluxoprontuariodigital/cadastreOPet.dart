@@ -419,10 +419,8 @@ class _CadastroPetState extends State<CadastroPetPage> {
                         ],
                       ),
                     ),
-                    Padding(
-                        padding: const EdgeInsets.only(left: 20, right: 20),
-                        child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                   Row(
+                       mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
                               Padding(
                                 padding: EdgeInsets.only(top: 1),
@@ -438,7 +436,7 @@ class _CadastroPetState extends State<CadastroPetPage> {
                                     activeTrackColor: Colors.transparent,
                                     onChanged: (value) {}),
                               ),
-                            ])),
+                            ]),
                     Padding(
                       padding: EdgeInsets.only(bottom: 1),
                       child: Row(
@@ -456,10 +454,8 @@ class _CadastroPetState extends State<CadastroPetPage> {
                             )
                           ]),
                     ),
-                    Padding(
-                        padding: const EdgeInsets.only(left: 20, right: 20),
-                        child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                     Row(
+                         mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
                               Padding(
                                 padding: EdgeInsets.only(top: 1),
@@ -469,17 +465,16 @@ class _CadastroPetState extends State<CadastroPetPage> {
                               ),
                               Padding(
                                 padding: EdgeInsets.only(left: 120),
+
                                 child: Switch(
                                     value: false,
                                     activeColor: Colors.white,
                                     activeTrackColor: Colors.transparent,
                                     onChanged: (value) {}),
                               ),
-                            ])),
-                    Padding(
-                        padding: const EdgeInsets.only(left: 20, right: 10),
-                        child: Row(
-                            crossAxisAlignment: CrossAxisAlignment.start,
+                            ]),
+                    Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
                             children: [
                               Padding(
                                 padding: EdgeInsets.only(top: 1),
@@ -495,7 +490,7 @@ class _CadastroPetState extends State<CadastroPetPage> {
                                     activeTrackColor: Colors.transparent,
                                     onChanged: (value) {}),
                               ),
-                            ])),
+                            ]),
                     Padding(
                         padding: EdgeInsets.only(),
                         child: Row(children: [

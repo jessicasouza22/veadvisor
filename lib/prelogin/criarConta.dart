@@ -2,15 +2,9 @@
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/cadastreOPet.dart';
-import 'package:vetadvisor/helper.dart';
-import 'package:vetadvisor/prelogin/logado.dart';
-import 'package:vetadvisor/prelogin/teste.dart';
-import 'package:vetadvisor/teste02.dart';
+import 'package:vetadvisor/prelogin/termos.dart';
 import 'package:vetadvisor/recursos/Constants.dart';
-import 'package:vetadvisor/fluxoprontuariodigital/perfil.dart';
-import 'termos.dart';
-import 'logado.dart';
-import 'teste.dart';
+
 
 
 class CriarConta extends StatelessWidget {

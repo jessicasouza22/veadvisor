@@ -2,6 +2,7 @@ import 'package:flutter/material.dart';
 import 'package:video_player/video_player.dart';
 
 
+
 class Teste extends StatelessWidget {
   const Teste({super.key});
 
@@ -25,14 +26,16 @@ class _TestePageState extends State<TestePage> {
   late Future<void> _initializeVideoPlayerFuture;
 
   @override
-  void initSate() {
-   _controllerV = VideoPlayerController.asset("videos/borboletas.mp4");
+  void initState() {
+   _controllerV = VideoPlayerController.asset("videos/cuidados.mp4");
    // _controllerV = VideoPlayerController.network("https://flutter.github.io/assets-for-api-docs/assets/videos/butterfly.mp4");
     _initializeVideoPlayerFuture = _controllerV.initialize();
     _controllerV.setLooping(true);
     _controllerV.setVolume(1.0);
     super.initState();
   }
+
+
 
   @override
   void dispose() {
@@ -45,9 +48,19 @@ class _TestePageState extends State<TestePage> {
   Widget build(BuildContext context) {
     return MaterialApp(
         home: Container(
-          // tentando fazer a parte de video de outra forma
 
+         // padding: EdgeInsets.only(bottom: 200, top: 50, left: 50, right: 50),
+          decoration: BoxDecoration(
+              borderRadius: BorderRadius.all(Radius.circular(30)),
+            color: Colors.amber,
+          ),
+
+          // tentando fazer a parte de video de outra forma
+         child: SizedBox(
+
+           width: double.infinity,
           child: Column(
+            
               children: [
                 FutureBuilder(
                     future: _initializeVideoPlayerFuture,
@@ -63,21 +76,36 @@ class _TestePageState extends State<TestePage> {
                           child: CircularProgressIndicator(),
                         );
                       }
-                    }),
-                FloatingActionButton(onPressed: () {
-                  setState() {
-                    if (_controllerV.value.isPlaying) {
-                      _controllerV.pause();
-                    } else {
-                      _controllerV.play();
                     }
-                    ;
+
+                    ),
+
+               Padding(padding: EdgeInsets.only(top: 1, bottom: 100),
+                   child:
+               FloatingActionButton(onPressed: () {
+                  setState(() {
+                    if (_controllerV.value.isPlaying) {
+
+                      _controllerV.pause();
+                      print("pause");
+                    } else {
+
+                      _controllerV.play();
+                      print("play");
+                    }
                   }
-                })
+                  );
+                },
+                   child: Icon(_controllerV.value.isPlaying ? Icons.pause : Icons.play_arrow),
+                )
+               )
               ]
           ),
+        )
         )
 
     );
   }
+
+
 }

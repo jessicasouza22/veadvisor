@@ -2,11 +2,13 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:vetadvisor/prelogin/slideVideo.dart';
 import 'package:vetadvisor/prelogin/slide_tile.dart';
 import 'package:video_player/video_player.dart';
 import 'package:vetadvisor/recursos/Constants.dart';
 import 'package:rolling_switch/rolling_switch.dart';
 import 'teste.dart';
+import 'package:vetadvisor/fluxoprontuariodigital/cadastreOPet.dart';
 
 class Logado extends StatelessWidget {
   const Logado({super.key});
@@ -34,26 +36,6 @@ class _LogadoPageState extends State<LogadoPage> {
 
   List<MaterialColor> cores = [Colors.red, Colors.grey];
 
-  // declaracoes para o listView
-
-  //int _corrrentPage =0; // _ significa pread
-
-  // aqui ele vai mandar iniciar o estado antes de tudo para escutar o pagecontroller
-
-  /* @override
-  void initState() {
-    _pageController.addListener(() {
-      int next = _pageController.page!.round();
-      if (_currentPage != next) {
-        setState(() {
-          _currentPage = next;
-        });
-      }
-    });
-    super.initState();
-  }*/
-
-  // get currentIndex => null;
 
   @override
   // aqui inicia o vídeo controller
@@ -64,21 +46,49 @@ class _LogadoPageState extends State<LogadoPage> {
         setState(() {});
       });
     _controller.play();
+
+    _controllerV = VideoPlayerController.asset('_listSlideVideos');
+
+    _initializeVideoPlayerFuture = _controllerV.initialize();
+    _controllerV.setLooping(true);
+    _controllerV.setVolume(1.0);
+
     super.initState();
   }
 
   int _currentPage = 0;
-  final _listSlide = [
-    {'id': 0, 'image': 'imagens/med01.jpg'},
-    {'id': 1, 'image': 'imagens/med02.jpeg'},
-    {'id': 2, 'image': 'imagens/med03.jpeg'}
-  ];
+
 
   final _listSlide2 = [
     'imagens/med01.jpg',
     'imagens/med02.jpeg',
     'imagens/med03.jpeg'
   ];
+
+
+  ///////////*************************OUTRO VÍDEO
+  final _listSlideVideos = [
+    'videos/cuidados.mp4',
+    'videos/cuidados.mp4',
+    'videos/cuidados.mp4'
+
+
+  ];
+
+
+  late VideoPlayerController _controllerV;
+  late Future<void> _initializeVideoPlayerFuture;
+
+
+
+
+  @override
+  void dispose() {
+    _controllerV.dispose();
+    super.dispose();
+  }
+
+
 
 
   int _currentPageVideo = 0;
@@ -854,15 +864,14 @@ class _LogadoPageState extends State<LogadoPage> {
                                   posicaoSlide = posicao;
                                 });
                               },
-                              // controller: _pageController,
-                              itemCount: _listSlide2.length,
+
+                              itemCount: _listSlideVideos.length,
                               itemBuilder: (_, currentIndex) {
-                                //  bool activePage = currentIndex == _currentPage;
-                                return SlideTile(
-                                  image: _listSlide2[currentIndex],
-                                  /* activePage: activePage,
-                                //image: _listSlide[currentIndex]['image'],
-                                image: _listSlide[currentIndex]['immage']*/
+
+                                return SlideVideo(
+                                  //image: _listSlideVideos[currentIndex],
+                                   video: _listSlideVideos[currentIndex],
+
                                 );
                               },
                             ),

@@ -27,6 +27,7 @@ class LogadoPage extends StatefulWidget {
 class _LogadoPageState extends State<LogadoPage> {
   late VideoPlayerController _controller;
 
+  bool _modoEscuro = false;
   //final PageController _pageController = PageController(viewportFraction: 0.8);
   // ele vai controlar o listView
   int posicaoSlide = 0;
@@ -88,6 +89,11 @@ class _LogadoPageState extends State<LogadoPage> {
     final bool isActive;
     bool status = false;
     return MaterialApp(
+        theme: ThemeData(
+            brightness: _modoEscuro ? Brightness.dark : Brightness.light,
+          visualDensity: VisualDensity.adaptivePlatformDensity,
+
+        ),
         //debugShowCheckedModeBanner: false,
         home: Scaffold(
             drawer: Drawer(
@@ -418,9 +424,12 @@ class _LogadoPageState extends State<LogadoPage> {
 
                       RollingSwitch.icon(
 
+                        initialState: _modoEscuro,
 
                         onChanged: (bool state) {
-                         // print('turned ${(state) ? 'on' : 'off'}');
+                         setState(() {
+                           _modoEscuro = state;
+                         });
                         },
                         rollingInfoRight: const RollingIconInfo(
                           icon: Icons.light_mode,
@@ -510,7 +519,7 @@ class _LogadoPageState extends State<LogadoPage> {
               SliverFillRemaining(
                 hasScrollBody: true,
                 child: Container(
-                    color: Color(0xFFF2F2F2),
+                    //color: Color(0xFFF2F2F2),
 
                     //padding: const EdgeInsets.only(left: 30, right: 30),
                     child: SingleChildScrollView(

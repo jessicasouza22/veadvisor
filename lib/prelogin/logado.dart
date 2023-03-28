@@ -640,7 +640,7 @@ class _LogadoPageState extends State<LogadoPage> {
                                         Navigator.push(
                                           context,
                                           MaterialPageRoute(
-                                              builder: (context) => const Teste()),
+                                              builder: (context) => const CadastroPet()),
                                         );
                                       },
                                       child: Text(

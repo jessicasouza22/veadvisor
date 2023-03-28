@@ -2,11 +2,12 @@
 
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 
 
 
 import '../recursos/Constants.dart';
-enum SingingCharacterFormacao { Graduado, Pos, Mestre }
+enum SingingCharacterTipoDoPet { Cachorro, Gato, Animais  }
 enum SingingCharacterEstado { Casado, Divorciado, Outro }
 enum SingingCharacterGenero { Masculino, Feminino, Especifique }
 
@@ -22,9 +23,6 @@ class CadastroPet extends StatelessWidget {
 }
 
 
-
-
-
 class CadastroPetPage extends StatefulWidget {
   const CadastroPetPage({Key? key}) : super(key: key);
 
@@ -35,21 +33,75 @@ class CadastroPetPage extends StatefulWidget {
 class _CadastroPetState extends State<CadastroPetPage> {
   @override
   Widget build(BuildContext context) {
-    return Scaffold(
-      appBar: AppBar(
-        elevation: 0,
-        leading: const Icon(Icons.arrow_circle_left,
-            color: Colors.white),
+    return MaterialApp(
+        home: Scaffold(
+        appBar: AppBar(
+          elevation: 0,
+          leading: const Icon(Icons.arrow_circle_left,
+              color: Colors.white),
 
-        backgroundColor: const Color(0xFF3C10BB),
+          backgroundColor: const Color(0xFF3C10BB),
 
-        title: const Text("Perfil"),
-        centerTitle: true,
+        //  title: const Text("Cadastro do Pet"),
+          centerTitle: true,
+         actions: [
+
+        Expanded(
+        child: Padding(
+        padding: EdgeInsets.only(left: 40),
+            child: Row(
+              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                /* IconButton(
+                                    onPressed: () {
+                                      print("clicado na seta");
+                                    },
+                                    icon: Icon(Icons.arrow_back)),*/
+                Padding(
+                  padding: EdgeInsets.only(left: 100),
+                  child: Text(
+                    "Cadastro do Pet ",
+                    //textAlign: TextAlign.center,
+
+                    style: TextStyle(
+                      fontSize: 12,
+
+                    ),
+                  ),
+                ),
+                Padding(
+                  padding: EdgeInsets.only(left: 110),
+                  child: IconButton(
+                      onPressed: () {
+                        print("clicado no notificacao");
+                      },
+                      icon: Icon(MdiIcons.bellBadgeOutline)),
+                )
+              ],
+            )))
+         ],
 
 
-      ),
-      backgroundColor: const Color(0xFF3C10BB),
-      body: SingleChildScrollView(
+
+        ),
+      body:
+        Container(
+          width: double.infinity,
+        decoration: BoxDecoration(
+        image: DecorationImage(
+        image: AssetImage('imagens/homeGeral.png'),
+    //fit: BoxFit.fifll,
+    //colorFilter: new ColorFilter.mode(Cores.azulSafe.withOpacity(1), BlendMode.dstATop))
+    ),
+    ),
+
+
+
+
+     child:
+      //backgroundColor: const Color(0xFF3C10BB),
+     SingleChildScrollView(
+
         child: Column(
           children: [
 
@@ -97,7 +149,7 @@ class _CadastroPetState extends State<CadastroPetPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text('*Nome e Sobrenome', textAlign: TextAlign.start,
+                  const Text('* Nome do Pet', textAlign: TextAlign.start,
                       style: TextStyle(
                           color: Colors.white)
                   ),
@@ -125,177 +177,13 @@ class _CadastroPetState extends State<CadastroPetPage> {
                 ],
               ),
             ),
-            Padding(
-              padding: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text('*E-mail', textAlign: TextAlign.start,
-                      style: TextStyle(
-                          color: Colors.white)
-                  ),
-                  const Padding(
-                      padding: EdgeInsets.only(bottom: 5)),
-                  Container(
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.all(Radius.circular(17)),
-                    ),
-                    child: TextFormField(
-                      obscureText: true,
-                      textAlign: TextAlign.center,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(17),
-                          borderSide: const BorderSide(
-                            color: Color(0xFF3C10BB),
-                            width: 1.0,
-                          ),
-                        ),
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text('*Número de celular', textAlign: TextAlign.start,
-                      style: TextStyle(
-                          color: Colors.white)
-                  ),
-                  const Padding(
-                      padding: EdgeInsets.only(bottom: 5)),
-                  Container(
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.all(Radius.circular(17)),
-                    ),
-                    child: TextFormField(
-                      obscureText: true,
-                      textAlign: TextAlign.center,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(17),
-                          borderSide: const BorderSide(
-                            color: Color(0xFF3C10BB),
-                            width: 1.0,
-                          ),
-                        ),
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text('CPF', textAlign: TextAlign.start,
-                      style: TextStyle(
-                          color: Colors.white)
-                  ),
-                  const Padding(
-                      padding: EdgeInsets.only(bottom: 5)),
-                  Container(
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.all(Radius.circular(17)),
-                    ),
-                    child: TextFormField(
-                      obscureText: true,
-                      textAlign: TextAlign.center,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(17),
-                          borderSide: const BorderSide(
-                            color: Color(0xFF3C10BB),
-                            width: 1.0,
-                          ),
-                        ),
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text('Endereço', textAlign: TextAlign.start,
-                      style: TextStyle(
-                          color: Colors.white)
-                  ),
-                  const Padding(
-                      padding: EdgeInsets.only(bottom: 5)),
-                  Container(
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.all(Radius.circular(17)),
-                    ),
-                    child: TextFormField(
-                      obscureText: true,
-                      textAlign: TextAlign.center,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(17),
-                          borderSide: const BorderSide(
-                            color: Color(0xFF3C10BB),
-                            width: 1.0,
-                          ),
-                        ),
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
-            Padding(
-              padding: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
-              child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text('Complemento', textAlign: TextAlign.start,
-                      style: TextStyle(
-                          color: Colors.white)
-                  ),
-                  const Padding(
-                      padding: EdgeInsets.only(bottom: 5)),
-                  Container(
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.all(Radius.circular(17)),
-                    ),
-                    child: TextFormField(
-                      obscureText: true,
-                      textAlign: TextAlign.center,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(17),
-                          borderSide: const BorderSide(
-                            color: Color(0xFF3C10BB),
-                            width: 1.0,
-                          ),
-                        ),
-                      ),
-                    ),
-                  )
-                ],
-              ),
-            ),
+
             Padding(
               padding: const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 10),
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text("Formação profissional",
+                  const Text("Tipo de Pet",
                       style: TextStyle(
                           color: Colors.white
                       )
@@ -305,10 +193,10 @@ class _CadastroPetState extends State<CadastroPetPage> {
                     children: [
                       Row(
                         children: [
-                          Radio<SingingCharacterFormacao>(
-                            value: SingingCharacterFormacao.Graduado,
+                          Radio<SingingCharacterTipoDoPet>(
+                            value: SingingCharacterTipoDoPet.Cachorro,
 
-                            onChanged: (SingingCharacterFormacao? value) {
+                            onChanged: (SingingCharacterTipoDoPet? value) {
 
                               setState(() {
 
@@ -318,7 +206,7 @@ class _CadastroPetState extends State<CadastroPetPage> {
                             fillColor:
                             MaterialStateColor.resolveWith((states) => Colors.white),
                           ),
-                          const Text("Graduado",
+                          const Text("Cachorro",
                               style: TextStyle(
                                   fontSize: 10,
                                   color: Colors.white
@@ -328,19 +216,19 @@ class _CadastroPetState extends State<CadastroPetPage> {
                       ),
                       Row(
                         children: [
-                          Radio<SingingCharacterFormacao>(
-                              value: SingingCharacterFormacao.Pos,
+                          Radio<SingingCharacterTipoDoPet>(
+                              value: SingingCharacterTipoDoPet.Gato,
                               groupValue: null,
                               fillColor:
                               MaterialStateColor.resolveWith((states) => Colors.white),
-                              onChanged: (SingingCharacterFormacao? value) {
+                              onChanged: (SingingCharacterTipoDoPet? value) {
                                 setState(() {
 
                                 });
 
                               }
                           ),
-                          const Text("Pós-graduado",
+                          const Text("Gato",
                               style: TextStyle(
                                   fontSize: 10,
                                   color: Colors.white
@@ -350,19 +238,19 @@ class _CadastroPetState extends State<CadastroPetPage> {
                       ),
                       Row(
                         children: [
-                          Radio<SingingCharacterFormacao>(
-                              value: SingingCharacterFormacao.Mestre,
+                          Radio<SingingCharacterTipoDoPet>(
+                              value: SingingCharacterTipoDoPet.Animais,
                               groupValue: null,
                               fillColor:
                               MaterialStateColor.resolveWith((states) => Colors.white),
-                              onChanged: (SingingCharacterFormacao? value) {
+                              onChanged: (SingingCharacterTipoDoPet? value) {
                                 setState(() {
 
                                 });
 
                               }
                           ),
-                          const Text("Mestre/Doutor",
+                          const Text("Animais Exóticos",
                               style: TextStyle(
                                   fontSize: 10,
                                   color: Colors.white
@@ -373,6 +261,106 @@ class _CadastroPetState extends State<CadastroPetPage> {
 
                     ],
                   ),
+                ],
+              ),
+            ),
+
+            Padding(
+              padding: const EdgeInsets.only(top: 20, left: 20, right: 20, bottom: 10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text("Gênero",
+                      style: TextStyle(
+                          color: Colors.white
+                      )
+                  ),
+                  ButtonBar(
+                    alignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Row(
+                        children: [
+                          Radio<SingingCharacterGenero>(
+                            value: SingingCharacterGenero.Feminino,
+
+                            onChanged: (SingingCharacterGenero? value) {
+
+                              setState(() {
+
+                              });
+                            },
+                            groupValue: null,
+                            fillColor:
+                            MaterialStateColor.resolveWith((states) => Colors.white),
+                          ),
+                          const Text("Feminino",
+                              style: TextStyle(
+                                  fontSize: 10,
+                                  color: Colors.white
+                              )
+                          ),
+                        ],
+                      ),
+                      Row(
+                        children: [
+                          Radio<SingingCharacterGenero>(
+                              value: SingingCharacterGenero.Masculino,
+                              groupValue: null,
+                              fillColor:
+                              MaterialStateColor.resolveWith((states) => Colors.white),
+                              onChanged: (SingingCharacterGenero? value) {
+                                setState(() {
+
+                                });
+
+                              }
+                          ),
+                          const Text("Masculino",
+                              style: TextStyle(
+                                  fontSize: 10,
+                                  color: Colors.white
+                              )
+                          )
+                        ],
+                      ),
+
+
+                    ],
+                  ),
+                ],
+              ),
+            ),
+
+            Padding(
+              padding: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text('Raça', textAlign: TextAlign.start,
+                      style: TextStyle(
+                          color: Colors.white)
+                  ),
+                  const Padding(
+                      padding: EdgeInsets.only(bottom: 5)),
+                  Container(
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.all(Radius.circular(17)),
+                    ),
+                    child: TextFormField(
+                      obscureText: true,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(17),
+                          borderSide: const BorderSide(
+                            color: Color(0xFF3C10BB),
+                            width: 1.0,
+                          ),
+                        ),
+                      ),
+                    ),
+                  )
                 ],
               ),
             ),
@@ -381,84 +369,31 @@ class _CadastroPetState extends State<CadastroPetPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text("Formação profissional",
+                  const Text('Peso', textAlign: TextAlign.start,
                       style: TextStyle(
-                          color: Colors.white
-                      )
+                          color: Colors.white)
                   ),
-                  ButtonBar(
-                    alignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Radio<SingingCharacterFormacao>(
-                            value: SingingCharacterFormacao.Graduado,
-
-                            onChanged: (SingingCharacterFormacao? value) {
-
-                              setState(() {
-
-                              });
-                            },
-                            groupValue: null,
-                            fillColor:
-                            MaterialStateColor.resolveWith((states) => Colors.white),
+                  const Padding(
+                      padding: EdgeInsets.only(bottom: 5)),
+                  Container(
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.all(Radius.circular(17)),
+                    ),
+                    child: TextFormField(
+                      obscureText: true,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(17),
+                          borderSide: const BorderSide(
+                            color: Color(0xFF3C10BB),
+                            width: 1.0,
                           ),
-                          const Text("Graduado",
-                              style: TextStyle(
-                                  fontSize: 10,
-                                  color: Colors.white
-                              )
-                          ),
-                        ],
+                        ),
                       ),
-                      Row(
-                        children: [
-                          Radio<SingingCharacterFormacao>(
-                              value: SingingCharacterFormacao.Pos,
-                              groupValue: null,
-                              fillColor:
-                              MaterialStateColor.resolveWith((states) => Colors.white),
-                              onChanged: (SingingCharacterFormacao? value) {
-                                setState(() {
-
-                                });
-
-                              }
-                          ),
-                          const Text("Pós-graduado",
-                              style: TextStyle(
-                                  fontSize: 10,
-                                  color: Colors.white
-                              )
-                          )
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Radio<SingingCharacterFormacao>(
-                              value: SingingCharacterFormacao.Mestre,
-                              groupValue: null,
-                              fillColor:
-                              MaterialStateColor.resolveWith((states) => Colors.white),
-                              onChanged: (SingingCharacterFormacao? value) {
-                                setState(() {
-
-                                });
-
-                              }
-                          ),
-                          const Text("Mestre/Doutor",
-                              style: TextStyle(
-                                  fontSize: 10,
-                                  color: Colors.white
-                              )
-                          )
-                        ],
-                      )
-
-                    ],
-                  ),
+                    ),
+                  )
                 ],
               ),
             ),
@@ -467,87 +402,95 @@ class _CadastroPetState extends State<CadastroPetPage> {
               child: Column(
                 crossAxisAlignment: CrossAxisAlignment.start,
                 children: [
-                  const Text("Formação profissional",
+                  const Text('ID do Pet', textAlign: TextAlign.start,
                       style: TextStyle(
-                          color: Colors.white
-                      )
+                          color: Colors.white)
                   ),
-                  ButtonBar(
-                    alignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      Row(
-                        children: [
-                          Radio<SingingCharacterFormacao>(
-                            value: SingingCharacterFormacao.Graduado,
-
-                            onChanged: (SingingCharacterFormacao? value) {
-
-                              setState(() {
-
-                              });
-                            },
-                            groupValue: null,
-                            fillColor:
-                            MaterialStateColor.resolveWith((states) => Colors.white),
+                  const Padding(
+                      padding: EdgeInsets.only(bottom: 5)),
+                  Container(
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.all(Radius.circular(17)),
+                    ),
+                    child: TextFormField(
+                      obscureText: true,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(17),
+                          borderSide: const BorderSide(
+                            color: Color(0xFF3C10BB),
+                            width: 1.0,
                           ),
-                          const Text("Graduado",
-                              style: TextStyle(
-                                  fontSize: 10,
-                                  color: Colors.white
-                              )
-                          ),
-                        ],
+                        ),
                       ),
-                      Row(
-                        children: [
-                          Radio<SingingCharacterFormacao>(
-                              value: SingingCharacterFormacao.Pos,
-                              groupValue: null,
-                              fillColor:
-                              MaterialStateColor.resolveWith((states) => Colors.white),
-                              onChanged: (SingingCharacterFormacao? value) {
-                                setState(() {
-
-                                });
-
-                              }
-                          ),
-                          const Text("Pós-graduado",
-                              style: TextStyle(
-                                  fontSize: 10,
-                                  color: Colors.white
-                              )
-                          )
-                        ],
-                      ),
-                      Row(
-                        children: [
-                          Radio<SingingCharacterFormacao>(
-                              value: SingingCharacterFormacao.Mestre,
-                              groupValue: null,
-                              fillColor:
-                              MaterialStateColor.resolveWith((states) => Colors.white),
-                              onChanged: (SingingCharacterFormacao? value) {
-                                setState(() {
-
-                                });
-
-                              }
-                          ),
-                          const Text("Mestre/Doutor",
-                              style: TextStyle(
-                                  fontSize: 10,
-                                  color: Colors.white
-                              )
-                          )
-                        ],
-                      )
-
-                    ],
-                  ),
+                    ),
+                  )
                 ],
               ),
             ),
+            Padding(
+              padding: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
+              child: Column(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  const Text('Responsável Legal do Pet', textAlign: TextAlign.start,
+                      style: TextStyle(
+                          color: Colors.white)
+                  ),
+                  const Padding(
+                      padding: EdgeInsets.only(bottom: 5)),
+                  Container(
+                    decoration: const BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.all(Radius.circular(17)),
+                    ),
+                    child: TextFormField(
+                      obscureText: true,
+                      textAlign: TextAlign.center,
+                      decoration: InputDecoration(
+                        border: OutlineInputBorder(
+                          borderRadius: BorderRadius.circular(17),
+                          borderSide: const BorderSide(
+                            color: Color(0xFF3C10BB),
+                            width: 1.0,
+                          ),
+                        ),
+                      ),
+                    ),
+                  )
+                ],
+              ),
+            ),
+
+            Padding(
+              padding: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(padding: EdgeInsets.only(top: 14),
+                   child:
+                   Text('Animal Castrado',
+                      //textAlign: TextAlign.start,
+                      style: TextStyle(
+                          color: Colors.white)
+                  ),
+                  ),
+                 Padding(padding: EdgeInsets.only(left: 120),
+                  child: Switch(
+                      value: false,
+                      activeColor: Colors.white,
+                      activeTrackColor: Colors.transparent,
+                      onChanged:(value){}
+                  ),
+                 ),
+
+                ],
+              ),
+            ),
+
+
 
             ElevatedButton(
                 onPressed: () {},
@@ -559,6 +502,7 @@ class _CadastroPetState extends State<CadastroPetPage> {
 
         ),
       ),
-    );
+    )));
+
   }
 }

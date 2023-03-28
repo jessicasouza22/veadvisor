@@ -1,6 +1,7 @@
  import 'package:auto_size_text/auto_size_text.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:vetadvisor/fluxoprontuariodigital/cadastreOPet.dart';
 import 'package:vetadvisor/helper.dart';
 import 'package:vetadvisor/prelogin/logado.dart';
 import 'package:vetadvisor/prelogin/teste.dart';
@@ -169,7 +170,7 @@ class _CriarContaPageState extends State<CriarContaPage> {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => const Teste()),
+                                            builder: (context) => const CadastroPet()),
                                       );
                                     },
                                     child: const Text('ENTRAR'))),

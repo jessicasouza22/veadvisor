@@ -10,6 +10,30 @@ import '../recursos/Constants.dart';
 enum SingingCharacterTipoDoPet { Cachorro, Gato, Animais  }
 enum SingingCharacterEstado { Casado, Divorciado, Outro }
 enum SingingCharacterGenero { Masculino, Feminino, Especifique }
+final meses = ['Janeiro','Fevereiro','Marco', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro','Dezembro'];
+final ano = ['2000','2001','2002', 'Abril', 'Maio', 'Junho', 'Julho', 'Agosto', 'Setembro', 'Outubro', 'Novembro','Dezembro'];
+
+DropdownMenuItem<String> buildMenuItem (String meses) => DropdownMenuItem(
+  value: meses,
+  child: Text(
+    meses,
+
+    style: TextStyle(
+      fontSize: 8,
+    ),
+  ),
+);
+
+DropdownMenuItem<String> buildMenuAno (String ano) => DropdownMenuItem(
+  value: ano,
+  child: Text(
+   ano,
+
+    style: TextStyle(
+      fontSize: 8,
+    ),
+  ),
+);
 
 
 class CadastroPet extends StatelessWidget {
@@ -31,6 +55,8 @@ class CadastroPetPage extends StatefulWidget {
 }
 
 class _CadastroPetState extends State<CadastroPetPage> {
+  set value(String? value) {}
+
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
@@ -430,6 +456,98 @@ class _CadastroPetState extends State<CadastroPetPage> {
                 ],
               ),
             ),
+
+
+            Padding(
+              padding: const EdgeInsets.only(left: 20, right: 20),
+              child: Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
+                  Padding(padding: EdgeInsets.only(top:1),
+                   child:
+                   Text('Animal Castrado?',
+                      //textAlign: TextAlign.start,
+                      style: TextStyle(
+                          color: Colors.white)
+                  ),
+                  ),
+                 Padding(padding: EdgeInsets.only(left: 120),
+                  child: Switch(
+                      value: false,
+                      activeColor: Colors.white,
+                      activeTrackColor: Colors.transparent,
+                      onChanged:(value){}
+                  ),
+                 ),
+
+     ])),
+
+            Padding(
+              padding: EdgeInsets.only(bottom:1),
+              child: Row(
+                  crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    DropdownButton<String>(
+                      items: meses.map(buildMenuItem).toList(),
+                      onChanged: (value) => setState(() => this.value = value),
+
+
+                    ),
+                    DropdownButton<String>(
+                      items: ano.map(buildMenuAno).toList(),
+                      onChanged: (value) => setState(() => this.value = value),
+
+
+                    )
+                  ]),
+
+            ),
+            Padding(
+                padding: const EdgeInsets.only(left: 20, right: 20),
+                child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(padding: EdgeInsets.only(top:1),
+                        child:
+                        Text('Animal Vacinado?',
+                            //textAlign: TextAlign.start,
+                            style: TextStyle(
+                                color: Colors.white)
+                        ),
+                      ),
+                      Padding(padding: EdgeInsets.only(left: 120),
+                        child: Switch(
+                            value: false,
+                            activeColor: Colors.white,
+                            activeTrackColor: Colors.transparent,
+                            onChanged:(value){}
+                        ),
+                      ),
+
+                    ])),
+            Padding(
+                padding: const EdgeInsets.only(left: 20, right: 10),
+                child: Row(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Padding(padding: EdgeInsets.only(top:1),
+                        child:
+                        Text('Animal Vermifugado',
+                            //textAlign: TextAlign.start,
+                            style: TextStyle(
+                                color: Colors.white)
+                        ),
+                      ),
+                      Padding(padding: EdgeInsets.only(left: 120),
+                        child: Switch(
+                            value: false,
+                            activeColor: Colors.white,
+                            activeTrackColor: Colors.transparent,
+                            onChanged:(value){}
+                        ),
+                      ),
+
+                    ])),
             Padding(
               padding: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
               child: Column(
@@ -463,34 +581,6 @@ class _CadastroPetState extends State<CadastroPetPage> {
                 ],
               ),
             ),
-
-            Padding(
-              padding: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
-              child: Row(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  Padding(padding: EdgeInsets.only(top: 14),
-                   child:
-                   Text('Animal Castrado',
-                      //textAlign: TextAlign.start,
-                      style: TextStyle(
-                          color: Colors.white)
-                  ),
-                  ),
-                 Padding(padding: EdgeInsets.only(left: 120),
-                  child: Switch(
-                      value: false,
-                      activeColor: Colors.white,
-                      activeTrackColor: Colors.transparent,
-                      onChanged:(value){}
-                  ),
-                 ),
-
-                ],
-              ),
-            ),
-
-
 
             ElevatedButton(
                 onPressed: () {},

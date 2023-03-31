@@ -57,7 +57,7 @@ class _LoginPageState extends State<LoginPage> {
               decoration: BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage('imagens/homeGeral.png'),
-                      //fit: BoxFit.fifll,
+                      fit: BoxFit.fill,
                       //colorFilter: new ColorFilter.mode(Cores.azulSafe.withOpacity(1), BlendMode.dstATop))
               ),
               ),

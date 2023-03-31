@@ -84,6 +84,7 @@ class _CadastroPetState extends State<CadastroPetPage> {
   @override
   Widget build(BuildContext context) {
     return MaterialApp(
+      debugShowCheckedModeBanner: false,
         home: Scaffold(
             appBar: AppBar(
               elevation: 0,
@@ -96,44 +97,40 @@ class _CadastroPetState extends State<CadastroPetPage> {
               actions: [
                 Expanded(
                     child: Padding(
-                        padding: EdgeInsets.only(left: 40),
+                        padding: EdgeInsets.only(left: 0),
                         child: Row(
-                          // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            /* IconButton(
-                                    onPressed: () {
-                                      print("clicado na seta");
-                                    },
-                                    icon: Icon(Icons.arrow_back)),*/
-                            Padding(
-                              padding: EdgeInsets.only(left: 100),
-                              child: Text(
-                                "Cadastro do Pet ",
-                                //textAlign: TextAlign.center,
 
-                                style: TextStyle(
-                                  fontSize: 12,
-                                ),
+                            IconButton(
+                              color: Colors.transparent,
+                                onPressed: () {
+
+                                },
+                                icon: Icon(MdiIcons.bellBadgeOutline)),
+                            Text(
+                              "Cadastro do Pet ",
+                              //textAlign: TextAlign.center,
+
+                              style: TextStyle(
+                                fontSize: 12,
                               ),
                             ),
-                            Padding(
-                              padding: EdgeInsets.only(left: 110),
-                              child: IconButton(
-                                  onPressed: () {
-                                    print("clicado no notificacao");
-                                  },
-                                  icon: Icon(MdiIcons.bellBadgeOutline)),
-                            )
+                            IconButton(
+                                onPressed: () {
+                                  print("clicado no notificacao");
+                                },
+                                icon: Icon(MdiIcons.bellBadgeOutline)),
                           ],
                         )))
               ],
             ),
             body: Container(
-              width: double.infinity,
+
               decoration: BoxDecoration(
                 image: DecorationImage(
                   image: AssetImage('imagens/homeGeral.png'),
-                  //fit: BoxFit.fifll,
+                  fit: BoxFit.fitWidth
                   //colorFilter: new ColorFilter.mode(Cores.azulSafe.withOpacity(1), BlendMode.dstATop))
                 ),
               ),

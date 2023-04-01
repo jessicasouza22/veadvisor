@@ -6,6 +6,7 @@ import 'package:vetadvisor/recursos/Constants.dart';
 
 
 
+
 class PerfilPet extends StatelessWidget {
   const PerfilPet({super.key});
 
@@ -23,228 +24,264 @@ class PerfilPetPage extends StatefulWidget {
 }
 
 class _PerfilPetState extends State<PerfilPetPage> {
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-
-      appBar: AppBar(
-          backgroundColor: Colors.transparent,
-          toolbarHeight: 80,
-          elevation: 30,
-          //inned: true,
-          //expandedHeight: 50,
-          flexibleSpace: Container(
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.only(
-                  bottomRight: Radius.circular(45),
-                  bottomLeft: Radius.circular(10),
-                  topRight: Radius.circular(20),
-                  topLeft: Radius.circular(20)),
-              // LinearGradient
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                // colors for gradient
-                colors: [
-                  Color(0xFF4116B4),
-                  Color(0xff4116B4),
-                  Color(0xff7347EF),
-                  Color(0xffE3EDF7),
-                ],
+        appBar: AppBar(
+            backgroundColor: Colors.transparent,
+            toolbarHeight: 80,
+            elevation: 30,
+            //inned: true,
+            //expandedHeight: 50,
+            flexibleSpace: Container(
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.only(
+                    bottomRight: Radius.circular(45),
+                    bottomLeft: Radius.circular(10),
+                    topRight: Radius.circular(20),
+                    topLeft: Radius.circular(20)),
+                // LinearGradient
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  // colors for gradient
+                  colors: [
+                    Color(0xFF4116B4),
+                    Color(0xff4116B4),
+                    Color(0xff7347EF),
+                    Color(0xffE3EDF7),
+                  ],
+                ),
               ),
             ),
-          ),
-          // title of appbar
+            // title of appbar
 
-          actions: [
-            Expanded(
-                child: Padding(
-                    padding: EdgeInsets.only(left: 5),
-                    child: Row(
-                      // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        IconButton(
-                            onPressed: () {
-                              print("clicado na seta");
-                            },
-                            icon: Icon(Icons.arrow_back)),
-                        Padding(
-                          padding: EdgeInsets.only(left: 120),
-                          child: Text(
-                            "Perfil ",
-                            //textAlign: TextAlign.center,
+            actions: [
+              Expanded(
+                  child: Padding(
+                      padding: const EdgeInsets.only(left: 5),
+                      child: Row(
+                        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          IconButton(
+                              onPressed: () {
+                                //print("clicado na seta");
+                              },
+                              icon: const Icon(Icons.arrow_back)),
+                          const Padding(
+                            padding: EdgeInsets.only(left: 120),
+                            child: Text(
+                              "Perfil ",
+                              //textAlign: TextAlign.center,
 
-                            style: TextStyle(
-                              fontSize: 12,
+                              style: TextStyle(
+                                fontSize: 12,
+                              ),
                             ),
                           ),
-                        ),
-                        Padding(
-                          padding: EdgeInsets.only(left: 120),
-                          child: IconButton(
-                              onPressed: () {
-                                print("clicado no notificacao");
-                              },
-                              icon: Icon(MdiIcons.bellBadgeOutline)),
-                        )
-                      ],
-                    )))
-          ]),
+                          Padding(
+                            padding: const EdgeInsets.only(left: 120),
+                            child: IconButton(
+                                onPressed: () {
+                                  //print("clicado no notificacao");
+                                },
+                                icon: const Icon(MdiIcons.bellBadgeOutline)),
+                          )
+                        ],
+                      )))
+            ]),
+        body: Column(children: [
+          Container(
 
-      body: Column(
-          children: [
+            margin: const EdgeInsets.only(top: 20, left: 20, right: 20),
+            padding: const EdgeInsets.only(bottom: 700),
 
-            Container(
-              //height: 500,
-              //width: 200,
-              margin: EdgeInsets.only(top: 20, left: 20, right: 20 ),
-              padding: EdgeInsets.only( bottom: 700),
-              //color: Colors.deepPurple,
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: Color(0xFFF5F5F5),
-                              ),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(20),
+              color: const Color(0xFFF5F5F5),
+            ),
 
-child: Column(
-children: [
-         Container(
-              // color: Colors.blue,
-              margin: EdgeInsets.only(left: 80, right: 80, top: 10),
-              padding: EdgeInsets.only(left: 70, right: 70, bottom: 40),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: Colors.white,
-                boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.2),
-                    spreadRadius: 10,
-                    blurRadius: 5,
-                    offset: Offset(0, 0), // changes x,y position of shadow
-                  ),
-                ],
+            child: Column(children: [
+              Container(
+                // color: Colors.blue,
 
-              ),
-              child: Column(
-                  mainAxisAlignment: MainAxisAlignment.spaceAround,
-              children: [
-              Row(
+                margin: const EdgeInsets.only(left: 80, right: 80, top: 10),
+                //padding: EdgeInsets.only(top: 15, bottom: 30),
 
-               // crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-
-              CircleAvatar(
-
-                radius: 35,
-                backgroundColor: Colors.white,
-                child:
-
-                ClipOval(
-                    child: GestureDetector(
-                      child:
-                      File('${Constants.diretorioVetAdvisor}/avatar.png')
-                          .existsSync()
-                          ? Image.file(
-                        File(
-                            '${Constants.diretorioVetAdvisor}/avatar.png'),
-                        // um condicional
-
-                        //maxSizeBytes: 3000 * 1000,
-                        fit: BoxFit.cover,
-                        width:15,
-                        height: 15,
-                      )
-                          : Image.asset("imagens/user.png"),
-                      onTap: () {},
-                    )),
-
-                   ),
-
-    ]
-    ),
-
-                Column(
-                  children: [
-                    Text("Raca"),
-                    Text("Idade"),
-                    Text("Tutor(a)"),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.2),
+                      spreadRadius: 10,
+                      blurRadius: 5,
+                      offset: const Offset(0, 0), // changes x,y position of shadow
+                    ),
                   ],
-                )
-                ]
+                ),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Column(
+                          //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          // crossAxisAlignment: CrossAxisAlignment.start,
+
+                          children: [
+                            CircleAvatar(
+                              radius: 25,
+                              backgroundColor: Colors.white,
+                              child: ClipOval(
+                                  child: GestureDetector(
+                                child:
+                                    File('${Constants.diretorioVetAdvisor}/avatar.png')
+                                            .existsSync()
+                                        ? Image.file(
+                                            File(
+                                                '${Constants.diretorioVetAdvisor}/avatar.png'),
+                                            // um condicional
+
+                                            //maxSizeBytes: 3000 * 1000,
+                                            fit: BoxFit.cover,
+                                            // width:5,
+                                            //height: 5,
+                                          )
+                                        : Image.asset("imagens/user.png"),
+                                onTap: () {},
+                              )),
+                            ),
+                            const Text(
+                              " ID: 000000",
+                              style: TextStyle(
+                                color: Colors.deepPurple,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 11
+                              ),
+                            ),
+                          ]),
+                      Column(
+
+                        children: const [
+                          Text(
+                            "Raca:",
+                            style: TextStyle(
+                              fontSize: 11,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            "Idade:",
+                            style: TextStyle(
+                              fontSize: 11,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            "Tutor(a):",
+                            style: TextStyle(
+                              fontSize: 11,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      )
+                    ]),
               ),
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                children: [
+                  Container(
+                      padding: const EdgeInsets.all(15),
+                     margin: const EdgeInsets.only( top: 10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: const Color(0xFFD3D3D3),
+                      ),
+                      child: const Icon(
+                        MdiIcons.whatsapp,
+                        color: Color(0xFF4116B4),
+                      )),
+                  Container(
+                      padding: const EdgeInsets.all(15),
+                      margin: const EdgeInsets.only( top: 10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: const Color(0xFFD3D3D3),
+                      ),
+                      child: const Icon(
+                        MdiIcons.videoOffOutline,
+                        color: Color(0xFF4116B4),
+                      )),
+                  Container(
+                      padding: const EdgeInsets.all(15),
+                      margin: const EdgeInsets.only( top: 10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: const Color(0xFFD3D3D3),
+                      ),
+                      child: const Icon(
+                        MdiIcons.phone,
+                        color: Color(0xFF4116B4),
+                      ))
+                ],
+              ),
+    const Padding  (padding: EdgeInsets.all(20)),
 
-            ),
+    DefaultTabController(
+    initialIndex: 1,  //optional, starts from 0, select the tab by default
+    length:4,
 
-
-            Row(
-              mainAxisAlignment: MainAxisAlignment.center,
+             child:  Column(
               children: [
-                Container(
-                  padding: EdgeInsets.all(15),
-                  margin: EdgeInsets.only(left: 60, right: 40,top: 7),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(20),
-                    color: Color(0xFFD3D3D3),
-                  ),
-                    child: Icon(MdiIcons.whatsapp,
-                    color: Color(0xFF4116B4),
-                    )
+                const TabBar(
+                    indicatorColor: Colors.green,
+                  tabs: [
+                    Tab(
 
-                ),
-                Container(
-                    padding: EdgeInsets.all(15),
-                    margin: EdgeInsets.only( right: 30,top: 7),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Color(0xFFD3D3D3),
+                      icon: Icon(MdiIcons.stethoscope,
+                          color: Color(0xFF4116B4)),
+                      text: "Consultas",
+
                     ),
-                    child: Icon(MdiIcons.videoOffOutline,
-                      color: Color(0xFF4116B4),
-                    )
-                ),
-                Container(
-                    padding: EdgeInsets.all(15),
-                    margin: EdgeInsets.only(right: 90,top: 7),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(20),
-                      color: Color(0xFFD3D3D3),
+                    Tab(
+                      icon: Icon(MdiIcons.medicationOutline,
+                          color: Color(0xFF4116B4)),
+                      text: "Tratamento",
                     ),
-                    child: Icon(MdiIcons.phone,
-                      color: Color(0xFF4116B4),
-                    )
+                    Tab(
+                      icon: Icon(Icons.vaccines,
+                          color: Color(0xFF4116B4)),
+                      text: "Vacinas e Outros",
+                    ),
+                    Tab(
+                      icon: Icon(MdiIcons.bottleTonicPlusOutline,
+                         color: Color(0xFF4116B4)),
+                      text: "Procedimentos",
+                    ),
+                  ],
+                ),
+                TabBarView(
+                    children:  [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: const [
+                          Text("Inicio"),
+                          Text("Termino"),
+
+                        ],
+                      ),
+                    ]
                 )
-              ],
-            ),
- Row(
-    children:
-    [
-      TabBar(
-      tabs: <Widget>[
-        Tab(
-          icon: Icon(Icons.cloud_outlined),
-        ),
-        Tab(
-          icon: Icon(Icons.beach_access_sharp),
-        ),
-        Tab(
-          icon: Icon(Icons.brightness_5_sharp),
-        ),
-      ],
-    ),
-  TabBarView(
-        children: <Widget>[
-          Text("Primeira guia selecionada"),
-          Text("Segunda guia selecionada")
-        ],
-      ),
-    ]
-  ),
-
-          ]
-      )
-      ,
+    ]),
     )
-    ])
-
-     );
+             ] ),
+    )
+            ]),
+          );
   }
 }

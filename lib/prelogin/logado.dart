@@ -28,14 +28,23 @@ class LogadoPage extends StatefulWidget {
 
 class _LogadoPageState extends State<LogadoPage> {
   late VideoPlayerController _controller;
+  late VideoPlayerController _controllerV;
+
+  final List<IconData> _icone_volume = [Icons.volume_off_sharp,Icons.volume_up_sharp];
+  int _posicao_volume = 1;
+  double _volume = 100;
+
+
 
   bool _modoEscuro = false;
   //final PageController _pageController = PageController(viewportFraction: 0.8);
   // ele vai controlar o listView
   int posicaoSlide = 0;
+  int posicalCarrouselEspecialista = 0;
 
   List<MaterialColor> cores = [Colors.red, Colors.grey];
 
+  //late Future<void> _initializeVideoPlayerFuture;
 
   @override
   // aqui inicia o vídeo controller
@@ -45,13 +54,19 @@ class _LogadoPageState extends State<LogadoPage> {
     )..initialize().then((_) {
         setState(() {});
       });
+    _controller.setLooping(true);
     _controller.play();
 
-    _controllerV = VideoPlayerController.asset('_listSlideVideos');
 
-    _initializeVideoPlayerFuture = _controllerV.initialize();
+
+    //_initializeVideoPlayerFuture = _controllerV.initialize();
+    _controllerV = VideoPlayerController.network(
+      "https://firebasestorage.googleapis.com/v0/b/vetadvisor-2d900.appspot.com/o/Som%20de%20Cachorro%20e%20Cachorrinhos%20Latindo%20-%20Fatos%20Curiosos%20Sobre%20C%C3%A3es.mp4?alt=media&token=9a2d5805-0114-4cb5-b7da-38ff1fdfa16a",
+    )..initialize().then((_) {
+      setState(() {});
+    });
     _controllerV.setLooping(true);
-    _controllerV.setVolume(1.0);
+    _controllerV.play();
 
     super.initState();
   }
@@ -76,8 +91,8 @@ class _LogadoPageState extends State<LogadoPage> {
   ];
 
 
-  late VideoPlayerController _controllerV;
-  late Future<void> _initializeVideoPlayerFuture;
+
+
 
 
 
@@ -85,6 +100,7 @@ class _LogadoPageState extends State<LogadoPage> {
   @override
   void dispose() {
     _controllerV.dispose();
+    _controller.dispose();
     super.dispose();
   }
 
@@ -98,7 +114,9 @@ class _LogadoPageState extends State<LogadoPage> {
   Widget build(BuildContext context) {
     final bool isActive;
     bool status = false;
+    int _indexCarrouselEspecialista = 0;
     return MaterialApp(
+        debugShowCheckedModeBanner: false,
         theme: ThemeData(
             brightness: _modoEscuro ? Brightness.dark : Brightness.light,
           visualDensity: VisualDensity.adaptivePlatformDensity,
@@ -306,7 +324,7 @@ class _LogadoPageState extends State<LogadoPage> {
                         width: 288,
                         child: Container(
                           margin:
-                              EdgeInsets.only(left: 15, right: 10, bottom: 5),
+                              const EdgeInsets.only(left: 15, right: 10, bottom: 5),
                           decoration: BoxDecoration(
                             color: Colors.orange,
                             borderRadius: BorderRadius.all(Radius.circular(10)),
@@ -315,7 +333,7 @@ class _LogadoPageState extends State<LogadoPage> {
                       ),
                       ListTile(
                         leading: Icon(MdiIcons.bottleTonicPlusOutline),
-                        title: Text(
+                        title: const Text(
                           "Telemedicina",
                           style: TextStyle(
                             fontSize: 14,
@@ -332,16 +350,16 @@ class _LogadoPageState extends State<LogadoPage> {
                         width: 288,
                         child: Container(
                           margin:
-                              EdgeInsets.only(left: 15, right: 10, bottom: 5),
-                          decoration: BoxDecoration(
+                              const EdgeInsets.only(left: 15, right: 10, bottom: 5),
+                          decoration: const BoxDecoration(
                             color: Colors.orange,
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                           ),
                         ),
                       ),
                       ListTile(
-                        leading: Icon(MdiIcons.bottleTonicPlusOutline),
-                        title: Text(
+                        leading: const Icon(MdiIcons.bottleTonicPlusOutline),
+                        title: const Text(
                           "Add novo pet",
                           style: TextStyle(
                             fontSize: 14,
@@ -358,16 +376,16 @@ class _LogadoPageState extends State<LogadoPage> {
                         width: 288,
                         child: Container(
                           margin:
-                              EdgeInsets.only(left: 15, right: 10, bottom: 5),
-                          decoration: BoxDecoration(
+                              const EdgeInsets.only(left: 15, right: 10, bottom: 5),
+                          decoration: const BoxDecoration(
                             color: Colors.orange,
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                           ),
                         ),
                       ),
                       ListTile(
-                        leading: Icon(MdiIcons.bottleTonicPlusOutline),
-                        title: Text(
+                        leading: const Icon(MdiIcons.bottleTonicPlusOutline),
+                        title: const Text(
                           "Suporte técnico",
                           style: TextStyle(
                             fontSize: 14,
@@ -384,16 +402,16 @@ class _LogadoPageState extends State<LogadoPage> {
                         width: 288,
                         child: Container(
                           margin:
-                              EdgeInsets.only(left: 15, right: 10, bottom: 5),
-                          decoration: BoxDecoration(
+                              const EdgeInsets.only(left: 15, right: 10, bottom: 5),
+                          decoration: const BoxDecoration(
                             color: Colors.orange,
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                           ),
                         ),
                       ),
                       ListTile(
-                        leading: Icon(MdiIcons.bottleTonicPlusOutline),
-                        title: Text(
+                        leading: const Icon(MdiIcons.bottleTonicPlusOutline),
+                        title: const Text(
                           "Sair da conta",
                           style: TextStyle(
                             fontSize: 14,
@@ -404,7 +422,7 @@ class _LogadoPageState extends State<LogadoPage> {
                       )
                     ]),
 
-                    Divider(
+                    const Divider(
                       color: Colors.white,
                       thickness: 0.2,
                       endIndent: 28,
@@ -412,7 +430,7 @@ class _LogadoPageState extends State<LogadoPage> {
                     ),
                     Row(
                       mainAxisAlignment: MainAxisAlignment.center,
-                      children: [
+                      children: const [
                         Icon(
                           MdiIcons.helpCircleOutline,
                           color: Colors.white,
@@ -465,7 +483,7 @@ class _LogadoPageState extends State<LogadoPage> {
                   pinned: true,
                   expandedHeight: 50,
                   flexibleSpace: Container(
-                    decoration: BoxDecoration(
+                    decoration: const BoxDecoration(
                       borderRadius: BorderRadius.only(
                           bottomRight: Radius.circular(45),
                           bottomLeft: Radius.circular(10),
@@ -486,7 +504,7 @@ class _LogadoPageState extends State<LogadoPage> {
                     ),
                   ),
                   // title of appbar
-                  title: Text(
+                  title: const Text(
                     "Olá ----- ",
                     style: TextStyle(
                       decoration: TextDecoration.none,
@@ -495,7 +513,7 @@ class _LogadoPageState extends State<LogadoPage> {
                   actions: [
                     Expanded(
                         child: Padding(
-                            padding: EdgeInsets.only(left: 40),
+                            padding: const EdgeInsets.only(left: 40),
                             child: Row(
                               // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
@@ -504,7 +522,7 @@ class _LogadoPageState extends State<LogadoPage> {
                                       print("clicado na seta");
                                     },
                                     icon: Icon(Icons.arrow_back)),*/
-                                Padding(
+                                const Padding(
                                   padding: EdgeInsets.only(left: 120),
                                   child: Text(
                                     "Olá ----- ",
@@ -516,7 +534,7 @@ class _LogadoPageState extends State<LogadoPage> {
                                   ),
                                 ),
                                 Padding(
-                                  padding: EdgeInsets.only(left: 120),
+                                  padding: const EdgeInsets.only(left: 120),
                                   child: IconButton(
                                       onPressed: () {
                                         print("clicado no notificacao");
@@ -528,260 +546,404 @@ class _LogadoPageState extends State<LogadoPage> {
                   ]),
               SliverFillRemaining(
                 hasScrollBody: true,
-                child: Container(
-                    //color: Color(0xFFF2F2F2),
+                child: SingleChildScrollView(
+                    child: Column(children: [
+                  const Padding(padding: EdgeInsets.only(top: 10)),
+                  Center(
+                      // crossAxisAlignment: CrossAxisAlignment.center,
+                      child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: const [
+                      Padding(padding: EdgeInsets.only(left: 10)),
+                      Icon(Icons.circle, size: 12, color: Colors.green),
+                      Padding(padding: EdgeInsets.only(left: 10)),
+                      Text(
+                        "Cães",
+                        style: TextStyle(
+                          fontSize: 16,
+                          color: Colors.grey,
+                          decoration: TextDecoration.none,
+                        ),
+                      ),
+                      Padding(padding: EdgeInsets.only(left: 10)),
+                      Icon(Icons.circle, size: 12, color: Colors.grey),
+                      Padding(padding: EdgeInsets.only(left: 10)),
+                      Text(
+                        "Gatos",
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.grey,
+                          decoration: TextDecoration.none,
+                        ),
+                      ),
+                      Padding(padding: EdgeInsets.only(left: 10)),
+                      Icon(Icons.circle, size: 12, color: Colors.grey),
+                      Padding(padding: EdgeInsets.only(left: 10)),
+                      Text(
+                        "Pets exóticos",
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Colors.grey,
+                          decoration: TextDecoration.none,
+                        ),
+                      ),
+                    ],
+                  )),
 
-                    //padding: const EdgeInsets.only(left: 30, right: 30),
-                    child: SingleChildScrollView(
-                        child: Column(children: [
-                      Padding(padding: EdgeInsets.only(top: 10)),
-                      Center(
-                          // crossAxisAlignment: CrossAxisAlignment.center,
-                          child: Row(
+                  const Padding(
+                      padding: EdgeInsets.only(
+                          left: 100, right: 50, bottom: 2, top: 2)),
+                  Padding(
+                    padding: const EdgeInsets.only(left: 15, right: 15),
+                    child: Container(
+                      padding: const EdgeInsets.only(
+                          left: 30, right: 30, bottom: 10, top: 10),
+                      decoration: const BoxDecoration(
+                        color: Colors.white,
+                        //color: Color(0xFFF2F2F2),
+                        borderRadius: BorderRadius.all(
+                          Radius.circular(17),
+                        ),
+                      ),
+                      child: Container(
+                        // padding: EdgeInsets.only(left: , right: 5),
+                        decoration: BoxDecoration(
+                          color: Colors.grey.withOpacity(0.2),
+                          //color: Color(0xFFF2F2F2),
+                          borderRadius:
+                              const BorderRadius.all(Radius.circular(17)),
+                        ),
+                        child: TextFormField(
+                          //para senha: obscureText: true,
+
+                          textAlign: TextAlign.center,
+                          style: const TextStyle(
+                            fontSize: 12,
+                          ),
+                          decoration: InputDecoration(
+                              fillColor: const Color(0xFF3C10BB),
+                              prefixIcon: const Icon(Icons.search, size: 18,),
+                              border: OutlineInputBorder(
+                                borderRadius: BorderRadius.circular(17),
+                                borderSide: const BorderSide(
+                                  //color: Color(0xFFBDBECB),
+                                  width: 1.0,
+                                ),
+                              ),
+                              // icon: ,
+                              hintText: "Digite os sintomas do seu pet",
+                              suffixIcon: Padding(
+                                padding: const EdgeInsets.only(
+                                    left: 1, right: 4, top: 3, bottom: 3),
+                                child: ElevatedButton(
+                                  style: TextButton.styleFrom(
+                                    padding: const EdgeInsets.only(
+                                        top: 5,
+                                        right: 15,
+                                        left: 20,
+                                        bottom: 5),
+                                    // primary: Colors.white,
+                                    backgroundColor: Color(0xFF3C10BB),
+                                    shape: RoundedRectangleBorder(
+                                      borderRadius:
+                                          BorderRadius.circular(15.0),
+                                    ),
+                                    // Background Color
+                                  ),
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (context) => const CadastroPet()),
+                                    );
+                                  },
+                                  child: const Text(
+                                    "IR",
+                                    style: TextStyle(
+                                        fontSize: 8,
+                                        decoration: TextDecoration.none),
+                                    textAlign: TextAlign.center,
+                                  ),
+                                ),
+                              )),
+                        ),
+                      ),
+                    ),
+                  ),
+
+                  Padding(padding: EdgeInsets.only(top: 10)),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: const [
+                      Padding(
+                        padding: EdgeInsets.only(left: 10),
+                        child: Icon(
+                          Icons.calendar_month,
+                          color: Color(0xFF3C10BB),
+                        ),
+                      ),
+                      Text(
+                        " Agende sua consulta com especialista",
+                        style: TextStyle(
+                          color: Color(0xFF3C10BB),
+                          decoration: TextDecoration.none,
+                          fontSize: 14,
+                        ),
+                      )
+                    ],
+                  ),
+                  // ),
+                  // ),
+                  const Padding(padding: EdgeInsets.only(top: 8)),
+
+                  SizedBox(
+                    width: 220,
+                    height: 120,
+                    child: PageView.builder(
+                      onPageChanged: (posicao) {
+                        setState(() {
+                          posicaoSlide = posicao;
+                        });
+                      },
+                      // controller: _pageController,
+                      itemCount: _listSlide2.length,
+                      itemBuilder: (_, currentIndex) {
+                        //  bool activePage = currentIndex == _currentPage;
+                        return CarouselSlider(
+                          items: [
+                            AnimatedContainer(
+                                duration: const Duration(milliseconds: 1000),
+                                curve: Curves.easeOutQuint,
+                                // margin: EdgeInsets.all(10),
+                                // margin: EdgeInsets.only( bottom: 100, right: 30),
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    image: DecorationImage(
+
+                                        image: AssetImage(_listSlide2[currentIndex]), //chamo as imagens aqui
+                                        //para a imagem ocupar toda tela
+                                        fit: BoxFit.cover
+                                    ),
+                                    boxShadow: const [
+                                      BoxShadow(
+                                        color: Colors.black87,
+                                        //blurRadius: blur,
+                                        // offset: Offset(offset, offset)
+                                      )
+                                    ]
+                                )
+                              //color: Colors.blue,
+
+                            )
+                          ], options: CarouselOptions(
+                          height: 120,
+
+                          onPageChanged: (index, resource) {
+
+                            if(posicalCarrouselEspecialista < _listSlide2.length - 1){
+                              posicalCarrouselEspecialista++;
+                            } else {
+                              posicalCarrouselEspecialista = 0;
+                            }
+
+                            setState(() {
+                              posicaoSlide = posicalCarrouselEspecialista;
+                            });
+
+                          },
+
+                          autoPlay: true,
+                          autoPlayInterval: const Duration(seconds: 4),
+                          autoPlayAnimationDuration:
+                          const Duration(milliseconds: 800),
+                          autoPlayCurve: Curves.fastOutSlowIn,
+                          enlargeCenterPage: true,
+                          // enlargeFactor: 0.3,
+
+                          scrollDirection: Axis.horizontal,
+                        ),
+                        );
+                      },
+                    ),
+                  ),
+
+                  Padding(padding: EdgeInsets.all(4)),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      /*Icon(Icons.circle, size: 12, color: Colors.grey),
+                      Icon(Icons.circle, size: 12, color: Colors.grey),
+                      Icon(Icons.circle, size: 12, color: Colors.grey),*/
+
+                      Container(
+                        margin: EdgeInsets.all(5),
+                        width: 8,
+                        height: 8,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          color: posicaoSlide == 0 ? cores[0] : cores[1],
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.all(5),
+                        width: 8,
+                        height: 8,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          color: posicaoSlide == 1 ? cores[0] : cores[1],
+                        ),
+                      ),
+                      Container(
+                        margin: EdgeInsets.all(5),
+                        width: 8,
+                        height: 8,
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(30),
+                          color: posicaoSlide == 2 ? cores[0] : cores[1],
+                        ),
+                      ),
+                    ],
+                  ),
+
+                  // ],
+                  // )),*/
+                  Padding(padding: EdgeInsets.all(5)),
+                  Container(
+                      padding: EdgeInsets.only(bottom: 18, top: 10),
+                      margin:
+                          const EdgeInsets.only(left: 20.0, right: 20.0),
+                      color: Colors.white,
+                      child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          Padding(padding: EdgeInsets.only(left: 10)),
-                          Icon(Icons.circle, size: 12, color: Colors.green),
-                          Padding(padding: EdgeInsets.only(left: 10)),
-                          Text(
-                            "Cães",
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.grey,
-                              decoration: TextDecoration.none,
-                            ),
+                        children: const [
+                          Icon(
+                            MdiIcons.stethoscope,
+                            size: 18,
+                            color: Color(0xFF3C10BB),
                           ),
-                          Padding(padding: EdgeInsets.only(left: 10)),
-                          Icon(Icons.circle, size: 12, color: Colors.grey),
-                          Padding(padding: EdgeInsets.only(left: 10)),
                           Text(
-                            "Gatos",
+                            "   Consultas de meus PETS   ",
                             style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.grey,
-                              decoration: TextDecoration.none,
-                            ),
+                                color: Color(0xFF3C10BB),
+                                fontSize: 14,
+                                decoration: TextDecoration.none),
                           ),
-                          Padding(padding: EdgeInsets.only(left: 10)),
-                          Icon(Icons.circle, size: 12, color: Colors.grey),
-                          Padding(padding: EdgeInsets.only(left: 10)),
-                          Text(
-                            "Pets exóticos",
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.grey,
-                              decoration: TextDecoration.none,
-                            ),
+                          Icon(
+                            MdiIcons.chevronRight,
+                            size: 18,
+                            color: Color(0xFF3C10BB),
                           ),
                         ],
                       )),
+                  const Padding(padding: EdgeInsets.all(10)),
+                  Container(
+                      padding: const EdgeInsets.only(bottom: 10, top: 10),
+                      margin:
+                          const EdgeInsets.only(left: 10.0, right: 20.0),
+                      //color: Colors.white,
+                      child: Row(
+                        //mainAxisAlignment: MainAxisAlignment.,
+                        children: const [
 
-                      const Padding(
-                          padding: EdgeInsets.only(
-                              left: 100, right: 50, bottom: 2, top: 2)),
-                      Padding(
-                        padding: EdgeInsets.only(left: 15, right: 15),
-                        child: Container(
-                          padding: EdgeInsets.only(
-                              left: 30, right: 30, bottom: 10, top: 10),
-                          decoration: const BoxDecoration(
-                            color: Colors.white,
-                            //color: Color(0xFFF2F2F2),
-                            borderRadius: BorderRadius.all(
-                              Radius.circular(17),
-                            ),
-                          ),
-                          child: Container(
-                            // padding: EdgeInsets.only(left: , right: 5),
-                            decoration: BoxDecoration(
-                              color: Colors.grey.withOpacity(0.2),
-                              //color: Color(0xFFF2F2F2),
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(17)),
-                            ),
-                            child: TextFormField(
-                              //para senha: obscureText: true,
-
-                              textAlign: TextAlign.center,
-                              style: TextStyle(
-                                fontSize: 12,
-                              ),
-                              decoration: InputDecoration(
-                                  fillColor: Color(0xFF3C10BB),
-                                  prefixIcon: Icon(Icons.search, size: 18,),
-                                  border: OutlineInputBorder(
-                                    borderRadius: BorderRadius.circular(17),
-                                    borderSide: const BorderSide(
-                                      //color: Color(0xFFBDBECB),
-                                      width: 1.0,
-                                    ),
-                                  ),
-                                  // icon: ,
-                                  hintText: "Digite os sintomas do seu pet",
-                                  suffixIcon: Padding(
-                                    padding: EdgeInsets.only(
-                                        left: 1, right: 4, top: 3, bottom: 3),
-                                    child: ElevatedButton(
-                                      style: TextButton.styleFrom(
-                                        padding: const EdgeInsets.only(
-                                            top: 5,
-                                            right: 15,
-                                            left: 20,
-                                            bottom: 5),
-                                        // primary: Colors.white,
-                                        backgroundColor: Color(0xFF3C10BB),
-                                        shape: RoundedRectangleBorder(
-                                          borderRadius:
-                                              BorderRadius.circular(15.0),
-                                        ),
-                                        // Background Color
-                                      ),
-                                      onPressed: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) => const CadastroPet()),
-                                        );
-                                      },
-                                      child: Text(
-                                        "IR",
-                                        style: TextStyle(
-                                            fontSize: 8,
-                                            decoration: TextDecoration.none),
-                                        textAlign: TextAlign.center,
-                                      ),
-                                    ),
-                                  )),
-                            ),
-                          ),
-                        ),
-                      ),
-
-                      Padding(padding: EdgeInsets.only(top: 10)),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
-                        children: [
-                          Padding(
-                            padding: EdgeInsets.only(left: 10),
-                            child: Icon(
-                              Icons.calendar_month,
-                              color: Color(0xFF3C10BB),
-                            ),
-                          ),
                           Text(
-                            " Agende sua consulta com especialista",
+                            " |  Dicas do especialista ",
                             style: TextStyle(
-                              color: Color(0xFF3C10BB),
-                              decoration: TextDecoration.none,
-                              fontSize: 14,
-                            ),
-                          )
+                                color: Color(0xFF3C10BB),
+                                fontSize: 14,
+                                decoration: TextDecoration.none),
+                          ),
                         ],
-                      ),
-                      // ),
-                      // ),
-                      Padding(padding: EdgeInsets.only(top: 8)),
+                      )),
+                 // Padding(padding: EdgeInsets.all(5)),
 
-                      SizedBox(
-                        width: 120,
-                        height: 120,
-                        child: PageView.builder(
-                          onPageChanged: (posicao) {
-                            setState(() {
-                              posicaoSlide = posicao;
-                            });
-                          },
-                          // controller: _pageController,
-                          itemCount: _listSlide2.length,
-                          itemBuilder: (_, currentIndex) {
-                            //  bool activePage = currentIndex == _currentPage;
-                            return SlideTile(
-                              image: _listSlide2[currentIndex],
-                              /* activePage: activePage,
-                                //image: _listSlide[currentIndex]['image'],
-                                image: _listSlide[currentIndex]['immage']*/
-                            );
-                          },
+                  SizedBox(
+                    width: double.infinity,
+                    child: Container(
+                      margin: const EdgeInsets.only(left: 120, right: 120),
+                      decoration: const BoxDecoration(
+                          color: Colors.orange,
+                          borderRadius:
+                              BorderRadius.all(Radius.circular(20))),
+                      child: CarouselSlider(
+                        options: CarouselOptions(
+                          height: 120,
+
+                          // aspectRatio: 16 / 9,
+                          //viewportFraction: 0.8,
+                          initialPage: 0,
+                          //enableInfiniteScroll: true,
+                          //reverse: false,
+                          autoPlay: true,
+                          autoPlayInterval: const Duration(seconds: 4),
+                          autoPlayAnimationDuration:
+                          const Duration(milliseconds: 800),
+                          autoPlayCurve: Curves.fastOutSlowIn,
+                          enlargeCenterPage: true,
+                          // enlargeFactor: 0.3,
+
+                          scrollDirection: Axis.horizontal,
                         ),
-                      ),
+                        items: [
 
-                      Padding(padding: EdgeInsets.all(4)),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          /*Icon(Icons.circle, size: 12, color: Colors.grey),
-                          Icon(Icons.circle, size: 12, color: Colors.grey),
-                          Icon(Icons.circle, size: 12, color: Colors.grey),*/
+                          AspectRatio(
+                            aspectRatio: _controller.value.aspectRatio,
 
-                          Container(
-                            margin: EdgeInsets.all(5),
-                            width: 8,
-                            height: 8,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(30),
-                              color: posicaoSlide == 0 ? cores[0] : cores[1],
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.all(5),
-                            width: 8,
-                            height: 8,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(30),
-                              color: posicaoSlide == 1 ? cores[0] : cores[1],
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.all(5),
-                            width: 8,
-                            height: 8,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(30),
-                              color: posicaoSlide == 2 ? cores[0] : cores[1],
+                            child: Stack(
+                              alignment: Alignment.bottomRight,
+                              children: [
+                                Center(
+                                  child: _controller.value.isInitialized
+                                      ? AspectRatio(
+                                        aspectRatio: _controller.value.aspectRatio,
+                                            child: VideoPlayer(_controller),
+                                  )
+                                      : Container(),
+                                ),
+
+
+                                Positioned(
+                                  right: 5,
+                                  bottom: 5,
+                                  child: GestureDetector(
+                                      onTap: () {
+                                        if (_volume == 100.0) {
+                                          setState(() {
+                                            _controller.setVolume(0);
+                                            _volume = 0;
+                                            _posicao_volume = 0;
+                                          });
+
+                                        } else {
+                                          setState(() {
+                                            _controller.setVolume(100);
+                                            _volume = 100;
+                                            _posicao_volume = 1;
+                                          });
+                                        }
+                                      },
+                                      child:
+                                      Icon(_icone_volume[_posicao_volume],
+                                          color: Colors.grey,
+                                          size: 30)
+                                  ),
+                                ),
+                              ],
                             ),
                           ),
                         ],
-                      ),
 
-                      // ],
-                      // )),*/
-                      Padding(padding: EdgeInsets.all(5)),
-                      Container(
-                          padding: EdgeInsets.only(bottom: 18, top: 10),
-                          margin:
-                              const EdgeInsets.only(left: 20.0, right: 20.0),
-                          color: Colors.white,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Icon(
-                                MdiIcons.stethoscope,
-                                size: 18,
-                                color: Color(0xFF3C10BB),
-                              ),
-                              Text(
-                                "   Consultas de meus PETS   ",
-                                style: TextStyle(
-                                    color: Color(0xFF3C10BB),
-                                    fontSize: 14,
-                                    decoration: TextDecoration.none),
-                              ),
-                              Icon(
-                                MdiIcons.chevronRight,
-                                size: 18,
-                                color: Color(0xFF3C10BB),
-                              ),
-                            ],
-                          )),
-                      Padding(padding: EdgeInsets.all(10)),
+                      ),
+                    ),
+                  ),
+
                       Container(
                           padding: EdgeInsets.only(bottom: 10, top: 10),
                           margin:
-                              const EdgeInsets.only(left: 10.0, right: 20.0),
+                          const EdgeInsets.only(left: 10.0, right: 20.0),
                           //color: Colors.white,
                           child: Row(
                             //mainAxisAlignment: MainAxisAlignment.,
-                            children: [
+                            children: const [
 
                               Text(
                                 " |  Dicas do especialista ",
@@ -792,97 +954,97 @@ class _LogadoPageState extends State<LogadoPage> {
                               ),
                             ],
                           )),
-                     // Padding(padding: EdgeInsets.all(5)),
-
                       SizedBox(
-                        width: double.infinity,
-                        child: Container(
-                          margin: EdgeInsets.only(left: 120, right: 120),
-                          decoration: const BoxDecoration(
-                              color: Colors.orange,
-                              borderRadius:
-                                  BorderRadius.all(Radius.circular(20))),
-                          child: CarouselSlider(
+                        width: 260,
+                        height: 120,
+                        child: PageView.builder(
+                          onPageChanged: (posicao) {
+                            setState(() {
+                              posicaoSlide = posicao;
+                            });
+                          },
 
-                            items: [
-                              Center(
-                                child: _controller.value.isInitialized
-                                    ? AspectRatio(
-                                        aspectRatio:
-                                            _controller.value.aspectRatio,
-                                        child: VideoPlayer(_controller),
-                                      )
-                                    : Container(),
-                              ),
-                            ],
-                            options: CarouselOptions(
-                              height: 120,
+                          itemCount: _listSlideVideos.length,
+                          itemBuilder: (_, currentIndex) {
 
-                              // aspectRatio: 16 / 9,
-                              //viewportFraction: 0.8,
-                              //initialPage: 0,
-                              //enableInfiniteScroll: true,
-                              //reverse: false,
-                              autoPlay: true,
-                              autoPlayInterval: Duration(seconds: 4),
-                              autoPlayAnimationDuration:
-                                  Duration(milliseconds: 800),
-                              autoPlayCurve: Curves.fastOutSlowIn,
-                              enlargeCenterPage: true,
-                              // enlargeFactor: 0.3,
-                              //onPageChanged: callbackFunction,
-                              scrollDirection: Axis.horizontal,
-                            ),
-                          ),
+                            return AnimatedContainer(
+                                duration: Duration(milliseconds: 1000),
+                                curve: Curves.easeOutQuint,
+
+                                /*decoration: BoxDecoration(
+          borderRadius: BorderRadius.circular(20),
+          image: DecorationImage(
+              image: AssetImage(this.video), //chamo as imagens aqui
+              //para a imagem ocupar toda tela
+              fit: BoxFit.cover),
+          boxShadow: [
+            BoxShadow(
+              color: Colors.black87,
+            )
+          ]),*/
+                                //color: Colors.blue,
+                                child:
+
+                                AspectRatio(
+                                  aspectRatio: _controllerV.value.aspectRatio,
+                                  child: Stack(
+                                    alignment: Alignment.bottomRight,
+                                    children: [
+                                      Center(
+                                        child: _controllerV.value.isInitialized
+                                            ? AspectRatio(
+                                          aspectRatio: _controllerV.value.aspectRatio,
+                                          child: VideoPlayer(_controllerV),
+                                        )
+                                            : Container(),
+                                      ),
+
+
+                                      Positioned(
+                                        right: 5,
+                                        bottom: 5,
+                                        child: GestureDetector(
+                                            onTap: () {
+                                              if (_volume == 100.0) {
+                                                setState(() {
+                                                  _controllerV.setVolume(0);
+                                                  _volume = 0;
+                                                  _posicao_volume = 0;
+                                                });
+
+                                              } else {
+                                                setState(() {
+                                                  _controllerV.setVolume(100);
+                                                  _volume = 100;
+                                                  _posicao_volume = 1;
+                                                });
+                                              }
+                                            },
+                                            child:
+                                            Icon(_icone_volume[_posicao_volume],
+                                                color: Colors.grey,
+                                                size: 30)
+                                        ),
+                                      ),
+                                    ],
+                                  ),
+                                )
+                            );
+                          },
                         ),
                       ),
 
-                          Container(
-                              padding: EdgeInsets.only(bottom: 10, top: 10),
-                              margin:
-                              const EdgeInsets.only(left: 10.0, right: 20.0),
-                              //color: Colors.white,
-                              child: Row(
-                                //mainAxisAlignment: MainAxisAlignment.,
-                                children: [
 
-                                  Text(
-                                    " |  Dicas do especialista ",
-                                    style: TextStyle(
-                                        color: Color(0xFF3C10BB),
-                                        fontSize: 14,
-                                        decoration: TextDecoration.none),
-                                  ),
-                                ],
-                              )),
-                          SizedBox(
-                            width: 260,
-                            height: 120,
-                            child: PageView.builder(
-                              onPageChanged: (posicao) {
-                                setState(() {
-                                  posicaoSlide = posicao;
-                                });
-                              },
-
-                              itemCount: _listSlideVideos.length,
-                              itemBuilder: (_, currentIndex) {
-
-                                return SlideVideo(
-                                  //image: _listSlideVideos[currentIndex],
-                                   video: _listSlideVideos[currentIndex],
-
-                                );
-                              },
-                            ),
-                          ),
-
-
-
-
-                      // ])
-                    ]))),
+                    ]
+                    )
+                ),
               )
-            ])));
+            ]
+            )
+        )
+    );
+  }
+  teste(int posicaoSlide) {
+    print("mudei");
   }
 }

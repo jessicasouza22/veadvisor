@@ -54,7 +54,7 @@ class _LoginPageState extends State<LoginPage> {
         debugShowCheckedModeBanner: false,
         home: Scaffold(
           body: Container(
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage('imagens/homeGeral.png'),
                       fit: BoxFit.fill,

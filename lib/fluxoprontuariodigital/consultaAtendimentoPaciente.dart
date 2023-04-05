@@ -4,6 +4,7 @@ import 'dart:io';
 
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:vetadvisor/fluxoprontuariodigital/consultaPossiveisDiagnosticos.dart';
 
 import 'package:vetadvisor/recursos/Constants.dart';
 
@@ -20,10 +21,12 @@ class ConsultaAtendimentoPacientePage extends StatefulWidget {
   const ConsultaAtendimentoPacientePage({Key? key}) : super(key: key);
 
   @override
-  State<ConsultaAtendimentoPacientePage> createState() => _ConsultaAtendimentoPacienteState();
+  State<ConsultaAtendimentoPacientePage> createState() =>
+      _ConsultaAtendimentoPacienteState();
 }
 
-class _ConsultaAtendimentoPacienteState extends State<ConsultaAtendimentoPacientePage> {
+class _ConsultaAtendimentoPacienteState
+    extends State<ConsultaAtendimentoPacientePage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -99,17 +102,17 @@ class _ConsultaAtendimentoPacienteState extends State<ConsultaAtendimentoPacient
 
 
             const Text("Atendimento paciente",
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              color: Color(0xFF4116B4),
-            ),),
-
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  color: Color(0xFF4116B4),
+                  fontWeight: FontWeight.bold
+              ),),
 
 
             Container(
               // color: Colors.blue,
 
-              margin: const EdgeInsets.only(left: 80, right: 80, top: 30),
+              margin: const EdgeInsets.only(left: 80, right: 80, top: 20),
               //padding: EdgeInsets.only(top: 15, bottom: 30),
 
               decoration: BoxDecoration(
@@ -139,11 +142,13 @@ class _ConsultaAtendimentoPacienteState extends State<ConsultaAtendimentoPacient
                             child: ClipOval(
                                 child: GestureDetector(
                                   child:
-                                  File('${Constants.diretorioVetAdvisor}/avatar.png')
+                                  File('${Constants
+                                      .diretorioVetAdvisor}/avatar.png')
                                       .existsSync()
                                       ? Image.file(
                                     File(
-                                        '${Constants.diretorioVetAdvisor}/avatar.png'),
+                                        '${Constants
+                                            .diretorioVetAdvisor}/avatar.png'),
                                     // um condicional
 
                                     //maxSizeBytes: 3000 * 1000,
@@ -207,14 +212,14 @@ class _ConsultaAtendimentoPacienteState extends State<ConsultaAtendimentoPacient
                 )),
 
 
-
             Container(
-              margin: EdgeInsets.only(top: 100),
+                margin: EdgeInsets.only(top: 100),
                 padding: const EdgeInsets.all(40),
                 //  margin: const EdgeInsets.only(top: 10),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(50),
                   color: const Color(0xFF12EC1A),
+
 
                 ),
                 child: const Icon(
@@ -225,13 +230,13 @@ class _ConsultaAtendimentoPacienteState extends State<ConsultaAtendimentoPacient
               padding: EdgeInsets.all(8),
             ),
             Text("Atendimento finalizado\n com sucesso",
-            textAlign: TextAlign.center,
-            style: TextStyle(
-              fontSize: 16,
-              color: const Color(0xFF4116B4),
-              fontWeight: FontWeight.bold,
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                fontSize: 16,
+                color: const Color(0xFF4116B4),
+                fontWeight: FontWeight.bold,
 
-            ),),
+              ),),
             const Divider(
               color: Color(0xFF12EC1A),
               thickness: 0.2,
@@ -241,25 +246,25 @@ class _ConsultaAtendimentoPacienteState extends State<ConsultaAtendimentoPacient
           ]),
         ),
         const Padding(
-          padding: EdgeInsets.all(8),
+          padding: EdgeInsets.all(1),
         ),
         Row(
           mainAxisAlignment: MainAxisAlignment.center,
           children: [
 
             Text("Deixe aqui o seu link  ",
-            style: TextStyle(
-              color: Color(0xFF12EC1A),
-            ),),
+              style: TextStyle(
+                color: Color(0xFF12EC1A),
+              ),),
             Icon(MdiIcons.thumbUp,
-            color: Color(0xFFC7C9D9),),
+              color: Color(0xFFC7C9D9),),
 
             Icon(MdiIcons.thumbUpOutline,
-                color: Color(0xFFC7C9D9),),
+              color: Color(0xFFC7C9D9),),
           ],
         ),
         const Padding(
-          padding: EdgeInsets.all(8),
+          padding: EdgeInsets.all(1),
 
         ),
         Container(
@@ -274,30 +279,42 @@ class _ConsultaAtendimentoPacienteState extends State<ConsultaAtendimentoPacient
               initialIndex: 1,
               //optional, starts from 0, select the tab by default
               length: 5,
-              child: Column(children: const [
-                TabBar(
-                    indicatorColor: Colors.transparent,
-                    tabs: [
-                      Tab(
-                        icon: Icon(MdiIcons.home, color: Colors.grey, size: 30,),
-                      ),
-                      Tab(
-                        icon: Icon(MdiIcons.stethoscope,
-                            color: Colors.grey, size: 30),
-                      ),
-                      Tab(
-                        icon: Icon(MdiIcons.googleCirclesCommunities, color: Colors.grey, size: 30),
-                      ),
-                      Tab(
-                        icon: Icon(MdiIcons.calendar,
-                            color: Colors.grey, size: 30),
-                      ),
-                      Tab(
-                        icon: Icon(MdiIcons.dotsSquare,
-                            color: Colors.grey, size: 30),
-                      ),
-                    ])
-              ])),
+              child: Column(children: [
+                  TabBar(
+                  indicatorColor: Colors.transparent,
+                  tabs: [
+                    Tab(
+                      icon: Icon(MdiIcons.home, color: Colors.grey, size: 30,),
+                    ),
+                    Tab(
+                        child: IconButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (
+                                      context) => const ConsultaPossiveisDiagnosticos()),
+                            );
+                          },
+                          icon: Icon(MdiIcons.stethoscope,
+                            color: Colors.grey, size: 30,
+                          ),
+                        ),
+                    ),
+                        Tab(
+                          icon: Icon(MdiIcons.googleCirclesCommunities,
+                              color: Colors.grey, size: 30),
+                        ),
+                        Tab(
+                          icon: Icon(MdiIcons.calendar,
+                              color: Colors.grey, size: 30),
+                        ),
+                        Tab(
+                          icon: Icon(MdiIcons.dotsSquare,
+                              color: Colors.grey, size: 30),
+                        ),
+                        ])
+                  ])),
         ),
       ]),
     );

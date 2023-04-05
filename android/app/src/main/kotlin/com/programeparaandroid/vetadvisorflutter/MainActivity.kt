@@ -1,4 +1,4 @@
-package com.example.vetadvisor
+package com.programeparaandroid.vetadvisorflutter
 
 import io.flutter.embedding.android.FlutterActivity
 

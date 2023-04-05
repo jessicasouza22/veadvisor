@@ -1,0 +1,170 @@
+{
+  "project_info": {
+    "project_number": "802542245005",
+    "project_id": "vetadvisor-2d900",
+    "storage_bucket": "vetadvisor-2d900.appspot.com"
+  },
+  "client": [
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:802542245005:android:6c623e9b2c993d6d97bec4",
+        "android_client_info": {
+          "package_name": "com.programeparaandroid.treinamentokotlinaula8importarxlsparafirebase"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "802542245005-dgs1ecgnc4g7cjprsnj30ju3bir90a40.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCuzJIG3fB4bJ8dKJ0Wb44fk7z1JrlOmT8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "802542245005-dgs1ecgnc4g7cjprsnj30ju3bir90a40.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "802542245005-gns5ck7u7ftckg5kbdlpt4jbd6kms08p.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.vetadvisor"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:802542245005:android:49a4ffd65456c85f97bec4",
+        "android_client_info": {
+          "package_name": "com.programeparaandroid.vetadvisor"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "802542245005-ltmnbn7t8jqej8s7nr8etg6mn8ublfo9.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.programeparaandroid.vetadvisor",
+            "certificate_hash": "7ce8328aa1a3b540d233fc2a9896c415918e95df"
+          }
+        },
+        {
+          "client_id": "802542245005-s1kfgfibd7nh9gq4vsicooc69dbpberp.apps.googleusercontent.com",
+          "client_type": 1,
+          "android_info": {
+            "package_name": "com.programeparaandroid.vetadvisor",
+            "certificate_hash": "bc0da118bcc211467ac44e608953548ccc547941"
+          }
+        },
+        {
+          "client_id": "802542245005-dgs1ecgnc4g7cjprsnj30ju3bir90a40.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCuzJIG3fB4bJ8dKJ0Wb44fk7z1JrlOmT8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "802542245005-dgs1ecgnc4g7cjprsnj30ju3bir90a40.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "802542245005-gns5ck7u7ftckg5kbdlpt4jbd6kms08p.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.vetadvisor"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:802542245005:android:8b40a229e5ea01ce97bec4",
+        "android_client_info": {
+          "package_name": "com.programeparaandroid.vetadvisor2"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "802542245005-dgs1ecgnc4g7cjprsnj30ju3bir90a40.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCuzJIG3fB4bJ8dKJ0Wb44fk7z1JrlOmT8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "802542245005-dgs1ecgnc4g7cjprsnj30ju3bir90a40.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "802542245005-gns5ck7u7ftckg5kbdlpt4jbd6kms08p.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.vetadvisor"
+              }
+            }
+          ]
+        }
+      }
+    },
+    {
+      "client_info": {
+        "mobilesdk_app_id": "1:802542245005:android:d2b4b4966f93b8df97bec4",
+        "android_client_info": {
+          "package_name": "com.programeparaandroid.vetadvisorflutter"
+        }
+      },
+      "oauth_client": [
+        {
+          "client_id": "802542245005-dgs1ecgnc4g7cjprsnj30ju3bir90a40.apps.googleusercontent.com",
+          "client_type": 3
+        }
+      ],
+      "api_key": [
+        {
+          "current_key": "AIzaSyCuzJIG3fB4bJ8dKJ0Wb44fk7z1JrlOmT8"
+        }
+      ],
+      "services": {
+        "appinvite_service": {
+          "other_platform_oauth_client": [
+            {
+              "client_id": "802542245005-dgs1ecgnc4g7cjprsnj30ju3bir90a40.apps.googleusercontent.com",
+              "client_type": 3
+            },
+            {
+              "client_id": "802542245005-gns5ck7u7ftckg5kbdlpt4jbd6kms08p.apps.googleusercontent.com",
+              "client_type": 2,
+              "ios_info": {
+                "bundle_id": "com.example.vetadvisor"
+              }
+            }
+          ]
+        }
+      }
+    }
+  ],
+  "configuration_version": "1"
+}

@@ -166,7 +166,7 @@ class _CriarContaPageState extends State<CriarContaPage> {
                                       Navigator.push(
                                         context,
                                         MaterialPageRoute(
-                                            builder: (context) => const CadastroPet()),
+                                            builder: (context) => const CadastreOPet()),
                                       );
                                     },
                                     child: const Text('ENTRAR'))),

@@ -63,23 +63,23 @@ DropdownMenuItem<String> buildMenuAno(String ano) => DropdownMenuItem(
       ),
     );
 
-class CadastroPet extends StatelessWidget {
-  const CadastroPet({super.key});
+class CadastreOPet extends StatelessWidget {
+  const CadastreOPet({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const CadastroPetPage();
+    return const CadastreOPetPage();
   }
 }
 
-class CadastroPetPage extends StatefulWidget {
-  const CadastroPetPage({Key? key}) : super(key: key);
+class CadastreOPetPage extends StatefulWidget {
+  const CadastreOPetPage({Key? key}) : super(key: key);
 
   @override
-  State<CadastroPetPage> createState() => _CadastroPetState();
+  State<CadastreOPetPage> createState() => _CadastreOPetState();
 }
 
-class _CadastroPetState extends State<CadastroPetPage> {
+class _CadastreOPetState extends State<CadastreOPetPage> {
   set value(String? value) {}
 
   @override

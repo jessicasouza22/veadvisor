@@ -635,7 +635,8 @@ class _LogadoPageState extends State<LogadoPage> {
                               suffixIcon: Padding(
                                 padding: const EdgeInsets.only(
                                     left: 1, right: 4, top: 3, bottom: 3),
-                                child: ElevatedButton(
+                                child:  Builder(
+                                    builder: (context) =>  ElevatedButton(
                                   style: TextButton.styleFrom(
                                     padding: const EdgeInsets.only(
                                         top: 5,
@@ -654,7 +655,7 @@ class _LogadoPageState extends State<LogadoPage> {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
-                                          builder: (context) => const CadastroPet()),
+                                          builder: (context) => const CadastreOPet()),
                                     );
                                   },
                                   child: const Text(
@@ -665,7 +666,7 @@ class _LogadoPageState extends State<LogadoPage> {
                                     textAlign: TextAlign.center,
                                   ),
                                 ),
-                              )),
+                                ) )),
                         ),
                       ),
                     ),

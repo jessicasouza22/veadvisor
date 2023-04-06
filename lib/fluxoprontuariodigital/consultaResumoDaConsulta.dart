@@ -1,6 +1,5 @@
 // 2.11 Resumo da nova consulta
 
-// 2.12
 
 import 'dart:io';
 

@@ -164,7 +164,7 @@ class _LogadoPageState extends State<LogadoPage> {
                     ),
                     Padding(padding: EdgeInsets.all(10)),
                     Stack(children: [
-                      Positioned(
+                     /* Positioned(
                         height: 56,
                         width: 288,
                         child: Container(
@@ -175,9 +175,10 @@ class _LogadoPageState extends State<LogadoPage> {
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                           ),
                         ),
-                      ),
+                      ),*/
                       ListTile(
-                        leading: Icon(MdiIcons.bellOutline),
+                        leading: Icon(MdiIcons.bellOutline,
+                        color: Colors.white),
                         title: Text(
                           "Notificações",
                           style: TextStyle(
@@ -190,7 +191,7 @@ class _LogadoPageState extends State<LogadoPage> {
                     ]),
 
                     Stack(children: [
-                      Positioned(
+                     /* Positioned(
                         height: 56,
                         width: 288,
                         child: Container(
@@ -201,9 +202,10 @@ class _LogadoPageState extends State<LogadoPage> {
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                           ),
                         ),
-                      ),
+                      ),*/
                       ListTile(
-                        leading: Icon(MdiIcons.stethoscope),
+                        leading: Icon(MdiIcons.stethoscope,
+                            color: Colors.white),
                         title: Text(
                           "Minhas consultas",
                           style: TextStyle(
@@ -216,7 +218,7 @@ class _LogadoPageState extends State<LogadoPage> {
                     ]),
 
                     Stack(children: [
-                      Positioned(
+                      /*Positioned(
                         height: 56,
                         width: 288,
                         child: Container(
@@ -227,9 +229,10 @@ class _LogadoPageState extends State<LogadoPage> {
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                           ),
                         ),
-                      ),
+                      ),*/
                       ListTile(
-                        leading: Icon(MdiIcons.calendarClockOutline),
+                        leading: Icon(MdiIcons.calendarClockOutline,
+                            color: Colors.white),
                         title: Text(
                           "Agendar consulta",
                           style: TextStyle(
@@ -242,7 +245,7 @@ class _LogadoPageState extends State<LogadoPage> {
                     ]),
 
                     Stack(children: [
-                      Positioned(
+                      /*Positioned(
                         height: 56,
                         width: 288,
                         child: Container(
@@ -253,9 +256,10 @@ class _LogadoPageState extends State<LogadoPage> {
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                           ),
                         ),
-                      ),
+                      ),*/
                       ListTile(
-                        leading: Icon(MdiIcons.stethoscope),
+                        leading: Icon(MdiIcons.stethoscope,
+                            color: Colors.white),
                         title: Text(
                           "Ver procedimentos",
                           style: TextStyle(
@@ -268,7 +272,7 @@ class _LogadoPageState extends State<LogadoPage> {
                     ]),
 
                     Stack(children: [
-                      Positioned(
+                      /*Positioned(
                         height: 56,
                         width: 288,
                         child: Container(
@@ -279,9 +283,10 @@ class _LogadoPageState extends State<LogadoPage> {
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                           ),
                         ),
-                      ),
+                      ),*/
                       ListTile(
-                        leading: Icon(MdiIcons.stethoscope),
+                        leading: Icon(MdiIcons.stethoscope,
+                            color: Colors.white),
                         title: Text(
                           "Dicas de cuidados",
                           style: TextStyle(
@@ -294,7 +299,7 @@ class _LogadoPageState extends State<LogadoPage> {
                     ]),
 
                     Stack(children: [
-                      Positioned(
+                      /*Positioned(
                         height: 56,
                         width: 288,
                         child: Container(
@@ -305,9 +310,10 @@ class _LogadoPageState extends State<LogadoPage> {
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                           ),
                         ),
-                      ),
+                      ),*/
                       ListTile(
-                        leading: Icon(MdiIcons.cartMinus),
+                        leading: Icon(MdiIcons.cartMinus,
+                            color: Colors.white),
                         title: Text(
                           "Ofertas",
                           style: TextStyle(
@@ -319,7 +325,7 @@ class _LogadoPageState extends State<LogadoPage> {
                       )
                     ]),
                     Stack(children: [
-                      Positioned(
+                     /* Positioned(
                         height: 56,
                         width: 288,
                         child: Container(
@@ -330,9 +336,10 @@ class _LogadoPageState extends State<LogadoPage> {
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                           ),
                         ),
-                      ),
+                      ),*/
                       ListTile(
-                        leading: Icon(MdiIcons.bottleTonicPlusOutline),
+                        leading: Icon(MdiIcons.bottleTonicPlusOutline,
+                            color: Colors.white),
                         title: const Text(
                           "Telemedicina",
                           style: TextStyle(
@@ -345,7 +352,7 @@ class _LogadoPageState extends State<LogadoPage> {
                     ]),
 
                     Stack(children: [
-                      Positioned(
+                      /*Positioned(
                         height: 56,
                         width: 288,
                         child: Container(
@@ -356,9 +363,10 @@ class _LogadoPageState extends State<LogadoPage> {
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                           ),
                         ),
-                      ),
+                      ),*/
                       ListTile(
-                        leading: const Icon(MdiIcons.bottleTonicPlusOutline),
+                        leading: const Icon(MdiIcons.bottleTonicPlusOutline,
+                            color: Colors.white),
                         title: const Text(
                           "Add novo pet",
                           style: TextStyle(
@@ -371,7 +379,7 @@ class _LogadoPageState extends State<LogadoPage> {
                     ]),
 
                     Stack(children: [
-                      Positioned(
+                      /*Positioned(
                         height: 56,
                         width: 288,
                         child: Container(
@@ -382,9 +390,10 @@ class _LogadoPageState extends State<LogadoPage> {
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                           ),
                         ),
-                      ),
+                      ),*/
                       ListTile(
-                        leading: const Icon(MdiIcons.bottleTonicPlusOutline),
+                        leading: const Icon(MdiIcons.bottleTonicPlusOutline,
+                            color: Colors.white),
                         title: const Text(
                           "Suporte técnico",
                           style: TextStyle(
@@ -397,7 +406,7 @@ class _LogadoPageState extends State<LogadoPage> {
                     ]),
 
                     Stack(children: [
-                      Positioned(
+                     /* Positioned(
                         height: 56,
                         width: 288,
                         child: Container(
@@ -408,9 +417,10 @@ class _LogadoPageState extends State<LogadoPage> {
                             borderRadius: BorderRadius.all(Radius.circular(10)),
                           ),
                         ),
-                      ),
+                      ),*/
                       ListTile(
-                        leading: const Icon(MdiIcons.bottleTonicPlusOutline),
+                        leading: const Icon(MdiIcons.bottleTonicPlusOutline,
+                            color: Colors.white),
                         title: const Text(
                           "Sair da conta",
                           style: TextStyle(

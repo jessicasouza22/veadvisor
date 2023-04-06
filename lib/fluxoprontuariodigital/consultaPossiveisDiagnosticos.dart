@@ -5,6 +5,7 @@
 
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:vetadvisor/fluxoprontuariodigital/consultaPacienteEmConsulta.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/perfil.dart';
 
 
@@ -205,7 +206,7 @@ class _ConsultaPossiveisDiagnosticosState
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const Perfil()),
+                          builder: (context) => const ConsultaPacienteEmConsulta()),
                     );
                   },
                   child: const Text(

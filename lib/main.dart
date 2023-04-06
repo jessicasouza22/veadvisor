@@ -1,6 +1,7 @@
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:vetadvisor/prelogin/criarConta.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/perfil.dart';
 import 'package:vetadvisor/prelogin/logado.dart';
@@ -23,14 +24,26 @@ void main()  async {
   FirebaseAuth.instance
       .authStateChanges()
       .listen((User? user) {
-    if (user == null) {
-      runApp(const Login());
-      //print('User is currently signed out!');
-    } else {
-      runApp(const Logado());
-      //print('User is signed in!');
-    }
-  });
+        if (user == null) {
+          runApp( Phoenix(
+              child: const MaterialApp(
+                debugShowCheckedModeBanner: false,
+                  home: Login()
+              )
+          )
+          );
+          //print('User is currently signed out!');
+        } else {
+          runApp( Phoenix(
+            child: const MaterialApp(
+                debugShowCheckedModeBanner: false,
+                home: Logado()
+            )
+          )
+          );
+          //print('User is signed in!');
+        }
+      });
 
 
 }

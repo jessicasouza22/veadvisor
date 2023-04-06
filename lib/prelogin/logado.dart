@@ -1,3 +1,7 @@
+import 'package:auto_size_text/auto_size_text.dart';
+import 'package:firebase_auth/firebase_auth.dart';
+import 'package:firebase_core/firebase_core.dart';
+import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -7,6 +11,8 @@ import 'package:vetadvisor/prelogin/slide_tile.dart';
 import 'package:video_player/video_player.dart';
 import 'package:vetadvisor/recursos/Constants.dart';
 import 'package:rolling_switch/rolling_switch.dart';
+import '../firebase_options.dart';
+import '../recursos/dialogUtils.dart';
 import 'teste.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/cadastreOPet.dart';
 
@@ -30,11 +36,14 @@ class _LogadoPageState extends State<LogadoPage> {
   late VideoPlayerController _controller;
   late VideoPlayerController _controllerV;
 
+  String _nomeUsuarioLogado = "";
+
   final List<IconData> _icone_volume = [Icons.volume_off_sharp,Icons.volume_up_sharp];
   int _posicao_volume = 1;
   double _volume = 100;
 
-
+  late final FirebaseAuth auth;
+  late final FirebaseApp app;
 
   bool _modoEscuro = false;
   //final PageController _pageController = PageController(viewportFraction: 0.8);
@@ -68,7 +77,35 @@ class _LogadoPageState extends State<LogadoPage> {
     _controllerV.setLooping(true);
     _controllerV.play();
 
+    carregaDadosLogin();
+
+
     super.initState();
+  }
+
+  Future<void> carregaDadosLogin() async {
+    app = await Firebase.initializeApp(
+      options: DefaultFirebaseOptions.currentPlatform,
+    );
+    auth = FirebaseAuth.instanceFor(app: app);
+
+    FirebaseAuth.instance
+        .authStateChanges()
+        .listen((User? user) {
+      if (user == null) {
+
+        //print('User is currently signed out!');
+      } else {
+        //print('User is currently signed in!');
+        setState(() {
+          _nomeUsuarioLogado = auth.currentUser!.email.toString();
+        });
+
+        //print('User is signed in!');
+      }
+    });
+
+
   }
 
   int _currentPage = 0;
@@ -116,6 +153,7 @@ class _LogadoPageState extends State<LogadoPage> {
     bool status = false;
     int _indexCarrouselEspecialista = 0;
     return MaterialApp(
+
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
             brightness: _modoEscuro ? Brightness.dark : Brightness.light,
@@ -428,7 +466,32 @@ class _LogadoPageState extends State<LogadoPage> {
                             color: Colors.white,
                           ),
                         ),
-                        onTap: () {},
+                        onTap: () {
+
+                          DialogUtils.showCustomDialog(context,
+                              title: "Efetuar logoff",
+                              text: "Tem certeza que deseja efetuar logoff do aplicativo Vet Advisor ?",
+                              botaoConfirma: "Sim",
+                              botaoExtra: "",
+                              botaoCancela: "Cancelar",
+                              funcaoBotaoConfirma: () {
+
+                               auth.signOut()
+                                   .then((value) => Phoenix.rebirth(context))
+                                   .onError((error, stackTrace) => null);
+
+                              },
+                              funcaoBotaoExtra: () {
+
+                              },
+                              funcaoBotaoCancela: () {
+
+                              },
+                          );
+
+
+                          //wallace
+                        },
                       )
                     ]),
 
@@ -514,43 +577,30 @@ class _LogadoPageState extends State<LogadoPage> {
                     ),
                   ),
                   // title of appbar
-                  title: const Text(
-                    "Olá ----- ",
-                    style: TextStyle(
-                      decoration: TextDecoration.none,
-                    ),
-                  ),
+
                   actions: [
                     Expanded(
                         child: Padding(
                             padding: const EdgeInsets.only(left: 40),
                             child: Row(
-                              // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                /* IconButton(
-                                    onPressed: () {
-                                      print("clicado na seta");
-                                    },
-                                    icon: Icon(Icons.arrow_back)),*/
-                                const Padding(
-                                  padding: EdgeInsets.only(left: 120),
-                                  child: Text(
-                                    "Olá ----- ",
+                                Container(
+
+                                ),
+                                AutoSizeText(
+                                    "Olá $_nomeUsuarioLogado",
                                     //textAlign: TextAlign.center,
 
-                                    style: TextStyle(
-                                      fontSize: 12,
-                                    ),
+
                                   ),
-                                ),
-                                Padding(
-                                  padding: const EdgeInsets.only(left: 120),
-                                  child: IconButton(
+
+                                IconButton(
                                       onPressed: () {
                                         print("clicado no notificacao");
                                       },
                                       icon: Icon(MdiIcons.bellBadgeOutline)),
-                                )
+
                               ],
                             )))
                   ]),
@@ -1055,7 +1105,5 @@ class _LogadoPageState extends State<LogadoPage> {
         )
     );
   }
-  teste(int posicaoSlide) {
-    print("mudei");
-  }
+
 }

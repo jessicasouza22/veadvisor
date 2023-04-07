@@ -38,7 +38,10 @@ class _LogadoPageState extends State<LogadoPage> {
 
   String _nomeUsuarioLogado = "";
 
-  final List<IconData> _icone_volume = [Icons.volume_off_sharp,Icons.volume_up_sharp];
+  final List<IconData> _icone_volume = [
+    Icons.volume_off_sharp,
+    Icons.volume_up_sharp
+  ];
   int _posicao_volume = 1;
   double _volume = 100;
 
@@ -46,6 +49,7 @@ class _LogadoPageState extends State<LogadoPage> {
   late final FirebaseApp app;
 
   bool _modoEscuro = false;
+
   //final PageController _pageController = PageController(viewportFraction: 0.8);
   // ele vai controlar o listView
   int posicaoSlide = 0;
@@ -66,19 +70,16 @@ class _LogadoPageState extends State<LogadoPage> {
     _controller.setLooping(true);
     _controller.play();
 
-
-
     //_initializeVideoPlayerFuture = _controllerV.initialize();
     _controllerV = VideoPlayerController.network(
       "https://firebasestorage.googleapis.com/v0/b/vetadvisor-2d900.appspot.com/o/Som%20de%20Cachorro%20e%20Cachorrinhos%20Latindo%20-%20Fatos%20Curiosos%20Sobre%20C%C3%A3es.mp4?alt=media&token=9a2d5805-0114-4cb5-b7da-38ff1fdfa16a",
     )..initialize().then((_) {
-      setState(() {});
-    });
+        setState(() {});
+      });
     _controllerV.setLooping(true);
     _controllerV.play();
 
     carregaDadosLogin();
-
 
     super.initState();
   }
@@ -89,11 +90,8 @@ class _LogadoPageState extends State<LogadoPage> {
     );
     auth = FirebaseAuth.instanceFor(app: app);
 
-    FirebaseAuth.instance
-        .authStateChanges()
-        .listen((User? user) {
+    FirebaseAuth.instance.authStateChanges().listen((User? user) {
       if (user == null) {
-
         //print('User is currently signed out!');
       } else {
         //print('User is currently signed in!');
@@ -104,12 +102,9 @@ class _LogadoPageState extends State<LogadoPage> {
         //print('User is signed in!');
       }
     });
-
-
   }
 
   int _currentPage = 0;
-
 
   final _listSlide2 = [
     'imagens/med01.jpg',
@@ -117,22 +112,12 @@ class _LogadoPageState extends State<LogadoPage> {
     'imagens/med03.jpeg'
   ];
 
-
   ///////////*************************OUTRO VÍDEO
   final _listSlideVideos = [
     'videos/cuidados.mp4',
     'videos/cuidados.mp4',
     'videos/cuidados.mp4'
-
-
   ];
-
-
-
-
-
-
-
 
   @override
   void dispose() {
@@ -140,9 +125,6 @@ class _LogadoPageState extends State<LogadoPage> {
     _controller.dispose();
     super.dispose();
   }
-
-
-
 
   int _currentPageVideo = 0;
   final _listSlideVideo = ['', '', ''];
@@ -153,12 +135,10 @@ class _LogadoPageState extends State<LogadoPage> {
     bool status = false;
     int _indexCarrouselEspecialista = 0;
     return MaterialApp(
-
         debugShowCheckedModeBanner: false,
         theme: ThemeData(
-            brightness: _modoEscuro ? Brightness.dark : Brightness.light,
+          brightness: _modoEscuro ? Brightness.dark : Brightness.light,
           visualDensity: VisualDensity.adaptivePlatformDensity,
-
         ),
         //debugShowCheckedModeBanner: false,
         home: Scaffold(
@@ -202,7 +182,7 @@ class _LogadoPageState extends State<LogadoPage> {
                     ),
                     Padding(padding: EdgeInsets.all(10)),
                     Stack(children: [
-                     /* Positioned(
+                      /* Positioned(
                         height: 56,
                         width: 288,
                         child: Container(
@@ -215,8 +195,8 @@ class _LogadoPageState extends State<LogadoPage> {
                         ),
                       ),*/
                       ListTile(
-                        leading: Icon(MdiIcons.bellOutline,
-                        color: Colors.white),
+                        leading:
+                            Icon(MdiIcons.bellOutline, color: Colors.white),
                         title: Text(
                           "Notificações",
                           style: TextStyle(
@@ -229,7 +209,7 @@ class _LogadoPageState extends State<LogadoPage> {
                     ]),
 
                     Stack(children: [
-                     /* Positioned(
+                      /* Positioned(
                         height: 56,
                         width: 288,
                         child: Container(
@@ -242,8 +222,8 @@ class _LogadoPageState extends State<LogadoPage> {
                         ),
                       ),*/
                       ListTile(
-                        leading: Icon(MdiIcons.stethoscope,
-                            color: Colors.white),
+                        leading:
+                            Icon(MdiIcons.stethoscope, color: Colors.white),
                         title: Text(
                           "Minhas consultas",
                           style: TextStyle(
@@ -296,8 +276,8 @@ class _LogadoPageState extends State<LogadoPage> {
                         ),
                       ),*/
                       ListTile(
-                        leading: Icon(MdiIcons.stethoscope,
-                            color: Colors.white),
+                        leading:
+                            Icon(MdiIcons.stethoscope, color: Colors.white),
                         title: Text(
                           "Ver procedimentos",
                           style: TextStyle(
@@ -323,8 +303,8 @@ class _LogadoPageState extends State<LogadoPage> {
                         ),
                       ),*/
                       ListTile(
-                        leading: Icon(MdiIcons.stethoscope,
-                            color: Colors.white),
+                        leading:
+                            Icon(MdiIcons.stethoscope, color: Colors.white),
                         title: Text(
                           "Dicas de cuidados",
                           style: TextStyle(
@@ -350,8 +330,7 @@ class _LogadoPageState extends State<LogadoPage> {
                         ),
                       ),*/
                       ListTile(
-                        leading: Icon(MdiIcons.cartMinus,
-                            color: Colors.white),
+                        leading: Icon(MdiIcons.cartMinus, color: Colors.white),
                         title: Text(
                           "Ofertas",
                           style: TextStyle(
@@ -363,7 +342,7 @@ class _LogadoPageState extends State<LogadoPage> {
                       )
                     ]),
                     Stack(children: [
-                     /* Positioned(
+                      /* Positioned(
                         height: 56,
                         width: 288,
                         child: Container(
@@ -444,7 +423,7 @@ class _LogadoPageState extends State<LogadoPage> {
                     ]),
 
                     Stack(children: [
-                     /* Positioned(
+                      /* Positioned(
                         height: 56,
                         width: 288,
                         child: Container(
@@ -467,28 +446,23 @@ class _LogadoPageState extends State<LogadoPage> {
                           ),
                         ),
                         onTap: () {
-
-                          DialogUtils.showCustomDialog(context,
-                              title: "Efetuar logoff",
-                              text: "Tem certeza que deseja efetuar logoff do aplicativo Vet Advisor ?",
-                              botaoConfirma: "Sim",
-                              botaoExtra: "",
-                              botaoCancela: "Cancelar",
-                              funcaoBotaoConfirma: () {
-
-                               auth.signOut()
-                                   .then((value) => Phoenix.rebirth(context))
-                                   .onError((error, stackTrace) => null);
-
-                              },
-                              funcaoBotaoExtra: () {
-
-                              },
-                              funcaoBotaoCancela: () {
-
-                              },
+                          DialogUtils.showCustomDialog(
+                            context,
+                            title: "Efetuar logoff",
+                            text:
+                                "Tem certeza que deseja efetuar logoff do aplicativo Vet Advisor ?",
+                            botaoConfirma: "Sim",
+                            botaoExtra: "",
+                            botaoCancela: "Cancelar",
+                            funcaoBotaoConfirma: () {
+                              auth
+                                  .signOut()
+                                  .then((value) => Phoenix.rebirth(context))
+                                  .onError((error, stackTrace) => null);
+                            },
+                            funcaoBotaoExtra: () {},
+                            funcaoBotaoCancela: () {},
                           );
-
 
                           //wallace
                         },
@@ -518,25 +492,18 @@ class _LogadoPageState extends State<LogadoPage> {
                         )
                       ],
                     ),
-                    Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-
-                        children: [
-
+                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
                       RollingSwitch.icon(
-
                         initialState: _modoEscuro,
-
                         onChanged: (bool state) {
-                         setState(() {
-                           _modoEscuro = state;
-                         });
+                          setState(() {
+                            _modoEscuro = state;
+                          });
                         },
                         rollingInfoRight: const RollingIconInfo(
                           icon: Icons.light_mode,
                           text: Text('Light'),
                           backgroundColor: Colors.white,
-
                         ),
                         rollingInfoLeft: const RollingIconInfo(
                           icon: Icons.dark_mode_outlined,
@@ -544,7 +511,6 @@ class _LogadoPageState extends State<LogadoPage> {
                           text: Text('Dark'),
                         ),
                       ),
-
                     ])
                   ],
                 )),
@@ -585,22 +551,16 @@ class _LogadoPageState extends State<LogadoPage> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Container(
-
-                                ),
+                                Container(),
                                 AutoSizeText(
-                                    "Olá $_nomeUsuarioLogado",
-                                    //textAlign: TextAlign.center,
-
-
-                                  ),
-
+                                  "Olá $_nomeUsuarioLogado",
+                                  //textAlign: TextAlign.center,
+                                ),
                                 IconButton(
-                                      onPressed: () {
-                                        print("clicado no notificacao");
-                                      },
-                                      icon: Icon(MdiIcons.bellBadgeOutline)),
-
+                                    onPressed: () {
+                                      print("clicado no notificacao");
+                                    },
+                                    icon: Icon(MdiIcons.bellBadgeOutline)),
                               ],
                             )))
                   ]),
@@ -682,7 +642,10 @@ class _LogadoPageState extends State<LogadoPage> {
                           ),
                           decoration: InputDecoration(
                               fillColor: const Color(0xFF3C10BB),
-                              prefixIcon: const Icon(Icons.search, size: 18,),
+                              prefixIcon: const Icon(
+                                Icons.search,
+                                size: 18,
+                              ),
                               border: OutlineInputBorder(
                                 borderRadius: BorderRadius.circular(17),
                                 borderSide: const BorderSide(
@@ -693,40 +656,41 @@ class _LogadoPageState extends State<LogadoPage> {
                               // icon: ,
                               hintText: "Digite os sintomas do seu pet",
                               suffixIcon: Padding(
-                                padding: const EdgeInsets.only(
-                                    left: 1, right: 4, top: 3, bottom: 3),
-                                child:  Builder(
-                                    builder: (context) =>  ElevatedButton(
-                                  style: TextButton.styleFrom(
-                                    padding: const EdgeInsets.only(
-                                        top: 5,
-                                        right: 15,
-                                        left: 20,
-                                        bottom: 5),
-                                    // primary: Colors.white,
-                                    backgroundColor: Color(0xFF3C10BB),
-                                    shape: RoundedRectangleBorder(
-                                      borderRadius:
-                                          BorderRadius.circular(15.0),
+                                  padding: const EdgeInsets.only(
+                                      left: 1, right: 4, top: 3, bottom: 3),
+                                  child: Builder(
+                                    builder: (context) => ElevatedButton(
+                                      style: TextButton.styleFrom(
+                                        padding: const EdgeInsets.only(
+                                            top: 5,
+                                            right: 15,
+                                            left: 20,
+                                            bottom: 5),
+                                        // primary: Colors.white,
+                                        backgroundColor: Color(0xFF3C10BB),
+                                        shape: RoundedRectangleBorder(
+                                          borderRadius:
+                                              BorderRadius.circular(15.0),
+                                        ),
+                                        // Background Color
+                                      ),
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) =>
+                                                  const CadastreOPet()),
+                                        );
+                                      },
+                                      child: const Text(
+                                        "IR",
+                                        style: TextStyle(
+                                            fontSize: 8,
+                                            decoration: TextDecoration.none),
+                                        textAlign: TextAlign.center,
+                                      ),
                                     ),
-                                    // Background Color
-                                  ),
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) => const CadastreOPet()),
-                                    );
-                                  },
-                                  child: const Text(
-                                    "IR",
-                                    style: TextStyle(
-                                        fontSize: 8,
-                                        decoration: TextDecoration.none),
-                                    textAlign: TextAlign.center,
-                                  ),
-                                ),
-                                ) )),
+                                  ))),
                         ),
                       ),
                     ),
@@ -780,49 +744,48 @@ class _LogadoPageState extends State<LogadoPage> {
                                 decoration: BoxDecoration(
                                     borderRadius: BorderRadius.circular(20),
                                     image: DecorationImage(
-
-                                        image: AssetImage(_listSlide2[currentIndex]), //chamo as imagens aqui
+                                        image: AssetImage(
+                                            _listSlide2[currentIndex]),
+                                        //chamo as imagens aqui
                                         //para a imagem ocupar toda tela
-                                        fit: BoxFit.cover
-                                    ),
+                                        fit: BoxFit.cover),
                                     boxShadow: const [
                                       BoxShadow(
                                         color: Colors.black87,
                                         //blurRadius: blur,
                                         // offset: Offset(offset, offset)
                                       )
-                                    ]
+                                    ])
+                                //color: Colors.blue,
+
                                 )
-                              //color: Colors.blue,
+                          ],
+                          options: CarouselOptions(
+                            height: 120,
 
-                            )
-                          ], options: CarouselOptions(
-                          height: 120,
+                            onPageChanged: (index, resource) {
+                              if (posicalCarrouselEspecialista <
+                                  _listSlide2.length - 1) {
+                                posicalCarrouselEspecialista++;
+                              } else {
+                                posicalCarrouselEspecialista = 0;
+                              }
 
-                          onPageChanged: (index, resource) {
+                              setState(() {
+                                posicaoSlide = posicalCarrouselEspecialista;
+                              });
+                            },
 
-                            if(posicalCarrouselEspecialista < _listSlide2.length - 1){
-                              posicalCarrouselEspecialista++;
-                            } else {
-                              posicalCarrouselEspecialista = 0;
-                            }
+                            autoPlay: true,
+                            autoPlayInterval: const Duration(seconds: 4),
+                            autoPlayAnimationDuration:
+                                const Duration(milliseconds: 800),
+                            autoPlayCurve: Curves.fastOutSlowIn,
+                            enlargeCenterPage: true,
+                            // enlargeFactor: 0.3,
 
-                            setState(() {
-                              posicaoSlide = posicalCarrouselEspecialista;
-                            });
-
-                          },
-
-                          autoPlay: true,
-                          autoPlayInterval: const Duration(seconds: 4),
-                          autoPlayAnimationDuration:
-                          const Duration(milliseconds: 800),
-                          autoPlayCurve: Curves.fastOutSlowIn,
-                          enlargeCenterPage: true,
-                          // enlargeFactor: 0.3,
-
-                          scrollDirection: Axis.horizontal,
-                        ),
+                            scrollDirection: Axis.horizontal,
+                          ),
                         );
                       },
                     ),
@@ -871,8 +834,7 @@ class _LogadoPageState extends State<LogadoPage> {
                   Padding(padding: EdgeInsets.all(5)),
                   Container(
                       padding: EdgeInsets.only(bottom: 18, top: 10),
-                      margin:
-                          const EdgeInsets.only(left: 20.0, right: 20.0),
+                      margin: const EdgeInsets.only(left: 20.0, right: 20.0),
                       color: Colors.white,
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.center,
@@ -899,13 +861,11 @@ class _LogadoPageState extends State<LogadoPage> {
                   const Padding(padding: EdgeInsets.all(10)),
                   Container(
                       padding: const EdgeInsets.only(bottom: 10, top: 10),
-                      margin:
-                          const EdgeInsets.only(left: 10.0, right: 20.0),
+                      margin: const EdgeInsets.only(left: 10.0, right: 20.0),
                       //color: Colors.white,
                       child: Row(
                         //mainAxisAlignment: MainAxisAlignment.,
                         children: const [
-
                           Text(
                             " |  Dicas do especialista ",
                             style: TextStyle(
@@ -915,16 +875,15 @@ class _LogadoPageState extends State<LogadoPage> {
                           ),
                         ],
                       )),
-                 // Padding(padding: EdgeInsets.all(5)),
+                  // Padding(padding: EdgeInsets.all(5)),
 
-                  SizedBox(
+                  /*SizedBox(
                     width: double.infinity,
                     child: Container(
                       margin: const EdgeInsets.only(left: 120, right: 120),
                       decoration: const BoxDecoration(
                           color: Colors.orange,
-                          borderRadius:
-                              BorderRadius.all(Radius.circular(20))),
+                          borderRadius: BorderRadius.all(Radius.circular(20))),
                       child: CarouselSlider(
                         options: CarouselOptions(
                           height: 120,
@@ -937,7 +896,7 @@ class _LogadoPageState extends State<LogadoPage> {
                           autoPlay: true,
                           autoPlayInterval: const Duration(seconds: 4),
                           autoPlayAnimationDuration:
-                          const Duration(milliseconds: 800),
+                              const Duration(milliseconds: 800),
                           autoPlayCurve: Curves.fastOutSlowIn,
                           enlargeCenterPage: true,
                           // enlargeFactor: 0.3,
@@ -945,23 +904,20 @@ class _LogadoPageState extends State<LogadoPage> {
                           scrollDirection: Axis.horizontal,
                         ),
                         items: [
-
                           AspectRatio(
                             aspectRatio: _controller.value.aspectRatio,
-
                             child: Stack(
                               alignment: Alignment.bottomRight,
                               children: [
                                 Center(
                                   child: _controller.value.isInitialized
                                       ? AspectRatio(
-                                        aspectRatio: _controller.value.aspectRatio,
-                                            child: VideoPlayer(_controller),
-                                  )
+                                          aspectRatio:
+                                              _controller.value.aspectRatio,
+                                          child: VideoPlayer(_controller),
+                                        )
                                       : Container(),
                                 ),
-
-
                                 Positioned(
                                   right: 5,
                                   bottom: 5,
@@ -973,7 +929,6 @@ class _LogadoPageState extends State<LogadoPage> {
                                             _volume = 0;
                                             _posicao_volume = 0;
                                           });
-
                                         } else {
                                           setState(() {
                                             _controller.setVolume(100);
@@ -982,85 +937,51 @@ class _LogadoPageState extends State<LogadoPage> {
                                           });
                                         }
                                       },
-                                      child:
-                                      Icon(_icone_volume[_posicao_volume],
+                                      child: Icon(
+                                          _icone_volume[_posicao_volume],
                                           color: Colors.grey,
-                                          size: 30)
-                                  ),
+                                          size: 30)),
                                 ),
                               ],
                             ),
                           ),
                         ],
-
                       ),
                     ),
-                  ),
-
-                      Container(
-                          padding: EdgeInsets.only(bottom: 10, top: 10),
-                          margin:
-                          const EdgeInsets.only(left: 10.0, right: 20.0),
-                          //color: Colors.white,
-                          child: Row(
-                            //mainAxisAlignment: MainAxisAlignment.,
-                            children: const [
-
-                              Text(
-                                " |  Dicas do especialista ",
-                                style: TextStyle(
-                                    color: Color(0xFF3C10BB),
-                                    fontSize: 14,
-                                    decoration: TextDecoration.none),
-                              ),
-                            ],
-                          )),
+                  ),*/
                       SizedBox(
-                        width: 260,
-                        height: 120,
+                        width: 210,
+                        height: 100,
                         child: PageView.builder(
                           onPageChanged: (posicao) {
                             setState(() {
                               posicaoSlide = posicao;
                             });
                           },
-
                           itemCount: _listSlideVideos.length,
                           itemBuilder: (_, currentIndex) {
-
                             return AnimatedContainer(
                                 duration: Duration(milliseconds: 1000),
+
                                 curve: Curves.easeOutQuint,
-
-                                /*decoration: BoxDecoration(
-          borderRadius: BorderRadius.circular(20),
-          image: DecorationImage(
-              image: AssetImage(this.video), //chamo as imagens aqui
-              //para a imagem ocupar toda tela
-              fit: BoxFit.cover),
-          boxShadow: [
-            BoxShadow(
-              color: Colors.black87,
-            )
-          ]),*/
-                                //color: Colors.blue,
-                                child:
-
-                                AspectRatio(
+                                decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(50)),
+                                child: AspectRatio(
                                   aspectRatio: _controllerV.value.aspectRatio,
                                   child: Stack(
-                                    alignment: Alignment.bottomRight,
+                                    alignment: Alignment.center,
                                     children: [
                                       Center(
+                                        // padding: EdgeInsets.all(1),
+
                                         child: _controllerV.value.isInitialized
                                             ? AspectRatio(
-                                          aspectRatio: _controllerV.value.aspectRatio,
+                                          aspectRatio:
+                                          _controllerV.value.aspectRatio,
                                           child: VideoPlayer(_controllerV),
                                         )
                                             : Container(),
                                       ),
-
-
                                       Positioned(
                                         right: 5,
                                         bottom: 5,
@@ -1072,7 +993,6 @@ class _LogadoPageState extends State<LogadoPage> {
                                                   _volume = 0;
                                                   _posicao_volume = 0;
                                                 });
-
                                               } else {
                                                 setState(() {
                                                   _controllerV.setVolume(100);
@@ -1081,29 +1001,36 @@ class _LogadoPageState extends State<LogadoPage> {
                                                 });
                                               }
                                             },
-                                            child:
-                                            Icon(_icone_volume[_posicao_volume],
+                                            child: Icon(
+                                                _icone_volume[_posicao_volume],
                                                 color: Colors.grey,
-                                                size: 30)
-                                        ),
+                                                size: 30)),
                                       ),
                                     ],
                                   ),
-                                )
-                            );
+                                ));
                           },
                         ),
                       ),
+                  Container(
+                      padding: EdgeInsets.only(bottom: 10, top: 10),
+                      margin: const EdgeInsets.only(left: 10.0, right: 20.0),
+                      //color: Colors.white,
+                      child: Row(
+                        //mainAxisAlignment: MainAxisAlignment.,
+                        children: const [
+                          Text(
+                            " |  Dicas do especialista ",
+                            style: TextStyle(
+                                color: Color(0xFF3C10BB),
+                                fontSize: 14,
+                                decoration: TextDecoration.none),
+                          ),
+                        ],
+                      )),
 
-
-                    ]
-                    )
-                ),
+                ])),
               )
-            ]
-            )
-        )
-    );
+            ])));
   }
-
 }

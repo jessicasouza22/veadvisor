@@ -1,6 +1,4 @@
-// 2.5
-
-// 2.12
+//2.5 Consulta Possiveis Diagnosticos
 
 
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -100,16 +98,17 @@ class _ConsultaPossiveisDiagnosticosState
             color: const Color(0xFFF5F5F5),
             //color: Colors.orange,
           ),
-          child: Column(children: [
+          child: Column( children: [
 
 
-            const Text("Possíveis diagnósticos",
+             Text("Possíveis diagnósticos",
               textAlign: TextAlign.center,
               style: TextStyle(
                   color: Color(0xFF4116B4),
                   fontWeight: FontWeight.bold
               ),),
 
+               
               TextFormField(
               //para senha: obscureText: true,
 
@@ -125,6 +124,7 @@ class _ConsultaPossiveisDiagnosticosState
                   hintText: "Possíveis diagnósticos",
                   ),
             ),
+
             Container(
                 margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
                 padding: const EdgeInsets.only(
@@ -180,7 +180,20 @@ class _ConsultaPossiveisDiagnosticosState
                 )
             ),
 
-            const Text("Ver todos"),
+          ElevatedButton(
+              style: TextButton.styleFrom(
+                padding: const EdgeInsets.only(
+                    top: 5, right: 10, left: 10, bottom: 5),
+                //primary: Colors.blue,
+                backgroundColor: Colors.white,
+                shape: RoundedRectangleBorder(
+                    borderRadius: BorderRadius.circular(2)),
+                // Background Color
+              ),
+              onPressed: () {}, child: Text("Ver todos",
+          style: TextStyle(
+            color: Color(0xFF8F90A6),
+          ),),),
 
 
             Container(

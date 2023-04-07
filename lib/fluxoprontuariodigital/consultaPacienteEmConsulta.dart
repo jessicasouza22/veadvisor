@@ -6,6 +6,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/consultaPossiveisDiagnosticos.dart';
+import 'package:vetadvisor/fluxoprontuariodigital/consultaTratamentoSintomatologico.dart';
 
 import 'package:vetadvisor/recursos/Constants.dart';
 
@@ -91,9 +92,10 @@ class _ConsultaAtendimentoPacienteState
                         ],
                       )))
             ]),
-        body: Column(children: [
+        body:  SingleChildScrollView(
+        child: Column(children: [
           Container(
-            margin: const EdgeInsets.only(top: 20, left: 20, right: 20),
+            margin: const EdgeInsets.only(top: 10, left: 20, right: 20),
             //padding: const EdgeInsets.only(bottom: 400),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
@@ -110,7 +112,7 @@ class _ConsultaAtendimentoPacienteState
               Container(
                 // color: Colors.blue,
 
-                margin: const EdgeInsets.only(left: 80, right: 80, top: 20),
+                margin: const EdgeInsets.only(left: 80, right: 80, top: 10),
                 //padding: EdgeInsets.only(top: 15, bottom: 30),
 
                 decoration: BoxDecoration(
@@ -195,7 +197,7 @@ class _ConsultaAtendimentoPacienteState
                     ]),
               ),
               Container(
-                  padding: const EdgeInsets.all(4),
+                  //padding: const EdgeInsets.all(2),
                   //  margin: const EdgeInsets.only(top: 10),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50),
@@ -208,7 +210,7 @@ class _ConsultaAtendimentoPacienteState
             ]),
           ),
           Container(
-            margin: const EdgeInsets.only(top: 20, left: 20, right: 20),
+            margin: const EdgeInsets.only(top: 2, left: 20, right: 20),
             //padding: const EdgeInsets.only(bottom: 400),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(20),
@@ -216,28 +218,62 @@ class _ConsultaAtendimentoPacienteState
               //color: Colors.orange,
             ),
             child: Column(children: [
+
+            Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+    children: [
+              SizedBox(
+                height: 30,
+                width: 250,
+
+              child:
               TextFormField(
                 //para senha: obscureText: true,
 
                 textAlign: TextAlign.center,
+
                 style: const TextStyle(
                   fontSize: 12,
                 ),
                 decoration: InputDecoration(
                   fillColor: const Color(0xFF3C10BB),
+                 // contentPadding: EdgeInsets.fromLTRB(20, 0, 12, 0),
                   prefixIcon: const Icon(
                     Icons.search,
-                    size: 18,
+                    size: 15,
+
                   ),
+
 
                   // icon: ,
                   hintText: "Possíveis diagnósticos",
                 ),
-              ),
-              const Text("Ver todos"),
+              ),),
+
+
+
+
+              ElevatedButton(
+                style: TextButton.styleFrom(
+                  padding: const EdgeInsets.only(
+                      top: 5, right: 10, left: 10, bottom: 5),
+                  //primary: Colors.blue,
+                  backgroundColor: Colors.white,
+                  shape: RoundedRectangleBorder(
+                      borderRadius: BorderRadius.circular(2)),
+                  // Background Color
+                ),
+                onPressed: () {}, child: Text("Ver todos",
+                style: TextStyle(
+                  color: Color(0xFF8F90A6),
+                ),),),
+    ]),
+
+
+
               Container(
                 margin: const EdgeInsets.only(
-                    left: 10, right: 10, top: 10, bottom: 5),
+                    left: 10, right: 10, top: 1, bottom: 5),
                 padding: const EdgeInsets.only(
                     left: 40, right: 40, top: 5, bottom: 10),
                 decoration: BoxDecoration(
@@ -253,18 +289,19 @@ class _ConsultaAtendimentoPacienteState
                         style: TextStyle(
                           color: Color(0xFF4116B4),
                           fontWeight: FontWeight.bold,
+                          fontSize: 10,
                         ),
                       ),
                       Icon(
                         Icons.star,
                         color: Colors.yellow,
+                        size: 12,
                       ),
-                      const Text("Incluir"),
-                      const Padding(padding: EdgeInsets.only(left: 10)),
-                      SizedBox(
-                        width: 15,
-                        height: 15,
-                      ),
+                      const Text("Incluir",
+                      style: TextStyle(
+                          fontSize: 10,
+                      ),),
+
                     ],
                   ),
                   Row(
@@ -274,10 +311,10 @@ class _ConsultaAtendimentoPacienteState
                           child: AutoSizeText(
                         'Provavelmente seu Paciente tem dermatite atópica, que é uma doença genética e muito comum nas raças de pet populares de hoje.Lembre sempre de eliminar possível hipersensibilidade alimentar!',
                         style: TextStyle(
-                          fontSize: 10,
+                          fontSize: 8,
                           color: Colors.grey,
                         ),
-                        maxLines: 4,
+                        maxLines: 3,
                         textAlign: TextAlign.justify,
                       )),
                     ],
@@ -286,7 +323,7 @@ class _ConsultaAtendimentoPacienteState
                     ElevatedButton(
                       style: TextButton.styleFrom(
                         padding: const EdgeInsets.only(
-                            top: 5, right: 10, left: 10, bottom: 5),
+                            top: 3, right: 7, left: 7, bottom: 3),
                         //primary: Colors.blue,
                         backgroundColor: Color(0xFFFDF5E6),
                         shape: RoundedRectangleBorder(
@@ -299,20 +336,21 @@ class _ConsultaAtendimentoPacienteState
                           Icon(
                             MdiIcons.bookOpenBlankVariant,
                             color: Colors.red,
-                            size: 14,
+                            size: 12,
                           ),
                           Text(" salvar   ",
                               style: TextStyle(
                                 color: Colors.red,
-                                fontSize: 10,
+                                fontSize: 7,
                               )),
                           SizedBox(
-                            width: 5,
-                            height: 5,
+                            width: 2,
+                            height: 2,
                             child: Radio(
                               //fillColor: Color.white,
                               value: false,
                               groupValue: false,
+                              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
 
                               onChanged: (value) {},
                             ),
@@ -327,6 +365,7 @@ class _ConsultaAtendimentoPacienteState
                         "Esta informação foi útil para você? ",
                         style: TextStyle(
                           color: Color(0xFF12EC1A),
+                            fontSize: 10,
                         ),
                       ),
                     ],
@@ -337,17 +376,18 @@ class _ConsultaAtendimentoPacienteState
                         "Deixe seu feedback ",
                         style: TextStyle(
                           color: Color(0xFF12EC1A),
+                            fontSize: 10,
                         ),
                       ),
                       Icon(
                         MdiIcons.thumbUp,
                         color: Color(0xFFC7C9D9),
-                        size: 16,
+                        size: 14,
                       ),
                       Icon(
                         MdiIcons.thumbUpOutline,
                         color: Color(0xFFC7C9D9),
-                        size: 16,
+                        size: 14,
                       ),
                     ],
                   ),
@@ -357,9 +397,9 @@ class _ConsultaAtendimentoPacienteState
               Container(
 
                 margin: const EdgeInsets.only(
-                    left: 10, right: 10, top: 10, bottom: 5),
+                    left: 10, right: 10, top: 1),
                 padding: const EdgeInsets.only(
-                    left: 40, right: 40, top: 5, bottom: 10),
+                    left: 40, right: 40, top: 5),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
                   color: Colors.white,
@@ -373,6 +413,7 @@ class _ConsultaAtendimentoPacienteState
                     style: TextStyle(
                       color: Color(0xFF59616E),
                       fontWeight: FontWeight.bold,
+                        fontSize: 10,
                     ),),
 
 
@@ -384,10 +425,10 @@ class _ConsultaAtendimentoPacienteState
                         child: AutoSizeText(
                           'Eritema, Prurido, Alopecia, Otite externa, Blefarite, Prurido antes de aparecer as lesões, lambe as patas e lambe outras partes do corpo excessivamente',
                           style: TextStyle(
-                            fontSize: 10,
+                            fontSize: 8,
                             color: Color(0xFF59616E),
                           ),
-                          maxLines: 4,
+                          maxLines: 3,
                           textAlign: TextAlign.justify,
                         )),
 
@@ -397,8 +438,23 @@ class _ConsultaAtendimentoPacienteState
 
               ),
             Container(
+              margin: EdgeInsets.only(left: 10,top: 5),
+              child:
+              Row(
+                children: [
+                  Text("Exames padrão ouro",
+                    style: TextStyle(
+                      fontSize: 10,
+                      color: Color(0xFF59616E),
+                      fontWeight: FontWeight.bold,
+                    ),),
+                ],
+
+              )
+            ),
+            Container(
                 margin: const EdgeInsets.only(
-                    left: 10, right: 10, top: 10, bottom: 5),
+                    left: 10, right: 10, top: 5),
                 padding: const EdgeInsets.only(
                     left: 40, right: 40, top: 5, bottom: 10),
                 decoration: BoxDecoration(
@@ -425,7 +481,7 @@ class _ConsultaAtendimentoPacienteState
             ),
             Container(
                 margin: const EdgeInsets.only(
-                    left: 10, right: 10, top: 10, bottom: 5),
+                    left: 10, right: 10, top: 5),
                 padding: const EdgeInsets.only(
                     left: 40, right: 40, top: 5, bottom: 10),
                 decoration: BoxDecoration(
@@ -438,7 +494,61 @@ class _ConsultaAtendimentoPacienteState
                     Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Text("Pesquise os exames indicados ",
+                        Text("Teste cutâneo intradérmico e prick",
+                          style: TextStyle(
+                            fontSize: 10,
+                            color: Color(0xFF59616E),
+                          ),),
+                        Text("Incluir",
+                          style: TextStyle(
+                            fontSize: 10,
+                            color: Color(0xFF59616E),
+                          ),),
+
+                        SizedBox(
+                          width: 5,
+                          height: 5,
+                          child: Radio(
+                            //fillColor: Color.white,
+                            value: false,
+                            groupValue: false,
+
+                            onChanged: (value) {},
+                          ),
+                        ),
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(MdiIcons.chevronDown, color: Color(0xFF59616E), size: 18)
+                      ],
+                    ),
+
+                  ],
+                ),
+              ),
+            Container(
+                margin: const EdgeInsets.only(
+                    left: 10, right: 10, top: 5),
+                padding: const EdgeInsets.only(
+                    left: 40, right: 40, top: 5, bottom: 10),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.white,
+                ),
+                child: Column(
+
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Teste sorológico ",
+                          style: TextStyle(
+                            fontSize: 10,
+                            color: Color(0xFF59616E),
+                          ),),
+                        Text("Incluir",
                           style: TextStyle(
                             fontSize: 10,
                             color: Color(0xFF59616E),
@@ -466,6 +576,152 @@ class _ConsultaAtendimentoPacienteState
                   ],
                 ),
               ),
+            Container(
+                  margin: EdgeInsets.only(left: 10,top: 5),
+                  child:
+                  Row(
+                    children: [
+                      Text("Exames padrão ouro",
+                        style: TextStyle(
+                          fontSize: 10,
+                          color: Color(0xFF59616E),
+                          fontWeight: FontWeight.bold,
+                        ),),
+                    ],
+
+                  )
+              ),
+            Container(
+                margin: const EdgeInsets.only(
+                    left: 10, right: 10, top: 5),
+                padding: const EdgeInsets.only(
+                    left: 40, right: 40, top: 5, bottom: 10),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.white,
+                ),
+                child: Column(
+
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Pesquise outros exames",
+                          style: TextStyle(
+                            fontSize: 10,
+                            color: Color(0xFF59616E),
+                          ),),
+
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(MdiIcons.chevronDown, color: Color(0xFF59616E), size: 18)
+                      ],
+                    ),
+
+                  ],
+                ),
+              ),
+            Container(
+                margin: const EdgeInsets.only(
+                    left: 10, right: 10, top: 5),
+                padding: const EdgeInsets.only(
+                    left: 40, right: 40, top: 5, bottom: 10),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.white,
+                ),
+                child: Column(
+
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Hemograma",
+                          style: TextStyle(
+                            fontSize: 10,
+                            color: Color(0xFF59616E),
+                          ),),
+                        Text("Incluir",
+                          style: TextStyle(
+                            fontSize: 10,
+                            color: Color(0xFF59616E),
+                          ),),
+                        SizedBox(
+                          width: 5,
+                          height: 5,
+                          child: Radio(
+                            //fillColor: Color.white,
+                            value: false,
+                            groupValue: false,
+
+                            onChanged: (value) {},
+                          ),
+                        ),
+
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(MdiIcons.chevronDown, color: Color(0xFF59616E), size: 18)
+                      ],
+                    ),
+
+                  ],
+                ),
+              ),
+            Container(
+                margin: const EdgeInsets.only(
+                    left: 10, right: 10, top: 5),
+                padding: const EdgeInsets.only(
+                    left: 40, right: 40, top: 5, bottom: 10),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.white,
+                ),
+                child: Column(
+
+                  children: [
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Text("Perfil bioquímico TGP, ALT, FA, Cr",
+                          style: TextStyle(
+                            fontSize: 10,
+                            color: Color(0xFF59616E),
+                          ),),
+                        Text("Incluir",
+                          style: TextStyle(
+                            fontSize: 10,
+                            color: Color(0xFF59616E),
+                          ),),
+                        SizedBox(
+                          width: 5,
+                          height: 5,
+                          child: Radio(
+                            //fillColor: Color.white,
+                            value: false,
+                            groupValue: false,
+
+                            onChanged: (value) {},
+                          ),
+                        ),
+
+                      ],
+                    ),
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.center,
+                      children: [
+                        Icon(MdiIcons.chevronDown, color: Color(0xFF59616E), size: 18)
+                      ],
+                    ),
+
+                  ],
+                ),
+              ),
 
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
@@ -480,7 +736,7 @@ class _ConsultaAtendimentoPacienteState
                         context,
                         MaterialPageRoute(
                             builder: (context) =>
-                            const ConsultaPacienteEmConsulta()),
+                            const ConsultaTratamentoSintomatologico()),
                       );
                     },
                     child: const Text(
@@ -498,7 +754,7 @@ class _ConsultaAtendimentoPacienteState
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                const ConsultaPacienteEmConsulta()),
+                                const ConsultaPossiveisDiagnosticos()),
                           );
                         },
                         child: const Text(
@@ -535,7 +791,7 @@ class _ConsultaAtendimentoPacienteState
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
-                                        const ConsultaPossiveisDiagnosticos()),
+                                        const ConsultaTratamentoSintomatologico()),
                               );
                             },
                             icon: Icon(
@@ -562,6 +818,6 @@ class _ConsultaAtendimentoPacienteState
               ),
             ]),
           )
-        ]));
+        ])));
   }
 }

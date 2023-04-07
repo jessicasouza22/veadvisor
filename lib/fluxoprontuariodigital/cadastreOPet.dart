@@ -87,7 +87,7 @@ class _CadastreOPetState extends State<CadastreOPetPage> {
     return Scaffold(
         appBar: AppBar(
           elevation: 0,
-          leading: const Icon(Icons.arrow_circle_left, color: Colors.white),
+          leading: const Icon(Icons.arrow_back, color: Colors.white),
 
           backgroundColor: const Color(0xFF3C10BB),
 
@@ -418,28 +418,28 @@ class _CadastreOPetState extends State<CadastreOPetPage> {
                     ],
                   ),
                 ),
+                    Padding(
+                    padding: const EdgeInsets.only(
+                    left: 20, right: 20, bottom: 10),
+                    child: Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                children: [
                 Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Padding(
-                        padding: EdgeInsets.only(top: 1),
-                        child: Text('Animal Castrado?',
+                       Text('Animal Castrado?',
                             //textAlign: TextAlign.start,
                             style: TextStyle(color: Colors.white)),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(left: 120),
-                        child: Switch(
+
+                       Switch(
                             value: false,
                             activeColor: Colors.white,
                             activeTrackColor: Colors.transparent,
                             onChanged: (value) {}),
-                      ),
+
                     ]),
-                Padding(
-                  padding: EdgeInsets.only(bottom: 1),
-                  child: Row(
-                      crossAxisAlignment: CrossAxisAlignment.start,
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
                       children: [
                         DropdownButton<String>(
                           items: meses.map(buildMenuItem).toList(),
@@ -452,54 +452,52 @@ class _CadastreOPetState extends State<CadastreOPetPage> {
                               setState(() => this.value = value),
                         )
                       ]),
-                ),
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
-                    children: [
-                      const Padding(
-                        padding: EdgeInsets.only(top: 1),
-                        child: Text('Animal Vacinado?',
-                            //textAlign: TextAlign.start,
-                            style: TextStyle(color: Colors.white)),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(left: 120),
 
-                        child: Switch(
-                            value: false,
-                            activeColor: Colors.white,
-                            activeTrackColor: Colors.transparent,
-                            onChanged: (value) {}),
-                      ),
-                    ]),
                 Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceAround,
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
-                      const Padding(
-                        padding: EdgeInsets.only(top: 1),
-                        child: Text('Animal Vermifugado?',
+                      Text('Animal Vacinado?',
                             //textAlign: TextAlign.start,
                             style: TextStyle(color: Colors.white)),
-                      ),
-                      Padding(
-                        padding: EdgeInsets.only(left: 120),
-                        child: Switch(
+                      Switch(
                             value: false,
                             activeColor: Colors.white,
                             activeTrackColor: Colors.transparent,
                             onChanged: (value) {}),
-                      ),
                     ]),
-                Padding(
-                    padding: EdgeInsets.only(),
-                    child: Row(children: const [
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.start,
+                    children: const [
                       Text(
                         "Cadastrar vacina",
                         style: TextStyle(fontSize: 12, color: Colors.white),
                       ),
                       Icon(MdiIcons.chevronDoubleRight,
                           color: Colors.white),
-                    ])),
+                    ]),
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                       Text('Animal Vermifugado?',
+                            //textAlign: TextAlign.start,
+                            style: TextStyle(color: Colors.white)),
+                      Switch(
+                            value: false,
+                            activeColor: Colors.white,
+                            activeTrackColor: Colors.transparent,
+                            onChanged: (value) {}),
+                    ]),
+                 Row(
+                   mainAxisAlignment: MainAxisAlignment.start,
+                     children: const [
+                      Text(
+                        "Cadastrar vermífugo >>",
+                        style: TextStyle(fontSize: 12, color: Colors.white),
+                      ),
+                      Icon(MdiIcons.chevronDoubleRight,
+                          color: Colors.white),
+                    ]),
+                ])),
                 Padding(
                   padding: const EdgeInsets.only(
                       left: 20, right: 20, bottom: 10),
@@ -533,16 +531,7 @@ class _CadastreOPetState extends State<CadastreOPetPage> {
                     ],
                   ),
                 ),
-                Padding(
-                    padding: const EdgeInsets.only(),
-                    child: Row(children: const [
-                      Text(
-                        "Cadastrar vermifogo",
-                        style: TextStyle(fontSize: 12, color: Colors.white),
-                      ),
-                      Icon(MdiIcons.chevronDoubleRight,
-                          color: Colors.white),
-                    ])),
+
                 Builder(
                   builder: (context) => ElevatedButton(
                       onPressed: () {

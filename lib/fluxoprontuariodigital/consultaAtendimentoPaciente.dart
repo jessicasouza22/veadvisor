@@ -66,11 +66,19 @@ class _ConsultaAtendimentoPacienteState
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        IconButton(
+                        Builder(
+                        builder: (context) => IconButton(
                             onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (
+                                        context) => const ConsultaPossiveisDiagnosticos()),
+                              );
+
                               //print("clicado na seta");
                             },
-                            icon: const Icon(Icons.arrow_back)),
+                            icon: const Icon(Icons.arrow_back))),
                         const Text(
                           "Fechar e voltar ao perfil",
                           //textAlign: TextAlign.center,

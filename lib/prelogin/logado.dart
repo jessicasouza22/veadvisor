@@ -170,7 +170,7 @@ class _LogadoPageState extends State<LogadoPage> {
                           padding:
                               EdgeInsets.only(bottom: 30, left: 20, top: 30),
                           child: Text(
-                            "${Constants.nomeDr}\n\n${Constants.emailDr}",
+                            "$_nomeUsuarioLogado\n\n$_nomeUsuarioLogado}",
                             style: TextStyle(fontSize: 14, color: Colors.white),
                           ),
                         ),

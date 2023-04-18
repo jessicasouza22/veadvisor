@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/cadastreOPet.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/consultaAtendimentoPaciente.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/consultaPossiveisDiagnosticos.dart';
+import 'package:vetadvisor/fluxoprontuariodigital/consultaTratamentoSintomatologicoPosologia.dart';
 import 'package:vetadvisor/recursos/Constants.dart';
 
 class ConsultaTratamentoSintomatologico extends StatelessWidget {
@@ -588,7 +589,7 @@ class _ConsultaTratamentoSintomatologicoState extends State<ConsultaTratamentoSi
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                const ConsultaPossiveisDiagnosticos()),
+                                const ConsultaTratamentoSintomatologicoPosologia()),
                           );
                         },
                         child: const Text(

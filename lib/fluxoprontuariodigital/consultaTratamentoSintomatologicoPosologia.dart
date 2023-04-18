@@ -1,5 +1,4 @@
-// 2.8 Consulta Tratamento Para Doenca
-
+// 2.7.1 Consulta Tratamento Sintomatologico Posologia
 
 import 'dart:io';
 
@@ -8,26 +7,25 @@ import 'package:flutter/material.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/cadastreOPet.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/consultaAtendimentoPaciente.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/consultaPossiveisDiagnosticos.dart';
-import 'package:vetadvisor/fluxoprontuariodigital/consultaTratamentoSintomatologicoPosologia.dart';
 import 'package:vetadvisor/recursos/Constants.dart';
 
-class ConsultaTratamentoParaDoenca extends StatelessWidget {
-  const ConsultaTratamentoParaDoenca({super.key});
+class ConsultaTratamentoSintomatologicoPosologia extends StatelessWidget {
+  const ConsultaTratamentoSintomatologicoPosologia({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const ConsultaTratamentoParaDoencaPage();
+    return const ConsultaTratamentoSintomatologicoPosologiaPage();
   }
 }
 
-class ConsultaTratamentoParaDoencaPage extends StatefulWidget {
-  const ConsultaTratamentoParaDoencaPage({Key? key}) : super(key: key);
+class ConsultaTratamentoSintomatologicoPosologiaPage extends StatefulWidget {
+  const ConsultaTratamentoSintomatologicoPosologiaPage({Key? key}) : super(key: key);
 
   @override
-  State<ConsultaTratamentoParaDoencaPage> createState() => _ConsultaTratamentoParaDoencaState();
+  State<ConsultaTratamentoSintomatologicoPosologiaPage> createState() => _ConsultaTratamentoSintomatologicoPosologiaState();
 }
 
-class _ConsultaTratamentoParaDoencaState extends State<ConsultaTratamentoParaDoencaPage> {
+class _ConsultaTratamentoSintomatologicoPosologiaState extends State<ConsultaTratamentoSintomatologicoPosologiaPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -271,57 +269,74 @@ class _ConsultaTratamentoParaDoencaState extends State<ConsultaTratamentoParaDoe
                 )*/
                     ]),
                   ),
+                  Padding(padding: EdgeInsets.all(10)),
                   Row(
-                    children: [
-                      Icon(Icons.health_and_safety_outlined),
-                      Text("Definir tratamento agora ou aguardar exames"),
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: const [
+                      Text("Posologia",
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Color(0xFF59616E),
+                          fontWeight: FontWeight.bold,
+                        ),),
+
                     ],
                   ),
+         
+                  Container(
 
+                      margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
+                      padding: const EdgeInsets.only(left: 15, right: 15),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
+                        color: Colors.orange,
+                      ),
+
+                    child:
                       Row(
-                          children: [
-                            Builder(
-                              builder: (context) => ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                      shape: const StadiumBorder(),
-                                      backgroundColor: Colors.white),
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                          const ConsultaTratamentoSintomatologicoPosologia()),
-                                    );
-                                  },
-                                  child: const Text(
-                                    'Sim',
-                                    style: TextStyle(color: Color(0xFF3C10BB)),
-                                  )),
-                            ),
+                        children: [
+                        Builder(
+                          builder: (context) => ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  shape: const StadiumBorder(),
+                                  backgroundColor: Colors.white),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                      const ConsultaTratamentoSintomatologicoPosologia()),
+                                );
+                              },
+                              child: const Text(
+                                'Automático',
+                                style: TextStyle(color: Color(0xFF3C10BB)),
+                              )),
+                        ),
 
-                            Builder(
-                              builder: (context) => ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                      shape: const StadiumBorder(),
-                                      backgroundColor: Colors.white),
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                          const ConsultaTratamentoSintomatologicoPosologia()),
-                                    );
-                                  },
-                                  child: const Text(
-                                    'Aguardar',
-                                    style: TextStyle(color: Color(0xFF3C10BB)),
-                                  )),
-                            ),
-
-
-                          ]),
+                          Builder(
+                            builder: (context) => ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                    shape: const StadiumBorder(),
+                                    backgroundColor: Colors.white),
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                        const ConsultaTratamentoSintomatologicoPosologia()),
+                                  );
+                                },
+                                child: const Text(
+                                 'Texto Livre',
+                                  style: TextStyle(color: Color(0xFF3C10BB)),
+                                )),
+                          ),
 
 
+                      ])
+                  ),
+                  
                   Container(
 
                     margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
@@ -330,8 +345,8 @@ class _ConsultaTratamentoParaDoencaState extends State<ConsultaTratamentoParaDoe
                       borderRadius: BorderRadius.circular(20),
                       color: Colors.white,
                     ),
-
-
+                    
+                    
                     child: Row(
                       children: [
                         Text("Dosagens"),
@@ -341,7 +356,7 @@ class _ConsultaTratamentoParaDoencaState extends State<ConsultaTratamentoParaDoe
                         Text("Dosagens para 51 kg"),
                         Text("20,4 - 30,6 mg"),
 
-
+                        
                       ],
                     ),
                   ),
@@ -353,15 +368,52 @@ class _ConsultaTratamentoParaDoencaState extends State<ConsultaTratamentoParaDoe
                     endIndent:10,
                     indent: 10,),
 
+                  Row(
+                    children: [
+                      Container(),
+                      Container(),
+                      Container(),
+                    ],
+                  ),
 
+                  Row(
+                    children: [
+                      Container(),
+                      Container(),
+                      Container(),
+                    ],
+                  ),
 
-                  Container(
-                    child: Row(
-                      children: [],
-                    ),
+                  Row(
+                    children: [
+                      Container(),
+                      Container(),
+                      Container(),
+                    ],
+                  ),
+
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: const [
+                      Text("Descrição final",
+                        style: TextStyle(
+                          fontSize: 14,
+                          color: Color(0xFF59616E),
+                          fontWeight: FontWeight.bold,
+                        ),),
+
+                    ],
                   ),
 
 
+                  Container(
+
+                    child: Row(
+                      children: [
+
+                      ],
+                    )
+                  ),
 
                   Builder(
                     builder: (context) => ElevatedButton(
@@ -377,7 +429,7 @@ class _ConsultaTratamentoParaDoencaState extends State<ConsultaTratamentoParaDoe
                           );
                         },
                         child: const Text(
-                          'Ver resumo',
+                          'Adicionar prescrição e ver resumo',
                           style: TextStyle(color: Color(0xFF3C10BB)),
                         )),
                   ),

@@ -9,6 +9,56 @@ import 'package:vetadvisor/fluxoprontuariodigital/consultaAtendimentoPaciente.da
 import 'package:vetadvisor/fluxoprontuariodigital/consultaPossiveisDiagnosticos.dart';
 import 'package:vetadvisor/recursos/Constants.dart';
 
+
+final apresentacao = [
+  'item1',
+  'item2',
+  'item3',
+];
+
+DropdownMenuItem<String> buildMenuItem(String apresentecao) => DropdownMenuItem(
+  value: apresentecao,
+  child: Text(
+    apresentecao,
+    style: TextStyle(
+      fontSize: 8,
+    ),
+  ),
+);
+
+
+final quantidade = [
+  '10',
+  '20',
+  '30',
+];
+
+DropdownMenuItem<String> buildMenuItemQuantidade(String quantidade) => DropdownMenuItem(
+  value: quantidade,
+  child: Text(
+    quantidade,
+    style: TextStyle(
+      fontSize: 8,
+    ),
+  ),
+);
+
+final unidadeDeMedida = [
+  'mg',
+  'gm',
+  'kg',
+];
+
+DropdownMenuItem<String> buildMenuItemUnidadeDeMedida(String unidadeDeMedida) => DropdownMenuItem(
+  value: unidadeDeMedida,
+  child: Text(
+    unidadeDeMedida,
+    style: TextStyle(
+      fontSize: 8,
+    ),
+  ),
+);
+
 class ConsultaTratamentoSintomatologicoPosologia extends StatelessWidget {
   const ConsultaTratamentoSintomatologicoPosologia({super.key});
 
@@ -26,6 +76,8 @@ class ConsultaTratamentoSintomatologicoPosologiaPage extends StatefulWidget {
 }
 
 class _ConsultaTratamentoSintomatologicoPosologiaState extends State<ConsultaTratamentoSintomatologicoPosologiaPage> {
+  set value(String? value) {}
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -289,11 +341,12 @@ class _ConsultaTratamentoSintomatologicoPosologiaState extends State<ConsultaTra
                       padding: const EdgeInsets.only(left: 15, right: 15),
                       decoration: BoxDecoration(
                         borderRadius: BorderRadius.circular(20),
-                        color: Colors.orange,
+                        color: Color(0xFF3C10BB),
                       ),
 
                     child:
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
                         Builder(
                           builder: (context) => ElevatedButton(
@@ -318,7 +371,7 @@ class _ConsultaTratamentoSintomatologicoPosologiaState extends State<ConsultaTra
                             builder: (context) => ElevatedButton(
                                 style: ElevatedButton.styleFrom(
                                     shape: const StadiumBorder(),
-                                    backgroundColor: Colors.white),
+                                    backgroundColor: Color(0xFF3C10BB)),
                                 onPressed: () {
                                   Navigator.push(
                                     context,
@@ -329,7 +382,7 @@ class _ConsultaTratamentoSintomatologicoPosologiaState extends State<ConsultaTra
                                 },
                                 child: const Text(
                                  'Texto Livre',
-                                  style: TextStyle(color: Color(0xFF3C10BB)),
+                                  style: TextStyle(color: Colors.white),
                                 )),
                           ),
 
@@ -347,16 +400,33 @@ class _ConsultaTratamentoSintomatologicoPosologiaState extends State<ConsultaTra
                     ),
                     
                     
-                    child: Row(
+                    child: Column(
                       children: [
+                        Row(
+                        children: [
                         Text("Dosagens"),
-                        Text("Canino - 0.4 - 0.6 mg / kg"),
-                        Text("Calculadora de doses"),
-                        Text("Peso do animal (em kg):"),
-                        Text("Dosagens para 51 kg"),
-                        Text("20,4 - 30,6 mg"),
+                        ]),
+                        Row(
+                            children: [
+                              Text("Canino - 0.4 - 0.6 mg / kg"),
+                            ]),
+                        Row(
+                            children: [
+                              Text("Calculadora de doses"),
+                            ]),
 
-                        
+                        Row(
+                            children: [
+                              Text("Peso do animal (em kg):"),
+                            ]),
+                        Row(
+                            children: [
+                              Text("Dosagens para 51 kg"),
+                            ]),
+                        Row(
+                            children: [
+                              Text("20,4 - 30,6 mg"),
+                            ]),
                       ],
                     ),
                   ),
@@ -370,25 +440,268 @@ class _ConsultaTratamentoSintomatologicoPosologiaState extends State<ConsultaTra
 
                   Row(
                     children: [
-                      Container(),
-                      Container(),
-                      Container(),
+                      Container(
+                        //margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
+                        padding: const EdgeInsets.only(left: 15, right: 15),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.white,
+                        ),
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Text("Apresentação"),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                DropdownButton<String>(
+                                  items: apresentacao.map(buildMenuItem).toList(),
+                                  onChanged: (value) =>
+                                      setState(() => this.value = value),
+                                ),
+                              ],
+                            ),
+
+                          ],
+                        ),
+
+                      ),
+                      Container(
+                        //margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
+                        padding: const EdgeInsets.only(left: 15, right: 15),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.white,
+                        ),
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Text("Concentração"),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                DropdownButton<String>(
+                                  items: quantidade.map(buildMenuItemQuantidade).toList(),
+                                  onChanged: (value) =>
+                                      setState(() => this.value = value),
+                                ),
+                                DropdownButton<String>(
+                                  items: unidadeDeMedida.map(buildMenuItemUnidadeDeMedida).toList(),
+                                  onChanged: (value) =>
+                                      setState(() => this.value = value),
+                                ),
+                              ],
+                            ),
+
+                          ],
+                        ),
+
+                      ),
+                      Container(
+                        //margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
+                        padding: const EdgeInsets.only(left: 15, right: 15),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.transparent,
+                        ),
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Text("Calcular dose"),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Container(
+                                  //margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
+                                 // padding: const EdgeInsets.only(left: 15, right: 15),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: Color(0xFFF8DACC),
+                                  ),
+                                child: Text("Calcular",
+                                style: TextStyle(
+                                    color: Color(0xFFF55F44),
+                                ),),
+                                ),
+                                Container(
+                                  //padding: const EdgeInsets.all(1),
+                                  //  margin: const EdgeInsets.only(top: 10),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(50),
+                                      color: Color(0xFFF55F44),
+                                    ),
+                                    child: const Icon(
+                                      Icons.add,
+                                      color: Colors.white,
+                                      size: 20,
+                                    )),
+                              ],
+                            ),
+
+                          ],
+                        ),
+
+                      ),
                     ],
                   ),
 
                   Row(
                     children: [
-                      Container(),
-                      Container(),
-                      Container(),
+                      Container(
+                        //margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
+                        padding: const EdgeInsets.only(left: 15, right: 15),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.white,
+                        ),
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Text("Dose"),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Text("Apoquel"),
+                              ],
+                            ),
+
+                          ],
+                        ),
+
+                      ),
+                      Container(
+                        //margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
+                        padding: const EdgeInsets.only(left: 15, right: 15),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.white,
+                        ),
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Text("Apresentação"),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Text("Apoquel"),
+                              ],
+                            ),
+
+                          ],
+                        ),
+
+                      ),
+                      Container(
+                        //margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
+                        padding: const EdgeInsets.only(left: 15, right: 15),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.white,
+                        ),
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Text("Apresentação"),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Text("Apoquel"),
+                              ],
+                            ),
+
+                          ],
+                        ),
+
+                      ),
                     ],
                   ),
 
                   Row(
                     children: [
-                      Container(),
-                      Container(),
-                      Container(),
+                      Container(
+                        //margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
+                        padding: const EdgeInsets.only(left: 15, right: 15),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.white,
+                        ),
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Text("Apresentação"),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Text("Apoquel"),
+                              ],
+                            ),
+
+                          ],
+                        ),
+
+                      ),
+                      Container(
+                        //margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
+                        padding: const EdgeInsets.only(left: 15, right: 15),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.white,
+                        ),
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Text("Apresentação"),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Text("Apoquel"),
+                              ],
+                            ),
+
+                          ],
+                        ),
+
+                      ),
+                      Container(
+                        //margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
+                        padding: const EdgeInsets.only(left: 15, right: 15),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(20),
+                          color: Colors.white,
+                        ),
+                        child: Column(
+                          children: [
+                            Row(
+                              children: [
+                                Text("Apresentação"),
+                              ],
+                            ),
+                            Row(
+                              children: [
+                                Text("Apoquel"),
+                              ],
+                            ),
+
+                          ],
+                        ),
+
+                      ),
                     ],
                   ),
 
@@ -405,6 +718,29 @@ class _ConsultaTratamentoSintomatologicoPosologiaState extends State<ConsultaTra
                     ],
                   ),
 
+                  Container(
+
+                    margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
+                    padding: const EdgeInsets.only(left: 15, right: 15),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.white,
+                    ),
+
+
+                    child: Column(
+                      children: [
+                        Row(
+                            children: [
+                              Text("Administrar 2 comprimido a cada 8 horas por 1 semana"),
+                            ]),
+                        Row(
+                            children: [
+
+                            ]),
+                      ],
+                    ),
+                  ),
 
                   Container(
 

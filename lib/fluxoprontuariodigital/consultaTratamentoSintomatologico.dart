@@ -575,7 +575,7 @@ class _ConsultaTratamentoSintomatologicoState extends State<ConsultaTratamentoSi
                           );
                         },
                         child: const Text(
-                          'PDefinir posologia',
+                          'Definir posologia',
                           style: TextStyle(color: Color(0xFF3C10BB)),
                         )),
                   ),

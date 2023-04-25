@@ -3,12 +3,13 @@
 
 import 'dart:io';
 
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/cadastreOPet.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/consultaAtendimentoPaciente.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/consultaPossiveisDiagnosticos.dart';
-import 'package:vetadvisor/fluxoprontuariodigital/consultaTratamentoSintomatologicoPosologia.dart';
+import 'package:vetadvisor/fluxoprontuariodigital/consultaTratamentoSintomatologicoPosologiaAutomatico.dart';
 import 'package:vetadvisor/recursos/Constants.dart';
 
 class ConsultaTratamentoParaDoenca extends StatelessWidget {
@@ -273,31 +274,38 @@ class _ConsultaTratamentoParaDoencaState extends State<ConsultaTratamentoParaDoe
                   ),
                   Row(
                     children: [
-                      Icon(Icons.health_and_safety_outlined),
-                      Text("Definir tratamento agora ou aguardar exames"),
+                      Icon(Icons.health_and_safety_outlined,
+                        color: Color(0xFF8F90A6),
+                        size: 18,),
+                      Text("Definir tratamento agora ou aguardar exames",
+                      style: TextStyle(
+                        color: Color(0xFF8F90A6),
+                      ),),
                     ],
                   ),
 
                       Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Builder(
                               builder: (context) => ElevatedButton(
                                   style: ElevatedButton.styleFrom(
                                       shape: const StadiumBorder(),
-                                      backgroundColor: Colors.white),
+                                      backgroundColor: Color(0xFF12EC1A)),
                                   onPressed: () {
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                          const ConsultaTratamentoSintomatologicoPosologia()),
+                                          const ConsultaTratamentoSintomatologicoPosologiaAutomatico()),
                                     );
                                   },
                                   child: const Text(
                                     'Sim',
-                                    style: TextStyle(color: Color(0xFF3C10BB)),
+                                    style: TextStyle(color: Colors.white),
                                   )),
                             ),
+                            Padding(padding: EdgeInsets.all(10)),
 
                             Builder(
                               builder: (context) => ElevatedButton(
@@ -309,7 +317,7 @@ class _ConsultaTratamentoParaDoencaState extends State<ConsultaTratamentoParaDoe
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                          const ConsultaTratamentoSintomatologicoPosologia()),
+                                          const ConsultaTratamentoSintomatologicoPosologiaAutomatico()),
                                     );
                                   },
                                   child: const Text(
@@ -328,18 +336,29 @@ class _ConsultaTratamentoParaDoencaState extends State<ConsultaTratamentoParaDoe
                     padding: const EdgeInsets.only(left: 15, right: 15),
                     decoration: BoxDecoration(
                       borderRadius: BorderRadius.circular(20),
-                      color: Colors.white,
+                      color: Color(0xFFF8DACC),
                     ),
 
 
                     child: Row(
                       children: [
-                        Text("Dosagens"),
-                        Text("Canino - 0.4 - 0.6 mg / kg"),
-                        Text("Calculadora de doses"),
-                        Text("Peso do animal (em kg):"),
-                        Text("Dosagens para 51 kg"),
-                        Text("20,4 - 30,6 mg"),
+                        Icon(MdiIcons.dotsCircle,
+                            color: Color(0xFF59616E)
+
+                        ),
+                        Flexible(child: AutoSizeText(
+                            'Quero compartilhar com meus colegas na comunidade de apoio. Vamos lá!',
+                            maxLines: 2,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 12,
+                              fontFamily: 'Inter Variable Font',
+                              color: Color(0xFFF55F44),
+                            )
+                        ),
+                        ),
+                        Icon(MdiIcons.shareVariant,
+                          color: Color(0xFF59616E)),
 
 
                       ],
@@ -354,10 +373,42 @@ class _ConsultaTratamentoParaDoencaState extends State<ConsultaTratamentoParaDoe
                     indent: 10,),
 
 
-
                   Container(
+
+                    margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
+                    padding: const EdgeInsets.only(left: 15, right: 15),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(10),
+                      color: Color(0xFFF8DACC),
+                    ),
+
+
                     child: Row(
-                      children: [],
+                      children: [
+                      Checkbox(
+                      checkColor: Colors.white,
+                      activeColor: Colors.green,
+                      //fillColor: MaterialStateProperty.resolveWith(getColor),
+                      value: true,
+                      shape: CircleBorder(),
+                      onChanged: (value) {},
+                    ),
+                        Flexible(child: AutoSizeText(
+                            'Ativar alerta quando exames estiver prontos?',
+                            maxLines: 1,
+                            textAlign: TextAlign.center,
+                            style: TextStyle(
+                              fontSize: 12,
+                              fontFamily: 'Inter Variable Font',
+                              color: Color(0xFFF55F44),
+                            )
+                        ),
+                        ),
+                        Icon(MdiIcons.bellRing,
+                            color: Color(0xFF59616E)),
+
+
+                      ],
                     ),
                   ),
 
@@ -373,7 +424,7 @@ class _ConsultaTratamentoParaDoencaState extends State<ConsultaTratamentoParaDoe
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                const ConsultaTratamentoSintomatologicoPosologia()),
+                                const ConsultaTratamentoSintomatologicoPosologiaAutomatico()),
                           );
                         },
                         child: const Text(

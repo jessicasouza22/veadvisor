@@ -1,19 +1,140 @@
-// 2.7.1 Consulta Tratamento Sintomatologico Posologia
+// 2.7.1 Consulta Tratamento Sintomatologico Posologia Automatico
 
 import 'dart:io';
 
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:vetadvisor/fluxoprontuariodigital/ConsultaTratamentoSintomatologicoPosologiaTextoLivre.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/cadastreOPet.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/consultaAtendimentoPaciente.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/consultaPossiveisDiagnosticos.dart';
 import 'package:vetadvisor/recursos/Constants.dart';
 
 
+DropdownMenuItem<String> buildMenuItemQuantidade(String quantidade) => DropdownMenuItem(
+  value: quantidade,
+  child: Text(
+    quantidade,
+    style: TextStyle(
+      fontSize: 5,
+    ),
+  ),
+);
+
+final quantidade = [
+  '1',
+  '2',
+  '3',
+  '4',
+  '5'
+];
+
+final quantidadeDeDuracao = [
+  '1',
+  '2',
+  '3',
+  '4',
+  '5',
+  '6',
+
+];
+DropdownMenuItem<String> buildMenuItemQuantidadeDeDuracao(String quantidadeDeDuracao) => DropdownMenuItem(
+  value: quantidadeDeDuracao,
+  child: Text(
+    quantidadeDeDuracao,
+    style: TextStyle(
+      fontSize: 5,
+    ),
+  ),
+);
+
+final tipoDeDuracao = [
+  'dia',
+  'semana',
+  'mes',
+  'ano'
+
+];
+
+DropdownMenuItem<String> buildMenuItemTipoDeDuracao(String tipoDeDuracao) => DropdownMenuItem(
+  value: tipoDeDuracao,
+  child: Text(
+    tipoDeDuracao,
+    style: TextStyle(
+      fontSize: 5,
+    ),
+  ),
+);
+
+DropdownMenuItem<String> buildMenuItemfrequencia(String frequencia) => DropdownMenuItem(
+  value: frequencia,
+  child: Text(
+    frequencia,
+    style: TextStyle(
+      fontSize: 5,
+    ),
+  ),
+);
+final frequencia = [
+  'a cada 8h',
+  'a cada 6h',
+  'a cada 12h',
+];
+
+DropdownMenuItem<String> buildMenuItemvia(String via) => DropdownMenuItem(
+  value: via,
+  child: Text(
+    via,
+    style: TextStyle(
+      fontSize: 5,
+    ),
+  ),
+);
+
+final via = [
+  'oral',
+  'nasal',
+  'outros',
+];
 final apresentacao = [
   'item1',
   'item2',
   'item3',
+];
+
+DropdownMenuItem<String> buildMenuItemquantidadeDeDose(String quantidadeDeDose) => DropdownMenuItem(
+  value: quantidadeDeDose,
+  child: Text(
+    quantidadeDeDose,
+    style: TextStyle(
+      fontSize: 5,
+    ),
+  ),
+);
+
+final quantidadeDeDose = [
+  '1',
+  '2',
+  '3',
+  '4',
+  '5'
+];
+DropdownMenuItem<String> buildMenuItemtipoDeDose(String tipoDeDose) => DropdownMenuItem(
+  value: tipoDeDose,
+  child: Text(
+    tipoDeDose,
+    style: TextStyle(
+      fontSize: 5,
+    ),
+  ),
+);
+final tipoDeDose = [
+  'comp',
+  'gota',
+  'ml',
+  'lt',
+  'ots'
 ];
 
 DropdownMenuItem<String> buildMenuItem(String apresentecao) => DropdownMenuItem(
@@ -21,24 +142,24 @@ DropdownMenuItem<String> buildMenuItem(String apresentecao) => DropdownMenuItem(
   child: Text(
     apresentecao,
     style: TextStyle(
-      fontSize: 8,
+      fontSize: 5,
     ),
   ),
 );
 
 
-final quantidade = [
+final quantidade02 = [
   '10',
   '20',
   '30',
 ];
 
-DropdownMenuItem<String> buildMenuItemQuantidade(String quantidade) => DropdownMenuItem(
-  value: quantidade,
+DropdownMenuItem<String> buildMenuItemQuantidade02(String quantidade02) => DropdownMenuItem(
+  value: quantidade02,
   child: Text(
-    quantidade,
+    quantidade02,
     style: TextStyle(
-      fontSize: 8,
+      fontSize: 5,
     ),
   ),
 );
@@ -54,28 +175,28 @@ DropdownMenuItem<String> buildMenuItemUnidadeDeMedida(String unidadeDeMedida) =>
   child: Text(
     unidadeDeMedida,
     style: TextStyle(
-      fontSize: 8,
+      fontSize: 5,
     ),
   ),
 );
 
-class ConsultaTratamentoSintomatologicoPosologia extends StatelessWidget {
-  const ConsultaTratamentoSintomatologicoPosologia({super.key});
+class ConsultaTratamentoSintomatologicoPosologiaAutomatico extends StatelessWidget {
+  const ConsultaTratamentoSintomatologicoPosologiaAutomatico ({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const ConsultaTratamentoSintomatologicoPosologiaPage();
+    return const ConsultaTratamentoSintomatologicoPosologiaAutomaticoPage();
   }
 }
 
-class ConsultaTratamentoSintomatologicoPosologiaPage extends StatefulWidget {
-  const ConsultaTratamentoSintomatologicoPosologiaPage({Key? key}) : super(key: key);
+class ConsultaTratamentoSintomatologicoPosologiaAutomaticoPage extends StatefulWidget {
+  const ConsultaTratamentoSintomatologicoPosologiaAutomaticoPage({Key? key}) : super(key: key);
 
   @override
-  State<ConsultaTratamentoSintomatologicoPosologiaPage> createState() => _ConsultaTratamentoSintomatologicoPosologiaState();
+  State<ConsultaTratamentoSintomatologicoPosologiaAutomaticoPage> createState() => _ConsultaTratamentoSintomatologicoPosologiaAutomaticoState();
 }
 
-class _ConsultaTratamentoSintomatologicoPosologiaState extends State<ConsultaTratamentoSintomatologicoPosologiaPage> {
+class _ConsultaTratamentoSintomatologicoPosologiaAutomaticoState extends State<ConsultaTratamentoSintomatologicoPosologiaAutomaticoPage> {
   set value(String? value) {}
 
   @override
@@ -358,13 +479,13 @@ class _ConsultaTratamentoSintomatologicoPosologiaState extends State<ConsultaTra
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                      const ConsultaTratamentoSintomatologicoPosologia()),
+                                      const ConsultaTratamentoSintomatologicoPosologiaAutomatico()),
                                 );
                               },
                               child: const Text(
                                 'Automático',
                                 style: TextStyle(color: Color(0xFF3C10BB)),
-                              )),
+                              ),),
                         ),
 
                           Builder(
@@ -377,7 +498,7 @@ class _ConsultaTratamentoSintomatologicoPosologiaState extends State<ConsultaTra
                                     context,
                                     MaterialPageRoute(
                                         builder: (context) =>
-                                        const ConsultaTratamentoSintomatologicoPosologia()),
+                                        const ConsultaTratamentoSintomatologicoPosologiaTextoLivre()),
                                   );
                                 },
                                 child: const Text(
@@ -404,28 +525,46 @@ class _ConsultaTratamentoSintomatologicoPosologiaState extends State<ConsultaTra
                       children: [
                         Row(
                         children: [
-                        Text("Dosagens"),
+                        Text("Dosagens",
+                        style: TextStyle(
+                          fontSize:12,
+                        ),),
                         ]),
                         Row(
                             children: [
-                              Text("Canino - 0.4 - 0.6 mg / kg"),
+                              Text("Canino - 0.4 - 0.6 mg / kg",
+                                  style: TextStyle(
+                                    fontSize:12,
+                                  )),
                             ]),
                         Row(
                             children: [
-                              Text("Calculadora de doses"),
+                              Text("Calculadora de doses",
+                                  style: TextStyle(
+                                    fontSize:12,
+                                  )),
                             ]),
 
                         Row(
                             children: [
-                              Text("Peso do animal (em kg):"),
+                              Text("Peso do animal (em kg):",
+                                  style: TextStyle(
+                                    fontSize:12,
+                                  )),
                             ]),
                         Row(
                             children: [
-                              Text("Dosagens para 51 kg"),
+                              Text("Dosagens para 51 kg",
+                                  style: TextStyle(
+                                    fontSize:12,
+                                  )),
                             ]),
                         Row(
                             children: [
-                              Text("20,4 - 30,6 mg"),
+                              Text("20,4 - 30,6 mg",
+                                  style: TextStyle(
+                                    fontSize:12,
+                                  )),
                             ]),
                       ],
                     ),
@@ -451,7 +590,10 @@ class _ConsultaTratamentoSintomatologicoPosologiaState extends State<ConsultaTra
                           children: [
                             Row(
                               children: [
-                                Text("Apresentação"),
+                                Text("Apresentação",
+                                    style: TextStyle(
+                                      fontSize:12,
+                                    )),
                               ],
                             ),
                             Row(
@@ -479,7 +621,10 @@ class _ConsultaTratamentoSintomatologicoPosologiaState extends State<ConsultaTra
                           children: [
                             Row(
                               children: [
-                                Text("Concentração"),
+                                Text("Concentração",
+                                    style: TextStyle(
+                                      fontSize:12,
+                                    )),
                               ],
                             ),
                             Row(
@@ -512,7 +657,10 @@ class _ConsultaTratamentoSintomatologicoPosologiaState extends State<ConsultaTra
                           children: [
                             Row(
                               children: [
-                                Text("Calcular dose"),
+                                Text("Calcular dose",
+                                    style: TextStyle(
+                                      fontSize:12,
+                                    )),
                               ],
                             ),
                             Row(
@@ -527,6 +675,7 @@ class _ConsultaTratamentoSintomatologicoPosologiaState extends State<ConsultaTra
                                 child: Text("Calcular",
                                 style: TextStyle(
                                     color: Color(0xFFF55F44),
+                                    fontSize: 12,
                                 ),),
                                 ),
                                 Container(
@@ -564,14 +713,26 @@ class _ConsultaTratamentoSintomatologicoPosologiaState extends State<ConsultaTra
                           children: [
                             Row(
                               children: [
-                                Text("Dose"),
+                                Text("Dose",
+                                    style: TextStyle(
+                                      fontSize:12,
+                                    )),
                               ],
                             ),
                             Row(
                               children: [
-                                Text("Apoquel"),
+                                DropdownButton<String>(
+                                  items: quantidadeDeDose.map(buildMenuItemquantidadeDeDose).toList(),
+                                  onChanged: (value) =>
+                                      setState(() => this.value = value),
+                                ),
+                                DropdownButton<String>(
+                                  items: tipoDeDose.map(buildMenuItemtipoDeDose).toList(),
+                                  onChanged: (value) =>
+                                      setState(() => this.value = value),
+                                ),
                               ],
-                            ),
+                            )
 
                           ],
                         ),
@@ -588,15 +749,21 @@ class _ConsultaTratamentoSintomatologicoPosologiaState extends State<ConsultaTra
                           children: [
                             Row(
                               children: [
-                                Text("Apresentação"),
+                                Text("Frequencia",
+                                    style: TextStyle(
+                                      fontSize:12,
+                                    )),
                               ],
                             ),
                             Row(
                               children: [
-                                Text("Apoquel"),
+                                DropdownButton<String>(
+                                  items: frequencia.map(buildMenuItemfrequencia).toList(),
+                                  onChanged: (value) =>
+                                      setState(() => this.value = value),
+                                ),
                               ],
-                            ),
-
+                            )
                           ],
                         ),
 
@@ -612,14 +779,21 @@ class _ConsultaTratamentoSintomatologicoPosologiaState extends State<ConsultaTra
                           children: [
                             Row(
                               children: [
-                                Text("Apresentação"),
+                                Text("Via",
+                                    style: TextStyle(
+                                      fontSize:12,
+                                    )),
                               ],
                             ),
                             Row(
                               children: [
-                                Text("Apoquel"),
+                                DropdownButton<String>(
+                                  items: via.map(buildMenuItemvia).toList(),
+                                  onChanged: (value) =>
+                                      setState(() => this.value = value),
+                                ),
                               ],
-                            ),
+                            )
 
                           ],
                         ),
@@ -641,14 +815,26 @@ class _ConsultaTratamentoSintomatologicoPosologiaState extends State<ConsultaTra
                           children: [
                             Row(
                               children: [
-                                Text("Apresentação"),
+                                Text("Duracao",
+                                    style: TextStyle(
+                                      fontSize:12,
+                                    )),
                               ],
                             ),
                             Row(
                               children: [
-                                Text("Apoquel"),
+                                DropdownButton<String>(
+                                  items: quantidadeDeDuracao.map(buildMenuItemQuantidadeDeDuracao).toList(),
+                                  onChanged: (value) =>
+                                      setState(() => this.value = value),
+                                ),
+                                DropdownButton<String>(
+                                  items: tipoDeDuracao.map(buildMenuItemTipoDeDuracao).toList(),
+                                  onChanged: (value) =>
+                                      setState(() => this.value = value),
+                                ),
                               ],
-                            ),
+                            )
 
                           ],
                         ),
@@ -665,12 +851,19 @@ class _ConsultaTratamentoSintomatologicoPosologiaState extends State<ConsultaTra
                           children: [
                             Row(
                               children: [
-                                Text("Apresentação"),
+                                Text("Quantidade",
+                                    style: TextStyle(
+                                      fontSize:12,
+                                    )),
                               ],
                             ),
                             Row(
                               children: [
-                                Text("Apoquel"),
+                                DropdownButton<String>(
+                                  items: quantidade.map(buildMenuItemQuantidade).toList(),
+                                  onChanged: (value) =>
+                                      setState(() => this.value = value),
+                                ),
                               ],
                             ),
 
@@ -678,30 +871,7 @@ class _ConsultaTratamentoSintomatologicoPosologiaState extends State<ConsultaTra
                         ),
 
                       ),
-                      Container(
-                        //margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
-                        padding: const EdgeInsets.only(left: 15, right: 15),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.white,
-                        ),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Text("Apresentação"),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Text("Apoquel"),
-                              ],
-                            ),
 
-                          ],
-                        ),
-
-                      ),
                     ],
                   ),
 
@@ -710,7 +880,7 @@ class _ConsultaTratamentoSintomatologicoPosologiaState extends State<ConsultaTra
                     children: const [
                       Text("Descrição final",
                         style: TextStyle(
-                          fontSize: 14,
+                          fontSize: 12,
                           color: Color(0xFF59616E),
                           fontWeight: FontWeight.bold,
                         ),),
@@ -730,26 +900,33 @@ class _ConsultaTratamentoSintomatologicoPosologiaState extends State<ConsultaTra
 
                     child: Column(
                       children: [
-                        Row(
+                       Row(
                             children: [
-                              Text("Administrar 2 comprimido a cada 8 horas por 1 semana"),
-                            ]),
-                        Row(
-                            children: [
-
+                              Flexible(child: AutoSizeText(
+                                  'Administrar 2 comprimido a cada 8 horas por 1 semana',
+                                  maxLines: 2,
+                                  textAlign: TextAlign.justify,
+                                  style: TextStyle(
+                                    fontSize: 12,
+                                    fontFamily: 'Inter Variable Font',
+                                 //   color: Color(0xFF59616E),
+                                  )
+                              ),
+                              ),
+                              Icon(MdiIcons.applicationEditOutline,
+                                  color: Color(0xFF3C10BB),
+                                  size: 12
+                                  ),
+                              Text("Edit",
+                              style: TextStyle(
+                                  color: Color(0xFF3C10BB),
+                                  fontSize: 12,
+                              ),),
                             ]),
                       ],
                     ),
                   ),
 
-                  Container(
-
-                    child: Row(
-                      children: [
-
-                      ],
-                    )
-                  ),
 
                   Builder(
                     builder: (context) => ElevatedButton(
@@ -761,7 +938,7 @@ class _ConsultaTratamentoSintomatologicoPosologiaState extends State<ConsultaTra
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                const ConsultaTratamentoSintomatologicoPosologia()),
+                                const ConsultaTratamentoSintomatologicoPosologiaAutomatico()),
                           );
                         },
                         child: const Text(

@@ -12,6 +12,8 @@ import 'package:vetadvisor/fluxoprontuariodigital/consultaPossiveisDiagnosticos.
 import 'package:vetadvisor/fluxoprontuariodigital/consultaTratamentoSintomatologicoPosologiaAutomatico.dart';
 import 'package:vetadvisor/recursos/Constants.dart';
 
+import 'consultaTramentoParaDoencaSugerido.dart';
+
 class ConsultaTratamentoParaDoenca extends StatelessWidget {
   const ConsultaTratamentoParaDoenca({super.key});
 
@@ -94,7 +96,7 @@ class _ConsultaTratamentoParaDoencaState extends State<ConsultaTratamentoParaDoe
         body: SingleChildScrollView(
             child: Column(children: [
               Container(
-                margin: const EdgeInsets.only(top: 20, left: 20, right: 20),
+                margin: const EdgeInsets.only(top: 10, left: 20, right: 20),
                 padding: const EdgeInsets.only(bottom: 240),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
@@ -102,6 +104,12 @@ class _ConsultaTratamentoParaDoencaState extends State<ConsultaTratamentoParaDoe
                   //color: Colors.orange,
                 ),
                 child: Column(children: [
+                  Text(
+                    "Tratamento para doença",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: Color(0xFF4116B4), fontWeight: FontWeight.bold),
+                  ),
                   Container(
                     // color: Colors.blue,
 
@@ -297,7 +305,7 @@ class _ConsultaTratamentoParaDoencaState extends State<ConsultaTratamentoParaDoe
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                          const ConsultaTratamentoSintomatologicoPosologiaAutomatico()),
+                                          const ConsultaTratamentoParaDoencaSugerido()),
                                     );
                                   },
                                   child: const Text(
@@ -424,7 +432,7 @@ class _ConsultaTratamentoParaDoencaState extends State<ConsultaTratamentoParaDoe
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                const ConsultaTratamentoSintomatologicoPosologiaAutomatico()),
+                                const ConsultaTratamentoParaDoencaSugerido()),
                           );
                         },
                         child: const Text(

@@ -1,6 +1,5 @@
 // 2.8.2 Consulta Tratamento Para Doenca Sugerido Previa
 
-
 import 'dart:io';
 
 import 'package:auto_size_text/auto_size_text.dart';
@@ -8,177 +7,11 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:flutter/material.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/cadastreOPet.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/consultaAtendimentoPaciente.dart';
+import 'package:vetadvisor/fluxoprontuariodigital/consultaMarcosTerapeuticos.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/consultaPossiveisDiagnosticos.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/consultaTratamentoSintomatologicoPosologiaAutomatico.dart';
 import 'package:vetadvisor/recursos/Constants.dart';
-
-DropdownMenuItem<String> buildMenuItemQuantidade(String quantidade) => DropdownMenuItem(
-  value: quantidade,
-  child: Text(
-    quantidade,
-    style: TextStyle(
-      fontSize: 5,
-    ),
-  ),
-);
-
-final quantidade = [
-  '1',
-  '2',
-  '3',
-  '4',
-  '5'
-];
-
-final quantidadeDeDuracao = [
-  '1',
-  '2',
-  '3',
-  '4',
-  '5',
-  '6',
-
-];
-DropdownMenuItem<String> buildMenuItemQuantidadeDeDuracao(String quantidadeDeDuracao) => DropdownMenuItem(
-  value: quantidadeDeDuracao,
-  child: Text(
-    quantidadeDeDuracao,
-    style: TextStyle(
-      fontSize: 5,
-    ),
-  ),
-);
-
-final tipoDeDuracao = [
-  'dia',
-  'semana',
-  'mes',
-  'ano'
-
-];
-
-DropdownMenuItem<String> buildMenuItemTipoDeDuracao(String tipoDeDuracao) => DropdownMenuItem(
-  value: tipoDeDuracao,
-  child: Text(
-    tipoDeDuracao,
-    style: TextStyle(
-      fontSize: 5,
-    ),
-  ),
-);
-
-DropdownMenuItem<String> buildMenuItemfrequencia(String frequencia) => DropdownMenuItem(
-  value: frequencia,
-  child: Text(
-    frequencia,
-    style: TextStyle(
-      fontSize: 5,
-    ),
-  ),
-);
-final frequencia = [
-  'a cada 8h',
-  'a cada 6h',
-  'a cada 12h',
-];
-
-DropdownMenuItem<String> buildMenuItemvia(String via) => DropdownMenuItem(
-  value: via,
-  child: Text(
-    via,
-    style: TextStyle(
-      fontSize: 5,
-    ),
-  ),
-);
-
-final via = [
-  'oral',
-  'nasal',
-  'outros',
-];
-final apresentacao = [
-  'item1',
-  'item2',
-  'item3',
-];
-
-DropdownMenuItem<String> buildMenuItemquantidadeDeDose(String quantidadeDeDose) => DropdownMenuItem(
-  value: quantidadeDeDose,
-  child: Text(
-    quantidadeDeDose,
-    style: TextStyle(
-      fontSize: 5,
-    ),
-  ),
-);
-
-final quantidadeDeDose = [
-  '1',
-  '2',
-  '3',
-  '4',
-  '5'
-];
-DropdownMenuItem<String> buildMenuItemtipoDeDose(String tipoDeDose) => DropdownMenuItem(
-  value: tipoDeDose,
-  child: Text(
-    tipoDeDose,
-    style: TextStyle(
-      fontSize: 5,
-    ),
-  ),
-);
-final tipoDeDose = [
-  'comp',
-  'gota',
-  'ml',
-  'lt',
-  'ots'
-];
-
-DropdownMenuItem<String> buildMenuItem(String apresentecao) => DropdownMenuItem(
-  value: apresentecao,
-  child: Text(
-    apresentecao,
-    style: TextStyle(
-      fontSize: 5,
-    ),
-  ),
-);
-
-
-final quantidade02 = [
-  '10',
-  '20',
-  '30',
-];
-
-DropdownMenuItem<String> buildMenuItemQuantidade02(String quantidade02) => DropdownMenuItem(
-  value: quantidade02,
-  child: Text(
-    quantidade02,
-    style: TextStyle(
-      fontSize: 5,
-    ),
-  ),
-);
-
-final unidadeDeMedida = [
-  'mg',
-  'gm',
-  'kg',
-];
-
-DropdownMenuItem<String> buildMenuItemUnidadeDeMedida(String unidadeDeMedida) => DropdownMenuItem(
-  value: unidadeDeMedida,
-  child: Text(
-    unidadeDeMedida,
-    style: TextStyle(
-      fontSize: 5,
-    ),
-  ),
-);
+import 'consultaMarcosTerapeuticos.dart';
 
 class ConsultaTratamentoParaDoencaSugeridoPrevia extends StatelessWidget {
   const ConsultaTratamentoParaDoencaSugeridoPrevia ({super.key});
@@ -244,7 +77,7 @@ class _ConsultaTratamentoParaDoencaSugeridoPreviaState extends State<ConsultaTra
                               },
                               icon: const Icon(Icons.arrow_back)),
                           Text(
-                            "Perfil",
+                            "Consulta",
                             //textAlign: TextAlign.center,
 
                             style: TextStyle(
@@ -263,6 +96,111 @@ class _ConsultaTratamentoParaDoencaSugeridoPreviaState extends State<ConsultaTra
             ]),
         body: SingleChildScrollView(
             child: Column(children: [
+
+              Text(
+                "Prévia da prescrição médica",
+                textAlign: TextAlign.center,
+                style: TextStyle(
+                    color: Color(0xFF4116B4), fontWeight: FontWeight.bold),
+              ),
+              Container(
+                // color: Colors.blue,
+
+                margin: const EdgeInsets.only(left: 80, right: 80, top: 10),
+                //padding: EdgeInsets.only(top: 15, bottom: 30),
+
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.white,
+                  boxShadow: [
+                    BoxShadow(
+                      color: Colors.grey.withOpacity(0.2),
+                      spreadRadius: 10,
+                      blurRadius: 5,
+                      offset:
+                      const Offset(0, 0), // changes x,y position of shadow
+                    ),
+                  ],
+                ),
+                child: Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                    children: [
+                      Column(
+                        //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        // crossAxisAlignment: CrossAxisAlignment.start,
+
+                          children: [
+                            CircleAvatar(
+                              radius: 25,
+                              backgroundColor: Colors.white,
+                              child: ClipOval(
+                                  child: GestureDetector(
+                                    child:
+                                    File('${Constants.diretorioVetAdvisor}/avatar.png')
+                                        .existsSync()
+                                        ? Image.file(
+                                      File(
+                                          '${Constants.diretorioVetAdvisor}/avatar.png'),
+                                      // um condicional
+
+                                      //maxSizeBytes: 3000 * 1000,
+                                      fit: BoxFit.cover,
+                                      // width:5,
+                                      //height: 5,
+                                    )
+                                        : Image.asset("imagens/user.png"),
+                                    onTap: () {},
+                                  )),
+                            ),
+                            const Text(
+                              " ID: 000000",
+                              style: TextStyle(
+                                  color: Colors.deepPurple,
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 11),
+                            ),
+                          ]),
+                      Column(
+                        children: const [
+                          Text(
+                            "Raca:",
+                            style: TextStyle(
+                              fontSize: 11,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            "Idade:",
+                            style: TextStyle(
+                              fontSize: 11,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                          Text(
+                            "Tutor(a):",
+                            style: TextStyle(
+                              fontSize: 11,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),
+                          ),
+                        ],
+                      )
+                    ]),
+              ),
+              Container(
+                //padding: const EdgeInsets.all(2),
+                //  margin: const EdgeInsets.only(top: 10),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(50),
+                    color: const Color(0xFF4116B4),
+                  ),
+                  child: const Icon(
+                    Icons.add,
+                    color: Colors.white,
+                  )),
               Container(
                 margin: const EdgeInsets.only(top: 10, left: 20, right: 20),
                 padding: const EdgeInsets.only(bottom: 240),
@@ -273,1188 +211,227 @@ class _ConsultaTratamentoParaDoencaSugeridoPreviaState extends State<ConsultaTra
                 ),
 
                 child: Column(children: [
-                  Text(
-                    "Tratamento sugerido: Dermatite atópica",
-                    textAlign: TextAlign.center,
+                  const Text(
+                    "Via oral",
+                    textAlign: TextAlign.left,
                     style: TextStyle(
-                        color: Color(0xFF4116B4), fontWeight: FontWeight.bold),
+                        color: Color(0xFF59616E), fontWeight: FontWeight.bold),
                   ),
-                  Row(
-                      children: [
-                        Text("Prurido",
-                          style: TextStyle(
-                            fontSize:12,
-                          ),),
-                        Text("Incluir",
-                          style: TextStyle(
-                            fontSize:12,
-                          ),),
-                        Checkbox(
-                          checkColor: Colors.white,
-                          activeColor: Colors.green,
-                          //fillColor: MaterialStateProperty.resolveWith(getColor),
-                          value: true,
-                          shape: CircleBorder(),
-                          onChanged: (value) {},
-                        ),
-                      ]
-                  ),
-                  Row(
-                    children: [
-                      Flexible(child: AutoSizeText(
-                          'Tratamento sugerido ou selecione conforme acima conforme desejado.',
-                          maxLines: 2,
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            fontSize: 12,
-                            fontFamily: 'Inter Variable Font',
-                            //   color: Color(0xFF59616E),
-                          )
-                      ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Container(
-                        //margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
-                        padding: const EdgeInsets.only(left: 15, right: 15),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.white,
-                        ),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Text("Apresentação",
-                                    style: TextStyle(
-                                      fontSize:12,
-                                    )),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                DropdownButton<String>(
-                                  items: apresentacao.map(buildMenuItem).toList(),
-                                  onChanged: (value) =>
-                                      setState(() => this.value = value),
-                                ),
-                              ],
-                            ),
-
-                          ],
-                        ),
-
-                      ),
-                      Container(
-                        //margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
-                        padding: const EdgeInsets.only(left: 15, right: 15),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.white,
-                        ),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Text("Concentração",
-                                    style: TextStyle(
-                                      fontSize:12,
-                                    )),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                DropdownButton<String>(
-                                  items: quantidade.map(buildMenuItemQuantidade).toList(),
-                                  onChanged: (value) =>
-                                      setState(() => this.value = value),
-                                ),
-                                DropdownButton<String>(
-                                  items: unidadeDeMedida.map(buildMenuItemUnidadeDeMedida).toList(),
-                                  onChanged: (value) =>
-                                      setState(() => this.value = value),
-                                ),
-                              ],
-                            ),
-
-                          ],
-                        ),
-
-                      ),
-                      Container(
-                        //margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
-                        padding: const EdgeInsets.only(left: 15, right: 15),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.transparent,
-                        ),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Text("Calcular dose",
-                                    style: TextStyle(
-                                      fontSize:12,
-                                    )),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Container(
-                                  //margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
-                                  // padding: const EdgeInsets.only(left: 15, right: 15),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
-                                    color: Color(0xFFF8DACC),
-                                  ),
-                                  child: Text("Calcular",
-                                    style: TextStyle(
-                                      color: Color(0xFFF55F44),
-                                      fontSize: 12,
-                                    ),),
-                                ),
-                                Container(
-                                  //padding: const EdgeInsets.all(1),
-                                  //  margin: const EdgeInsets.only(top: 10),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(50),
-                                      color: Color(0xFFF55F44),
-                                    ),
-                                    child: const Icon(
-                                      Icons.add,
-                                      color: Colors.white,
-                                      size: 20,
-                                    )),
-                              ],
-                            ),
-
-                          ],
-                        ),
-
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Container(
-                        //margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
-                        padding: const EdgeInsets.only(left: 15, right: 15),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.white,
-                        ),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Text("Dose",
-                                    style: TextStyle(
-                                      fontSize:12,
-                                    )),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                DropdownButton<String>(
-                                  items: quantidadeDeDose.map(buildMenuItemquantidadeDeDose).toList(),
-                                  onChanged: (value) =>
-                                      setState(() => this.value = value),
-                                ),
-                                DropdownButton<String>(
-                                  items: tipoDeDose.map(buildMenuItemtipoDeDose).toList(),
-                                  onChanged: (value) =>
-                                      setState(() => this.value = value),
-                                ),
-                              ],
-                            )
-
-                          ],
-                        ),
-
-                      ),
-                      Container(
-                        //margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
-                        padding: const EdgeInsets.only(left: 15, right: 15),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.white,
-                        ),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Text("Frequencia",
-                                    style: TextStyle(
-                                      fontSize:12,
-                                    )),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                DropdownButton<String>(
-                                  items: frequencia.map(buildMenuItemfrequencia).toList(),
-                                  onChanged: (value) =>
-                                      setState(() => this.value = value),
-                                ),
-                              ],
-                            )
-                          ],
-                        ),
-
-                      ),
-                      Container(
-                        //margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
-                        padding: const EdgeInsets.only(left: 15, right: 15),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.white,
-                        ),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Text("Via",
-                                    style: TextStyle(
-                                      fontSize:12,
-                                    )),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                DropdownButton<String>(
-                                  items: via.map(buildMenuItemvia).toList(),
-                                  onChanged: (value) =>
-                                      setState(() => this.value = value),
-                                ),
-                              ],
-                            )
-
-                          ],
-                        ),
-
-                      ),
-                    ],
-                  ),
-
-                  Row(
-                    children: [
-                      Container(
-                        //margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
-                        padding: const EdgeInsets.only(left: 15, right: 15),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.white,
-                        ),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Text("Duracao",
-                                    style: TextStyle(
-                                      fontSize:12,
-                                    )),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                DropdownButton<String>(
-                                  items: quantidadeDeDuracao.map(buildMenuItemQuantidadeDeDuracao).toList(),
-                                  onChanged: (value) =>
-                                      setState(() => this.value = value),
-                                ),
-                                DropdownButton<String>(
-                                  items: tipoDeDuracao.map(buildMenuItemTipoDeDuracao).toList(),
-                                  onChanged: (value) =>
-                                      setState(() => this.value = value),
-                                ),
-                              ],
-                            )
-
-                          ],
-                        ),
-
-                      ),
-                      Container(
-                        //margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
-                        padding: const EdgeInsets.only(left: 15, right: 15),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.white,
-                        ),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Text("Quantidade",
-                                    style: TextStyle(
-                                      fontSize:12,
-                                    )),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                DropdownButton<String>(
-                                  items: quantidade.map(buildMenuItemQuantidade).toList(),
-                                  onChanged: (value) =>
-                                      setState(() => this.value = value),
-                                ),
-                              ],
-                            ),
-
-                          ],
-                        ),
-
-                      ),
-
-                    ],
-                  ),
-
-                  Row(
-                    children: [
-                      Container(
-                          padding: const EdgeInsets.all(2),
-                          //  margin: const EdgeInsets.only(top: 10),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(50),
-                            color: Colors.white,
-
-                          ),
-                          child: const Icon(
-                            Icons.add,
-                            color: Color(0xFF4116B4),
-                            size: 10,
-                          )),
-                      Padding(padding: EdgeInsets.all(10)),
-                      Text("Adicionar novo tópico ",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 10,
-                          color: const Color(0xFF4116B4),
-                          fontWeight: FontWeight.bold,
-
-                        ),),
-                    ],
-                  ),
-
-                  Divider(
-                    color: Color(0xFF59616E),
-                    thickness: 0.3,
-                    endIndent:10,
-                    indent: 10,),
-                  Row(
-                      children: [
-                        Text("Infecções Bacteriana",
-                          style: TextStyle(
-                            fontSize:12,
-                          ),),
-                        Text("Incluir",
-                          style: TextStyle(
-                            fontSize:12,
-                          ),),
-                        Checkbox(
-                          checkColor: Colors.white,
-                          activeColor: Colors.green,
-                          //fillColor: MaterialStateProperty.resolveWith(getColor),
-                          value: true,
-                          shape: CircleBorder(),
-                          onChanged: (value) {},
-                        ),
-                      ]
-                  ),
-                  Row(
-                    children: [
-                      Flexible(child: AutoSizeText(
-                          'Tratamento sugerido ou selecione conforme acima conforme desejado.',
-                          maxLines: 2,
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            fontSize: 12,
-                            fontFamily: 'Inter Variable Font',
-                            //   color: Color(0xFF59616E),
-                          )
-                      ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Container(
-                        //margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
-                        padding: const EdgeInsets.only(left: 15, right: 15),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.white,
-                        ),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Text("Apresentação",
-                                    style: TextStyle(
-                                      fontSize:12,
-                                    )),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                DropdownButton<String>(
-                                  items: apresentacao.map(buildMenuItem).toList(),
-                                  onChanged: (value) =>
-                                      setState(() => this.value = value),
-                                ),
-                              ],
-                            ),
-
-                          ],
-                        ),
-
-                      ),
-                      Container(
-                        //margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
-                        padding: const EdgeInsets.only(left: 15, right: 15),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.white,
-                        ),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Text("Concentração",
-                                    style: TextStyle(
-                                      fontSize:12,
-                                    )),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                DropdownButton<String>(
-                                  items: quantidade.map(buildMenuItemQuantidade).toList(),
-                                  onChanged: (value) =>
-                                      setState(() => this.value = value),
-                                ),
-                                DropdownButton<String>(
-                                  items: unidadeDeMedida.map(buildMenuItemUnidadeDeMedida).toList(),
-                                  onChanged: (value) =>
-                                      setState(() => this.value = value),
-                                ),
-                              ],
-                            ),
-
-                          ],
-                        ),
-
-                      ),
-                      Container(
-                        //margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
-                        padding: const EdgeInsets.only(left: 15, right: 15),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.transparent,
-                        ),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Text("Calcular dose",
-                                    style: TextStyle(
-                                      fontSize:12,
-                                    )),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Container(
-                                  //margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
-                                  // padding: const EdgeInsets.only(left: 15, right: 15),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
-                                    color: Color(0xFFF8DACC),
-                                  ),
-                                  child: Text("Calcular",
-                                    style: TextStyle(
-                                      color: Color(0xFFF55F44),
-                                      fontSize: 12,
-                                    ),),
-                                ),
-                                Container(
-                                  //padding: const EdgeInsets.all(1),
-                                  //  margin: const EdgeInsets.only(top: 10),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(50),
-                                      color: Color(0xFFF55F44),
-                                    ),
-                                    child: const Icon(
-                                      Icons.add,
-                                      color: Colors.white,
-                                      size: 20,
-                                    )),
-                              ],
-                            ),
-
-                          ],
-                        ),
-
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Container(
-                        //margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
-                        padding: const EdgeInsets.only(left: 15, right: 15),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.white,
-                        ),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Text("Dose",
-                                    style: TextStyle(
-                                      fontSize:12,
-                                    )),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                DropdownButton<String>(
-                                  items: quantidadeDeDose.map(buildMenuItemquantidadeDeDose).toList(),
-                                  onChanged: (value) =>
-                                      setState(() => this.value = value),
-                                ),
-                                DropdownButton<String>(
-                                  items: tipoDeDose.map(buildMenuItemtipoDeDose).toList(),
-                                  onChanged: (value) =>
-                                      setState(() => this.value = value),
-                                ),
-                              ],
-                            )
-
-                          ],
-                        ),
-
-                      ),
-                      Container(
-                        //margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
-                        padding: const EdgeInsets.only(left: 15, right: 15),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.white,
-                        ),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Text("Frequencia",
-                                    style: TextStyle(
-                                      fontSize:12,
-                                    )),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                DropdownButton<String>(
-                                  items: frequencia.map(buildMenuItemfrequencia).toList(),
-                                  onChanged: (value) =>
-                                      setState(() => this.value = value),
-                                ),
-                              ],
-                            )
-                          ],
-                        ),
-
-                      ),
-                      Container(
-                        //margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
-                        padding: const EdgeInsets.only(left: 15, right: 15),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.white,
-                        ),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Text("Via",
-                                    style: TextStyle(
-                                      fontSize:12,
-                                    )),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                DropdownButton<String>(
-                                  items: via.map(buildMenuItemvia).toList(),
-                                  onChanged: (value) =>
-                                      setState(() => this.value = value),
-                                ),
-                              ],
-                            )
-
-                          ],
-                        ),
-
-                      ),
-                    ],
-                  ),
-
-                  Row(
-                    children: [
-                      Container(
-                        //margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
-                        padding: const EdgeInsets.only(left: 15, right: 15),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.white,
-                        ),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Text("Duracao",
-                                    style: TextStyle(
-                                      fontSize:12,
-                                    )),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                DropdownButton<String>(
-                                  items: quantidadeDeDuracao.map(buildMenuItemQuantidadeDeDuracao).toList(),
-                                  onChanged: (value) =>
-                                      setState(() => this.value = value),
-                                ),
-                                DropdownButton<String>(
-                                  items: tipoDeDuracao.map(buildMenuItemTipoDeDuracao).toList(),
-                                  onChanged: (value) =>
-                                      setState(() => this.value = value),
-                                ),
-                              ],
-                            )
-
-                          ],
-                        ),
-
-                      ),
-                      Container(
-                        //margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
-                        padding: const EdgeInsets.only(left: 15, right: 15),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.white,
-                        ),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Text("Quantidade",
-                                    style: TextStyle(
-                                      fontSize:12,
-                                    )),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                DropdownButton<String>(
-                                  items: quantidade.map(buildMenuItemQuantidade).toList(),
-                                  onChanged: (value) =>
-                                      setState(() => this.value = value),
-                                ),
-                              ],
-                            ),
-
-                          ],
-                        ),
-
-                      ),
-
-                    ],
-                  ),
-
-                  Row(
-                    children: [
-                      Container(
-                          padding: const EdgeInsets.all(2),
-                          //  margin: const EdgeInsets.only(top: 10),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(50),
-                            color: Colors.white,
-
-                          ),
-                          child: const Icon(
-                            Icons.add,
-                            color: Color(0xFF4116B4),
-                            size: 10,
-                          )),
-                      Padding(padding: EdgeInsets.all(10)),
-                      Text("Adicionar novo tópico ",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 10,
-                          color: const Color(0xFF4116B4),
-                          fontWeight: FontWeight.bold,
-
-                        ),),
-                    ],
-                  ),
-
-                  Divider(
-                    color: Color(0xFF59616E),
-                    thickness: 0.3,
-                    endIndent:10,
-                    indent: 10,),
-
-                  Row(
-                      children: [
-                        Text("Infecções Fúngicas",
-                          style: TextStyle(
-                            fontSize:12,
-                          ),),
-                        Text("Incluir",
-                          style: TextStyle(
-                            fontSize:12,
-                          ),),
-                        Checkbox(
-                          checkColor: Colors.white,
-                          activeColor: Colors.green,
-                          //fillColor: MaterialStateProperty.resolveWith(getColor),
-                          value: true,
-                          shape: CircleBorder(),
-                          onChanged: (value) {},
-                        ),
-                      ]
-                  ),
-                  Row(
-                    children: [
-                      Flexible(child: AutoSizeText(
-                          'Tratamento sugerido ou selecione conforme acima conforme desejado.',
-                          maxLines: 2,
-                          textAlign: TextAlign.left,
-                          style: TextStyle(
-                            fontSize: 12,
-                            fontFamily: 'Inter Variable Font',
-                            //   color: Color(0xFF59616E),
-                          )
-                      ),
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Container(
-                        //margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
-                        padding: const EdgeInsets.only(left: 15, right: 15),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.white,
-                        ),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Text("Apresentação",
-                                    style: TextStyle(
-                                      fontSize:12,
-                                    )),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                DropdownButton<String>(
-                                  items: apresentacao.map(buildMenuItem).toList(),
-                                  onChanged: (value) =>
-                                      setState(() => this.value = value),
-                                ),
-                              ],
-                            ),
-
-                          ],
-                        ),
-
-                      ),
-                      Container(
-                        //margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
-                        padding: const EdgeInsets.only(left: 15, right: 15),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.white,
-                        ),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Text("Concentração",
-                                    style: TextStyle(
-                                      fontSize:12,
-                                    )),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                DropdownButton<String>(
-                                  items: quantidade.map(buildMenuItemQuantidade).toList(),
-                                  onChanged: (value) =>
-                                      setState(() => this.value = value),
-                                ),
-                                DropdownButton<String>(
-                                  items: unidadeDeMedida.map(buildMenuItemUnidadeDeMedida).toList(),
-                                  onChanged: (value) =>
-                                      setState(() => this.value = value),
-                                ),
-                              ],
-                            ),
-
-                          ],
-                        ),
-
-                      ),
-                      Container(
-                        //margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
-                        padding: const EdgeInsets.only(left: 15, right: 15),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.transparent,
-                        ),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Text("Calcular dose",
-                                    style: TextStyle(
-                                      fontSize:12,
-                                    )),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                Container(
-                                  //margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
-                                  // padding: const EdgeInsets.only(left: 15, right: 15),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
-                                    color: Color(0xFFF8DACC),
-                                  ),
-                                  child: Text("Calcular",
-                                    style: TextStyle(
-                                      color: Color(0xFFF55F44),
-                                      fontSize: 12,
-                                    ),),
-                                ),
-                                Container(
-                                  //padding: const EdgeInsets.all(1),
-                                  //  margin: const EdgeInsets.only(top: 10),
-                                    decoration: BoxDecoration(
-                                      borderRadius: BorderRadius.circular(50),
-                                      color: Color(0xFFF55F44),
-                                    ),
-                                    child: const Icon(
-                                      Icons.add,
-                                      color: Colors.white,
-                                      size: 20,
-                                    )),
-                              ],
-                            ),
-
-                          ],
-                        ),
-
-                      ),
-                    ],
-                  ),
-                  Row(
-                    children: [
-                      Container(
-                        //margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
-                        padding: const EdgeInsets.only(left: 15, right: 15),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.white,
-                        ),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Text("Dose",
-                                    style: TextStyle(
-                                      fontSize:12,
-                                    )),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                DropdownButton<String>(
-                                  items: quantidadeDeDose.map(buildMenuItemquantidadeDeDose).toList(),
-                                  onChanged: (value) =>
-                                      setState(() => this.value = value),
-                                ),
-                                DropdownButton<String>(
-                                  items: tipoDeDose.map(buildMenuItemtipoDeDose).toList(),
-                                  onChanged: (value) =>
-                                      setState(() => this.value = value),
-                                ),
-                              ],
-                            )
-
-                          ],
-                        ),
-
-                      ),
-                      Container(
-                        //margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
-                        padding: const EdgeInsets.only(left: 15, right: 15),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.white,
-                        ),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Text("Frequencia",
-                                    style: TextStyle(
-                                      fontSize:12,
-                                    )),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                DropdownButton<String>(
-                                  items: frequencia.map(buildMenuItemfrequencia).toList(),
-                                  onChanged: (value) =>
-                                      setState(() => this.value = value),
-                                ),
-                              ],
-                            )
-                          ],
-                        ),
-
-                      ),
-                      Container(
-                        //margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
-                        padding: const EdgeInsets.only(left: 15, right: 15),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.white,
-                        ),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Text("Via",
-                                    style: TextStyle(
-                                      fontSize:12,
-                                    )),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                DropdownButton<String>(
-                                  items: via.map(buildMenuItemvia).toList(),
-                                  onChanged: (value) =>
-                                      setState(() => this.value = value),
-                                ),
-                              ],
-                            )
-
-                          ],
-                        ),
-
-                      ),
-                    ],
-                  ),
-
-                  Row(
-                    children: [
-                      Container(
-                        //margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
-                        padding: const EdgeInsets.only(left: 15, right: 15),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.white,
-                        ),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Text("Duracao",
-                                    style: TextStyle(
-                                      fontSize:12,
-                                    )),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                DropdownButton<String>(
-                                  items: quantidadeDeDuracao.map(buildMenuItemQuantidadeDeDuracao).toList(),
-                                  onChanged: (value) =>
-                                      setState(() => this.value = value),
-                                ),
-                                DropdownButton<String>(
-                                  items: tipoDeDuracao.map(buildMenuItemTipoDeDuracao).toList(),
-                                  onChanged: (value) =>
-                                      setState(() => this.value = value),
-                                ),
-                              ],
-                            )
-
-                          ],
-                        ),
-
-                      ),
-                      Container(
-                        //margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
-                        padding: const EdgeInsets.only(left: 15, right: 15),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(20),
-                          color: Colors.white,
-                        ),
-                        child: Column(
-                          children: [
-                            Row(
-                              children: [
-                                Text("Quantidade",
-                                    style: TextStyle(
-                                      fontSize:12,
-                                    )),
-                              ],
-                            ),
-                            Row(
-                              children: [
-                                DropdownButton<String>(
-                                  items: quantidade.map(buildMenuItemQuantidade).toList(),
-                                  onChanged: (value) =>
-                                      setState(() => this.value = value),
-                                ),
-                              ],
-                            ),
-
-                          ],
-                        ),
-
-                      ),
-
-                    ],
-                  ),
-
-                  Row(
-                    children: [
-                      Container(
-                          padding: const EdgeInsets.all(2),
-                          //  margin: const EdgeInsets.only(top: 10),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(50),
-                            color: Colors.white,
-
-                          ),
-                          child: const Icon(
-                            Icons.add,
-                            color: Color(0xFF4116B4),
-                            size: 10,
-                          )),
-                      Padding(padding: EdgeInsets.all(10)),
-                      Text("Adicionar novo tópico ",
-                        textAlign: TextAlign.center,
-                        style: TextStyle(
-                          fontSize: 10,
-                          color: const Color(0xFF4116B4),
-                          fontWeight: FontWeight.bold,
-
-                        ),),
-                    ],
-                  ),
-
-                  Divider(
-                    color: Color(0xFF59616E),
-                    thickness: 0.3,
-                    endIndent:10,
-                    indent: 10,),
 
                   Container(
-
-                    // margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
-                    padding: const EdgeInsets.only(left: 50, right: 50),
+                    //margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
+                    padding: const EdgeInsets.only(left: 15, right: 15),
                     decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(10),
-                      color: Color(0xFFF8DACC),
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.white,
                     ),
-
-
-                    child: Row(
-                      children: [
-
-                        Flexible(child: AutoSizeText(
-                            'Adicionar nova medicação',
-                            maxLines: 1,
-                            textAlign: TextAlign.center,
-                            style: TextStyle(
-                              fontSize: 12,
-                              fontFamily: 'Inter Variable Font',
-                              color: Color(0xFFF55F44),
-                            )
-                        ),
-                        ),
-                        Container(
-                            padding: const EdgeInsets.all(2),
-                            //  margin: const EdgeInsets.only(top: 10),
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(50),
-                              color: Color(0xFFF55F44),
-
-                            ),
-                            child: const Icon(
-                              Icons.add,
-                              color: Colors.white,
-                              size: 10,
-                            )),
-
-
-                      ],
+                    child:
+                            Column(
+                              children: [
+                              Row(
+                                children: const [
+                                  Text("1. Apoquel 10mg  1cx",
+                                  style: TextStyle(
+                                  color: Color(0xFF59616E)),
+                                     ),
+                                ],
+                              ),
+                                Row(
+                                  children: [
+                                   Flexible(child: AutoSizeText(
+                                       'Tratamento sugerido ou selecione conforme acima conforme desejado.',
+                                        maxLines: 2,
+                                        textAlign: TextAlign.left,
+                                        style: TextStyle(
+                                        //fontSize: 12,
+                                        //fontFamily: 'Inter Variable Font',
+                                            color: Color(0xFF59616E),
+    //   color: Color(0xFF59616E),
+                                           ),),),
+                                  ]),
+]),
+                  ),
+                  Padding(padding: EdgeInsets.all(5)),
+                  Container(
+                    //margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
+                    padding: const EdgeInsets.only(left: 15, right: 15),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.white,
                     ),
+                    child:
+                    Column(
+                        children: [
+                          Row(
+                            children: [
+                              Text("XYZ",
+                                style: TextStyle(
+                                    color: Color(0xFF59616E)),
+                              ),
+                            ],
+                          ),
+
+                        ]),
+                  ),
+                  Padding(padding: EdgeInsets.all(5)),
+                  Text(
+                    "Via tópica",
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                        color: Color(0xFF59616E), fontWeight: FontWeight.bold),
+                  ),
+                  Padding(padding: EdgeInsets.all(5)),
+                  Container(
+                    //margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
+                    padding: const EdgeInsets.only(left: 15, right: 15),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.white,
+                    ),
+                    child:
+                    Column(
+                        children: [
+                          Row(
+                            children: [
+                              Text("2. Micodine 500ml 1fr",
+                                style: TextStyle(
+                                    color: Color(0xFF59616E)),
+                              ),
+                            ],
+                          ),
+                          Row(
+                              children: [
+                                Flexible(child: AutoSizeText(
+                                  'Aplicar 5ml',
+                                  maxLines: 2,
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(
+                                    //fontSize: 12,
+                                    //fontFamily: 'Inter Variable Font',
+                                    color: Color(0xFF59616E),
+                                    //   color: Color(0xFF59616E),
+                                  ),),),
+                              ]),
+                        ]),
+                  ),
+                  Padding(padding: EdgeInsets.all(5)),
+                  Container(
+                    //margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
+                    padding: const EdgeInsets.only(left: 15, right: 15),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.white,
+                    ),
+                    child:
+                    Column(
+                        children: [
+                          Row(
+                            children: [
+                              Text("XYZ",
+                                style: TextStyle(
+                                    color: Color(0xFF59616E)),
+                              ),
+                            ],
+                          ),
+
+                        ]),
+                  ),
+                  Text(
+                    "Injetável",
+                    textAlign: TextAlign.left,
+                    style: TextStyle(
+                        color: Color(0xFF59616E), fontWeight: FontWeight.bold),
+                  ),
+                  Container(
+                    //margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
+                    padding: const EdgeInsets.only(left: 15, right: 15),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.white,
+                    ),
+                    child:
+                    Column(
+                        children: [
+                          Row(
+                            children: [
+                              Text("2. Micodine 500ml 1fr",
+                                style: TextStyle(
+                                    color: Color(0xFF59616E)),
+                              ),
+                            ],
+                          ),
+                          Row(
+                              children: const [
+                                Flexible(child: AutoSizeText(
+                                  'Aplicar 5ml',
+                                  maxLines: 2,
+                                  textAlign: TextAlign.left,
+                                  style: TextStyle(
+                                    //fontSize: 12,
+                                    //fontFamily: 'Inter Variable Font',
+                                    color: Color(0xFF59616E),
+                                    //   color: Color(0xFF59616E),
+                                  ),),),
+                              ]),
+                        ]),
+                  ),
+                  Padding(padding: EdgeInsets.all(5)),
+                  Container(
+                    //margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
+                    padding: const EdgeInsets.only(left: 15, right: 15),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: Colors.white,
+                    ),
+                    child:
+                    Column(
+                        children: [
+                          Row(
+                            children: [
+                              Text("XYZ",
+                                style: TextStyle(
+                                    color: Color(0xFF59616E)),
+                              ),
+                            ],
+                          ),
+
+                        ]),
                   ),
 
 
+
+                  Divider(
+                    color: Color(0xFF59616E),
+                    thickness: 0.3,
+                    endIndent:10,
+                    indent: 10,),
+
+
+
+
+
+
+
                   Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.center,
                       children: [
                         Builder(
                           builder: (context) => ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                  shape: const StadiumBorder(),
-                                  backgroundColor: Colors.white),
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                      const ConsultaTratamentoParaDoencaSugeridoPrevia()),
-                                );
-                              },
-                              child: const Text(
-                                'Ver prévia ',
-                                style: TextStyle(color: Color(0xFF3C10BB)),
-                              )),
-                        ),
-                        Builder(
-                          builder: (context) => ElevatedButton(
-                              style: ElevatedButton.styleFrom(
-                                  shape: const StadiumBorder(),
-                                  backgroundColor: Colors.white),
-                              onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) =>
-                                      const ConsultaTratamentoSintomatologicoPosologiaAutomatico()),
-                                );
-                              },
-                              child: const Text(
-                                'Próxima etapa',
-                                style: TextStyle(color: Color(0xFF3C10BB)),
-                              )),
+                            style: ElevatedButton.styleFrom(
+                                shape: const StadiumBorder(),
+                                backgroundColor: Colors.white),
+                            onPressed: () {
+                              Navigator.push(
+                                context,
+                                MaterialPageRoute(
+                                    builder: (context) =>
+                                    const ConsultaMarcosTerapeuticos()),
+                              );
+                            },
+                            child: const Text(
+                              'Proxima Etapa',
+                              style: TextStyle(color: Color(0xFF3C10BB)),
+                            ),),
                         ),
                       ]),
 

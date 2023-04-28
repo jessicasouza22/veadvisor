@@ -1,17 +1,15 @@
 // 2.8.1 Consulta Tratamento Para Doenca Sugerido
 
 
-import 'dart:io';
+
 
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:flutter/material.dart';
-import 'package:vetadvisor/fluxoprontuariodigital/cadastreOPet.dart';
-import 'package:vetadvisor/fluxoprontuariodigital/consultaAtendimentoPaciente.dart';
-import 'package:vetadvisor/fluxoprontuariodigital/consultaPossiveisDiagnosticos.dart';
+
 import 'package:vetadvisor/fluxoprontuariodigital/consultaTratamentoParaDoencaSugeridoPrevia.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/consultaTratamentoSintomatologicoPosologiaAutomatico.dart';
-import 'package:vetadvisor/recursos/Constants.dart';
+
 
 DropdownMenuItem<String> buildMenuItemQuantidade(String quantidade) => DropdownMenuItem(
   value: quantidade,

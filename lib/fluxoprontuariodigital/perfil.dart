@@ -2,6 +2,7 @@
 
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:vetadvisor/fluxoprontuariodigital/perfilPaciente.dart';
 
 
 import '../recursos/Constants.dart';
@@ -546,12 +547,23 @@ class _PerfilPageState extends State<PerfilPage> {
                 ),
               ),
 
-              ElevatedButton(
-                  onPressed: () {},
-                  style: ElevatedButton.styleFrom(shape: const StadiumBorder(), backgroundColor: Colors.white),
-                  child: const Text('Próxima', style: TextStyle(
-                    color: Color(0xFF3C10BB)
-                  ),)),
+              Builder(
+                builder: (context) => ElevatedButton(
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const PerfilPaciente()),
+                      );
+                    },
+                    style: ElevatedButton.styleFrom(
+                        shape: const StadiumBorder(),
+                        backgroundColor: Colors.white),
+                    child: const Text(
+                      'Finalizar',
+                      style: TextStyle(color: Color(0xFF3C10BB)),
+                    )),
+              ),
             ],
 
           ),

@@ -1,8 +1,9 @@
-// 2.2
+// 2.1
 
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:vetadvisor/fluxoprontuariodigital/perfil.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/perfilPaciente.dart';
 
 
@@ -538,7 +539,7 @@ class _CadastreOPetState extends State<CadastreOPetPage> {
                         Navigator.push(
                           context,
                           MaterialPageRoute(
-                              builder: (context) => const PerfilPaciente()),
+                              builder: (context) => const Perfil()),
                         );
                       },
                       style: ElevatedButton.styleFrom(

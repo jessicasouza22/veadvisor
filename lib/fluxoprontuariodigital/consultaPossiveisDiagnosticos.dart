@@ -5,7 +5,7 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:flutter/material.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/consultaPacienteEmConsulta.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/perfil.dart';
-
+import 'dart:io';
 
 
 class ConsultaPossiveisDiagnosticos extends StatelessWidget {

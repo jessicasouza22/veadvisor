@@ -726,24 +726,7 @@ class _ConsultaAtendimentoPacienteState
               Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-              Builder(
-                builder: (context) => ElevatedButton(
-                    style: ElevatedButton.styleFrom(
-                        shape: const StadiumBorder(),
-                        backgroundColor: Colors.white),
-                    onPressed: () {
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) =>
-                            const ConsultaTratamentoSintomatologico()),
-                      );
-                    },
-                    child: const Text(
-                      'Próxima etapa',
-                      style: TextStyle(color: Color(0xFF3C10BB)),
-                    )),
-              ),
+
               Builder(
                     builder: (context) => ElevatedButton(
                         style: ElevatedButton.styleFrom(
@@ -759,6 +742,24 @@ class _ConsultaAtendimentoPacienteState
                         },
                         child: const Text(
                           'Voltar',
+                          style: TextStyle(color: Color(0xFF3C10BB)),
+                        )),
+                  ),
+              Builder(
+                    builder: (context) => ElevatedButton(
+                        style: ElevatedButton.styleFrom(
+                            shape: const StadiumBorder(),
+                            backgroundColor: Colors.white),
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                const ConsultaTratamentoSintomatologico()),
+                          );
+                        },
+                        child: const Text(
+                          'Próxima etapa',
                           style: TextStyle(color: Color(0xFF3C10BB)),
                         )),
                   ),

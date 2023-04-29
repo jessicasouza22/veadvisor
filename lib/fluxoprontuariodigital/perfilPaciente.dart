@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/consultaAtendimentoPaciente.dart';
+import 'package:vetadvisor/fluxoprontuariodigital/consultaPaciente.dart';
 import 'package:vetadvisor/recursos/Constants.dart';
 
 class PerfilPaciente extends StatelessWidget {
@@ -278,7 +279,7 @@ class _PerfilPacienteState extends State<PerfilPacientePage> {
                     Navigator.push(
                       context,
                       MaterialPageRoute(
-                          builder: (context) => const ConsultaAtendimentoPaciente()),
+                          builder: (context) => const ConsultaPaciente()),
                     );
                   },
                   child: const Text(

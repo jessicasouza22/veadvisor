@@ -3,6 +3,7 @@
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:vetadvisor/fluxoprontuariodigital/novaConsulta.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/perfil.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/perfilPaciente.dart';
 import 'package:vetadvisor/prelogin/logado.dart';
@@ -115,7 +116,7 @@ class _CadastreOPetState extends State<CadastreOPetPage> {
                                         context,
                                         MaterialPageRoute(
                                             builder: (
-                                                context) => const Logado()),
+                                                context) =>  const NovaConsulta()),
                                       );
 
                                       //print("clicado na seta");

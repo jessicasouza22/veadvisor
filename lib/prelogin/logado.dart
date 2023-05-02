@@ -833,31 +833,31 @@ class _LogadoPageState extends State<LogadoPage> {
                   // )),*/
                   Padding(padding: EdgeInsets.all(5)),
                   Container(
-                      padding: EdgeInsets.only(bottom: 18, top: 10),
-                      margin: const EdgeInsets.only(left: 20.0, right: 20.0),
-                      color: Colors.white,
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          Icon(
-                            MdiIcons.stethoscope,
-                            size: 18,
-                            color: Color(0xFF3C10BB),
-                          ),
-                          Text(
-                            "   Consultas de meus PETS   ",
-                            style: TextStyle(
+                          padding: EdgeInsets.only(bottom: 18, top: 10),
+                          margin: const EdgeInsets.only(left: 20.0, right: 20.0),
+                          color: Colors.white,
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: const [
+                              Icon(
+                                MdiIcons.stethoscope,
+                                size: 18,
                                 color: Color(0xFF3C10BB),
-                                fontSize: 14,
-                                decoration: TextDecoration.none),
-                          ),
-                          Icon(
-                            MdiIcons.chevronRight,
-                            size: 18,
-                            color: Color(0xFF3C10BB),
-                          ),
-                        ],
-                      )),
+                              ),
+                              Text(
+                                "   Consultas de meus PETS   ",
+                                style: TextStyle(
+                                    color: Color(0xFF3C10BB),
+                                    fontSize: 14,
+                                    decoration: TextDecoration.none),
+                              ),
+                              Icon(
+                                MdiIcons.chevronRight,
+                                size: 18,
+                                color: Color(0xFF3C10BB),
+                              ),
+                            ],
+                          )),
                   const Padding(padding: EdgeInsets.all(10)),
                   Container(
                       padding: const EdgeInsets.only(bottom: 10, top: 10),

@@ -7,6 +7,7 @@ import 'package:flutter/material.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/cadastreOPet.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/consultaAtendimentoPaciente.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/consultaPossiveisDiagnosticos.dart';
+import 'package:vetadvisor/fluxoprontuariodigital/consultaTratamentoParaDoenca.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/consultaTratamentoSintomatologicoPosologiaAutomatico.dart';
 import 'package:vetadvisor/recursos/Constants.dart';
 
@@ -385,13 +386,26 @@ class _ConsultaTratamentoSintomatologicoState extends State<ConsultaTratamentoSi
                           style: TextStyle(
                             fontSize: 11,
                           ),),
-                        Checkbox(
-                          checkColor: Colors.white,
-                          activeColor: Colors.green,
-                          //fillColor: MaterialStateProperty.resolveWith(getColor),
-                          value: true,
-                          shape: CircleBorder(),
-                          onChanged: (value) {},
+                        SizedBox(
+                          width: 2,
+                          height: 2,
+                          child:
+                          Checkbox(
+                              checkColor: Colors.white,
+                              activeColor: Colors.green,
+                              //fillColor: MaterialStateProperty.resolveWith(getColor),
+                              value: true,
+                              shape: CircleBorder(),
+                              onChanged: (value) {}
+                          ),
+                          /*Radio(
+                              //fillColor: Color.white,
+                              value: false,
+                              groupValue: false,
+                              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+
+                              onChanged: (value) {},
+                            ),*/
                         ),
 
                       ],
@@ -571,7 +585,7 @@ class _ConsultaTratamentoSintomatologicoState extends State<ConsultaTratamentoSi
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                const ConsultaTratamentoSintomatologico()),
+                                const ConsultaTratamentoSintomatologicoPosologiaAutomatico()),
                           );
                         },
                         child: const Text(

@@ -29,7 +29,7 @@ class ConsultaPacienteEmConsultaPage extends StatefulWidget {
 
 class _ConsultaAtendimentoPacienteState
     extends State<ConsultaPacienteEmConsultaPage> {
-  bool _value = false;
+  //bool _value = false;
   int val = -1;
 
   @override
@@ -235,10 +235,10 @@ class _ConsultaAtendimentoPacienteState
                 style: const TextStyle(
                   fontSize: 12,
                 ),
-                decoration: InputDecoration(
-                  fillColor: const Color(0xFF3C10BB),
+                decoration: const InputDecoration(
+                  fillColor: Color(0xFF3C10BB),
                  // contentPadding: EdgeInsets.fromLTRB(20, 0, 12, 0),
-                  prefixIcon: const Icon(
+                  prefixIcon: Icon(
                     Icons.search,
                     size: 15,
 
@@ -283,7 +283,7 @@ class _ConsultaAtendimentoPacienteState
                 child: Column(children: [
                   Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: const [
+                    children:  [
                       Text(
                         "Dermatite atópica",
                         style: TextStyle(
@@ -301,6 +301,27 @@ class _ConsultaAtendimentoPacienteState
                       style: TextStyle(
                           fontSize: 10,
                       ),),
+                      SizedBox(
+                        width: 1,
+                        height: 1,
+                        child:
+                        Checkbox(
+                          checkColor: Colors.white,
+                          activeColor: Colors.green,
+                          //fillColor: MaterialStateProperty.resolveWith(getColor),
+                          value: true,
+                          shape: CircleBorder(),
+                          onChanged: (value) {}
+                        ),
+                        /*Radio(
+                              //fillColor: Color.white,
+                              value: false,
+                              groupValue: false,
+                              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+
+                              onChanged: (value) {},
+                            ),*/
+                      ),
 
                     ],
                   ),
@@ -344,16 +365,25 @@ class _ConsultaAtendimentoPacienteState
                                 fontSize: 7,
                               )),
                           SizedBox(
-                            width: 2,
-                            height: 2,
-                            child: Radio(
+                            width: 1,
+                            height: 1,
+                            child:
+                            Checkbox(
+                              checkColor: Colors.white,
+                              activeColor: Colors.green,
+                              //fillColor: MaterialStateProperty.resolveWith(getColor),
+                              value: true,
+                              shape: CircleBorder(),
+                              onChanged: (value) {},
+                            ),
+                            /*Radio(
                               //fillColor: Color.white,
                               value: false,
                               groupValue: false,
                               materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
 
                               onChanged: (value) {},
-                            ),
+                            ),*/
                           ),
                         ],
                       ),
@@ -506,15 +536,25 @@ class _ConsultaAtendimentoPacienteState
                           ),),
 
                         SizedBox(
-                          width: 5,
-                          height: 5,
-                          child: Radio(
-                            //fillColor: Color.white,
-                            value: false,
-                            groupValue: false,
-
-                            onChanged: (value) {},
+                          width: 1,
+                          height: 1,
+                          child:
+                          Checkbox(
+                              checkColor: Colors.white,
+                              activeColor: Colors.green,
+                              //fillColor: MaterialStateProperty.resolveWith(getColor),
+                              value: true,
+                              shape: CircleBorder(),
+                              onChanged: (value) {}
                           ),
+                          /*Radio(
+                              //fillColor: Color.white,
+                              value: false,
+                              groupValue: false,
+                              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+
+                              onChanged: (value) {},
+                            ),*/
                         ),
                       ],
                     ),
@@ -554,15 +594,25 @@ class _ConsultaAtendimentoPacienteState
                             color: Color(0xFF59616E),
                           ),),
                         SizedBox(
-                          width: 5,
-                          height: 5,
-                          child: Radio(
-                            //fillColor: Color.white,
-                            value: false,
-                            groupValue: false,
-
-                            onChanged: (value) {},
+                          width: 1,
+                          height: 1,
+                          child:
+                          Checkbox(
+                              checkColor: Colors.white,
+                              activeColor: Colors.green,
+                              //fillColor: MaterialStateProperty.resolveWith(getColor),
+                              value: true,
+                              shape: CircleBorder(),
+                              onChanged: (value) {}
                           ),
+                          /*Radio(
+                              //fillColor: Color.white,
+                              value: false,
+                              groupValue: false,
+                              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+
+                              onChanged: (value) {},
+                            ),*/
                         ),
                       ],
                     ),
@@ -650,15 +700,25 @@ class _ConsultaAtendimentoPacienteState
                             color: Color(0xFF59616E),
                           ),),
                         SizedBox(
-                          width: 5,
-                          height: 5,
-                          child: Radio(
-                            //fillColor: Color.white,
-                            value: false,
-                            groupValue: false,
-
-                            onChanged: (value) {},
+                          width: 1,
+                          height: 1,
+                          child:
+                          Checkbox(
+                              checkColor: Colors.white,
+                              activeColor: Colors.green,
+                              //fillColor: MaterialStateProperty.resolveWith(getColor),
+                              value: true,
+                              shape: CircleBorder(),
+                              onChanged: (value) {}
                           ),
+                          /*Radio(
+                              //fillColor: Color.white,
+                              value: false,
+                              groupValue: false,
+                              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+
+                              onChanged: (value) {},
+                            ),*/
                         ),
 
                       ],
@@ -699,15 +759,25 @@ class _ConsultaAtendimentoPacienteState
                             color: Color(0xFF59616E),
                           ),),
                         SizedBox(
-                          width: 5,
-                          height: 5,
-                          child: Radio(
-                            //fillColor: Color.white,
-                            value: false,
-                            groupValue: false,
-
-                            onChanged: (value) {},
+                          width: 1,
+                          height: 1,
+                          child:
+                          Checkbox(
+                              checkColor: Colors.white,
+                              activeColor: Colors.green,
+                              //fillColor: MaterialStateProperty.resolveWith(getColor),
+                              value: true,
+                              shape: CircleBorder(),
+                              onChanged: (value) {}
                           ),
+                          /*Radio(
+                              //fillColor: Color.white,
+                              value: false,
+                              groupValue: false,
+                              materialTapTargetSize: MaterialTapTargetSize.shrinkWrap,
+
+                              onChanged: (value) {},
+                            ),*/
                         ),
 
                       ],

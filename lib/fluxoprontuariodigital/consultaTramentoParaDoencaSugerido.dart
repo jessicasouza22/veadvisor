@@ -6,6 +6,7 @@
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:vetadvisor/fluxoprontuariodigital/consultaMarcosTerapeuticos.dart';
 
 import 'package:vetadvisor/fluxoprontuariodigital/consultaTratamentoParaDoencaSugeridoPrevia.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/consultaTratamentoSintomatologicoPosologiaAutomatico.dart';
@@ -1447,7 +1448,7 @@ class _ConsultaTratamentoParaDoencaSugeridoState extends State<ConsultaTratament
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                      const ConsultaTratamentoSintomatologicoPosologiaAutomatico()),
+                                      const ConsultaMarcosTerapeuticos()),
                                 );
                               },
                               child: const Text(

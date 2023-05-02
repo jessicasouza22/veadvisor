@@ -97,73 +97,84 @@ class _ConsultaMarcosTerapeuticosState extends State<ConsultaMarcosTerapeuticosP
                 style: TextStyle(
                     color: Color(0xFF4116B4), fontWeight: FontWeight.bold),
               ),
+              const Padding(padding: EdgeInsets.all(5)),
 
-              const Flexible(child: AutoSizeText(
-                'Defina as melhorias que você espera que o seu paciente alcance por periodo',
+              Row(
+                crossAxisAlignment: CrossAxisAlignment.start,
+                  children: [
+                    Flexible(child: AutoSizeText(
+                ' Defina as melhorias que você espera que o seu paciente alcance por periodo',
                 maxLines: 2,
                 textAlign: TextAlign.left,
                 style: TextStyle(
                   color: Color(0xFF59616E),
 
-                ),),),
+                ),),)]),
 
               Container(
                 margin: const EdgeInsets.only(top: 10, left: 20, right: 20),
-                padding: const EdgeInsets.only(bottom: 240),
+                //padding: const EdgeInsets.only(bottom: 240),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  color: const Color(0xFFF5F5F5),
+                  color: Colors.white,
                   //color: Colors.orange,
                 ),
 
-                child:  const Flexible(child: AutoSizeText(
+                child:  Row(
+                  children: [
+                    Flexible(child: AutoSizeText(
                     'Ausência de dor quando pega na região do ouvido de 2 a 5 dias',
                     maxLines: 2,
                     textAlign: TextAlign.left,
                     style: TextStyle(
                       color: Color(0xFF59616E),
 
-                    ),),),),
+                    ),),),])),
               const Padding(padding: EdgeInsets.all(5)),
               Container(
                 margin: const EdgeInsets.only(top: 10, left: 20, right: 20),
-                padding: const EdgeInsets.only(bottom: 240),
+               // padding: const EdgeInsets.only(bottom: 240),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  color: const Color(0xFFF5F5F5),
+                  color: Colors.white,
                   //color: Colors.orange,
                 ),
 
-                child:  const Flexible(child: AutoSizeText(
+                child:   Row(
+                  children: [
+                     Flexible(child: AutoSizeText(
                   'Ausência de dor quando pega na região do ouvido de 2 a 5 dias',
                   maxLines: 2,
                   textAlign: TextAlign.left,
                   style: TextStyle(
                     color: Color(0xFF59616E),
 
-                  ),),),),
+                  ),),),])),
               const Padding(padding: EdgeInsets.all(5)),
               Container(
                 margin: const EdgeInsets.only(top: 10, left: 20, right: 20),
-                padding: const EdgeInsets.only(bottom: 240),
+                //padding: const EdgeInsets.only(bottom: 240),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(20),
-                  color: const Color(0xFFF5F5F5),
+                  color: Colors.white,
                   //color: Colors.orange,
                 ),
 
-                child:  const Flexible(child: AutoSizeText(
+                child:   Row(
+                  children: [
+                    Flexible(child: AutoSizeText(
                   'Ausência de dor quando pega na região do ouvido de 2 a 5 dias',
                   maxLines: 2,
                   textAlign: TextAlign.left,
                   style: TextStyle(
                     color: Color(0xFF59616E),
 
-                  ),),),),
+                  ),),),]),),
               const Padding(padding: EdgeInsets.all(5)),
 
 
               Row(
+                mainAxisAlignment: MainAxisAlignment.center,
                 children: [
                   Container(
                       padding: const EdgeInsets.all(2),
@@ -176,14 +187,14 @@ class _ConsultaMarcosTerapeuticosState extends State<ConsultaMarcosTerapeuticosP
                       child: const Icon(
                         Icons.add,
                         color: Color(0xFF4116B4),
-                        size: 10,
+                        size: 16,
                       )),
-                  Padding(padding: EdgeInsets.all(10)),
-                  Text("Adicionar novo tópico ",
+                  const Padding(padding: EdgeInsets.all(2)),
+                  const Text("Adicionar novo tópico ",
                     textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 10,
-                      color: const Color(0xFF4116B4),
+                      fontSize: 16,
+                      color: Color(0xFF4116B4),
                       fontWeight: FontWeight.bold,
 
                     ),),

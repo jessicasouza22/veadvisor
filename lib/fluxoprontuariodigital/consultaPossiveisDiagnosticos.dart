@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/consultaPacienteEmConsulta.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/perfil.dart';
 import 'dart:io';
+import 'package:auto_size_text/auto_size_text.dart';
 
 
 class ConsultaPossiveisDiagnosticos extends StatelessWidget {
@@ -89,7 +90,8 @@ class _ConsultaPossiveisDiagnosticosState
                       ],
                     )))
           ]),
-      body: Column(children: [
+      body:  SingleChildScrollView(
+          child: Column( children: [
         Container(
           margin: const EdgeInsets.only(top: 20, left: 20, right: 20),
           //padding: const EdgeInsets.only(bottom: 400),
@@ -108,25 +110,59 @@ class _ConsultaPossiveisDiagnosticosState
                   fontWeight: FontWeight.bold
               ),),
 
-               
-              TextFormField(
-              //para senha: obscureText: true,
 
-              textAlign: TextAlign.center,
-              style: const TextStyle(
-                fontSize: 12,
-              ),
-              decoration: InputDecoration(
-                  fillColor: const Color(0xFF3C10BB),
-                  prefixIcon: const Icon(Icons.search, size: 18,),
+            Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  SizedBox(
+                    height: 30,
+                    width: 250,
 
-                  // icon: ,
-                  hintText: "Possíveis diagnósticos",
-                  ),
-            ),
+                    child:
+                    TextFormField(
+                      //para senha: obscureText: true,
+
+                      textAlign: TextAlign.center,
+
+                      style: const TextStyle(
+                        fontSize: 12,
+                      ),
+                      decoration: InputDecoration(
+                        fillColor: const Color(0xFF3C10BB),
+                        // contentPadding: EdgeInsets.fromLTRB(20, 0, 12, 0),
+                        prefixIcon: const Icon(
+                          Icons.search,
+                          size: 15,
+
+                        ),
+
+
+                        // icon: ,
+                        hintText: "Possíveis diagnósticos",
+                      ),
+                    ),),
+
+
+
+
+                  ElevatedButton(
+                    style: TextButton.styleFrom(
+                      padding: const EdgeInsets.only(
+                          top: 5, right: 10, left: 10, bottom: 5),
+
+                      backgroundColor: Colors.white,
+                      shape: RoundedRectangleBorder(
+                          borderRadius: BorderRadius.circular(2)),
+                      // Background Color
+                    ),
+                    onPressed: () {}, child: Text("Ver todos",
+                    style: TextStyle(
+                      color: Color(0xFF8F90A6),
+                    ),),),
+                ]),
 
             Container(
-                margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
+                margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 1),
                 padding: const EdgeInsets.only(
                     left: 40, right: 40, top: 5, bottom: 10),
                 decoration: BoxDecoration(
@@ -150,11 +186,16 @@ class _ConsultaPossiveisDiagnosticosState
                       Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: const [
-                          Text("Alérgia comum em cães da raça shih tzu",
-                            style: TextStyle(
-                              color: Colors.grey,
-                              fontSize: 10,
-                            ),),
+                          Flexible(
+                              child: AutoSizeText(
+                                'Alérgia comum em cães da raça shih tzu',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 10,
+                                ),
+                                maxLines: 3,
+                                textAlign: TextAlign.justify,
+                              )),
                         ],
                       ),
                       Row(
@@ -180,25 +221,245 @@ class _ConsultaPossiveisDiagnosticosState
                 )
             ),
 
-          ElevatedButton(
-              style: TextButton.styleFrom(
-                padding: const EdgeInsets.only(
-                    top: 5, right: 10, left: 10, bottom: 5),
-                //primary: Colors.blue,
-                backgroundColor: Colors.white,
-                shape: RoundedRectangleBorder(
-                    borderRadius: BorderRadius.circular(2)),
-                // Background Color
-              ),
-              onPressed: () {}, child: Text("Ver todos",
-          style: TextStyle(
-            color: Color(0xFF8F90A6),
-          ),),),
-
-
             Container(
                 //padding: const EdgeInsets.all(1),
-                //  margin: const EdgeInsets.only(top: 10),
+                  margin: const EdgeInsets.only(top: 1),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50),
+                  color: const Color(0xFF4116B4),
+                ),
+                child: const Icon(
+                  Icons.add,
+                  color: Colors.white,
+                  size: 16,
+                )),
+
+            Container(
+                margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 1),
+                padding: const EdgeInsets.only(
+                    left: 40, right: 40, top: 5, bottom: 10),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.white,
+                ),
+                child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: const [
+
+
+
+                          Text("Otite externa",
+                            style: TextStyle(
+                              color: Color(0xFF4116B4),
+                              fontWeight: FontWeight.bold,
+                            ),),
+                          Icon(Icons.star,
+                            color: Colors.yellow,)
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: const [
+
+                          Flexible(
+                              child: AutoSizeText(
+                                'Infecção comum em cães com predisposição a dermatite atópica e que frequentam banho',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 10,
+                                ),
+                                maxLines: 3,
+                                textAlign: TextAlign.justify,
+                              )),
+
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          const Text("Incluir"),
+                          const Padding(padding: EdgeInsets.only(left: 10)),
+                          /*SizedBox(
+                            width: 15,
+                            height: 15,
+                            child: Radio(
+                              //fillColor: Color.white,
+                              value: false,
+                              groupValue: false,
+
+                              onChanged: (value) {},
+                            ),
+                          ),*/
+                          Checkbox(
+                            checkColor: Colors.white,
+                            activeColor: Colors.green,
+                            //fillColor: MaterialStateProperty.resolveWith(getColor),
+                            value: false,
+                            visualDensity: VisualDensity.compact,
+                            shape: CircleBorder(),
+                            onChanged: (value) {},
+                          ),
+
+                        ],
+                      )
+                    ]
+                )
+            ),
+
+            Container(
+              //padding: const EdgeInsets.all(1),
+                margin: const EdgeInsets.only(top: 1),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50),
+                  color: const Color(0xFF4116B4),
+                ),
+                child: const Icon(
+                  Icons.add,
+                  color: Colors.white,
+                  size: 16,
+                )),
+
+            Container(
+                margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 1),
+                padding: const EdgeInsets.only(
+                    left: 40, right: 40, top: 5, bottom: 10),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.white,
+                ),
+                child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: const [
+                          Text("Otite média",
+                            style: TextStyle(
+                              color: Color(0xFF4116B4),
+                              fontWeight: FontWeight.bold,
+                            ),),
+                          Icon(Icons.star,
+                            color: Colors.yellow,)
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: const [
+
+                          Flexible(
+                              child: AutoSizeText(
+                                'Sempre elimine essa possibilidade se estiver suspeitando de otite externa, por que se for ',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 10,
+                                ),
+                                maxLines: 3,
+                                textAlign: TextAlign.justify,
+                              )),
+
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          const Text("Incluir"),
+                          const Padding(padding: EdgeInsets.only(left: 10)),
+                          SizedBox(
+                            width: 15,
+                            height: 15,
+                            child: Radio(
+                              //fillColor: Color.white,
+                              value: false,
+                              groupValue: false,
+
+                              onChanged: (value) {},
+                            ),
+                          ),
+
+                        ],
+                      )
+                    ]
+                )
+            ),
+
+            Container(
+              //padding: const EdgeInsets.all(1),
+                margin: const EdgeInsets.only(top: 1),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(50),
+                  color: const Color(0xFF4116B4),
+                ),
+                child: const Icon(
+                  Icons.add,
+                  color: Colors.white,
+                  size: 16,
+                )),
+
+            Container(
+                margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 1),
+                padding: const EdgeInsets.only(
+                    left: 40, right: 40, top: 5, bottom: 10),
+                decoration: BoxDecoration(
+                  borderRadius: BorderRadius.circular(20),
+                  color: Colors.white,
+                ),
+                child: Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: const [
+                          Text("Otite Aguda",
+                            style: TextStyle(
+                              color: Color(0xFF4116B4),
+                              fontWeight: FontWeight.bold,
+                            ),),
+                          Icon(Icons.star,
+                            color: Colors.yellow,)
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: const [
+
+                          Flexible(
+                              child: AutoSizeText(
+                                'Costuma ser uma consequência da Otite externa. Imprescendivel determinar a ',
+                                style: TextStyle(
+                                  color: Colors.grey,
+                                  fontSize: 10,
+                                ),
+                                maxLines: 3,
+                                textAlign: TextAlign.justify,
+                              )),
+                        ],
+                      ),
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.end,
+                        children: [
+                          const Text("Incluir"),
+                          const Padding(padding: EdgeInsets.only(left: 10)),
+                          SizedBox(
+                            width: 15,
+                            height: 15,
+                            child: Radio(
+                              //fillColor: Color.white,
+                              value: false,
+                              groupValue: false,
+
+                              onChanged: (value) {},
+                            ),
+                          ),
+
+                        ],
+                      )
+                    ]
+                )
+            ),
+
+            Container(
+              //padding: const EdgeInsets.all(1),
+                margin: const EdgeInsets.only(top: 1),
                 decoration: BoxDecoration(
                   borderRadius: BorderRadius.circular(50),
                   color: const Color(0xFF4116B4),
@@ -210,6 +471,12 @@ class _ConsultaPossiveisDiagnosticosState
                 )),
 
 
+
+
+
+          ]),
+
+        ),
             Builder(
               builder: (context) => ElevatedButton(
                   style: ElevatedButton.styleFrom(
@@ -227,10 +494,6 @@ class _ConsultaPossiveisDiagnosticosState
                     style: TextStyle(color: Color(0xFF3C10BB)),
                   )),
             ),
-
-
-          ]),
-        ),
         const Padding(
           padding: EdgeInsets.all(8),
         ),
@@ -279,6 +542,6 @@ class _ConsultaPossiveisDiagnosticosState
               ])),
         ),
       ]),
-    );
+    ));
   }
 }

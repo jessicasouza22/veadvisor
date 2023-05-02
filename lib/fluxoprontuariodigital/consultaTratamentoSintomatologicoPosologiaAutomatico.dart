@@ -9,6 +9,7 @@ import 'package:vetadvisor/fluxoprontuariodigital/ConsultaTratamentoSintomatolog
 import 'package:vetadvisor/fluxoprontuariodigital/cadastreOPet.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/consultaAtendimentoPaciente.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/consultaPossiveisDiagnosticos.dart';
+import 'package:vetadvisor/fluxoprontuariodigital/consultaTratamentoParaDoenca.dart';
 import 'package:vetadvisor/recursos/Constants.dart';
 
 
@@ -938,7 +939,7 @@ class _ConsultaTratamentoSintomatologicoPosologiaAutomaticoState extends State<C
                             context,
                             MaterialPageRoute(
                                 builder: (context) =>
-                                const ConsultaTratamentoSintomatologicoPosologiaAutomatico()),
+                                const ConsultaTratamentoParaDoenca()),
                           );
                         },
                         child: const Text(

@@ -97,17 +97,21 @@ class _ConsultaPrognosticcosState extends State<ConsultaPrognosticcosPage> {
               style: TextStyle(
                   color: Color(0xFF4116B4), fontWeight: FontWeight.bold),
             ),
+            const Padding(padding: EdgeInsets.all(5)),
 
-             Flexible(child: AutoSizeText(
+             Row(
+                 mainAxisAlignment: MainAxisAlignment.start,
+                 children: [
+                   Flexible(child: AutoSizeText(
               'Defina o prognóstico do paciente com base no quadro clínico',
               maxLines: 2,
               textAlign: TextAlign.left,
               style: TextStyle(
                 color: Color(0xFF59616E),
 
-              ),),),
+              ),),),]),
 
-          /*  Row(
+            Row(
               children: [
                 Checkbox(
                   checkColor: Colors.white,
@@ -195,7 +199,7 @@ class _ConsultaPrognosticcosState extends State<ConsultaPrognosticcosPage> {
 
                 ),),),),
             const Padding(padding: EdgeInsets.all(5)),
-*/
+
             Row(
                 mainAxisAlignment: MainAxisAlignment.center,
                 children: [

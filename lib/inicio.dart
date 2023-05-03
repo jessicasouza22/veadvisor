@@ -566,6 +566,8 @@ class _InicioVeterinarioPageState extends State<InicioVeterinarioPage> {
                   ]),
               SliverFillRemaining(
                 hasScrollBody: true,
+                child: Container(
+                  color: Color(0xFFF5F5F5),
                 child: SingleChildScrollView(
                     child: Column(children: [
                       const Padding(padding: EdgeInsets.only(top: 10)),
@@ -654,7 +656,7 @@ class _InicioVeterinarioPageState extends State<InicioVeterinarioPage> {
                                     ),
                                   ),
                                   // icon: ,
-                                  hintText: "Digite os sintomas do seu pet",
+                                  hintText: "Digite aqui a suspeita clínica",
                                   suffixIcon: Padding(
                                       padding: const EdgeInsets.only(
                                           left: 1, right: 4, top: 3, bottom: 3),
@@ -696,341 +698,87 @@ class _InicioVeterinarioPageState extends State<InicioVeterinarioPage> {
                         ),
                       ),
 
-                      Padding(padding: EdgeInsets.only(top: 10)),
+                      Padding(padding: EdgeInsets.only(top: 15)),
+
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.start,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: const [
                           Padding(
                             padding: EdgeInsets.only(left: 10),
                             child: Icon(
-                              Icons.calendar_month,
+                              MdiIcons.stethoscope,
                               color: Color(0xFF3C10BB),
+                              size: 14,
                             ),
                           ),
                           Text(
-                            " Agende sua consulta com especialista",
+                            " Iniciar nova consulta",
                             style: TextStyle(
                               color: Color(0xFF3C10BB),
                               decoration: TextDecoration.none,
                               fontSize: 14,
                             ),
-                          )
-                        ],
-                      ),
-                      // ),
-                      // ),
-                      const Padding(padding: EdgeInsets.only(top: 8)),
-
-                      SizedBox(
-                        width: 220,
-                        height: 120,
-                        child: PageView.builder(
-                          onPageChanged: (posicao) {
-                            setState(() {
-                              posicaoSlide = posicao;
-                            });
-                          },
-                          // controller: _pageController,
-                          itemCount: _listSlide2.length,
-                          itemBuilder: (_, currentIndex) {
-                            //  bool activePage = currentIndex == _currentPage;
-                            return CarouselSlider(
-                              items: [
-                                AnimatedContainer(
-                                    duration: const Duration(milliseconds: 1000),
-                                    curve: Curves.easeOutQuint,
-                                    // margin: EdgeInsets.all(10),
-                                    // margin: EdgeInsets.only( bottom: 100, right: 30),
-                                    decoration: BoxDecoration(
-                                        borderRadius: BorderRadius.circular(20),
-                                        image: DecorationImage(
-                                            image: AssetImage(
-                                                _listSlide2[currentIndex]),
-                                            //chamo as imagens aqui
-                                            //para a imagem ocupar toda tela
-                                            fit: BoxFit.cover),
-                                        boxShadow: const [
-                                          BoxShadow(
-                                            color: Colors.black87,
-                                            //blurRadius: blur,
-                                            // offset: Offset(offset, offset)
-                                          )
-                                        ])
-                                  //color: Colors.blue,
-
-                                )
-                              ],
-                              options: CarouselOptions(
-                                height: 120,
-
-                                onPageChanged: (index, resource) {
-                                  if (posicalCarrouselEspecialista <
-                                      _listSlide2.length - 1) {
-                                    posicalCarrouselEspecialista++;
-                                  } else {
-                                    posicalCarrouselEspecialista = 0;
-                                  }
-
-                                  setState(() {
-                                    posicaoSlide = posicalCarrouselEspecialista;
-                                  });
-                                },
-
-                                autoPlay: true,
-                                autoPlayInterval: const Duration(seconds: 4),
-                                autoPlayAnimationDuration:
-                                const Duration(milliseconds: 800),
-                                autoPlayCurve: Curves.fastOutSlowIn,
-                                enlargeCenterPage: true,
-                                // enlargeFactor: 0.3,
-
-                                scrollDirection: Axis.horizontal,
-                              ),
-                            );
-                          },
-                        ),
-                      ),
-
-                      Padding(padding: EdgeInsets.all(4)),
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                          /*Icon(Icons.circle, size: 12, color: Colors.grey),
-                      Icon(Icons.circle, size: 12, color: Colors.grey),
-                      Icon(Icons.circle, size: 12, color: Colors.grey),*/
-
-                          Container(
-                            margin: EdgeInsets.all(5),
-                            width: 8,
-                            height: 8,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(30),
-                              color: posicaoSlide == 0 ? cores[0] : cores[1],
-                            ),
                           ),
-                          Container(
-                            margin: EdgeInsets.all(5),
-                            width: 8,
-                            height: 8,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(30),
-                              color: posicaoSlide == 1 ? cores[0] : cores[1],
-                            ),
-                          ),
-                          Container(
-                            margin: EdgeInsets.all(5),
-                            width: 8,
-                            height: 8,
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(30),
-                              color: posicaoSlide == 2 ? cores[0] : cores[1],
-                            ),
-                          ),
+                          Icon(MdiIcons.chevronRight, color: Color(0xFF59616E), size: 18)
                         ],
                       ),
 
-                      // ],
-                      // )),*/
-                      Padding(padding: EdgeInsets.all(5)),
+
+                      Padding(padding: EdgeInsets.only(top: 10)),
+
+                      Divider(
+                        color: Color(0xFF6F767E),
+                        thickness: 0.2,
+                        endIndent: 50,
+                        indent: 50,
+                      ),
+
                       Container(
-                          padding: EdgeInsets.only(bottom: 18, top: 10),
-                          margin: const EdgeInsets.only(left: 20.0, right: 20.0),
-                          color: Colors.white,
-                          child: Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: const [
-                              Icon(
-                                MdiIcons.stethoscope,
-                                size: 18,
-                                color: Color(0xFF3C10BB),
-                              ),
-                              Text(
-                                "   Consultas de meus PETS   ",
-                                style: TextStyle(
-                                    color: Color(0xFF3C10BB),
-                                    fontSize: 14,
-                                    decoration: TextDecoration.none),
-                              ),
-                              Icon(
-                                MdiIcons.chevronRight,
-                                size: 18,
-                                color: Color(0xFF3C10BB),
-                              ),
-                            ],
-                          )),
-                      const Padding(padding: EdgeInsets.all(10)),
-                      Container(
-                          padding: const EdgeInsets.only(bottom: 10, top: 10),
-                          margin: const EdgeInsets.only(left: 10.0, right: 20.0),
-                          //color: Colors.white,
-                          child: Row(
-                            //mainAxisAlignment: MainAxisAlignment.,
-                            children: const [
-                              Text(
-                                " |  Dicas do especialista ",
-                                style: TextStyle(
-                                    color: Color(0xFF3C10BB),
-                                    fontSize: 14,
-                                    decoration: TextDecoration.none),
-                              ),
-                            ],
-                          )),
-                      // Padding(padding: EdgeInsets.all(5)),
+                          margin: const EdgeInsets.only(top: 10, left: 20, right: 20),
+                          // padding: const EdgeInsets.only(bottom: 240),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: Colors.white,
+                            //color: Colors.orange,
+                          ),
 
-                      /*SizedBox(
-                    width: double.infinity,
-                    child: Container(
-                      margin: const EdgeInsets.only(left: 120, right: 120),
-                      decoration: const BoxDecoration(
-                          color: Colors.orange,
-                          borderRadius: BorderRadius.all(Radius.circular(20))),
-                      child: CarouselSlider(
-                        options: CarouselOptions(
-                          height: 120,
-
-                          // aspectRatio: 16 / 9,
-                          //viewportFraction: 0.8,
-                          initialPage: 0,
-                          //enableInfiniteScroll: true,
-                          //reverse: false,
-                          autoPlay: true,
-                          autoPlayInterval: const Duration(seconds: 4),
-                          autoPlayAnimationDuration:
-                              const Duration(milliseconds: 800),
-                          autoPlayCurve: Curves.fastOutSlowIn,
-                          enlargeCenterPage: true,
-                          // enlargeFactor: 0.3,
-
-                          scrollDirection: Axis.horizontal,
-                        ),
-                        items: [
-                          AspectRatio(
-                            aspectRatio: _controller.value.aspectRatio,
-                            child: Stack(
-                              alignment: Alignment.bottomRight,
+                          child:
+                          Column(
                               children: [
-                                Center(
-                                  child: _controller.value.isInitialized
-                                      ? AspectRatio(
-                                          aspectRatio:
-                                              _controller.value.aspectRatio,
-                                          child: VideoPlayer(_controller),
-                                        )
-                                      : Container(),
+                                Text(
+                                  " |  Próximas consultas ",
+                                  style: TextStyle(
+                                      color: Color(0xFF3C10BB),
+                                      fontSize: 14,
+                                      decoration: TextDecoration.none),
                                 ),
-                                Positioned(
-                                  right: 5,
-                                  bottom: 5,
-                                  child: GestureDetector(
-                                      onTap: () {
-                                        if (_volume == 100.0) {
-                                          setState(() {
-                                            _controller.setVolume(0);
-                                            _volume = 0;
-                                            _posicao_volume = 0;
-                                          });
-                                        } else {
-                                          setState(() {
-                                            _controller.setVolume(100);
-                                            _volume = 100;
-                                            _posicao_volume = 1;
-                                          });
-                                        }
-                                      },
-                                      child: Icon(
-                                          _icone_volume[_posicao_volume],
-                                          color: Colors.grey,
-                                          size: 30)),
-                                ),
-                              ],
-                            ),
-                          ),
-                        ],
-                      ),
-                    ),
-                  ),*/
-                      SizedBox(
-                        width: 210,
-                        height: 100,
-                        child: PageView.builder(
-                          onPageChanged: (posicao) {
-                            setState(() {
-                              posicaoSlide = posicao;
-                            });
-                          },
-                          itemCount: _listSlideVideos.length,
-                          itemBuilder: (_, currentIndex) {
-                            return AnimatedContainer(
-                                duration: Duration(milliseconds: 1000),
 
-                                curve: Curves.easeOutQuint,
-                                decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(50)),
-                                child: AspectRatio(
-                                  aspectRatio: _controllerV.value.aspectRatio,
-                                  child: Stack(
-                                    alignment: Alignment.center,
-                                    children: [
-                                      Center(
-                                        // padding: EdgeInsets.all(1),
+                                ElevatedButton(
+                                  style: TextButton.styleFrom(
+                                    padding: const EdgeInsets.only(
+                                        top: 5, right: 10, left: 10, bottom: 5),
 
-                                        child: _controllerV.value.isInitialized
-                                            ? AspectRatio(
-                                          aspectRatio:
-                                          _controllerV.value.aspectRatio,
-                                          child: VideoPlayer(_controllerV),
-                                        )
-                                            : Container(),
-                                      ),
-                                      Positioned(
-                                        right: 5,
-                                        bottom: 5,
-                                        child: GestureDetector(
-                                            onTap: () {
-                                              if (_volume == 100.0) {
-                                                setState(() {
-                                                  _controllerV.setVolume(0);
-                                                  _volume = 0;
-                                                  _posicao_volume = 0;
-                                                });
-                                              } else {
-                                                setState(() {
-                                                  _controllerV.setVolume(100);
-                                                  _volume = 100;
-                                                  _posicao_volume = 1;
-                                                });
-                                              }
-                                            },
-                                            child: Icon(
-                                                _icone_volume[_posicao_volume],
-                                                color: Colors.grey,
-                                                size: 30)),
-                                      ),
-                                    ],
+                                    backgroundColor: Colors.white,
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(2)),
+                                    // Background Color
                                   ),
-                                ));
-                          },
-                        ),
-                      ),
-                      Container(
-                          padding: EdgeInsets.only(bottom: 10, top: 10),
-                          margin: const EdgeInsets.only(left: 10.0, right: 20.0),
-                          //color: Colors.white,
-                          child: Row(
-                            //mainAxisAlignment: MainAxisAlignment.,
-                            children: const [
-                              Text(
-                                " |  Dicas do especialista ",
-                                style: TextStyle(
-                                    color: Color(0xFF3C10BB),
-                                    fontSize: 14,
-                                    decoration: TextDecoration.none),
-                              ),
-                            ],
-                          )),
+                                  onPressed: () {}, child:
+                                Text("Ver todos",
+                                  style: TextStyle(
+                                    color: Color(0xFF8F90A6),
+                                  ),),),
+
+                                Icon(MdiIcons.chevronRight, color: Color(0xFF59616E), size: 18)
+
+
+
+                               ])),
+
+
 
                     ])),
               )
-            ])));
+              )])));
   }
 }

@@ -164,7 +164,8 @@ class _ConsultaPossiveisDiagnosticosState
                           borderRadius: BorderRadius.circular(2)),
                       // Background Color
                     ),
-                    onPressed: () {}, child: Text("Ver todos",
+                    onPressed: () {}, child:
+                  Text("Ver todos",
                     style: TextStyle(
                       color: Color(0xFF8F90A6),
                     ),),),

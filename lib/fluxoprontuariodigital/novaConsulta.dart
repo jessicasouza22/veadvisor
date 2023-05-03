@@ -11,6 +11,7 @@ import 'package:vetadvisor/fluxoprontuariodigital/cadastreOPet.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/consultaAtendimentoPaciente.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/consultaPossiveisDiagnosticos.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/perfilPaciente.dart';
+import 'package:vetadvisor/inicio.dart';
 import 'package:vetadvisor/recursos/Constants.dart';
 import 'dart:io';
 
@@ -272,7 +273,7 @@ class _NovaConsultaState extends State<NovaConsultaPage> {
                                   context,
                                   MaterialPageRoute(
                                       builder: (context) =>
-                                      const CadastreOPet()),
+                                      const InicioVeterinario()),
                                 );
                               },
                               child: const Text(

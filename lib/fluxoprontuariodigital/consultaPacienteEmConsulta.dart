@@ -71,11 +71,19 @@ class _ConsultaAtendimentoPacienteState
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          IconButton(
-                              onPressed: () {
-                                //print("clicado na seta");
-                              },
-                              icon: const Icon(Icons.arrow_back)),
+                          Builder(
+                              builder: (context) => IconButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (
+                                              context) => const ConsultaTratamentoSintomatologico()),
+                                    );
+
+                                    //print("clicado na seta");
+                                  },
+                                  icon: const Icon(Icons.arrow_back))),
                           const Text(
                             "Consulta",
                             //textAlign: TextAlign.center,

@@ -1,7 +1,8 @@
-// 2.2
+// 2.2  Perfil
 
 import 'dart:io';
 import 'package:flutter/material.dart';
+import 'package:vetadvisor/fluxoprontuariodigital/cadastreOPet.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/perfilPaciente.dart';
 
 
@@ -36,8 +37,19 @@ class _PerfilPageState extends State<PerfilPage> {
     return Scaffold(
       appBar: AppBar(
         elevation: 0,
-          leading: const Icon(Icons.arrow_circle_left,
-              color: Colors.white),
+          leading:  Builder(
+              builder: (context) => IconButton(
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (
+                              context) => const CadastreOPet()),
+                    );
+
+                    //print("clicado na seta");
+                  },
+                  icon: const Icon(Icons.arrow_back))),
 
           backgroundColor: const Color(0xFF3C10BB),
 

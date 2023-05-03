@@ -5,6 +5,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/consultaMarcosTerapeuticos.dart';
+import 'package:vetadvisor/fluxoprontuariodigital/consultaResumoDaConsulta.dart';
 
 
 class ConsultaPrognosticcos extends StatelessWidget {
@@ -65,11 +66,19 @@ class _ConsultaPrognosticcosState extends State<ConsultaPrognosticcosPage> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          IconButton(
-                              onPressed: () {
-                                //print("clicado na seta");
-                              },
-                              icon: const Icon(Icons.arrow_back)),
+                          Builder(
+                              builder: (context) => IconButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (
+                                              context) => const ConsultaPrognosticcos()),
+                                    );
+
+                                    //print("clicado na seta");
+                                  },
+                                  icon: const Icon(Icons.arrow_back))),
                           const Text(
                             "Consulta",
                             //textAlign: TextAlign.center,
@@ -90,7 +99,7 @@ class _ConsultaPrognosticcosState extends State<ConsultaPrognosticcosPage> {
             ]),
         body: SingleChildScrollView(
           child: Column(children: [
-
+            const Padding(padding: EdgeInsets.all(5)),
             const Text(
               "Prognóstico",
               textAlign: TextAlign.center,
@@ -99,19 +108,25 @@ class _ConsultaPrognosticcosState extends State<ConsultaPrognosticcosPage> {
             ),
             const Padding(padding: EdgeInsets.all(5)),
 
-             Row(
+             Padding(
+                 padding: EdgeInsets.only(right: 40, left: 40),
+                 child:
+                 Row(
                  mainAxisAlignment: MainAxisAlignment.start,
                  children: [
                    Flexible(child: AutoSizeText(
               'Defina o prognóstico do paciente com base no quadro clínico',
               maxLines: 2,
-              textAlign: TextAlign.left,
+              textAlign: TextAlign.justify,
               style: TextStyle(
                 color: Color(0xFF59616E),
 
-              ),),),]),
+              ),),),])),
+            const Padding(padding: EdgeInsets.all(5)),
 
-            Row(
+          Padding(
+              padding: EdgeInsets.only(right: 40, left: 26),
+              child: Row(
               children: [
                 Checkbox(
                   checkColor: Colors.white,
@@ -124,7 +139,7 @@ class _ConsultaPrognosticcosState extends State<ConsultaPrognosticcosPage> {
 
                 Container(
                   //margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
-                  padding: const EdgeInsets.only(left: 15, right: 15,bottom: 50),
+                  padding: const EdgeInsets.only(left: 15, right: 110, bottom: 10, top: 10),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     color: Color(0XFFC5E8C6),
@@ -133,8 +148,10 @@ class _ConsultaPrognosticcosState extends State<ConsultaPrognosticcosPage> {
                 ),
 
               ],
-            ),
-            Row(
+            )),
+          Padding(
+              padding: EdgeInsets.only(right: 40, left: 26),
+              child: Row(
               children: [
                 Checkbox(
                   checkColor: Colors.white,
@@ -147,7 +164,7 @@ class _ConsultaPrognosticcosState extends State<ConsultaPrognosticcosPage> {
 
                 Container(
                   //margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
-                  padding: const EdgeInsets.only(left: 15, right: 15,bottom: 50),
+                  padding: const EdgeInsets.only(left: 15, right: 90, bottom: 10, top: 10),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     color: Color(0XFFF8DACC),
@@ -156,8 +173,10 @@ class _ConsultaPrognosticcosState extends State<ConsultaPrognosticcosPage> {
                 ),
 
               ],
-            ),
-            Row(
+            )),
+          Padding(
+              padding: EdgeInsets.only(right: 40, left: 26),
+              child: Row(
               children: [
                 Checkbox(
                   checkColor: Colors.white,
@@ -168,9 +187,10 @@ class _ConsultaPrognosticcosState extends State<ConsultaPrognosticcosPage> {
                   onChanged: (value) {},
                 ),
 
-                Container(
+
+                    Container(
                   //margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 5),
-                  padding: const EdgeInsets.only(left: 15, right: 15,bottom: 50),
+                      padding: const EdgeInsets.only(left: 15, right: 15, bottom: 10, top: 10),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(20),
                     color: Color(0XFFF2B9CD),
@@ -179,25 +199,8 @@ class _ConsultaPrognosticcosState extends State<ConsultaPrognosticcosPage> {
                 ),
 
               ],
-            ),
+              )),
 
-            Container(
-              margin: const EdgeInsets.only(top: 10, left: 20, right: 20),
-              padding: const EdgeInsets.only(bottom: 240),
-              decoration: BoxDecoration(
-                borderRadius: BorderRadius.circular(20),
-                color: const Color(0xFFF5F5F5),
-                //color: Colors.orange,
-              ),
-
-              child:  const Flexible(child: AutoSizeText(
-                'Ausência de dor quando pega na região do ouvido de 2 a 5 dias',
-                maxLines: 2,
-                textAlign: TextAlign.left,
-                style: TextStyle(
-                  color: Color(0xFF59616E),
-
-                ),),),),
             const Padding(padding: EdgeInsets.all(5)),
 
             Row(
@@ -213,7 +216,7 @@ class _ConsultaPrognosticcosState extends State<ConsultaPrognosticcosPage> {
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
-                              const ConsultaMarcosTerapeuticos()),
+                              const ConsultaResumoDaConsulta()),
                         );
                       },
                       child: const Text(

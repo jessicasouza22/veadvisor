@@ -5,6 +5,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/consultaPrognosticos.dart';
+import 'package:vetadvisor/fluxoprontuariodigital/consultaTratamentoParaDoencaSugeridoPrevia.dart';
 
 
 class ConsultaMarcosTerapeuticos extends StatelessWidget {
@@ -65,11 +66,19 @@ class _ConsultaMarcosTerapeuticosState extends State<ConsultaMarcosTerapeuticosP
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          IconButton(
-                              onPressed: () {
-                                //print("clicado na seta");
-                              },
-                              icon: const Icon(Icons.arrow_back)),
+                          Builder(
+                              builder: (context) => IconButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (
+                                              context) => const ConsultaTratamentoParaDoencaSugeridoPrevia()),
+                                    );
+
+                                    //print("clicado na seta");
+                                  },
+                                  icon: const Icon(Icons.arrow_back))),
                           const Text(
                             "Consulta",
                             //textAlign: TextAlign.center,
@@ -90,26 +99,27 @@ class _ConsultaMarcosTerapeuticosState extends State<ConsultaMarcosTerapeuticosP
             ]),
         body: SingleChildScrollView(
             child: Column(children: [
-
+            Padding(padding: EdgeInsets.all(5)),
               const Text(
                 "Marcos terapêuticos",
                 textAlign: TextAlign.center,
                 style: TextStyle(
                     color: Color(0xFF4116B4), fontWeight: FontWeight.bold),
               ),
-              const Padding(padding: EdgeInsets.all(5)),
+             Padding(padding: EdgeInsets.only(left: 20, top: 5),
+              child:
 
               Row(
                 crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
                     Flexible(child: AutoSizeText(
-                ' Defina as melhorias que você espera que o seu paciente alcance por periodo',
+                'Defina as melhorias que você espera que o seu paciente alcance por periodo',
                 maxLines: 2,
                 textAlign: TextAlign.left,
                 style: TextStyle(
                   color: Color(0xFF59616E),
 
-                ),),)]),
+                ),),)])),
 
               Container(
                 margin: const EdgeInsets.only(top: 10, left: 20, right: 20),

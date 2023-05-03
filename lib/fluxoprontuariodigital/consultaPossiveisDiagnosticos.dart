@@ -3,6 +3,7 @@
 
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:vetadvisor/fluxoprontuariodigital/consultaPaciente.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/consultaPacienteEmConsulta.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/perfil.dart';
 import 'dart:io';
@@ -67,11 +68,19 @@ class _ConsultaPossiveisDiagnosticosState
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        IconButton(
-                            onPressed: () {
-                              //print("clicado na seta");
-                            },
-                            icon: const Icon(Icons.arrow_back)),
+                        Builder(
+                            builder: (context) => IconButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (
+                                            context) => const ConsultaPaciente()),
+                                  );
+
+                                  //print("clicado na seta");
+                                },
+                                icon: const Icon(Icons.arrow_back))),
                         const Text(
                           "Consulta",
                           //textAlign: TextAlign.center,

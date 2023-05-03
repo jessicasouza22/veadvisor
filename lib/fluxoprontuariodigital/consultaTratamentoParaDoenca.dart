@@ -9,6 +9,7 @@ import 'package:flutter/material.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/cadastreOPet.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/consultaAtendimentoPaciente.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/consultaPossiveisDiagnosticos.dart';
+import 'package:vetadvisor/fluxoprontuariodigital/consultaTratamentoSintomatologico.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/consultaTratamentoSintomatologicoPosologiaAutomatico.dart';
 import 'package:vetadvisor/recursos/Constants.dart';
 
@@ -296,23 +297,18 @@ class _ConsultaTratamentoParaDoencaState extends State<ConsultaTratamentoParaDoe
                         mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Builder(
-                              builder: (context) => ElevatedButton(
-                                  style: ElevatedButton.styleFrom(
-                                      shape: const StadiumBorder(),
-                                      backgroundColor: Color(0xFF12EC1A)),
-                                  onPressed: () {
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (context) =>
-                                          const ConsultaTratamentoParaDoencaSugerido()),
-                                    );
-                                  },
-                                  child: const Text(
-                                    'Sim',
-                                    style: TextStyle(color: Colors.white),
-                                  )),
-                            ),
+                                builder: (context) => IconButton(
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (
+                                                context) => const ConsultaTratamentoSintomatologico()),
+                                      );
+
+                                      //print("clicado na seta");
+                                    },
+                                    icon: const Icon(Icons.arrow_back))),
                             Padding(padding: EdgeInsets.all(10)),
 
                             Builder(

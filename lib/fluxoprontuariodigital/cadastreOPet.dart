@@ -1,10 +1,11 @@
-// 2.1
+// 2.1 CadastreOPet
 
 import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/perfil.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/perfilPaciente.dart';
+import 'package:vetadvisor/prelogin/logado.dart';
 
 
 import '../recursos/Constants.dart';
@@ -107,7 +108,19 @@ class _CadastreOPetState extends State<CadastreOPetPage> {
                             onPressed: () {
 
                             },
-                            icon: Icon(MdiIcons.bellBadgeOutline)),
+                            icon: Builder(
+                                builder: (context) => IconButton(
+                                    onPressed: () {
+                                      Navigator.push(
+                                        context,
+                                        MaterialPageRoute(
+                                            builder: (
+                                                context) => const Logado()),
+                                      );
+
+                                      //print("clicado na seta");
+                                    },
+                                    icon: const Icon(Icons.arrow_back))),),
                         Text(
                           "Cadastro do Pet ",
                           //textAlign: TextAlign.center,

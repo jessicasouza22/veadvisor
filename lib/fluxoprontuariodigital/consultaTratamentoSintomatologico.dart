@@ -6,6 +6,7 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:flutter/material.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/cadastreOPet.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/consultaAtendimentoPaciente.dart';
+import 'package:vetadvisor/fluxoprontuariodigital/consultaPacienteEmConsulta.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/consultaPossiveisDiagnosticos.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/consultaTratamentoParaDoenca.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/consultaTratamentoSintomatologicoPosologiaAutomatico.dart';
@@ -67,11 +68,19 @@ class _ConsultaTratamentoSintomatologicoState extends State<ConsultaTratamentoSi
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        IconButton(
-                            onPressed: () {
-                              //print("clicado na seta");
-                            },
-                            icon: const Icon(Icons.arrow_back)),
+                        Builder(
+                            builder: (context) => IconButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (
+                                            context) => const ConsultaPacienteEmConsulta()),
+                                  );
+
+                                  //print("clicado na seta");
+                                },
+                                icon: const Icon(Icons.arrow_back))),
                         Text(
                           "Perfil",
                           //textAlign: TextAlign.center,

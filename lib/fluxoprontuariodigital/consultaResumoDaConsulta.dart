@@ -2,29 +2,31 @@
 
 
 import 'dart:io';
-
+import 'package:auto_size_text/auto_size_text.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:flutter/material.dart';
+import 'package:vetadvisor/fluxoprontuariodigital/consultaAtendimentoPaciente.dart';
+import 'package:vetadvisor/fluxoprontuariodigital/consultaPrognosticos.dart';
 
 import 'package:vetadvisor/recursos/Constants.dart';
 
-class ConsultaAtendimentoPaciente extends StatelessWidget {
-  const ConsultaAtendimentoPaciente({super.key});
+class ConsultaResumoDaConsulta extends StatelessWidget {
+  const ConsultaResumoDaConsulta({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const ConsultaAtendimentoPacientePage();
+    return const ConsultaResumoDaConsultaPage();
   }
 }
 
-class ConsultaAtendimentoPacientePage extends StatefulWidget {
-  const ConsultaAtendimentoPacientePage({Key? key}) : super(key: key);
+class ConsultaResumoDaConsultaPage extends StatefulWidget {
+  const ConsultaResumoDaConsultaPage({Key? key}) : super(key: key);
 
   @override
-  State<ConsultaAtendimentoPacientePage> createState() => _ConsultaAtendimentoPacienteState();
+  State<ConsultaResumoDaConsultaPage> createState() => _ConsultaResumoDaConsultaState();
 }
 
-class _ConsultaAtendimentoPacienteState extends State<ConsultaAtendimentoPacientePage> {
+class _ConsultaResumoDaConsultaState extends State<ConsultaResumoDaConsultaPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -64,13 +66,21 @@ class _ConsultaAtendimentoPacienteState extends State<ConsultaAtendimentoPacient
                     child: Row(
                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        IconButton(
-                            onPressed: () {
-                              //print("clicado na seta");
-                            },
-                            icon: const Icon(Icons.arrow_back)),
+                        Builder(
+                            builder: (context) => IconButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (
+                                            context) => const ConsultaPrognosticcos()),
+                                  );
+
+                                  //print("clicado na seta");
+                                },
+                                icon: const Icon(Icons.arrow_back))),
                         const Text(
-                          "Fechar e voltar ao perfil",
+                          "Consulta",
                           //textAlign: TextAlign.center,
 
                           style: TextStyle(
@@ -87,7 +97,8 @@ class _ConsultaAtendimentoPacienteState extends State<ConsultaAtendimentoPacient
                       ],
                     )))
           ]),
-      body: Column(children: [
+    body: SingleChildScrollView(
+    child: Column(children: [
         Container(
           margin: const EdgeInsets.only(top: 20, left: 20, right: 20),
           //padding: const EdgeInsets.only(bottom: 400),
@@ -99,11 +110,286 @@ class _ConsultaAtendimentoPacienteState extends State<ConsultaAtendimentoPacient
           child: Column(children: [
 
 
-            const Text("Atendimento paciente",
+            const Text("Resumo da consulta",
               textAlign: TextAlign.center,
               style: TextStyle(
                 color: Color(0xFF4116B4),
               ),),
+
+
+            Padding(
+              padding: EdgeInsets.all(10),
+            child:
+            Text(
+          " Anamnese",
+          style: TextStyle(
+            fontSize: 14,
+            color: Color(0xFF59616E),
+            fontWeight: FontWeight.bold,
+          ),
+        ),),
+            Container(
+          margin: const EdgeInsets.only(left: 10, right: 10, top: 1),
+          padding: const EdgeInsets.only(left: 40, right: 40, top: 5),
+          decoration: BoxDecoration(
+            borderRadius: BorderRadius.circular(20),
+            color: Colors.white,
+          ),
+          child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+
+                const Icon(Icons.edit_note),
+                Flexible(
+                    child: AutoSizeText(
+                      ' O motivo da consulta é que a fofa está coçando... ',
+                      style: TextStyle(
+                        fontSize: 8,
+                        color: Color(0xFF59616E),
+                      ),
+                      maxLines: 1,
+                      textAlign: TextAlign.justify,
+                    )),
+                Icon(MdiIcons.chevronDown, color: Color(0xFF59616E), size: 18)
+
+              ]),
+        ),
+
+
+            Padding(
+              padding: EdgeInsets.all(10),
+              child:
+              Text(
+                " Fatores de risco",
+                style: TextStyle(
+                  fontSize: 14,
+                  color: Color(0xFF59616E),
+                  fontWeight: FontWeight.bold,
+                ),
+              ),),
+            Container(
+              margin: const EdgeInsets.only(left: 10, right: 10, top: 1),
+              padding: const EdgeInsets.only(left: 40, right: 40, top: 5),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: Colors.white,
+              ),
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+
+                    const Icon(Icons.edit_note),
+                    Flexible(
+                        child: AutoSizeText(
+                          ' A mãe da fofa possui dermatite atópica... ',
+                          style: TextStyle(
+                            fontSize: 8,
+                            color: Color(0xFF59616E),
+                          ),
+                          maxLines: 1,
+                          textAlign: TextAlign.justify,
+                        )),
+                    Icon(MdiIcons.chevronDown, color: Color(0xFF59616E), size: 18)
+
+                  ]),
+            ),
+
+
+            Padding(
+              padding: EdgeInsets.all(10),
+              child:
+              Text(
+                " Prováveis diagnóstico",
+                style: TextStyle(
+                  fontSize: 14,
+                  color: Color(0xFF59616E),
+                  fontWeight: FontWeight.bold,
+                ),
+              ),),
+            Container(
+              margin: const EdgeInsets.only(left: 10, right: 10, top: 1),
+              padding: const EdgeInsets.only(left: 40, right: 40, top: 5),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: Colors.white,
+              ),
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+
+                    const Icon(Icons.edit_note),
+                    Flexible(
+                        child: AutoSizeText(
+                          ' Alérgia comum em cães da raça shih tzu... ',
+                          style: TextStyle(
+                            fontSize: 8,
+                            color: Color(0xFF59616E),
+                          ),
+                          maxLines: 1,
+                          textAlign: TextAlign.justify,
+                        )),
+                    Icon(MdiIcons.chevronDown, color: Color(0xFF59616E), size: 18)
+
+                  ]),
+            ),
+
+
+            Padding(
+              padding: EdgeInsets.all(10),
+              child:
+              Text(
+                " Exames solicitados",
+                style: TextStyle(
+                  fontSize: 14,
+                  color: Color(0xFF59616E),
+                  fontWeight: FontWeight.bold,
+                ),
+              ),),
+            Container(
+              margin: const EdgeInsets.only(left: 10, right: 10, top: 1),
+              padding: const EdgeInsets.only(left: 40, right: 40, top: 5),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: Colors.white,
+              ),
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+
+                    const Icon(Icons.edit_note),
+                    Flexible(
+                        child: AutoSizeText(
+                          ' Pesquise as doenças crônicas ',
+                          style: TextStyle(
+                            fontSize: 8,
+                            color: Color(0xFF59616E),
+                          ),
+                          maxLines: 1,
+                          textAlign: TextAlign.justify,
+                        )),
+                    Icon(MdiIcons.chevronDown, color: Color(0xFF59616E), size: 18)
+
+                  ]),
+            ),
+
+
+            Padding(
+              padding: EdgeInsets.all(10),
+              child:
+              Text(
+                " Tratamento prescrito",
+                style: TextStyle(
+                  fontSize: 14,
+                  color: Color(0xFF59616E),
+                  fontWeight: FontWeight.bold,
+                ),
+              ),),
+            Container(
+              margin: const EdgeInsets.only(left: 10, right: 10, top: 1),
+              padding: const EdgeInsets.only(left: 40, right: 40, top: 5),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: Colors.white,
+              ),
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+
+                    const Icon(Icons.edit_note),
+                    Flexible(
+                        child: AutoSizeText(
+                          ' Pesquise as doenças crônicas ',
+                          style: TextStyle(
+                            fontSize: 8,
+                            color: Color(0xFF59616E),
+                          ),
+                          maxLines: 1,
+                          textAlign: TextAlign.justify,
+                        )),
+                    Icon(MdiIcons.chevronDown, color: Color(0xFF59616E), size: 18)
+
+                  ]),
+            ),
+
+
+
+            Padding(
+              padding: EdgeInsets.all(10),
+              child:
+              Text(
+                " Marco terapêutico",
+                style: TextStyle(
+                  fontSize: 14,
+                  color: Color(0xFF59616E),
+                  fontWeight: FontWeight.bold,
+                ),
+              ),),
+            Container(
+              margin: const EdgeInsets.only(left: 10, right: 10, top: 1),
+              padding: const EdgeInsets.only(left: 40, right: 40, top: 5),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: Colors.white,
+              ),
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+
+                    const Icon(Icons.edit_note),
+                    Flexible(
+                        child: AutoSizeText(
+                          ' Pesquise as doenças crônicas ',
+                          style: TextStyle(
+                            fontSize: 8,
+                            color: Color(0xFF59616E),
+                          ),
+                          maxLines: 1,
+                          textAlign: TextAlign.justify,
+                        )),
+                    Icon(MdiIcons.chevronDown, color: Color(0xFF59616E), size: 18)
+
+                  ]),
+            ),
+
+
+            Padding(
+              padding: EdgeInsets.all(10),
+              child:
+              Text(
+                " Prognóstico",
+                style: TextStyle(
+                  fontSize: 14,
+                  color: Color(0xFF59616E),
+                  fontWeight: FontWeight.bold,
+                ),
+              ),),
+            Container(
+              margin: const EdgeInsets.only(left: 10, right: 10, top: 1),
+              padding: const EdgeInsets.only(left: 40, right: 40, top: 5),
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(20),
+                color: Colors.white,
+              ),
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+
+                    const Icon(Icons.edit_note),
+                    Flexible(
+                        child: AutoSizeText(
+                          ' Pesquise as doenças crônicas ',
+                          style: TextStyle(
+                            fontSize: 8,
+                            color: Color(0xFF59616E),
+                          ),
+                          maxLines: 1,
+                          textAlign: TextAlign.justify,
+                        )),
+                    Icon(MdiIcons.chevronDown, color: Color(0xFF59616E), size: 18)
+
+                  ]),
+            ),
+
 
 
 
@@ -115,6 +401,28 @@ class _ConsultaAtendimentoPacienteState extends State<ConsultaAtendimentoPacient
 
           ]),
         ),
+        Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Builder(
+                builder: (context) => ElevatedButton(
+                  style: ElevatedButton.styleFrom(
+                      shape: const StadiumBorder(),
+                      backgroundColor: Colors.white),
+                  onPressed: () {
+                    Navigator.push(
+                      context,
+                      MaterialPageRoute(
+                          builder: (context) =>
+                          const ConsultaAtendimentoPaciente()),
+                    );
+                  },
+                  child: const Text(
+                    'Finalizar',
+                    style: TextStyle(color: Color(0xFF3C10BB)),
+                  ),),
+              ),
+            ]),
         const Padding(
           padding: EdgeInsets.all(8),
         ),
@@ -157,6 +465,6 @@ class _ConsultaAtendimentoPacienteState extends State<ConsultaAtendimentoPacient
               ])),
         ),
       ]),
-    );
+    ));
   }
 }

@@ -67,13 +67,21 @@ class _ConsultaPacienteState extends State<ConsultaPacientePage> {
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          IconButton(
-                              onPressed: () {
-                                //print("clicado na seta");
-                              },
-                              icon: const Icon(Icons.arrow_back)),
+                          Builder(
+                              builder: (context) => IconButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (
+                                              context) => const PerfilPaciente()),
+                                    );
+
+                                    //print("clicado na seta");
+                                  },
+                                  icon: const Icon(Icons.arrow_back))),
                           Text(
-                            "Perfil",
+                            "Consulta",
                             //textAlign: TextAlign.center,
 
                             style: TextStyle(
@@ -90,6 +98,14 @@ class _ConsultaPacienteState extends State<ConsultaPacientePage> {
             ]),
         body: SingleChildScrollView(
           child: Column(children: [
+            Padding(padding: EdgeInsets.all(5)),
+            Text("Paciente",
+              textAlign: TextAlign.center,
+              style: TextStyle(
+                  color: Color(0xFF4116B4),
+                  fontWeight: FontWeight.bold
+              ),),
+
             Container(
               margin: const EdgeInsets.only(top: 20, left: 20, right: 20),
               padding: const EdgeInsets.only(bottom: 240),

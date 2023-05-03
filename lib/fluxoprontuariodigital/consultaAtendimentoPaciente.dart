@@ -5,6 +5,7 @@ import 'dart:io';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/consultaPossiveisDiagnosticos.dart';
+import 'package:vetadvisor/fluxoprontuariodigital/consultaResumoDaConsulta.dart';
 
 import 'package:vetadvisor/recursos/Constants.dart';
 
@@ -73,7 +74,7 @@ class _ConsultaAtendimentoPacienteState
                                 context,
                                 MaterialPageRoute(
                                     builder: (
-                                        context) => const ConsultaPossiveisDiagnosticos()),
+                                        context) => const ConsultaResumoDaConsulta()),
                               );
 
                               //print("clicado na seta");

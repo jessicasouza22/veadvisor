@@ -88,9 +88,19 @@ class _PerfilPacienteState extends State<PerfilPacientePage> {
                     )))
           ]),
       body: Column(children: [
+
+        Padding(padding: EdgeInsets.all(5)),
+
+        Text("Paciente",
+          textAlign: TextAlign.center,
+          style: TextStyle(
+              color: Color(0xFF4116B4),
+              fontWeight: FontWeight.bold
+          ),),
+
         Container(
           margin: const EdgeInsets.only(top: 20, left: 20, right: 20),
-          padding: const EdgeInsets.only(bottom: 240),
+          padding: const EdgeInsets.only(bottom: 200),
           decoration: BoxDecoration(
             borderRadius: BorderRadius.circular(20),
             color: const Color(0xFFF5F5F5),

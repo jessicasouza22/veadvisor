@@ -9,6 +9,7 @@ import 'package:vetadvisor/fluxoprontuariodigital/cadastreOPet.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/consultaAtendimentoPaciente.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/consultaMarcosTerapeuticos.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/consultaPossiveisDiagnosticos.dart';
+import 'package:vetadvisor/fluxoprontuariodigital/consultaTramentoParaDoencaSugerido.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/consultaTratamentoSintomatologicoPosologiaAutomatico.dart';
 import 'package:vetadvisor/recursos/Constants.dart';
 import 'consultaMarcosTerapeuticos.dart';
@@ -71,11 +72,19 @@ class _ConsultaTratamentoParaDoencaSugeridoPreviaState extends State<ConsultaTra
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
-                          IconButton(
-                              onPressed: () {
-                                //print("clicado na seta");
-                              },
-                              icon: const Icon(Icons.arrow_back)),
+                          Builder(
+                              builder: (context) => IconButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (
+                                              context) => const ConsultaTratamentoParaDoencaSugerido()),
+                                    );
+
+                                    //print("clicado na seta");
+                                  },
+                                  icon: const Icon(Icons.arrow_back))),
                           Text(
                             "Consulta",
                             //textAlign: TextAlign.center,

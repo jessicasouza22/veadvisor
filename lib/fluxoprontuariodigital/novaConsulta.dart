@@ -288,7 +288,7 @@ class _NovaConsultaState extends State<NovaConsultaPage> {
               ),
             ),
 
-            const Padding(padding: EdgeInsets.all(10)),
+            const Padding(padding: EdgeInsets.all(5)),
 
             Container(
                 padding: EdgeInsets.only(bottom: 18, top: 10),
@@ -442,7 +442,144 @@ class _NovaConsultaState extends State<NovaConsultaPage> {
                     Column(
                       children: [
 
-                        Icon(MdiIcons.chevronDown, color: Color(0xFF59616E), size: 18),
+                        Icon(MdiIcons.chevronRight, color: Color(0xFF59616E), size: 18),
+                        Text(
+                          "",
+                          style: TextStyle(
+                            fontSize: 11,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        SizedBox(
+                          width: 1,
+                          height: 1,
+                          child:
+                          Checkbox(
+                              checkColor: Colors.white,
+                              activeColor: Colors.green,
+                              //fillColor: MaterialStateProperty.resolveWith(getColor),
+                              value: false,
+                              shape: CircleBorder(),
+                              onChanged: (value) {}
+                          ),
+
+                        ),
+
+
+                      ],
+                    ),
+
+
+                  ]),
+            ),
+
+            const Padding(padding: EdgeInsets.all(5)),
+
+            Container(
+              // color: Colors.blue,
+
+              margin: const EdgeInsets.only(left: 20, right: 20, top: 5),
+              //padding: EdgeInsets.only(top: 15, bottom: 30),
+
+              decoration: BoxDecoration(
+                borderRadius: BorderRadius.circular(15),
+                color: Colors.white,
+                /* boxShadow: [
+                  BoxShadow(
+                    color: Colors.grey.withOpacity(0.2),
+                    spreadRadius: 10,
+                    blurRadius: 5,
+                    offset: const Offset(
+                        0, 0), // changes x,y position of shadow
+                  ),
+                ],*/
+              ),
+              child: Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                  children: [
+                    Column(
+                      //mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      // crossAxisAlignment: CrossAxisAlignment.start,
+
+                        children: [
+                          CircleAvatar(
+                            radius: 25,
+                            backgroundColor: Colors.white,
+                            child: ClipOval(
+                              child:
+                              Image.asset("imagens/rask.jpeg"),
+
+                            ),
+                          ),
+                          const Text(
+                            " ID: 000000",
+                            style: TextStyle(
+                                color: Colors.deepPurple,
+                                fontWeight: FontWeight.bold,
+                                fontSize: 11),
+                          ),
+                        ]),
+                    Column(
+                      children: const [
+                        Text(
+                          "Raca:",
+                          style: TextStyle(
+                            fontSize: 11,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          "Idade:",
+                          style: TextStyle(
+                            fontSize: 11,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          "Tutor(a):}",
+                          style: TextStyle(
+                            fontSize: 11,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ],
+                    ),
+                    Column(
+                      children: [
+                        Text(
+                          "",
+                          style: TextStyle(
+                            fontSize: 11,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          "",
+                          style: TextStyle(
+                            fontSize: 11,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                        Text(
+                          "Incluir",
+                          style: TextStyle(
+                            fontSize: 11,
+                            color: Colors.black,
+                            fontWeight: FontWeight.bold,
+                          ),
+                        )
+                      ],
+                    ),
+                    Column(
+                      children: [
+
+                        Icon(MdiIcons.chevronRight, color: Color(0xFF59616E), size: 18),
                         Text(
                           "",
                           style: TextStyle(
@@ -496,11 +633,12 @@ class _NovaConsultaState extends State<NovaConsultaPage> {
                 const Text("Cadastrar novo paciente ",
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 14,
                     color: Color(0xFF4116B4),
                     fontWeight: FontWeight.bold,
 
                   ),),
+                Icon(MdiIcons.chevronRight, color: Color(0xFF4116B4), size: 18),
               ],
             ),
 
@@ -526,11 +664,12 @@ class _NovaConsultaState extends State<NovaConsultaPage> {
                 const Text("Ver lista de todos os tutores ",
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 14,
                     color: Color(0xFF4116B4),
                     fontWeight: FontWeight.bold,
 
                   ),),
+                Icon(MdiIcons.chevronRight, color: Color(0xFF4116B4), size: 18),
               ],
             ),
 
@@ -556,11 +695,12 @@ class _NovaConsultaState extends State<NovaConsultaPage> {
                 const Text("Ver lista de todos os pacientes ",
                   textAlign: TextAlign.center,
                   style: TextStyle(
-                    fontSize: 16,
+                    fontSize: 14,
                     color: Color(0xFF4116B4),
                     fontWeight: FontWeight.bold,
 
                   ),),
+                Icon(MdiIcons.chevronRight, color: Color(0xFF4116B4), size: 18),
               ],
             ),
             const Padding(padding: EdgeInsets.all(10)),

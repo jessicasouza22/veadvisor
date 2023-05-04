@@ -2,6 +2,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
+import 'package:vetadvisor/fluxoprontuariodigital/novaConsulta.dart';
 import 'package:vetadvisor/prelogin/criarConta.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/perfil.dart';
 import 'package:vetadvisor/prelogin/logado.dart';
@@ -37,7 +38,7 @@ void main()  async {
           runApp( Phoenix(
             child: const MaterialApp(
                 debugShowCheckedModeBanner: false,
-                home: Logado()
+                home: NovaConsulta()
             )
           )
           );

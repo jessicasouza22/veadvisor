@@ -33,56 +33,19 @@ class InicioVeterinarioPage extends StatefulWidget {
 }
 
 class _InicioVeterinarioPageState extends State<InicioVeterinarioPage> {
-  late VideoPlayerController _controller;
-  late VideoPlayerController _controllerV;
+
 
   String _nomeUsuarioLogado = "";
 
-  final List<IconData> _icone_volume = [
-    Icons.volume_off_sharp,
-    Icons.volume_up_sharp
-  ];
-  int _posicao_volume = 1;
-  double _volume = 100;
 
   late final FirebaseAuth auth;
   late final FirebaseApp app;
 
-  bool _modoEscuro = false;
-
-  //final PageController _pageController = PageController(viewportFraction: 0.8);
-  // ele vai controlar o listView
-  int posicaoSlide = 0;
-  int posicalCarrouselEspecialista = 0;
-
-  List<MaterialColor> cores = [Colors.red, Colors.grey];
 
   //late Future<void> _initializeVideoPlayerFuture;
 
   @override
   // aqui inicia o vídeo controller
-  void initState() {
-    _controller = VideoPlayerController.network(
-      "https://firebasestorage.googleapis.com/v0/b/vetadvisor-2d900.appspot.com/o/Som%20de%20Cachorro%20e%20Cachorrinhos%20Latindo%20-%20Fatos%20Curiosos%20Sobre%20C%C3%A3es.mp4?alt=media&token=9a2d5805-0114-4cb5-b7da-38ff1fdfa16a",
-    )..initialize().then((_) {
-      setState(() {});
-    });
-    _controller.setLooping(true);
-    _controller.play();
-
-    //_initializeVideoPlayerFuture = _controllerV.initialize();
-    _controllerV = VideoPlayerController.network(
-      "https://firebasestorage.googleapis.com/v0/b/vetadvisor-2d900.appspot.com/o/Som%20de%20Cachorro%20e%20Cachorrinhos%20Latindo%20-%20Fatos%20Curiosos%20Sobre%20C%C3%A3es.mp4?alt=media&token=9a2d5805-0114-4cb5-b7da-38ff1fdfa16a",
-    )..initialize().then((_) {
-      setState(() {});
-    });
-    _controllerV.setLooping(true);
-    _controllerV.play();
-
-    carregaDadosLogin();
-
-    super.initState();
-  }
 
   Future<void> carregaDadosLogin() async {
     app = await Firebase.initializeApp(
@@ -119,15 +82,7 @@ class _InicioVeterinarioPageState extends State<InicioVeterinarioPage> {
     'videos/cuidados.mp4'
   ];
 
-  @override
-  void dispose() {
-    _controllerV.dispose();
-    _controller.dispose();
-    super.dispose();
-  }
 
-  int _currentPageVideo = 0;
-  final _listSlideVideo = ['', '', ''];
 
   @override
   Widget build(BuildContext context) {
@@ -136,10 +91,7 @@ class _InicioVeterinarioPageState extends State<InicioVeterinarioPage> {
     int _indexCarrouselEspecialista = 0;
     return MaterialApp(
         debugShowCheckedModeBanner: false,
-        theme: ThemeData(
-          brightness: _modoEscuro ? Brightness.dark : Brightness.light,
-          visualDensity: VisualDensity.adaptivePlatformDensity,
-        ),
+
         //debugShowCheckedModeBanner: false,
         home: Scaffold(
             drawer: Drawer(
@@ -492,26 +444,7 @@ class _InicioVeterinarioPageState extends State<InicioVeterinarioPage> {
                         )
                       ],
                     ),
-                    Row(mainAxisAlignment: MainAxisAlignment.center, children: [
-                      RollingSwitch.icon(
-                        initialState: _modoEscuro,
-                        onChanged: (bool state) {
-                          setState(() {
-                            _modoEscuro = state;
-                          });
-                        },
-                        rollingInfoRight: const RollingIconInfo(
-                          icon: Icons.light_mode,
-                          text: Text('Light'),
-                          backgroundColor: Colors.white,
-                        ),
-                        rollingInfoLeft: const RollingIconInfo(
-                          icon: Icons.dark_mode_outlined,
-                          backgroundColor: Color(0xff7347EF),
-                          text: Text('Dark'),
-                        ),
-                      ),
-                    ])
+
                   ],
                 )),
             body: CustomScrollView(slivers: [
@@ -745,6 +678,9 @@ class _InicioVeterinarioPageState extends State<InicioVeterinarioPage> {
                           child:
                           Column(
                               children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
                                 Text(
                                   " |  Próximas consultas ",
                                   style: TextStyle(
@@ -755,25 +691,141 @@ class _InicioVeterinarioPageState extends State<InicioVeterinarioPage> {
 
                                 ElevatedButton(
                                   style: TextButton.styleFrom(
-                                    padding: const EdgeInsets.only(
-                                        top: 5, right: 10, left: 10, bottom: 5),
+                                   // padding: const EdgeInsets.only(top: 4, right: 10, left: 10, bottom: 4),
 
                                     backgroundColor: Colors.white,
                                     shape: RoundedRectangleBorder(
-                                        borderRadius: BorderRadius.circular(2)),
+                                        borderRadius: BorderRadius.circular(20)),
                                     // Background Color
                                   ),
                                   onPressed: () {}, child:
-                                Text("Ver todos",
+                                Row(
+                                  children: [
+                                  Text("Ver todos",
                                   style: TextStyle(
                                     color: Color(0xFF8F90A6),
-                                  ),),),
+                                    fontSize: 12,
+                                  ),),
 
-                                Icon(MdiIcons.chevronRight, color: Color(0xFF59616E), size: 18)
+                                Icon(MdiIcons.chevronRight, color: Color(0xFF59616E), size: 16)])),
 
+]),
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+
+                                        Container(
+                                          margin: EdgeInsets.only(top: 10, bottom: 10),
+                                          height: 110,
+                                          width: 250,
+                                          decoration:
+                                          BoxDecoration(
+                                              image: const
+                                              DecorationImage(
+                                                  image:
+                                                  AssetImage(
+                                                      "imagens/telaInicioPropaganda01.png"
+                                                  )
+                                              ),
+                                              color: Colors.blue,
+                                              borderRadius: BorderRadius.circular(15),
+
+                                          ),
+
+                                    )
+                                  ]
+                                ),
 
 
                                ])),
+
+                      Padding(padding: EdgeInsets.only(top: 10)),
+
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: const [
+                          Padding(
+                            padding: EdgeInsets.only(left: 10),
+                            child: Icon(
+                              MdiIcons.calendarMonth,
+                              color: Color(0xFF3C10BB),
+                              size: 14,
+                            ),
+                          ),
+                          Text(
+                            " Agenda médica",
+                            style: TextStyle(
+                              color: Color(0xFF3C10BB),
+                              decoration: TextDecoration.none,
+                              fontSize: 14,
+                            ),
+                          ),
+                          Icon(MdiIcons.chevronRight, color: Color(0xFF59616E), size: 18)
+                        ],
+                      ),
+
+                      Padding(padding: EdgeInsets.only(top: 10)),
+
+                      Divider(
+                        color: Color(0xFF6F767E),
+                        thickness: 0.2,
+                        endIndent: 50,
+                        indent: 50,
+                      ),
+
+                      Padding(padding: EdgeInsets.only(top: 10)),
+
+                     Row(
+                         children: [
+                           Padding(padding: EdgeInsets.only(left: 15)),
+                           Text(
+                        " |  Meus pacientes ",
+                        style: TextStyle(
+                            color: Color(0xFF3C10BB),
+                            fontSize: 14,
+                            decoration: TextDecoration.none),
+                      ),]),
+
+                      Container(
+                          margin: const EdgeInsets.only(top: 10, left: 20, right: 20),
+                          // padding: const EdgeInsets.only(bottom: 240),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: Colors.white,
+                            //color: Colors.orange,
+                          ),
+                          child: Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            children: [
+                              Column(
+                               children: [
+                              Padding(padding: EdgeInsets.only(top: 10)),
+                              CircleAvatar(
+                                radius: 25,
+                                backgroundColor: Colors.white,
+                                child: ClipOval(
+                                  child:
+                                  Image.asset("imagens/telaInicioCicle01.png"),
+
+                                ),
+                              ),
+                              Padding(padding: EdgeInsets.only(top: 10)),
+                              Text(
+                                   " Almondega",
+                                   style: TextStyle(
+                                     color: Colors.black,
+                                     decoration: TextDecoration.none,
+                                     fontSize: 12,
+                                   ),
+                                 ),
+
+                               ]),
+                            ],
+                          )
+                         ),
+
+
+
 
 
 

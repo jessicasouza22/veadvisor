@@ -349,15 +349,7 @@ class _NovaConsultaState extends State<NovaConsultaPage> {
               decoration: BoxDecoration(
                 borderRadius: BorderRadius.circular(15),
                 color: Colors.white,
-               /* boxShadow: [
-                  BoxShadow(
-                    color: Colors.grey.withOpacity(0.2),
-                    spreadRadius: 10,
-                    blurRadius: 5,
-                    offset: const Offset(
-                        0, 0), // changes x,y position of shadow
-                  ),
-                ],*/
+
               ),
               child: Row(
                   mainAxisAlignment: MainAxisAlignment.spaceEvenly,

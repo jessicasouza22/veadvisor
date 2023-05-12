@@ -1,3 +1,5 @@
+//tela inicio
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -5,16 +7,13 @@ import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:vetadvisor/prelogin/slideVideo.dart';
-import 'package:vetadvisor/prelogin/slide_tile.dart';
-import 'package:video_player/video_player.dart';
-import 'package:vetadvisor/recursos/Constants.dart';
-import 'package:rolling_switch/rolling_switch.dart';
+
+
+
 import '../firebase_options.dart';
 import '../recursos/dialogUtils.dart';
+import 'fluxopesquisarapida/detalheDaPesquisa.dart';
 
-import 'package:vetadvisor/fluxoprontuariodigital/cadastreOPet.dart';
 
 class InicioVeterinario extends StatelessWidget {
   const InicioVeterinario({super.key});
@@ -486,16 +485,35 @@ class _InicioVeterinarioPageState extends State<InicioVeterinarioPage> {
                               children: [
                                 Container(),
                                 AutoSizeText(
-                                  "Olá $_nomeUsuarioLogado",
+                                  "Home $_nomeUsuarioLogado",
                                   //textAlign: TextAlign.center,
                                 ),
-                                IconButton(
+                                Builder(
+                                    builder: (context) => IconButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (
+                                                    context) => const DetalheDaPesquisa()),
+                                          );
+
+                                          //print("clicado na seta");
+                                        },
+                                        icon: const Icon(MdiIcons.bellBadgeOutline)))]),
+
+
+
+
+
+
+                                /*IconButton(
                                     onPressed: () {
                                       print("clicado no notificacao");
                                     },
-                                    icon: Icon(MdiIcons.bellBadgeOutline)),
-                              ],
-                            )))
+                                    icon: Icon(MdiIcons.bellBadgeOutline)),*/
+
+                            ))
                   ]),
               SliverFillRemaining(
                 hasScrollBody: true,
@@ -614,7 +632,7 @@ class _InicioVeterinarioPageState extends State<InicioVeterinarioPage> {
                                               context,
                                               MaterialPageRoute(
                                                   builder: (context) =>
-                                                  const CadastreOPet()),
+                                                  const DetalheDaPesquisa()),
                                             );
                                           },
                                           child: const Text(
@@ -779,7 +797,7 @@ class _InicioVeterinarioPageState extends State<InicioVeterinarioPage> {
                          children: [
                            Padding(padding: EdgeInsets.only(left: 15)),
                            Text(
-                        " |  Meus pacientes ",
+                        " |  Meus pacientes e tratamento ",
                         style: TextStyle(
                             color: Color(0xFF3C10BB),
                             fontSize: 14,
@@ -797,6 +815,9 @@ class _InicioVeterinarioPageState extends State<InicioVeterinarioPage> {
                           child: Row(
                             mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
+
+                              Padding(padding: EdgeInsets.only(top: 10)),
+
                               Column(
                                children: [
                               Padding(padding: EdgeInsets.only(top: 10)),
@@ -820,9 +841,158 @@ class _InicioVeterinarioPageState extends State<InicioVeterinarioPage> {
                                  ),
 
                                ]),
+
+
+                              Column(
+                                  children: [
+                                    Padding(padding: EdgeInsets.only(top: 10)),
+                                    CircleAvatar(
+                                      radius: 25,
+                                      backgroundColor: Colors.white,
+                                      child: ClipOval(
+                                        child:
+                                        Image.asset("imagens/telaInicioCicle02.png"),
+
+                                      ),
+                                    ),
+                                    Padding(padding: EdgeInsets.only(top: 10)),
+                                    Text(
+                                      " Chochito",
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        decoration: TextDecoration.none,
+                                        fontSize: 12,
+                                      ),
+                                    ),
+
+                                  ]),
+
+                              Column(
+                                  children: [
+                                    Padding(padding: EdgeInsets.only(top: 10)),
+                                    CircleAvatar(
+                                      radius: 25,
+                                      backgroundColor: Colors.white,
+                                      child: ClipOval(
+                                        child:
+                                        Image.asset("imagens/telaInicioCicle03.png"),
+
+                                      ),
+                                    ),
+                                    Padding(padding: EdgeInsets.only(top: 10)),
+                                    Text(
+                                      " Almondega",
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        decoration: TextDecoration.none,
+                                        fontSize: 12,
+                                      ),
+                                    ),
+
+                                  ]),
+
+                              Column(
+                                  children: [
+                                    Padding(padding: EdgeInsets.only(top: 10)),
+                                    CircleAvatar(
+                                      radius: 25,
+                                      backgroundColor: Colors.white,
+                                      child: ClipOval(
+                                        child:
+                                        Image.asset("imagens/telaInicioCicle04.png"),
+
+                                      ),
+                                    ),
+                                    Padding(padding: EdgeInsets.only(top: 10)),
+                                    Text(
+                                      " Almondega",
+                                      style: TextStyle(
+                                        color: Colors.black,
+                                        decoration: TextDecoration.none,
+                                        fontSize: 12,
+                                      ),
+                                    ),
+
+                                  ]),
+
+                              Padding(padding: EdgeInsets.only(top: 10)),
                             ],
                           )
                          ),
+                      Padding(padding: EdgeInsets.only(top: 10)),
+
+                      Container(
+                          margin: const EdgeInsets.only(top: 10, left: 20, right: 20),
+                          // padding: const EdgeInsets.only(bottom: 240),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(20),
+                            color: Colors.white,
+                            //color: Colors.orange,
+                          ),
+
+                          child:
+                          Column(
+                              children: [
+                                Row(
+                                    mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                    children: [
+                                      Text(
+                                        " |  Ofertas dos parceiros ",
+                                        style: TextStyle(
+                                            color: Color(0xFF3C10BB),
+                                            fontSize: 14,
+                                            decoration: TextDecoration.none),
+                                      ),
+
+                                      ElevatedButton(
+                                          style: TextButton.styleFrom(
+                                            // padding: const EdgeInsets.only(top: 4, right: 10, left: 10, bottom: 4),
+
+                                            backgroundColor: Colors.white,
+                                            shape: RoundedRectangleBorder(
+                                                borderRadius: BorderRadius.circular(20)),
+                                            // Background Color
+                                          ),
+                                          onPressed: () {}, child:
+                                      Row(
+                                          children: [
+                                            Text("Ver todos",
+                                              style: TextStyle(
+                                                color: Color(0xFF8F90A6),
+                                                fontSize: 12,
+                                              ),),
+
+                                            Icon(MdiIcons.chevronRight, color: Color(0xFF59616E), size: 16)])),
+
+                                    ]),
+                                Row(
+                                    mainAxisAlignment: MainAxisAlignment.center,
+                                    children: [
+
+                                      Container(
+                                        margin: EdgeInsets.only(top: 10, bottom: 10),
+                                        height: 110,
+                                        width: 250,
+                                        decoration:
+                                        BoxDecoration(
+                                          image: const
+                                          DecorationImage(
+                                              image:
+                                              AssetImage(
+                                                  "imagens/telaInicioPropaganda01.png"
+                                              )
+                                          ),
+                                          color: Colors.blue,
+                                          borderRadius: BorderRadius.circular(15),
+
+                                        ),
+
+                                      )
+                                    ]
+                                ),
+
+
+                              ])),
 
 
 

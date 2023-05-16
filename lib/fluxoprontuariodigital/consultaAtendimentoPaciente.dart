@@ -296,7 +296,8 @@ class _ConsultaAtendimentoPacienteState
                       icon: Icon(MdiIcons.home, color: Colors.grey, size: 30,),
                     ),
                     Tab(
-                        child: IconButton(
+                        child:
+                        IconButton(
                           onPressed: () {
                             Navigator.push(
                               context,

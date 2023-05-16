@@ -8,6 +8,8 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:vetadvisor/fluxopesquisarapida/resultadoDaPesquisa.dart';
+import 'package:vetadvisor/fluxoprontuariodigital/consultaPaciente.dart';
 import 'package:vetadvisor/prelogin/slideVideo.dart';
 import 'package:vetadvisor/prelogin/slide_tile.dart';
 import 'package:video_player/video_player.dart';
@@ -91,364 +93,8 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
     final bool isActive;
     bool status = false;
     int _indexCarrouselEspecialista = 0;
-    return MaterialApp(
-        debugShowCheckedModeBanner: false,
+    return  Scaffold(
 
-        //debugShowCheckedModeBanner: false,
-        home: Scaffold(
-            drawer: Drawer(
-                backgroundColor: Color(0xFF0E02B7),
-                child: ListView(
-                  children: [
-                    // aqui ele está dividindo o menu em duas partes
-                    /*UserAccountsDrawerHeader(
-                      decoration: new BoxDecoration(
-                        color: Color(0xFF0E02B7),
-                      ),
-                     margin: EdgeInsets.only(bottom: 30
-                     ),
-                      currentAccountPicture: Image.asset('imagens/user.png'),
-                      accountName: Text("Davies"),
-                      accountEmail: Text("davies@gmail.com"),
-                    ),*/
-                    Row(
-                      children: [
-                        const Padding(
-                          padding:
-                          EdgeInsets.only(bottom: 30, left: 18, top: 30),
-                          child: CircleAvatar(
-                            backgroundImage: AssetImage('imagens/user.png'),
-                          ),
-                        ),
-                        Padding(
-                          padding:
-                          EdgeInsets.only(bottom: 30, left: 20, top: 30),
-                          child: Text(
-                            "$_nomeUsuarioLogado\n\n$_nomeUsuarioLogado}",
-                            style: TextStyle(fontSize: 14, color: Colors.white),
-                          ),
-                        ),
-                        /*  Padding(
-                          padding: EdgeInsets.only(bottom: 20, top: 60, right: 10),
-                          child:Text("juliano@gmail.com")
-                        ),*/
-                      ],
-                    ),
-                    Padding(padding: EdgeInsets.all(10)),
-                    Stack(children: [
-                      /* Positioned(
-                        height: 56,
-                        width: 288,
-                        child: Container(
-                          margin:
-                              EdgeInsets.only(left: 15, right: 10, bottom: 5),
-                          decoration: BoxDecoration(
-                            color: Colors.orange,
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                          ),
-                        ),
-                      ),*/
-                      ListTile(
-                        leading:
-                        Icon(MdiIcons.bellOutline, color: Colors.white),
-                        title: Text(
-                          "Notificações",
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.white,
-                          ),
-                        ),
-                        onTap: () {},
-                      ),
-                    ]),
-
-                    Stack(children: [
-                      /* Positioned(
-                        height: 56,
-                        width: 288,
-                        child: Container(
-                          margin:
-                              EdgeInsets.only(left: 15, right: 10, bottom: 5),
-                          decoration: BoxDecoration(
-                            color: Colors.orange,
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                          ),
-                        ),
-                      ),*/
-                      ListTile(
-                        leading:
-                        Icon(MdiIcons.stethoscope, color: Colors.white),
-                        title: Text(
-                          "Detalhe da Consulta",
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.white,
-                          ),
-                        ),
-                        onTap: () {},
-                      )
-                    ]),
-
-                    Stack(children: [
-                      /*Positioned(
-                        height: 56,
-                        width: 288,
-                        child: Container(
-                          margin:
-                              EdgeInsets.only(left: 15, right: 10, bottom: 5),
-                          decoration: BoxDecoration(
-                            color: Colors.orange,
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                          ),
-                        ),
-                      ),*/
-                      ListTile(
-                        leading: Icon(MdiIcons.calendarClockOutline,
-                            color: Colors.white),
-                        title: Text(
-                          "Agendar consulta",
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.white,
-                          ),
-                        ),
-                        onTap: () {},
-                      )
-                    ]),
-
-                    Stack(children: [
-                      /*Positioned(
-                        height: 56,
-                        width: 288,
-                        child: Container(
-                          margin:
-                              EdgeInsets.only(left: 15, right: 10, bottom: 5),
-                          decoration: BoxDecoration(
-                            color: Colors.orange,
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                          ),
-                        ),
-                      ),*/
-                      ListTile(
-                        leading:
-                        Icon(MdiIcons.stethoscope, color: Colors.white),
-                        title: Text(
-                          "Ver procedimentos",
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.white,
-                          ),
-                        ),
-                        onTap: () {},
-                      )
-                    ]),
-
-                    Stack(children: [
-                      /*Positioned(
-                        height: 56,
-                        width: 288,
-                        child: Container(
-                          margin:
-                              EdgeInsets.only(left: 15, right: 10, bottom: 5),
-                          decoration: BoxDecoration(
-                            color: Colors.orange,
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                          ),
-                        ),
-                      ),*/
-                      ListTile(
-                        leading:
-                        Icon(MdiIcons.stethoscope, color: Colors.white),
-                        title: Text(
-                          "Dicas de cuidados",
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.white,
-                          ),
-                        ),
-                        onTap: () {},
-                      )
-                    ]),
-
-                    Stack(children: [
-                      /*Positioned(
-                        height: 56,
-                        width: 288,
-                        child: Container(
-                          margin:
-                              EdgeInsets.only(left: 15, right: 10, bottom: 5),
-                          decoration: BoxDecoration(
-                            color: Colors.orange,
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                          ),
-                        ),
-                      ),*/
-                      ListTile(
-                        leading: Icon(MdiIcons.cartMinus, color: Colors.white),
-                        title: Text(
-                          "Ofertas",
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.white,
-                          ),
-                        ),
-                        onTap: () {},
-                      )
-                    ]),
-                    Stack(children: [
-                      /* Positioned(
-                        height: 56,
-                        width: 288,
-                        child: Container(
-                          margin:
-                              const EdgeInsets.only(left: 15, right: 10, bottom: 5),
-                          decoration: BoxDecoration(
-                            color: Colors.orange,
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                          ),
-                        ),
-                      ),*/
-                      ListTile(
-                        leading: Icon(MdiIcons.bottleTonicPlusOutline,
-                            color: Colors.white),
-                        title: const Text(
-                          "Telemedicina",
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.white,
-                          ),
-                        ),
-                        onTap: () {},
-                      )
-                    ]),
-
-                    Stack(children: [
-                      /*Positioned(
-                        height: 56,
-                        width: 288,
-                        child: Container(
-                          margin:
-                              const EdgeInsets.only(left: 15, right: 10, bottom: 5),
-                          decoration: const BoxDecoration(
-                            color: Colors.orange,
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                          ),
-                        ),
-                      ),*/
-                      ListTile(
-                        leading: const Icon(MdiIcons.bottleTonicPlusOutline,
-                            color: Colors.white),
-                        title: const Text(
-                          "Add novo pet",
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.white,
-                          ),
-                        ),
-                        onTap: () {},
-                      )
-                    ]),
-
-                    Stack(children: [
-                      /*Positioned(
-                        height: 56,
-                        width: 288,
-                        child: Container(
-                          margin:
-                              const EdgeInsets.only(left: 15, right: 10, bottom: 5),
-                          decoration: const BoxDecoration(
-                            color: Colors.orange,
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                          ),
-                        ),
-                      ),*/
-                      ListTile(
-                        leading: const Icon(MdiIcons.bottleTonicPlusOutline,
-                            color: Colors.white),
-                        title: const Text(
-                          "Suporte técnico",
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.white,
-                          ),
-                        ),
-                        onTap: () {},
-                      )
-                    ]),
-
-                    Stack(children: [
-                      /* Positioned(
-                        height: 56,
-                        width: 288,
-                        child: Container(
-                          margin:
-                              const EdgeInsets.only(left: 15, right: 10, bottom: 5),
-                          decoration: const BoxDecoration(
-                            color: Colors.orange,
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                          ),
-                        ),
-                      ),*/
-                      ListTile(
-                        leading: const Icon(MdiIcons.bottleTonicPlusOutline,
-                            color: Colors.white),
-                        title: const Text(
-                          "Sair da conta",
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.white,
-                          ),
-                        ),
-                        onTap: () {
-                          DialogUtils.showCustomDialog(
-                            context,
-                            title: "Efetuar logoff",
-                            text:
-                            "Tem certeza que deseja efetuar logoff do aplicativo Vet Advisor ?",
-                            botaoConfirma: "Sim",
-                            botaoExtra: "",
-                            botaoCancela: "Cancelar",
-                            funcaoBotaoConfirma: () {
-                              auth
-                                  .signOut()
-                                  .then((value) => Phoenix.rebirth(context))
-                                  .onError((error, stackTrace) => null);
-                            },
-                            funcaoBotaoExtra: () {},
-                            funcaoBotaoCancela: () {},
-                          );
-
-                          //wallace
-                        },
-                      )
-                    ]),
-
-                    const Divider(
-                      color: Colors.white,
-                      thickness: 0.2,
-                      endIndent: 28,
-                      indent: 18,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Icon(
-                          MdiIcons.helpCircleOutline,
-                          color: Colors.white,
-                          size: 16,
-                        ),
-                        Text(
-                          " Cores de sua preferência",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 14,
-                          ),
-                        )
-                      ],
-                    ),
-
-                  ],
-                )),
             body: CustomScrollView(slivers: [
               SliverAppBar(
                   backgroundColor: Colors.transparent,
@@ -486,7 +132,20 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Container(),
+
+                                Builder(
+                                    builder: (context) => IconButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (
+                                                    context) => const ConsultaPaciente()),
+                                          );
+
+                                          //print("clicado na seta");
+                                        },
+                                        icon: const Icon(Icons.arrow_back))),
                                 AutoSizeText(
                                   "Detalhe da pesquisa $_nomeUsuarioLogado",
                                   //textAlign: TextAlign.center,
@@ -577,7 +236,7 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
                                                   context,
                                                   MaterialPageRoute(
                                                       builder: (context) =>
-                                                      const CadastreOPet()),
+                                                      const ResultadoDaPesquisa()),
                                                 );
                                               },
                                               child: const Text(
@@ -660,25 +319,60 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
                                             color: Color(0xFF4116B4),
                                             fontWeight: FontWeight.bold,
                                           ),),
+
+                                      ],
+                                    ),
+
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.end,
+                                      children:  [
+
                                         Icon(Icons.star,
-                                          color: Colors.yellow,),
-                                       /* Checkbox(
+                                          color: Colors.yellow,
+                                          size: 10,),
+                                         Text("Incluir diagnostico",
+                                         style: TextStyle(
+                                           fontSize: 10,
+                                         ),),
+                                         Checkbox(
                                           checkColor: Colors.white,
                                           activeColor: Colors.green,
+
                                           //fillColor: MaterialStateProperty.resolveWith(getColor),
                                           value: true,
                                           shape: CircleBorder(),
-                                          onChanged: (value) {},),*/
+                                          onChanged: (value) {
+
+                                          },
+                                         ),
                                       ],
                                     ),
+
                                     Row(
                                       mainAxisAlignment: MainAxisAlignment.spaceBetween,
                                       children: const [
                                         Flexible(
                                             child: AutoSizeText(
-                                              'Alérgia comum em cães da raça shih tzu',
+                                              'Achados clínicos',
                                               style: TextStyle(
-                                                color: Colors.grey,
+                                                color: Color(0xFF35364F),
+                                                fontSize: 10,
+                                              ),
+                                              maxLines: 1,
+                                              textAlign: TextAlign.justify,
+                                            )),
+                                      ],
+                                    ),
+                                    const Padding(padding: EdgeInsets.only(top: 10)),
+
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: const [
+                                        Flexible(
+                                            child: AutoSizeText(
+                                              'Eritema, Prurido, Alopecia, Otite externa, Blefarite Prurido antes de aparecer as lesões, Lambe as patas e lambe outras partes do corpo excessivamente.',
+                                              style: TextStyle(
+                                                color: Color(0xFF59616E),
                                                 fontSize: 10,
                                               ),
                                               maxLines: 3,
@@ -686,31 +380,108 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
                                             )),
                                       ],
                                     ),
-                                    Row(
-                                      mainAxisAlignment: MainAxisAlignment.end,
-                                      children: [
-                                        const Text("Incluir"),
-                                        const Padding(padding: EdgeInsets.only(left: 10)),
-                                        SizedBox(
-                                          width: 15,
-                                          height: 15,
-                                          child: Radio(
-                                            //fillColor: Color.white,
-                                            value: false,
-                                            groupValue: false,
 
-                                            onChanged: (value) {},
-                                          ),
-                                        ),
-
-                                      ],
-                                    )
                                   ]
                               )
                           ),
 
+                          Container(
+                              margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 1),
+                              padding: const EdgeInsets.only(
+                                  left: 40, right: 40, top: 5, bottom: 10),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: Colors.white,
+                              ),
+                              child: Column(
+                                  children: [
 
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: const [
+                                        Flexible(
+                                            child: AutoSizeText(
+                                              'Exames recomendados',
+                                              style: TextStyle(
+                                                color: Color(0xFF35364F),
+                                                fontSize: 10,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                              maxLines: 1,
+                                              textAlign: TextAlign.justify,
+                                            )),
+                                      ],
+                                    ),
+                                    const Padding(padding: EdgeInsets.only(top: 10)),
 
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: const [
+                                        Flexible(
+                                            child: AutoSizeText(
+                                              'Critérios de favrot et al, Teste cutâneo intradérmico e prick test',
+                                              style: TextStyle(
+                                                color: Color(0xFF59616E),
+                                                fontSize: 10,
+                                              ),
+                                              maxLines: 3,
+                                              textAlign: TextAlign.justify,
+                                            )),
+                                      ],
+                                    ),
+
+                                  ]
+                              )
+                          ),
+
+                          Container(
+                              margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 1),
+                              padding: const EdgeInsets.only(
+                                  left: 40, right: 40, top: 5, bottom: 10),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
+                                color: Colors.white,
+                              ),
+                              child: Column(
+                                  children: [
+
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: const [
+                                        Flexible(
+                                            child: AutoSizeText(
+                                              'Fatores de risco',
+                                              style: TextStyle(
+                                                color: Color(0xFF35364F),
+                                                fontSize: 10,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                              maxLines: 1,
+                                              textAlign: TextAlign.justify,
+                                            )),
+                                      ],
+                                    ),
+                                    const Padding(padding: EdgeInsets.only(top: 10)),
+
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: const [
+                                        Flexible(
+                                            child: AutoSizeText(
+                                              'Alergia alimentar, Hipersensibilidade à picada de pulgas, Ambiente domiciliar com alta quantidade de panos e fômites que acumulam poeira e ácaros, região com alta quantidade de pólen, região com longa estações do ano que proporcionam alergias, hereditariedade, Clima temperado e região com altos níveis de mofo',
+                                              style: TextStyle(
+                                                color: Color(0xFF59616E),
+                                                fontSize: 10,
+                                              ),
+                                              maxLines: 3,
+                                              textAlign: TextAlign.justify,
+                                            )),
+                                      ],
+                                    ),
+
+                                  ]
+                              )
+                          ),
 
                           Container(
                             margin: const EdgeInsets.only(left: 10, right: 10),
@@ -767,6 +538,6 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
 
                         ])),
                   )
-              )])));
+              )]));
   }
 }

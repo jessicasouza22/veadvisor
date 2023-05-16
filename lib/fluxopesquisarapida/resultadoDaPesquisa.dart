@@ -8,12 +8,9 @@ import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:vetadvisor/prelogin/slideVideo.dart';
-import 'package:vetadvisor/prelogin/slide_tile.dart';
-import 'package:video_player/video_player.dart';
-import 'package:vetadvisor/recursos/Constants.dart';
-import 'package:rolling_switch/rolling_switch.dart';
+import 'package:vetadvisor/fluxopesquisarapida/detalheDaPesquisa.dart';
+import 'package:vetadvisor/fluxopesquisarapida/detalheDaPesquisa02.dart';
+
 import '../firebase_options.dart';
 import '../recursos/dialogUtils.dart';
 
@@ -97,359 +94,7 @@ class _ResultadoDaPesquisaPageState extends State<ResultadoDaPesquisaPage> {
 
         //debugShowCheckedModeBanner: false,
         home: Scaffold(
-            drawer: Drawer(
-                backgroundColor: Color(0xFF0E02B7),
-                child: ListView(
-                  children: [
-                    // aqui ele está dividindo o menu em duas partes
-                    /*UserAccountsDrawerHeader(
-                      decoration: new BoxDecoration(
-                        color: Color(0xFF0E02B7),
-                      ),
-                     margin: EdgeInsets.only(bottom: 30
-                     ),
-                      currentAccountPicture: Image.asset('imagens/user.png'),
-                      accountName: Text("Davies"),
-                      accountEmail: Text("davies@gmail.com"),
-                    ),*/
-                    Row(
-                      children: [
-                        const Padding(
-                          padding:
-                          EdgeInsets.only(bottom: 30, left: 18, top: 30),
-                          child: CircleAvatar(
-                            backgroundImage: AssetImage('imagens/user.png'),
-                          ),
-                        ),
-                        Padding(
-                          padding:
-                          EdgeInsets.only(bottom: 30, left: 20, top: 30),
-                          child: Text(
-                            "$_nomeUsuarioLogado\n\n$_nomeUsuarioLogado}",
-                            style: TextStyle(fontSize: 14, color: Colors.white),
-                          ),
-                        ),
-                        /*  Padding(
-                          padding: EdgeInsets.only(bottom: 20, top: 60, right: 10),
-                          child:Text("juliano@gmail.com")
-                        ),*/
-                      ],
-                    ),
-                    Padding(padding: EdgeInsets.all(10)),
-                    Stack(children: [
-                      /* Positioned(
-                        height: 56,
-                        width: 288,
-                        child: Container(
-                          margin:
-                              EdgeInsets.only(left: 15, right: 10, bottom: 5),
-                          decoration: BoxDecoration(
-                            color: Colors.orange,
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                          ),
-                        ),
-                      ),*/
-                      ListTile(
-                        leading:
-                        Icon(MdiIcons.bellOutline, color: Colors.white),
-                        title: Text(
-                          "Notificações",
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.white,
-                          ),
-                        ),
-                        onTap: () {},
-                      ),
-                    ]),
 
-                    Stack(children: [
-                      /* Positioned(
-                        height: 56,
-                        width: 288,
-                        child: Container(
-                          margin:
-                              EdgeInsets.only(left: 15, right: 10, bottom: 5),
-                          decoration: BoxDecoration(
-                            color: Colors.orange,
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                          ),
-                        ),
-                      ),*/
-                      ListTile(
-                        leading:
-                        Icon(MdiIcons.stethoscope, color: Colors.white),
-                        title: Text(
-                          "Detalhe da Consulta",
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.white,
-                          ),
-                        ),
-                        onTap: () {},
-                      )
-                    ]),
-
-                    Stack(children: [
-                      /*Positioned(
-                        height: 56,
-                        width: 288,
-                        child: Container(
-                          margin:
-                              EdgeInsets.only(left: 15, right: 10, bottom: 5),
-                          decoration: BoxDecoration(
-                            color: Colors.orange,
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                          ),
-                        ),
-                      ),*/
-                      ListTile(
-                        leading: Icon(MdiIcons.calendarClockOutline,
-                            color: Colors.white),
-                        title: Text(
-                          "Agendar consulta",
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.white,
-                          ),
-                        ),
-                        onTap: () {},
-                      )
-                    ]),
-
-                    Stack(children: [
-                      /*Positioned(
-                        height: 56,
-                        width: 288,
-                        child: Container(
-                          margin:
-                              EdgeInsets.only(left: 15, right: 10, bottom: 5),
-                          decoration: BoxDecoration(
-                            color: Colors.orange,
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                          ),
-                        ),
-                      ),*/
-                      ListTile(
-                        leading:
-                        Icon(MdiIcons.stethoscope, color: Colors.white),
-                        title: Text(
-                          "Ver procedimentos",
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.white,
-                          ),
-                        ),
-                        onTap: () {},
-                      )
-                    ]),
-
-                    Stack(children: [
-                      /*Positioned(
-                        height: 56,
-                        width: 288,
-                        child: Container(
-                          margin:
-                              EdgeInsets.only(left: 15, right: 10, bottom: 5),
-                          decoration: BoxDecoration(
-                            color: Colors.orange,
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                          ),
-                        ),
-                      ),*/
-                      ListTile(
-                        leading:
-                        Icon(MdiIcons.stethoscope, color: Colors.white),
-                        title: Text(
-                          "Dicas de cuidados",
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.white,
-                          ),
-                        ),
-                        onTap: () {},
-                      )
-                    ]),
-
-                    Stack(children: [
-                      /*Positioned(
-                        height: 56,
-                        width: 288,
-                        child: Container(
-                          margin:
-                              EdgeInsets.only(left: 15, right: 10, bottom: 5),
-                          decoration: BoxDecoration(
-                            color: Colors.orange,
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                          ),
-                        ),
-                      ),*/
-                      ListTile(
-                        leading: Icon(MdiIcons.cartMinus, color: Colors.white),
-                        title: Text(
-                          "Ofertas",
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.white,
-                          ),
-                        ),
-                        onTap: () {},
-                      )
-                    ]),
-                    Stack(children: [
-                      /* Positioned(
-                        height: 56,
-                        width: 288,
-                        child: Container(
-                          margin:
-                              const EdgeInsets.only(left: 15, right: 10, bottom: 5),
-                          decoration: BoxDecoration(
-                            color: Colors.orange,
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                          ),
-                        ),
-                      ),*/
-                      ListTile(
-                        leading: Icon(MdiIcons.bottleTonicPlusOutline,
-                            color: Colors.white),
-                        title: const Text(
-                          "Telemedicina",
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.white,
-                          ),
-                        ),
-                        onTap: () {},
-                      )
-                    ]),
-
-                    Stack(children: [
-                      /*Positioned(
-                        height: 56,
-                        width: 288,
-                        child: Container(
-                          margin:
-                              const EdgeInsets.only(left: 15, right: 10, bottom: 5),
-                          decoration: const BoxDecoration(
-                            color: Colors.orange,
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                          ),
-                        ),
-                      ),*/
-                      ListTile(
-                        leading: const Icon(MdiIcons.bottleTonicPlusOutline,
-                            color: Colors.white),
-                        title: const Text(
-                          "Add novo pet",
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.white,
-                          ),
-                        ),
-                        onTap: () {},
-                      )
-                    ]),
-
-                    Stack(children: [
-                      /*Positioned(
-                        height: 56,
-                        width: 288,
-                        child: Container(
-                          margin:
-                              const EdgeInsets.only(left: 15, right: 10, bottom: 5),
-                          decoration: const BoxDecoration(
-                            color: Colors.orange,
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                          ),
-                        ),
-                      ),*/
-                      ListTile(
-                        leading: const Icon(MdiIcons.bottleTonicPlusOutline,
-                            color: Colors.white),
-                        title: const Text(
-                          "Suporte técnico",
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.white,
-                          ),
-                        ),
-                        onTap: () {},
-                      )
-                    ]),
-
-                    Stack(children: [
-                      /* Positioned(
-                        height: 56,
-                        width: 288,
-                        child: Container(
-                          margin:
-                              const EdgeInsets.only(left: 15, right: 10, bottom: 5),
-                          decoration: const BoxDecoration(
-                            color: Colors.orange,
-                            borderRadius: BorderRadius.all(Radius.circular(10)),
-                          ),
-                        ),
-                      ),*/
-                      ListTile(
-                        leading: const Icon(MdiIcons.bottleTonicPlusOutline,
-                            color: Colors.white),
-                        title: const Text(
-                          "Sair da conta",
-                          style: TextStyle(
-                            fontSize: 14,
-                            color: Colors.white,
-                          ),
-                        ),
-                        onTap: () {
-                          DialogUtils.showCustomDialog(
-                            context,
-                            title: "Efetuar logoff",
-                            text:
-                            "Tem certeza que deseja efetuar logoff do aplicativo Vet Advisor ?",
-                            botaoConfirma: "Sim",
-                            botaoExtra: "",
-                            botaoCancela: "Cancelar",
-                            funcaoBotaoConfirma: () {
-                              auth
-                                  .signOut()
-                                  .then((value) => Phoenix.rebirth(context))
-                                  .onError((error, stackTrace) => null);
-                            },
-                            funcaoBotaoExtra: () {},
-                            funcaoBotaoCancela: () {},
-                          );
-
-                          //wallace
-                        },
-                      )
-                    ]),
-
-                    const Divider(
-                      color: Colors.white,
-                      thickness: 0.2,
-                      endIndent: 28,
-                      indent: 18,
-                    ),
-                    Row(
-                      mainAxisAlignment: MainAxisAlignment.center,
-                      children: const [
-                        Icon(
-                          MdiIcons.helpCircleOutline,
-                          color: Colors.white,
-                          size: 16,
-                        ),
-                        Text(
-                          " Cores de sua preferência",
-                          style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 14,
-                          ),
-                        )
-                      ],
-                    ),
-
-                  ],
-                )),
             body: CustomScrollView(slivers: [
               SliverAppBar(
                   backgroundColor: Colors.transparent,
@@ -487,11 +132,25 @@ class _ResultadoDaPesquisaPageState extends State<ResultadoDaPesquisaPage> {
                             child: Row(
                               mainAxisAlignment: MainAxisAlignment.spaceBetween,
                               children: [
-                                Container(),
+                                Builder(
+                                    builder: (context) => IconButton(
+                                        onPressed: () {
+                                          Navigator.push(
+                                            context,
+                                            MaterialPageRoute(
+                                                builder: (
+                                                    context) => const DetalheDaPesquisa02()),
+                                          );
+
+                                          //print("clicado na seta");
+                                        },
+                                        icon: const Icon(Icons.arrow_back))),
+
                                 AutoSizeText(
                                   "Detalhe da pesquisa $_nomeUsuarioLogado",
                                   //textAlign: TextAlign.center,
                                 ),
+
                                 IconButton(
                                     onPressed: () {
                                       print("clicado no notificacao");
@@ -506,93 +165,248 @@ class _ResultadoDaPesquisaPageState extends State<ResultadoDaPesquisaPage> {
                     color: Color(0xFFF5F5F5),
                     child: SingleChildScrollView(
                         child: Column(children: [
-                          const Padding(padding: EdgeInsets.only(top: 10)),
+                         Padding(padding: EdgeInsets.all(10)),
 
-
-                          const Padding(
-                              padding: EdgeInsets.only(
-                                  left: 100, right: 50, bottom: 2, top: 2)),
-                          Padding(
-                            padding: const EdgeInsets.only(left: 15, right: 15),
-                            child: Container(
+                          Container(
+                              margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 1),
                               padding: const EdgeInsets.only(
-                                  left: 30, right: 30, bottom: 10, top: 10),
-                              decoration: const BoxDecoration(
+                                  left: 40, right: 40, top: 5, bottom: 10),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(20),
                                 color: Colors.white,
-                                //color: Color(0xFFF2F2F2),
-                                borderRadius: BorderRadius.all(
-                                  Radius.circular(17),
-                                ),
                               ),
-                              child: Container(
-                                // padding: EdgeInsets.only(left: , right: 5),
-                                decoration: BoxDecoration(
-                                  color: Colors.grey.withOpacity(0.2),
-                                  //color: Color(0xFFF2F2F2),
-                                  borderRadius:
-                                  const BorderRadius.all(Radius.circular(17)),
-                                ),
-                                child: TextFormField(
-                                  //para senha: obscureText: true,
+                              child: Column(
+                                  children: [
 
-                                  textAlign: TextAlign.center,
-                                  style: const TextStyle(
-                                    fontSize: 12,
-                                  ),
-                                  decoration: InputDecoration(
-                                      fillColor: const Color(0xFF3C10BB),
-                                      prefixIcon: const Icon(
-                                        Icons.search,
-                                        size: 18,
-                                      ),
-                                      border: OutlineInputBorder(
-                                        borderRadius: BorderRadius.circular(17),
-                                        borderSide: const BorderSide(
-                                          //color: Color(0xFFBDBECB),
-                                          width: 1.0,
+                                    Padding(padding: EdgeInsets.only(top: 10)),
+
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Flexible(
+                                            child: AutoSizeText(
+                                              'Critérios de Favrot et al',
+                                              style: TextStyle(
+                                                color: Color(0xFF35364F),
+                                                fontSize: 10,
+                                                fontWeight: FontWeight.bold,
+                                              ),
+                                              maxLines: 1,
+                                              textAlign: TextAlign.justify,
+                                            )),
+
+                                        IconButton(
+                                          onPressed: () {
+                                            Navigator.push(
+                                              context,
+                                              MaterialPageRoute(
+                                                  builder: (
+                                                      context) => const DetalheDaPesquisa02()),
+                                            );
+                                          },
+                                          icon:  Icon(MdiIcons.closeCircleOutline,
+                                            color: Colors.red,
+                                            size: 16,),
                                         ),
-                                      ),
-                                      // icon: ,
-                                      hintText: "Dermatite atópica",
-                                      suffixIcon: Padding(
-                                          padding: const EdgeInsets.only(
-                                              left: 1, right: 4, top: 3, bottom: 3),
-                                          child: Builder(
-                                            builder: (context) => ElevatedButton(
-                                              style: TextButton.styleFrom(
-                                                padding: const EdgeInsets.only(
-                                                    top: 5,
-                                                    right: 15,
-                                                    left: 20,
-                                                    bottom: 5),
-                                                // primary: Colors.white,
-                                                backgroundColor: Color(0xFF3C10BB),
-                                                shape: RoundedRectangleBorder(
-                                                  borderRadius:
-                                                  BorderRadius.circular(15.0),
-                                                ),
-                                                // Background Color
+
+
+
+
+
+
+
+                                      ],
+                                    ),
+
+                                    const Padding(padding: EdgeInsets.only(top: 30)),
+
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: const [
+                                        Flexible(
+                                            child: AutoSizeText(
+                                              '1- Início dos sinais clínicos antes de três anos de idade',
+                                              style: TextStyle(
+                                                color: Color(0xFF59616E),
+                                                fontSize: 10,
                                               ),
-                                              onPressed: () {
-                                                Navigator.push(
-                                                  context,
-                                                  MaterialPageRoute(
-                                                      builder: (context) =>
-                                                      const CadastreOPet()),
-                                                );
-                                              },
-                                              child: const Text(
-                                                "IR",
-                                                style: TextStyle(
-                                                    fontSize: 8,
-                                                    decoration: TextDecoration.none),
-                                                textAlign: TextAlign.center,
+                                              maxLines: 2,
+                                              textAlign: TextAlign.justify,
+                                            )),
+                                      ],
+                                    ),
+
+                                    Padding(padding: EdgeInsets.only(top: 10)),
+
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: const [
+                                        Flexible(
+                                            child: AutoSizeText(
+                                              '2- Cães habitam normalmente ambientes internos',
+                                              style: TextStyle(
+                                                color: Color(0xFF59616E),
+                                                fontSize: 10,
                                               ),
-                                            ),
-                                          ))),
-                                ),
-                              ),
-                            ),
+                                              maxLines: 2,
+                                              textAlign: TextAlign.justify,
+                                            )),
+                                      ],
+                                    ),
+
+                                    Padding(padding: EdgeInsets.only(top: 10)),
+
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: const [
+                                        Flexible(
+                                            child: AutoSizeText(
+                                              '3- Prurido responsivo a corticoides',
+                                              style: TextStyle(
+                                                color: Color(0xFF59616E),
+                                                fontSize: 10,
+                                              ),
+                                              maxLines: 1,
+                                              textAlign: TextAlign.justify,
+                                            )),
+                                      ],
+                                    ),
+
+                                    Padding(padding: EdgeInsets.only(top: 10)),
+
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: const [
+                                        Flexible(
+                                            child: AutoSizeText(
+                                              '4- Prurido como sinal inicial (prurido sem lesão)',
+                                              style: TextStyle(
+                                                color: Color(0xFF59616E),
+                                                fontSize: 10,
+                                              ),
+                                              maxLines: 2,
+                                              textAlign: TextAlign.justify,
+                                            )),
+                                      ],
+                                    ),
+
+                                    Padding(padding: EdgeInsets.only(top: 10)),
+
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: const [
+                                        Flexible(
+                                            child: AutoSizeText(
+                                              '5- Patas dianteiras afetadas',
+                                              style: TextStyle(
+                                                color: Color(0xFF59616E),
+                                                fontSize: 10,
+                                              ),
+                                              maxLines: 1,
+                                              textAlign: TextAlign.justify,
+                                            )),
+                                      ],
+                                    ),
+
+                                    Padding(padding: EdgeInsets.only(top: 10)),
+
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: const [
+                                        Flexible(
+                                            child: AutoSizeText(
+                                              '6- Pavilhões auriculares afetados',
+                                              style: TextStyle(
+                                                color: Color(0xFF59616E),
+                                                fontSize: 10,
+                                              ),
+                                              maxLines: 1,
+                                              textAlign: TextAlign.justify,
+                                            )),
+                                      ],
+                                    ),
+
+                                    Padding(padding: EdgeInsets.only(top: 10)),
+
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: const [
+                                        Flexible(
+                                            child: AutoSizeText(
+                                              '7- Margens de orelhas não afetadas',
+                                              style: TextStyle(
+                                                color: Color(0xFF59616E),
+                                                fontSize: 10,
+                                              ),
+                                              maxLines: 1,
+                                              textAlign: TextAlign.justify,
+                                            )),
+                                      ],
+                                    ),
+
+                                    Padding(padding: EdgeInsets.only(top: 10)),
+
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: const [
+                                        Flexible(
+                                            child: AutoSizeText(
+                                              '8- Área dorso-lombar não afetada.',
+                                              style: TextStyle(
+                                                color: Color(0xFF59616E),
+                                                fontSize: 10,
+                                              ),
+                                              maxLines: 1,
+                                              textAlign: TextAlign.justify,
+                                            )),
+                                      ],
+                                    ),
+
+                                    Padding(padding: EdgeInsets.only(top: 10)),
+
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: const [
+                                        Flexible(
+                                            child: AutoSizeText(
+                                              'A combinação de cinco critérios de avaliação tem uma sensibilidade de 80% a 85% e especificidade de 79% a 85% para diferenciar cães com Dermatite Atópica de cães com prurido crônico recorrente sem dermatite atópica',
+                                              style: TextStyle(
+                                                color: Color(0xFF59616E),
+                                                fontSize: 10,
+                                              ),
+                                              maxLines: 6,
+                                              textAlign: TextAlign.justify,
+                                            )),
+                                      ],
+                                    ),
+
+                                    Padding(padding: EdgeInsets.only(top: 30)),
+
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.center,
+                                      children: [
+
+                                        Text("Deixe aqui o seu link  ",
+                                          style: TextStyle(
+                                            color: Color(0xFF12EC1A),
+                                          ),),
+
+                                        Icon(MdiIcons.thumbUp,
+                                          color: Colors.transparent,),
+
+                                        Icon(MdiIcons.thumbUp,
+                                          color: Color(0xFFC7C9D9),),
+
+                                        Icon(MdiIcons.thumbUp,
+                                          color: Colors.transparent,),
+
+                                        Icon(MdiIcons.thumbUpOutline,
+                                          color: Color(0xFFC7C9D9),),
+                                      ],
+                                    ),
+
+                                  ]
+                              )
                           ),
 
 

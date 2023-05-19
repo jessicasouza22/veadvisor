@@ -27,6 +27,23 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
+  final _formKey = GlobalKey<FormState>();
+  final _nome = TextEditingController();
+  final _repeticoes = TextEditingController();
+  final _sequencia = TextEditingController();
+  final _series = TextEditingController();
+  final _treino = TextEditingController();
+  final _descanso = TextEditingController();
+  final _grupo = TextEditingController();
+  final _video = TextEditingController();
+  final _capa = TextEditingController();
+  final _observacoes = TextEditingController();
+
+
+  enum Fruit { apple, banana };
+
+
+
   @override
   Widget build(BuildContext context) {
 
@@ -220,12 +237,14 @@ class _HomePageState extends State<HomePage> {
                                           Builder(
                                               builder: (context) => IconButton(
                                                   onPressed: () {
-                                                    Navigator.push(
+
+                                                    _dialogAddExercicio();
+                                                   /* Navigator.push(
                                                       context,
                                                       MaterialPageRoute(
                                                           builder: (
                                                               context) => const Servicos()),
-                                                    );
+                                                    );*/
 
                                                     //print("clicado na seta");
                                                   },
@@ -686,5 +705,339 @@ class _HomePageState extends State<HomePage> {
                     ])),
               )
           )]));
+  }
+  Future<void> _dialogAddExercicio() async {
+    return showDialog<void>(
+      context: context,
+      barrierDismissible: false,
+      builder: (BuildContext context) {
+        return StatefulBuilder(
+            builder: (context, setStateForDialog) {
+              return AlertDialog(
+                shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(20.0))),
+                backgroundColor: Colors.white.withOpacity(0.9),
+                title: const  Flexible(
+                    child: AutoSizeText(
+                      'Pesquise por sistema (s) ou em\n todo banco de dados',
+                      style: TextStyle(
+                          color: Color(0xFF4116B4),
+                          fontSize: 20
+                      ),
+                      maxLines: 2,
+                      textAlign: TextAlign.center,
+                    )),
+                content: SingleChildScrollView(
+                    child: Column(
+                      children: [
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Radio(value: value, groupValue: groupValue, onChanged: onChanged),
+
+                            Padding(padding: EdgeInsets.all(20)),
+
+                            Radio(value: value, groupValue: groupValue, onChanged: onChanged),
+
+                           ],
+                        ),
+                      ],
+                    )
+
+
+
+
+                  /*Form(
+                      key: _formKey,
+                      child: ListBody(
+                        children: <Widget>[
+                          Text("Esse exercício será adicionado ao programa: "),
+                          const Padding(padding: EdgeInsets.only(bottom: 10)),
+                          TextFormField(
+                            style: const TextStyle(
+
+                            ),
+                            controller: _nome,
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                              labelText: "Nome",
+                              labelStyle: TextStyle(
+
+                              ),
+
+                            ),
+                            validator: (text){
+                              if(text == null || text.isEmpty){
+                                return "Por favor, digite o nome do exercício.";
+                              }
+                            },
+                          ),
+
+                          const Padding(padding: EdgeInsets.only(bottom: 10)),
+
+                          TextFormField(
+                            style: const TextStyle(
+
+                            ),
+                            controller: _repeticoes,
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                              labelText: "Repetições",
+                              labelStyle: TextStyle(
+
+                              ),
+
+                            ),
+                            validator: (text){
+                              if(text == null || text.isEmpty){
+                                return "Por favor, digite a quantidade de repetições.";
+                              }
+                            },
+                          ),
+
+                          const Padding(padding: EdgeInsets.only(bottom: 10)),
+
+                          TextFormField(
+                            style: const TextStyle(
+
+                            ),
+                            controller: _sequencia,
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                              labelText: "Sequência",
+                              labelStyle: TextStyle(
+
+                              ),
+
+                            ),
+                            validator: (text){
+                              if(text == null || text.isEmpty){
+                                return "Por favor, digite a sequência.";
+                              }
+                            },
+                          ),
+
+                          const Padding(padding: EdgeInsets.only(bottom: 10)),
+
+                          TextFormField(
+                            style: const TextStyle(
+
+                            ),
+                            controller: _series,
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                              labelText: "Séries",
+                              labelStyle: TextStyle(
+
+                              ),
+
+                            ),
+                            validator: (text){
+                              if(text == null || text.isEmpty){
+                                return "Por favor, digite a quantidade de séries.";
+                              }
+                            },
+                          ),
+
+                          const Padding(padding: EdgeInsets.only(bottom: 10)),
+
+                          TextFormField(
+                            style: const TextStyle(
+
+                            ),
+                            controller: _treino,
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                              labelText: "Treino",
+                              labelStyle: TextStyle(
+
+                              ),
+
+                            ),
+                            validator: (text){
+                              if(text == null || text.isEmpty){
+                                return "Por favor, digite o treino.";
+                              }
+                            },
+                          ),
+
+                          const Padding(padding: EdgeInsets.only(bottom: 10)),
+
+                          TextFormField(
+                            style: const TextStyle(
+
+                            ),
+                            controller: _descanso,
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                              labelText: "Descanso",
+                              labelStyle: TextStyle(
+
+                              ),
+
+                            ),
+                            validator: (text){
+                              if(text == null || text.isEmpty){
+                                return "Por favor, digite o descanso.";
+                              }
+                            },
+                          ),
+
+                          const Padding(padding: EdgeInsets.only(bottom: 10)),
+
+                          TextFormField(
+                            style: const TextStyle(
+
+                            ),
+                            controller: _grupo,
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                              labelText: "Grupo",
+                              labelStyle: TextStyle(
+
+                              ),
+
+                            ),
+                            validator: (text){
+                              if(text == null || text.isEmpty){
+                                return "Por favor, selecione o grupo.";
+                              }
+                            },
+                          ),
+
+                          const Padding(padding: EdgeInsets.only(bottom: 10)),
+
+                          TextFormField(
+                            style: const TextStyle(
+
+                            ),
+                            controller: _video,
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                              labelText: "Vídeo",
+                              labelStyle: TextStyle(
+
+                              ),
+
+                            ),
+                            validator: (text){
+                              if(text == null || text.isEmpty){
+                                return "Por favor, selecione o vídeo.";
+                              }
+                            },
+                          ),
+
+                          const Padding(padding: EdgeInsets.only(bottom: 10)),
+
+                          TextFormField(
+                            style: const TextStyle(
+
+                            ),
+                            controller: _capa,
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                              labelText: "Capa",
+                              labelStyle: TextStyle(
+
+                              ),
+
+                            ),
+                            validator: (text){
+                              if(text == null || text.isEmpty){
+                                return "Por favor, selecione a capa.";
+                              }
+                            },
+                          ),
+
+                          const Padding(padding: EdgeInsets.only(bottom: 10)),
+
+                          TextFormField(
+                            style: const TextStyle(
+
+                            ),
+                            controller: _observacoes,
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                              labelText: "Observações",
+                              labelStyle: TextStyle(
+
+                              ),
+
+                            ),
+                            validator: (text){
+                              if(text == null || text.isEmpty){
+                                return "Por favor, digite as observações.";
+                              }
+                            },
+                          ),
+
+
+                        ],
+                      ),
+                    )*/
+
+
+                ),
+                actions: <Widget>[
+
+                  TextButton(
+                    child: const Text("Cancelar"),
+                    onPressed: () {
+                      setStateForDialog(() {
+                        //_senha.clear();
+                        //_emailParaReautenticar.clear();
+
+
+                      });
+
+                      Navigator.of(context).pop();
+                    },
+                  ),
+                  TextButton(
+                    child: const Text("Adicionar"),
+                    onPressed: () {
+
+                      //_salvaExercicio();
+                      Navigator.of(context).pop();
+                      /*
+                      if(!_carregandoLogin) {
+                        if(!_carregandoLogin) {
+                          setState(() {
+
+                            _carregandoLogin = true;
+                            //_contador();
+                          });
+
+                          _getApiKey(_emailParaReautenticar.text, _senha.text);
+
+                        } else {
+                          setState(() {
+                            _textoBotaoEntrar = _textosBotaoEntrar[0];
+                            _carregandoLogin = false;
+                          });
+                        }
+                      }
+
+                      setStateForDialog(() {
+                        _senha.clear();
+                        _emailParaReautenticar.clear();
+
+
+                      }
+                      );
+
+
+                      Navigator.of(context).pop();
+
+                      */
+                    },
+                  ),
+                ],
+              );
+            }
+        );
+
+      },
+    );
   }
 }

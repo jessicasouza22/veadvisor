@@ -128,34 +128,28 @@ class _ServicosPageState extends State<ServicosPage> {
                       ),
                       child: Column(
                         children: [
-                          Row(
-                            mainAxisAlignment: MainAxisAlignment.center,
-                            children: [
-                              Text("Pesquise por sistema (s) ou em\n todo banco de dados",
-                              style: TextStyle(
-                                color: Color(0xFF4116B4),
-                                fontSize: 20,
-                              ),)
-                            ],
-                          ),
 
                           Padding(padding: EdgeInsets.only(top: 10)),
 
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
-                              Text("Pesquise por sistema (s) ou em\n todo banco de dados",
-                                style: TextStyle(
-                                  color: Color(0xFF4116B4),
-                                  fontSize: 20,
-                                ),)
-                            ],
+
+                              Flexible(
+                                  child: AutoSizeText(
+                                    'Pesquise por sistema (s) ou em\n todo banco de dados',
+                                    style: TextStyle(
+                                        color: Color(0xFF4116B4),
+                                        fontSize: 20
+                                    ),
+                                    maxLines: 2,
+                                    textAlign: TextAlign.center,
+                                  ))],
                           ),
+
+                          Padding(padding: EdgeInsets.only(top: 10)),
                         ],
                       )),
-
-
-
 
 
                       Row(
@@ -581,4 +575,5 @@ class _ServicosPageState extends State<ServicosPage> {
               )
           )]));
   }
+
 }

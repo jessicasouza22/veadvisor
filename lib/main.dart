@@ -7,6 +7,7 @@ import 'package:vetadvisor/prelogin/criarConta.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/perfil.dart';
 import 'package:vetadvisor/prelogin/logado.dart';
 import 'package:vetadvisor/prelogin/login.dart';
+import 'package:vetadvisor/recursos/menuIniciar.dart';
 
 import 'firebase_options.dart';
 
@@ -38,7 +39,7 @@ void main()  async {
           runApp( Phoenix(
             child: const MaterialApp(
                 debugShowCheckedModeBanner: false,
-                home: NovaConsulta()
+                home: MenuIniciar()
             )
           )
           );

@@ -243,187 +243,218 @@ class _HomePageState extends State<HomePage> {
                             ]),
                       ),
 
-                      Container(
-                          margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 1),
-                          padding: const EdgeInsets.only(
-                              left: 40, right: 40, top: 5, bottom: 10),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: Colors.white,
+                      Text("Minha Area",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontSize: 16,
+                      ),),
+
+                      Row(
+                        children: [
+
+
+                          Column(
+                            children: [
+                              Container(
+                                  margin: const EdgeInsets.only(left: 20, right: 10, top: 10, bottom: 1),
+                                  padding: const EdgeInsets.only(
+                                      left: 40, right: 40, top: 5, bottom: 10),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: Colors.white,
+                                  ),
+                                  child: Column(
+                                      children: [
+
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children:  [
+
+                                            Icon(MdiIcons.calendarEdit,
+                                              color: Color(0xFF4116B4),
+                                              size: 60,),
+
+                                          ],
+                                        ),
+                                        Padding(padding: EdgeInsets.all(10)),
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: const [
+                                            Text("Minha\nagenda",
+                                              style: TextStyle(
+                                                color: Color(0xFF4116B4),
+                                                fontWeight: FontWeight.bold,
+                                              ),),
+
+                                          ],
+                                        ),
+
+                                      ]
+                                  )
+                              ),
+                            ],
                           ),
-                          child: Column(
-                              children: [
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: const [
-                                    Text("Dermatite atópica",
-                                      style: TextStyle(
-                                        color: Color(0xFF4116B4),
-                                        fontWeight: FontWeight.bold,
-                                      ),),
 
-                                  ],
-                                ),
+                          Column(
+                            children: [
+                              Container(
+                                  margin: const EdgeInsets.only(left: 60, right: 10, top: 10, bottom: 1),
+                                  padding: const EdgeInsets.only(
+                                      left: 40, right: 40, top: 5, bottom: 10),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: Colors.white,
+                                  ),
+                                  child: Column(
+                                      children: [
 
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.end,
-                                  children:  [
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children:  [
 
-                                    Icon(Icons.star,
-                                      color: Colors.yellow,
-                                      size: 10,),
-                                    Text("Incluir diagnostico",
-                                      style: TextStyle(
-                                        fontSize: 10,
-                                      ),),
-                                    Checkbox(
-                                      checkColor: Colors.white,
-                                      activeColor: Colors.green,
+                                            Icon(MdiIcons.dogSide,
+                                              color: Color(0xFF4116B4),
+                                              size: 60,),
 
-                                      //fillColor: MaterialStateProperty.resolveWith(getColor),
-                                      value: true,
-                                      shape: CircleBorder(),
-                                      onChanged: (value) {
+                                          ],
+                                        ),
+                                        Padding(padding: EdgeInsets.all(10)),
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: const [
+                                            Text("Meus\npacientes",
+                                              style: TextStyle(
+                                                color: Color(0xFF4116B4),
+                                                fontWeight: FontWeight.bold,
 
-                                      },
-                                    ),
-                                  ],
-                                ),
+                                              ),),
 
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: const [
-                                    Flexible(
-                                        child: AutoSizeText(
-                                          'Achados clínicos',
-                                          style: TextStyle(
-                                            color: Color(0xFF35364F),
-                                            fontSize: 10,
-                                          ),
-                                          maxLines: 1,
-                                          textAlign: TextAlign.justify,
-                                        )),
-                                  ],
-                                ),
-                                const Padding(padding: EdgeInsets.only(top: 10)),
+                                          ],
+                                        ),
 
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: const [
-                                    Flexible(
-                                        child: AutoSizeText(
-                                          'Eritema, Prurido, Alopecia, Otite externa, Blefarite Prurido antes de aparecer as lesões, Lambe as patas e lambe outras partes do corpo excessivamente.',
-                                          style: TextStyle(
-                                            color: Color(0xFF59616E),
-                                            fontSize: 10,
-                                          ),
-                                          maxLines: 3,
-                                          textAlign: TextAlign.justify,
-                                        )),
-                                  ],
-                                ),
+                                      ]
+                                  )
+                              ),
+                            ],
+                          ),
 
-                              ]
-                          )
+
+
+
+
+
+
+                        ],
+
+
+
                       ),
 
-                      Container(
-                          margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 1),
-                          padding: const EdgeInsets.only(
-                              left: 40, right: 40, top: 5, bottom: 10),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: Colors.white,
+                      Row(
+                        children: [
+
+
+                          Column(
+                            children: [
+                              Container(
+                                  margin: const EdgeInsets.only(left: 20, right: 10, top: 10, bottom: 1),
+                                  padding: const EdgeInsets.only(
+                                      left: 40, right: 40, top: 5, bottom: 10),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: Colors.white,
+                                  ),
+                                  child: Column(
+                                      children: [
+
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children:  [
+
+                                            Icon(MdiIcons.calendarEdit,
+                                              color: Color(0xFF4116B4),
+                                              size: 60,),
+
+                                          ],
+                                        ),
+                                        Padding(padding: EdgeInsets.all(10)),
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: const [
+                                            Text("Minha\nagenda",
+                                              style: TextStyle(
+                                                color: Color(0xFF4116B4),
+                                                fontWeight: FontWeight.bold,
+                                              ),),
+
+                                          ],
+                                        ),
+
+                                      ]
+                                  )
+                              ),
+                            ],
                           ),
-                          child: Column(
-                              children: [
 
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: const [
-                                    Flexible(
-                                        child: AutoSizeText(
-                                          'Exames recomendados',
-                                          style: TextStyle(
-                                            color: Color(0xFF35364F),
-                                            fontSize: 10,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                          maxLines: 1,
-                                          textAlign: TextAlign.justify,
-                                        )),
-                                  ],
-                                ),
-                                const Padding(padding: EdgeInsets.only(top: 10)),
+                          Padding(padding: EdgeInsets.all(30)),
 
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: const [
-                                    Flexible(
-                                        child: AutoSizeText(
-                                          'Critérios de favrot et al, Teste cutâneo intradérmico e prick test',
-                                          style: TextStyle(
-                                            color: Color(0xFF59616E),
-                                            fontSize: 10,
-                                          ),
-                                          maxLines: 3,
-                                          textAlign: TextAlign.justify,
-                                        )),
-                                  ],
-                                ),
+                          Column(
+                            children: [
+                              Container(
+                                  margin: const EdgeInsets.only(left: 60, right: 10, top: 10, bottom: 1),
+                                  padding: const EdgeInsets.only(
+                                      left: 40, right: 40, top: 5, bottom: 10),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(20),
+                                    color: Colors.white,
+                                  ),
+                                  child: Column(
+                                      children: [
 
-                              ]
-                          )
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children:  [
+
+                                            Icon(MdiIcons.dogSide,
+                                              color: Color(0xFF4116B4),
+                                              size: 60,),
+
+                                          ],
+                                        ),
+                                        Padding(padding: EdgeInsets.all(10)),
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.center,
+                                          children: const [
+                                            Text("Meus\npacientes",
+                                              style: TextStyle(
+                                                color: Color(0xFF4116B4),
+                                                fontWeight: FontWeight.bold,
+
+                                              ),),
+
+                                          ],
+                                        ),
+
+                                      ]
+                                  )
+                              ),
+                            ],
+                          ),
+
+
+
+
+
+
+
+                        ],
+
+
+
                       ),
 
-                      Container(
-                          margin: const EdgeInsets.only(left: 10, right: 10, top: 10, bottom: 1),
-                          padding: const EdgeInsets.only(
-                              left: 40, right: 40, top: 5, bottom: 10),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(20),
-                            color: Colors.white,
-                          ),
-                          child: Column(
-                              children: [
 
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: const [
-                                    Flexible(
-                                        child: AutoSizeText(
-                                          'Fatores de risco',
-                                          style: TextStyle(
-                                            color: Color(0xFF35364F),
-                                            fontSize: 10,
-                                            fontWeight: FontWeight.bold,
-                                          ),
-                                          maxLines: 1,
-                                          textAlign: TextAlign.justify,
-                                        )),
-                                  ],
-                                ),
-                                const Padding(padding: EdgeInsets.only(top: 10)),
 
-                                Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: const [
-                                    Flexible(
-                                        child: AutoSizeText(
-                                          'Alergia alimentar, Hipersensibilidade à picada de pulgas, Ambiente domiciliar com alta quantidade de panos e fômites que acumulam poeira e ácaros, região com alta quantidade de pólen, região com longa estações do ano que proporcionam alergias, hereditariedade, Clima temperado e região com altos níveis de mofo',
-                                          style: TextStyle(
-                                            color: Color(0xFF59616E),
-                                            fontSize: 10,
-                                          ),
-                                          maxLines: 3,
-                                          textAlign: TextAlign.justify,
-                                        )),
-                                  ],
-                                ),
-
-                              ]
-                          )
-                      ),
 
                       Container(
                         margin: const EdgeInsets.only(left: 10, right: 10),

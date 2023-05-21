@@ -1,31 +1,30 @@
-//1.O HOME FLUXO PESQUISA
+//1.1 SERVICOS FLUXO PESQUISA
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:vetadvisor/fluxopesquisarapida/servicos.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/consultaPaciente.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/perfilPaciente.dart';
 import 'package:vetadvisor/prelogin/logado.dart';
 
 
-class Home extends StatelessWidget {
-  const Home({super.key});
+class Servicos extends StatelessWidget {
+  const Servicos({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const HomePage();
+    return const ServicosPage();
   }
 }
 
-class HomePage extends StatefulWidget {
-  const HomePage({Key? key}) : super(key: key);
+class ServicosPage extends StatefulWidget {
+  const ServicosPage({Key? key}) : super(key: key);
 
   @override
-  State<HomePage> createState() => _HomePageState();
+  State<ServicosPage> createState() => _ServicosPageState();
 }
 
-class _HomePageState extends State<HomePage> {
+class _ServicosPageState extends State<ServicosPage> {
 
   @override
   Widget build(BuildContext context) {
@@ -99,17 +98,17 @@ class _HomePageState extends State<HomePage> {
               hasScrollBody: true,
               child: Container(
                 decoration: const BoxDecoration(
-                gradient: LinearGradient(
-                  begin: Alignment.topCenter,
-                  end: Alignment.bottomCenter,
-                  // colors for gradient
-                  colors: [
-                    Color(0xFF4116B4),
-                    Color(0xff4116B4),
-                    Color(0xff7347EF),
-                    Color(0xffE3EDF7),
-                  ],
-                )),
+                    gradient: LinearGradient(
+                      begin: Alignment.topCenter,
+                      end: Alignment.bottomCenter,
+                      // colors for gradient
+                      colors: [
+                        Color(0xFF4116B4),
+                        Color(0xff4116B4),
+                        Color(0xff7347EF),
+                        Color(0xffE3EDF7),
+                      ],
+                    )),
 
 
                 //color: Color(0xFFF5F5F5),
@@ -117,166 +116,61 @@ class _HomePageState extends State<HomePage> {
                     child: Column(children: [
                       const Padding(padding: EdgeInsets.only(top: 15)),
 
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: [
-                      Text("O que voce precisa hoje?",
-                      style: TextStyle(
+
+
+                  Container(
+                      margin: const EdgeInsets.only(top: 10, left: 20, right: 20),
+                      // padding: const EdgeInsets.only(bottom: 240),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(20),
                         color: Colors.white,
-                        fontSize: 24,
-
-                      ),),
-                      ]),
-
-                      const Padding(padding: EdgeInsets.only(top: 15)),
-
-                      Row(
-                          mainAxisAlignment: MainAxisAlignment.center,
-                          children: [
-                            Text("Faça a triagem do seu paciente",
+                        //color: Colors.orange,
+                      ),
+                      child: Column(
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text("Pesquise por sistema (s) ou em\n todo banco de dados",
                               style: TextStyle(
-                                color: Colors.white,
-                                fontSize: 16,
-
-                              ),),
-                          ]),
-
-                      const Padding(padding: EdgeInsets.only(top: 15)),
-
-                      Row(
-                        mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
-                          Padding(padding: EdgeInsets.only(left: 10)),
-                          Icon(Icons.circle, size: 12, color: Colors.green),
-                          Padding(padding: EdgeInsets.only(left: 10)),
-                          Text(
-                            "Cães",
-                            style: TextStyle(
-                              fontSize: 16,
-                              color: Colors.grey,
-                              decoration: TextDecoration.none,
-                            ),
+                                color: Color(0xFF4116B4),
+                                fontSize: 20,
+                              ),)
+                            ],
                           ),
-                          Padding(padding: EdgeInsets.only(left: 10)),
-                          Icon(Icons.circle, size: 12, color: Colors.grey),
-                          Padding(padding: EdgeInsets.only(left: 10)),
-                          Text(
-                            "Gatos",
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.grey,
-                              decoration: TextDecoration.none,
-                            ),
-                          ),
-                          Padding(padding: EdgeInsets.only(left: 10)),
-                          Icon(Icons.circle, size: 12, color: Colors.grey),
-                          Padding(padding: EdgeInsets.only(left: 10)),
-                          Text(
-                            "Pets exóticos",
-                            style: TextStyle(
-                              fontSize: 14,
-                              color: Colors.grey,
-                              decoration: TextDecoration.none,
-                            ),
+
+                          Padding(padding: EdgeInsets.only(top: 10)),
+
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text("Pesquise por sistema (s) ou em\n todo banco de dados",
+                                style: TextStyle(
+                                  color: Color(0xFF4116B4),
+                                  fontSize: 20,
+                                ),)
+                            ],
                           ),
                         ],
-                      ),
-
-                      const Padding(padding: EdgeInsets.only(top: 15)),
-
-                      Container(
-
-
-                        margin: EdgeInsets.only(left: 20, right: 20, top: 10),
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                        borderRadius: BorderRadius.all( Radius.circular(10))),
-
-                        child: Column(
-                            children: [
-
-                              Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    SizedBox(
-                                      height: 30,
-                                      width: 250,
-
-                                      child:
-                                      TextFormField(
-                                        //para senha: obscureText: true,
-
-                                        textAlign: TextAlign.left,
-
-                                        style: const TextStyle(
-                                          fontSize: 12,
-                                        ),
-                                        decoration: InputDecoration(
-                                          fillColor: const Color(0xFF12EC1A),
-
-                                          // contentPadding: EdgeInsets.fromLTRB(20, 0, 12, 0),
-                                          prefixIcon:
-
-                                          Builder(
-                                              builder: (context) => IconButton(
-                                                  onPressed: () {
-                                                    Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                          builder: (
-                                                              context) => const Servicos()),
-                                                    );
-
-                                                    //print("clicado na seta");
-                                                  },
-                                                  icon: const Icon(Icons.search,size: 15,
-                                                      color: Color(0xFF3C10BB)))),
-
-
-
-                                         /* Icon(
-                                            Icons.search,
-                                            size: 15,
-                                            color: Color(0xFF3C10BB),
-
-                                          ),*/
-
-
-                                          // icon: ,
-                                          hintText: "Adicione mais informações",
-
-                                            suffixIcon: const Icon(
-                                              MdiIcons.navigationVariant,
-                                              size: 15,
-                                              color: Color(0xFF3C10BB),
-
-                                            )
-                                        ),
-                                      ),),
+                      )),
 
 
 
 
-                                  ]),
 
+                      Row(
 
-                            ]),
-                      ),
+                          children:[
 
-
-                    Row(
-
-                    children:[
-
-                      Container(
-                          margin: const EdgeInsets.only(left: 20, right: 10, top: 10, bottom: 1),
-                      child:
-                      Text("Minha Area",
-                      style: TextStyle(
-                        color: Colors.white,
-                        fontSize: 16,
-                      ),),),
-                      ]),
+                            Container(
+                              margin: const EdgeInsets.only(left: 20, right: 10, top: 10, bottom: 1),
+                              child:
+                              Text("Minha Area",
+                                style: TextStyle(
+                                  color: Colors.white,
+                                  fontSize: 16,
+                                ),),),
+                          ]),
 
                       Padding(padding: EdgeInsets.all(6)),
 
@@ -382,97 +276,97 @@ class _HomePageState extends State<HomePage> {
                       ),
 
                       Row(
-                        children: [
+                          children: [
 
 
-                          Column(
-                            children: [
-                              Container(
-                                  margin: const EdgeInsets.only(left: 20, right: 10, top: 10, bottom: 1),
-                                  padding: const EdgeInsets.only(
-                                      left: 40, right: 40, top: 5, bottom: 10),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
-                                    color: Colors.white,
-                                  ),
-                                  child: Column(
-                                      children: [
+                            Column(
+                              children: [
+                                Container(
+                                    margin: const EdgeInsets.only(left: 20, right: 10, top: 10, bottom: 1),
+                                    padding: const EdgeInsets.only(
+                                        left: 40, right: 40, top: 5, bottom: 10),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                      color: Colors.white,
+                                    ),
+                                    child: Column(
+                                        children: [
 
-                                        Row(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children:  [
+                                          Row(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children:  [
 
-                                            Icon(MdiIcons.notebookEditOutline,
-                                              color: Color(0xFF4116B4),
-                                              size: 60,),
-
-                                          ],
-                                        ),
-                                        Padding(padding: EdgeInsets.all(10)),
-                                        Row(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children: const [
-                                            Text("Exames\nliberados",
-                                              style: TextStyle(
+                                              Icon(MdiIcons.notebookEditOutline,
                                                 color: Color(0xFF4116B4),
-                                                fontWeight: FontWeight.bold,
-                                              ),),
+                                                size: 60,),
 
-                                          ],
-                                        ),
+                                            ],
+                                          ),
+                                          Padding(padding: EdgeInsets.all(10)),
+                                          Row(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children: const [
+                                              Text("Exames\nliberados",
+                                                style: TextStyle(
+                                                  color: Color(0xFF4116B4),
+                                                  fontWeight: FontWeight.bold,
+                                                ),),
 
-                                      ]
-                                  )
-                              ),
-                            ],
-                          ),
+                                            ],
+                                          ),
 
-                          Padding(padding: EdgeInsets.all(30)),
+                                        ]
+                                    )
+                                ),
+                              ],
+                            ),
 
-                          Column(
-                            children: [
-                              Container(
-                                //  margin: const EdgeInsets.only(left: 80, right: 10, top: 10, bottom: 1),
-                                  padding: const EdgeInsets.only(
-                                      left: 40, right: 40, top: 5, bottom: 10),
-                                  decoration: BoxDecoration(
-                                    borderRadius: BorderRadius.circular(20),
-                                    color: Colors.white,
-                                  ),
-                                  child: Column(
-                                      children: [
+                            Padding(padding: EdgeInsets.all(30)),
 
-                                        Row(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children:  [
+                            Column(
+                              children: [
+                                Container(
+                                  //  margin: const EdgeInsets.only(left: 80, right: 10, top: 10, bottom: 1),
+                                    padding: const EdgeInsets.only(
+                                        left: 40, right: 40, top: 5, bottom: 10),
+                                    decoration: BoxDecoration(
+                                      borderRadius: BorderRadius.circular(20),
+                                      color: Colors.white,
+                                    ),
+                                    child: Column(
+                                        children: [
 
-                                            Icon(MdiIcons.bookOpenPageVariantOutline,
-                                              color: Color(0xFF4116B4),
-                                              size: 60,),
+                                          Row(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children:  [
 
-                                          ],
-                                        ),
-                                        Padding(padding: EdgeInsets.all(10)),
-                                        Row(
-                                          mainAxisAlignment: MainAxisAlignment.center,
-                                          children: const [
-                                            Text("Meus\nestudos",
-                                              style: TextStyle(
+                                              Icon(MdiIcons.bookOpenPageVariantOutline,
                                                 color: Color(0xFF4116B4),
-                                                fontWeight: FontWeight.bold,
+                                                size: 60,),
 
-                                              ),),
+                                            ],
+                                          ),
+                                          Padding(padding: EdgeInsets.all(10)),
+                                          Row(
+                                            mainAxisAlignment: MainAxisAlignment.center,
+                                            children: const [
+                                              Text("Meus\nestudos",
+                                                style: TextStyle(
+                                                  color: Color(0xFF4116B4),
+                                                  fontWeight: FontWeight.bold,
 
-                                          ],
-                                        ),
+                                                ),),
 
-                                      ]
-                                  )
-                              ),
-                            ],
-                          ),
+                                            ],
+                                          ),
 
-                     ] ),
+                                        ]
+                                    )
+                                ),
+                              ],
+                            ),
+
+                          ] ),
 
                       Padding(padding: EdgeInsets.all(10)),
 
@@ -551,21 +445,21 @@ class _HomePageState extends State<HomePage> {
 
                       Padding(padding: EdgeInsets.all(5)),
 
-                        Row(
-                         // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      Row(
+                        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
 
-                        Container(
-                        margin: const EdgeInsets.only(left: 20, right: 10, top: 10, bottom: 1),
-                      child:
+                            Container(
+                                margin: const EdgeInsets.only(left: 20, right: 10, top: 10, bottom: 1),
+                                child:
 
-                      Text(
-                        " |  Próximas consultas ",
-                        style: TextStyle(
-                            color: Colors.white,
-                            fontSize: 14,
-                            decoration: TextDecoration.none),
-                      )),]),
+                                Text(
+                                  " |  Próximas consultas ",
+                                  style: TextStyle(
+                                      color: Colors.white,
+                                      fontSize: 14,
+                                      decoration: TextDecoration.none),
+                                )),]),
 
                       Padding(padding: EdgeInsets.all(10)),
 
@@ -584,7 +478,7 @@ class _HomePageState extends State<HomePage> {
 
                       Container(
                         //color: Colors.white,
-                        
+
                         margin:  EdgeInsets.all(15),
                         decoration: const BoxDecoration(
                           image: DecorationImage(

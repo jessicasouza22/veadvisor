@@ -265,19 +265,15 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
                                 SizedBox(
                                   height: 30,
                                   width: 250,
-
                                   child:
                                   TextFormField(
                                     //para senha: obscureText: true,
-
                                     textAlign: TextAlign.left,
-
                                     style: const TextStyle(
                                       fontSize: 12,
                                     ),
                                     decoration: InputDecoration(
                                       fillColor: const Color(0xFF12EC1A),
-
                                       // contentPadding: EdgeInsets.fromLTRB(20, 0, 12, 0),
                                       prefixIcon: const Icon(
                                         Icons.search,
@@ -285,19 +281,11 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
                                         color: Color(0xFF3C10BB),
 
                                       ),
-
-
-                                      // icon: ,
+  // icon: ,
                                       hintText: "Resultado",
                                     ),
                                   ),),
-
-
-
-
                               ]),
-
-
                           ]),
                           ),
 

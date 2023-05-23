@@ -3,6 +3,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:vetadvisor/fluxopesquisarapida/detalheDaPesquisa.dart';
 import 'package:vetadvisor/fluxopesquisarapida/servicos.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/consultaPaciente.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/perfilPaciente.dart';
@@ -241,29 +242,11 @@ class _HomePageState extends State<HomePage> {
                                                   onPressed: () {
 
                                                     _dialogAddExercicio();
-                                                   /* Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                          builder: (
-                                                              context) => const Servicos()),
-                                                    );*/
 
-                                                    //print("clicado na seta");
                                                   },
                                                   icon: const Icon(Icons.search,size: 15,
                                                       color: Color(0xFF3C10BB)))),
 
-
-
-                                         /* Icon(
-                                            Icons.search,
-                                            size: 15,
-                                            color: Color(0xFF3C10BB),
-
-                                          ),*/
-
-
-                                          // icon: ,
                                           hintText: "Adicione mais informações",
 
                                             suffixIcon: const Icon(
@@ -1327,7 +1310,7 @@ class _HomePageState extends State<HomePage> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => const PerfilPaciente()),
+                                        builder: (context) => const DetalheDaPesquisa()),
                                   );
                                 },
                                 style: ElevatedButton.styleFrom(
@@ -1350,7 +1333,7 @@ class _HomePageState extends State<HomePage> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => const PerfilPaciente()),
+                                        builder: (context) => const DetalheDaPesquisa()),
                                   );
                                 },
                                 style: ElevatedButton.styleFrom(
@@ -1373,7 +1356,7 @@ class _HomePageState extends State<HomePage> {
                                   Navigator.push(
                                     context,
                                     MaterialPageRoute(
-                                        builder: (context) => const PerfilPaciente()),
+                                        builder: (context) => const Home()),
                                   );
                                 },
                                 style: ElevatedButton.styleFrom(

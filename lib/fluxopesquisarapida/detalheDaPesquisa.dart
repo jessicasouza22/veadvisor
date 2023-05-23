@@ -1,5 +1,7 @@
 //1.1 e 1.3
 
+import 'dart:developer';
+
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
@@ -9,6 +11,7 @@ import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:vetadvisor/fluxopesquisarapida/resultadoDaPesquisa.dart';
+import 'package:vetadvisor/fluxopesquisarapida/servicos.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/consultaPaciente.dart';
 import 'package:vetadvisor/prelogin/slideVideo.dart';
 import 'package:vetadvisor/prelogin/slide_tile.dart';
@@ -163,11 +166,228 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
                   child: Container(
                     color: Color(0xFFF5F5F5),
                     child: SingleChildScrollView(
-                        child: Column(children: [
-                          const Padding(padding: EdgeInsets.only(top: 10)),
+                        child: Column(
+                            children: [
+                          Padding(padding: EdgeInsets.only(top: 10)),
+
+                              Container(
 
 
-                          const Padding(
+                                margin: EdgeInsets.only(left: 20, right: 20, top: 10),
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.all( Radius.circular(10))),
+
+                                child: Column(
+                                    children: [
+
+                                      Row(
+                                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                          children: [
+                                            SizedBox(
+                                              height: 30,
+                                              width: 250,
+
+                                              child:
+                                              TextFormField(
+                                                //para senha: obscureText: true,
+
+                                                textAlign: TextAlign.left,
+
+                                                style: const TextStyle(
+                                                  fontSize: 12,
+                                                ),
+                                                decoration: InputDecoration(
+                                                    fillColor: const Color(0xFF12EC1A),
+
+                                                    // contentPadding: EdgeInsets.fromLTRB(20, 0, 12, 0),
+                                                    prefixIcon:
+
+                                                    Builder(
+                                                        builder: (context) => IconButton(
+                                                            onPressed: () {
+
+
+
+                                                            },
+                                                            icon: const Icon(Icons.search,size: 15,
+                                                                color: Color(0xFF979797)))),
+
+                                                    hintText: "Adicione mais informações",
+
+                                                    suffixIcon: const Icon(
+                                                      MdiIcons.navigationVariant,
+                                                      size: 15,
+                                                      color: Color(0xFF979797),
+
+                                                    )
+                                                ),
+                                              ),),
+
+
+
+
+                                          ]),
+
+                            
+
+
+
+
+
+                                    ]),
+                              ),
+
+                    Container(
+
+
+                        margin: EdgeInsets.only(left: 20, right: 20, top: 10),
+                        decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.all( Radius.circular(10))),
+
+                        child: Column(
+                            children: [
+
+                              Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    SizedBox(
+                                      height: 30,
+                                      width: 250,
+
+                                      child:
+                                      TextFormField(
+                                        //para senha: obscureText: true,
+
+                                        textAlign: TextAlign.left,
+
+                                        style: const TextStyle(
+                                          fontSize: 12,
+                                        ),
+                                        decoration: InputDecoration(
+                                           // fillColor: const Color(0xFF12EC1A),
+
+                                            // contentPadding: EdgeInsets.fromLTRB(20, 0, 12, 0),
+                                            //prefixIcon:
+                                            /*Builder(
+                                                builder: (context) => IconButton(
+                                                    onPressed: () {
+
+
+
+                                                    },
+                                                    icon: const Icon(Icons.search,size: 15,
+                                                        color: Color(0xFF3C10BB)))),*/
+
+                                            hintText: "Prurido generalizado; Maneios de cabeça; Febre",
+
+                                            /*suffixIcon: const Icon(
+                                              MdiIcons.navigationVariant,
+                                              size: 15,
+                                              color: Color(0xFF3C10BB),
+
+                                            )*/
+                                        ),
+                                      ),),
+
+
+
+
+                                  ]),
+                         ]),),
+                             // Padding(padding: EdgeInsets.only(top: 5)),
+
+                        Padding(padding: EdgeInsets.only(top: 10)),
+
+
+                         Container(
+                          margin: EdgeInsets.only(right: 210),
+                           child:
+                             Text("Resultado da pesquisa",
+                             style: TextStyle(
+                               color: Colors.black,
+                               fontWeight: FontWeight.bold
+                             ),)
+                         ),
+
+                        const Divider(
+                                color: Color(0xFF12EC1A),
+                                thickness: 0.8,
+                                endIndent:230,
+                                indent: 20,),
+
+                      Container(
+
+
+                          margin: EdgeInsets.only(left: 20, right: 20, top: 10),
+                          decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.all( Radius.circular(10))),
+
+                          child: Column(
+
+                            children: [
+
+                              Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                                children: [
+                                  Text("Dermatite atópica",
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontWeight: FontWeight.bold
+                                      )
+
+                                  ),
+                                  Icon(Icons.star,
+                                    color: Colors.yellow,
+                                    size: 10,),
+                                  Icon(Icons.star,
+                                    color: Colors.yellow,
+                                    size: 10,),
+                                  Icon(Icons.star,
+                                    color: Colors.yellow,
+                                    size: 10,),
+                                  Icon(Icons.star,
+                                    color: Colors.yellow,
+                                    size: 10,)
+                                ],
+                              ),
+
+                              Padding(padding: EdgeInsets.only(top: 5)),
+
+                              Row(
+                                children: [
+
+                                  Text("Alérgia comum em cães da raça shih tzu",
+                                      style: TextStyle(
+                                          color: Color(0xFF59616E),
+
+                                      )
+
+                                  ),
+
+                                ],
+                              )
+                            ],
+                          ),),
+                              Container(
+                                  padding: const EdgeInsets.all(6),
+                                  //  margin: const EdgeInsets.only(top: 10),
+                                  decoration: BoxDecoration(
+                                    borderRadius: BorderRadius.circular(50),
+                                    color: const Color(0xFF4116B4),
+                                  ),
+                                  child: const Icon(
+                                    Icons.add,
+                                    color: Colors.white,
+                                  )),
+
+
+
+
+
+                         /* const Padding(
                               padding: EdgeInsets.only(
                                   left: 100, right: 50, bottom: 2, top: 2)),
                           Padding(
@@ -511,6 +731,8 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
                                   ])
                                 ])),
                           ),
+
+                              */
 
 
 

@@ -8,6 +8,8 @@ import 'package:vetadvisor/fluxoprontuariodigital/consultaPaciente.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/perfilPaciente.dart';
 import 'package:vetadvisor/prelogin/logado.dart';
 
+enum SingingCharacterAreaMedica{ Oftalmicos, Infecciosos, Dermatologicos, MusculoEsqueletico, Neurologicos, MetabolicosEndocrinos, Oncologicos, Cardiologicos, NefrologicosUrologicos, Hematologicos, Respiratorios, Odontologicos, Toxocologicos, Teriogenologicos}
+
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -40,7 +42,7 @@ class _HomePageState extends State<HomePage> {
   final _observacoes = TextEditingController();
 
 
-  enum Fruit { apple, banana };
+
 
 
 
@@ -717,7 +719,14 @@ class _HomePageState extends State<HomePage> {
                 shape: const RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(20.0))),
                 backgroundColor: Colors.white.withOpacity(0.9),
-                title: const  Flexible(
+                //backgroundColor: Colors.white,
+
+                title:  Text("Pesquise por sistema (s) ou em\n todo banco de dados'",
+                  style: TextStyle(
+                      color: Color(0xFF4116B4),
+                      fontSize: 18
+                  ),),
+                /*Flexible(
                     child: AutoSizeText(
                       'Pesquise por sistema (s) ou em\n todo banco de dados',
                       style: TextStyle(
@@ -726,21 +735,348 @@ class _HomePageState extends State<HomePage> {
                       ),
                       maxLines: 2,
                       textAlign: TextAlign.center,
-                    )),
+                    )),*/
                 content: SingleChildScrollView(
                     child: Column(
                       children: [
+
+
                         Row(
                           mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            Radio(value: value, groupValue: groupValue, onChanged: onChanged),
+                            Radio<SingingCharacterAreaMedica>(
+                              value: SingingCharacterAreaMedica.Oftalmicos,
 
-                            Padding(padding: EdgeInsets.all(20)),
+                              onChanged: (SingingCharacterAreaMedica? value) {
 
-                            Radio(value: value, groupValue: groupValue, onChanged: onChanged),
+                                setState(() {
 
-                           ],
+                                });
+                              },
+                              groupValue: null,
+                              fillColor:
+                              MaterialStateColor.resolveWith((states) => Colors.grey),
+                            ),
+                            const Text("Oftalmicos",
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Color(0xFF4116B4)
+                                )
+                            ),
+
+                            Padding(padding: EdgeInsets.all(10)),
+
+
+                            Radio<SingingCharacterAreaMedica>(
+                              value: SingingCharacterAreaMedica.Infecciosos,
+
+                              onChanged: (SingingCharacterAreaMedica? value) {
+
+                                setState(() {
+
+                                });
+                              },
+                              groupValue: null,
+                              fillColor:
+                              MaterialStateColor.resolveWith((states) => Colors.grey),
+                            ),
+                            const Text("Infecciosos",
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Color(0xFF4116B4)
+                                )
+                            ),
+                          ],
                         ),
+
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Radio<SingingCharacterAreaMedica>(
+                              value: SingingCharacterAreaMedica.Dermatologicos,
+
+                              onChanged: (SingingCharacterAreaMedica? value) {
+
+                                setState(() {
+
+                                });
+                              },
+                              groupValue: null,
+                              fillColor:
+                              MaterialStateColor.resolveWith((states) => Colors.grey),
+                            ),
+                            const Text("Dermatologicos",
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Color(0xFF4116B4)
+                                )
+                            ),
+
+                            Padding(padding: EdgeInsets.all(10)),
+
+
+                            Radio<SingingCharacterAreaMedica>(
+                              value: SingingCharacterAreaMedica.MusculoEsqueletico,
+
+                              onChanged: (SingingCharacterAreaMedica? value) {
+
+                                setState(() {
+
+                                });
+                              },
+                              groupValue: null,
+                              fillColor:
+                              MaterialStateColor.resolveWith((states) => Colors.grey),
+                            ),
+                            const Text("Musculo",
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Color(0xFF4116B4)
+                                )
+                            ),
+                          ],
+                        ),
+
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Radio<SingingCharacterAreaMedica>(
+                              value: SingingCharacterAreaMedica.Neurologicos,
+
+                              onChanged: (SingingCharacterAreaMedica? value) {
+
+                                setState(() {
+
+                                });
+                              },
+                              groupValue: null,
+                              fillColor:
+                              MaterialStateColor.resolveWith((states) => Colors.grey),
+                            ),
+                            const Text("Neurológicos",
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Color(0xFF4116B4)
+                                )
+                            ),
+
+                            Padding(padding: EdgeInsets.all(10)),
+
+
+                            Radio<SingingCharacterAreaMedica>(
+                              value: SingingCharacterAreaMedica.MetabolicosEndocrinos,
+
+                              onChanged: (SingingCharacterAreaMedica? value) {
+
+                                setState(() {
+
+                                });
+                              },
+                              groupValue: null,
+                              fillColor:
+                              MaterialStateColor.resolveWith((states) => Colors.grey),
+                            ),
+                            const Text("Metabolicos",
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Color(0xFF4116B4)
+                                )
+                            ),
+                          ],
+                        ),
+
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Radio<SingingCharacterAreaMedica>(
+                              value: SingingCharacterAreaMedica.Oncologicos,
+
+                              onChanged: (SingingCharacterAreaMedica? value) {
+
+                                setState(() {
+
+                                });
+                              },
+                              groupValue: null,
+                              fillColor:
+                              MaterialStateColor.resolveWith((states) => Colors.grey),
+                            ),
+                            const Text("Oncologicos",
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Color(0xFF4116B4)
+                                )
+                            ),
+
+                            Padding(padding: EdgeInsets.all(10)),
+
+
+                            Radio<SingingCharacterAreaMedica>(
+                              value: SingingCharacterAreaMedica.Cardiologicos,
+
+                              onChanged: (SingingCharacterAreaMedica? value) {
+
+                                setState(() {
+
+                                });
+                              },
+                              groupValue: null,
+                              fillColor:
+                              MaterialStateColor.resolveWith((states) => Colors.grey),
+                            ),
+                            const Text("Cardiologicos",
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Color(0xFF4116B4)
+                                )
+                            ),
+                          ],
+                        ),
+
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Radio<SingingCharacterAreaMedica>(
+                              value: SingingCharacterAreaMedica.NefrologicosUrologicos,
+
+                              onChanged: (SingingCharacterAreaMedica? value) {
+
+                                setState(() {
+
+                                });
+                              },
+                              groupValue: null,
+                              fillColor:
+                              MaterialStateColor.resolveWith((states) => Colors.grey),
+                            ),
+                            const Text("Nefrologicos",
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Color(0xFF4116B4)
+                                )
+                            ),
+
+                            Padding(padding: EdgeInsets.all(10)),
+
+
+                            Radio<SingingCharacterAreaMedica>(
+                              value: SingingCharacterAreaMedica.Hematologicos,
+
+                              onChanged: (SingingCharacterAreaMedica? value) {
+
+                                setState(() {
+
+                                });
+                              },
+                              groupValue: null,
+                              fillColor:
+                              MaterialStateColor.resolveWith((states) => Colors.grey),
+                            ),
+                            const Text("Hematologicos",
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Color(0xFF4116B4)
+                                )
+                            ),
+                          ],
+                        ),
+
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Radio<SingingCharacterAreaMedica>(
+                              value: SingingCharacterAreaMedica.Respiratorios,
+
+                              onChanged: (SingingCharacterAreaMedica? value) {
+
+                                setState(() {
+
+                                });
+                              },
+                              groupValue: null,
+                              fillColor:
+                              MaterialStateColor.resolveWith((states) => Colors.grey),
+                            ),
+                            const Text("Respiratorios",
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Color(0xFF4116B4)
+                                )
+                            ),
+
+                            Padding(padding: EdgeInsets.all(10)),
+
+
+                            Radio<SingingCharacterAreaMedica>(
+                              value: SingingCharacterAreaMedica.Odontologicos,
+
+                              onChanged: (SingingCharacterAreaMedica? value) {
+
+                                setState(() {
+
+                                });
+                              },
+                              groupValue: null,
+                              fillColor:
+                              MaterialStateColor.resolveWith((states) => Colors.grey),
+                            ),
+                            const Text("Odontologicos",
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Color(0xFF4116B4)
+                                )
+                            ),
+                          ],
+                        ),
+
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Radio<SingingCharacterAreaMedica>(
+                              value: SingingCharacterAreaMedica.Toxocologicos,
+
+                              onChanged: (SingingCharacterAreaMedica? value) {
+
+                                setState(() {
+
+                                });
+                              },
+                              groupValue: null,
+                              fillColor:
+                              MaterialStateColor.resolveWith((states) => Colors.grey),
+                            ),
+                            const Text("Toxocologicos",
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Color(0xFF4116B4)
+                                )
+                            ),
+
+                            Padding(padding: EdgeInsets.all(10)),
+
+
+                            Radio<SingingCharacterAreaMedica>(
+                              value: SingingCharacterAreaMedica.Teriogenologicos,
+
+                              onChanged: (SingingCharacterAreaMedica? value) {
+
+                                setState(() {
+
+                                });
+                              },
+                              groupValue: null,
+                              fillColor:
+                              MaterialStateColor.resolveWith((states) => Colors.grey),
+                            ),
+                            const Text("Teriogenologicos",
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Color(0xFF4116B4)
+                                )
+                            ),
+                          ],
+                        ),
+
                       ],
                     )
 
@@ -980,7 +1316,81 @@ class _HomePageState extends State<HomePage> {
                 ),
                 actions: <Widget>[
 
-                  TextButton(
+                  Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Builder(
+                            builder: (context) => ElevatedButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => const PerfilPaciente()),
+                                  );
+                                },
+                                style: ElevatedButton.styleFrom(
+                                    shape: const StadiumBorder(),
+                                    backgroundColor: Color(0XFF4116B4)),
+                                child: const Text(
+                                  'Pesquisar apenas nos sistemas selecionados',
+                                  style: TextStyle(color: Colors.white),
+                                )),
+                          ),
+                        ],
+                      ),
+
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Builder(
+                            builder: (context) => ElevatedButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => const PerfilPaciente()),
+                                  );
+                                },
+                                style: ElevatedButton.styleFrom(
+                                    shape: const StadiumBorder(),
+                                    backgroundColor: Color(0XFF4116B4)),
+                                child: const Text(
+                                  'Pesquisar em todo banco de dados',
+                                  style: TextStyle(color: Colors.white),
+                                )),
+                          ),
+                        ],
+                      ),
+
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Builder(
+                            builder: (context) => ElevatedButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => const PerfilPaciente()),
+                                  );
+                                },
+                                style: ElevatedButton.styleFrom(
+                                    shape: const StadiumBorder(),
+                                    backgroundColor: Color(0XFF4116B4)),
+                                child: const Text(
+                                  'Cancelar',
+                                  style: TextStyle(color: Colors.white),
+                                )),
+                          ),
+                        ],
+                      ),
+
+                    ],
+                  )
+
+                /* TextButton(
                     child: const Text("Cancelar"),
                     onPressed: () {
                       setStateForDialog(() {
@@ -1031,7 +1441,7 @@ class _HomePageState extends State<HomePage> {
 
                       */
                     },
-                  ),
+                  ),*/
                 ],
               );
             }

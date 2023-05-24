@@ -9,7 +9,7 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:vetadvisor/fluxopesquisarapida/detalheDaPesquisa.dart';
-import 'package:vetadvisor/fluxopesquisarapida/detalheDaPesquisa02.dart';
+import 'package:vetadvisor/fluxopesquisarapida/detalheDaPesquisaDermatiteAtopica.dart';
 
 import '../firebase_options.dart';
 import '../recursos/dialogUtils.dart';
@@ -139,7 +139,7 @@ class _ResultadoDaPesquisaPageState extends State<ResultadoDaPesquisaPage> {
                                             context,
                                             MaterialPageRoute(
                                                 builder: (
-                                                    context) => const DetalheDaPesquisa02()),
+                                                    context) => const DetalheDaPesquisa()),
                                           );
 
                                           //print("clicado na seta");
@@ -201,7 +201,7 @@ class _ResultadoDaPesquisaPageState extends State<ResultadoDaPesquisaPage> {
                                               context,
                                               MaterialPageRoute(
                                                   builder: (
-                                                      context) => const DetalheDaPesquisa02()),
+                                                      context) => const DetalheDaPesquisa()),
                                             );
                                           },
                                           icon:  Icon(MdiIcons.closeCircleOutline,

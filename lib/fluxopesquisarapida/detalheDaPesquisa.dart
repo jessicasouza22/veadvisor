@@ -56,6 +56,12 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
   @override
   // aqui inicia o vídeo controller
 
+  void initState(){
+    super.initState();
+    _showMyDialog();
+    print("oi");
+  }
+
   Future<void> carregaDadosLogin() async {
     app = await Firebase.initializeApp(
       options: DefaultFirebaseOptions.currentPlatform,

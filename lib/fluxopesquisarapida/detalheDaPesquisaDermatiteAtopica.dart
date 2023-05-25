@@ -250,59 +250,8 @@ class _DetalheDaPesquisaDermatiteAtopicaPageState extends State<DetalheDaPesquis
                               child: Text("Prurido generalizado; Maneios de cabeça; Febre",
                                 style: TextStyle(
                                     color:  Color(0xFF8F90A6)
-                                ),)
-                            /* Column(
-                            children: [
+                                ),),),
 
-                              Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    SizedBox(
-                                      height: 30,
-                                      width: 250,
-
-                                      child:
-                                      TextFormField(
-                                        //para senha: obscureText: true,
-
-                                        textAlign: TextAlign.left,
-
-                                        style: const TextStyle(
-                                          fontSize: 12,
-                                        ),
-                                        decoration: InputDecoration(
-                                           // fillColor: const Color(0xFF12EC1A),
-
-                                            // contentPadding: EdgeInsets.fromLTRB(20, 0, 12, 0),
-                                            //prefixIcon:
-                                            /*Builder(
-                                                builder: (context) => IconButton(
-                                                    onPressed: () {
-
-
-
-                                                    },
-                                                    icon: const Icon(Icons.search,size: 15,
-                                                        color: Color(0xFF3C10BB)))),*/
-
-                                            hintText: "Prurido generalizado; Maneios de cabeça; Febre",
-
-                                            /*suffixIcon: const Icon(
-                                              MdiIcons.navigationVariant,
-                                              size: 15,
-                                              color: Color(0xFF3C10BB),
-
-                                            )*/
-                                        ),
-                                      ),),
-
-
-
-
-                                  ]),
-                         ]),*/
-                          ),
-                          // Padding(padding: EdgeInsets.only(top: 5)),
 
                           Padding(padding: EdgeInsets.only(top: 10)),
 
@@ -313,7 +262,35 @@ class _DetalheDaPesquisaDermatiteAtopicaPageState extends State<DetalheDaPesquis
                             margin: EdgeInsets.only(left: 20, right: 20, top: 10),
                             decoration: BoxDecoration(
                                 color: Colors.white,
-                                borderRadius: BorderRadius.all( Radius.circular(10))),
+                                borderRadius: BorderRadius.all( Radius.circular(10)),
+                               /* boxShadow: [
+                                  BoxShadow(
+                                      color: const Color(0xFF000000),
+                                      offset: Offset.zero,
+                                      blurRadius: 0.0,
+                                      spreadRadius: 0.0
+                                  ),
+                                ]
+                                */),
+
+
+                            child: Column(
+
+                              children: [
+                                Padding(padding: EdgeInsets.only(top: 5)),
+
+
+                          Container(
+
+                            padding: EdgeInsets.only(left: 10, right: 10),
+                            margin: EdgeInsets.only(left: 20, right: 20, top: 10),
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.all( Radius.circular(20)),
+
+
+                            ),
+
 
                             child: Column(
 
@@ -420,7 +397,106 @@ class _DetalheDaPesquisaDermatiteAtopicaPageState extends State<DetalheDaPesquis
 
                           Padding(padding: EdgeInsets.only(top: 10)),
 
+                          Container(
 
+                            padding: EdgeInsets.only(left: 10, right: 10),
+                            margin: EdgeInsets.only(left: 20, right: 20, top: 10),
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.all( Radius.circular(10))),
+
+                            child: Column(
+
+                              children: [
+                                Padding(padding: EdgeInsets.only(top: 5)),
+
+                                Row(
+                                    children: [
+
+
+                                      Flexible(
+                                          child: AutoSizeText(
+                                            'Dieta de eliminação , Níveis séricos de Folato e Cobalamina (Vitamina B12)',
+                                            style: TextStyle(
+                                              color: Color(0xFF59616E),
+                                              fontSize: 10,
+                                              //fontWeight: FontWeight.bold,
+                                            ),
+                                            maxLines: 2,
+                                            textAlign: TextAlign.justify,
+                                          )),
+
+
+                                    ]),
+                                Padding(padding: EdgeInsets.only(top: 10)),
+                              ],),),
+
+                          Padding(padding: EdgeInsets.only(top: 10)),
+
+                          Container(
+
+                            padding: EdgeInsets.only(left: 10, right: 10),
+                            margin: EdgeInsets.only(left: 20, right: 20, top: 10),
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.all( Radius.circular(10))),
+
+                            child: Column(
+
+                              children: [
+                                Padding(padding: EdgeInsets.only(top: 5)),
+
+                                Row(
+                                    mainAxisAlignment: MainAxisAlignment.start,
+                                    children: [
+                                      Text("Fatores de risco",
+                                          style: TextStyle(
+                                            color: Color(0xFF59616E),
+                                            fontWeight: FontWeight.bold,
+                                            fontSize: 16,
+                                          )
+
+                                      ),
+
+                                    ]),
+
+                                Padding(padding: EdgeInsets.only(top: 15)),
+
+                                Row(
+                                    children: [
+                                      Flexible(
+                                          child: AutoSizeText(
+                                            'Hereditariedade +   , Fontes proteicas com mais de 18 mil daltons',
+                                            style: TextStyle(
+                                              color: Color(0xFF59616E),
+                                              fontSize: 10,
+                                              //fontWeight: FontWeight.bold,
+                                            ),
+                                            maxLines: 8,
+                                            textAlign: TextAlign.justify,
+                                          )),
+
+
+                                    ]),
+                                Padding(padding: EdgeInsets.only(top: 10)),
+                              ],),),
+
+                          Container(
+                              padding: const EdgeInsets.all(2),
+                              //  margin: const EdgeInsets.only(top: 10),
+                              decoration: BoxDecoration(
+                                borderRadius: BorderRadius.circular(50),
+                                color: const Color(0xFF4116B4),
+                              ),
+                              child: const Icon(
+                                Icons.text_decrease,
+                                color: Colors.white,
+                                size: 10,
+                              )),
+
+                          Padding(padding: EdgeInsets.only(top: 10)),
+
+                              ],),),
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -451,8 +527,8 @@ class _DetalheDaPesquisaDermatiteAtopicaPageState extends State<DetalheDaPesquis
                                   )),
                             ],
                           ),
-
-                        ])),
+                        ])
+                ),
               )
           )]));
   }

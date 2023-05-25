@@ -11,6 +11,7 @@ import 'package:vetadvisor/fluxopesquisarapida/home.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/consultaPaciente.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/novaConsulta.dart';
 import 'package:vetadvisor/inicio.dart';
+import 'package:vetadvisor/minhaagenda/homeMinhaAgenda.dart';
 import 'package:vetadvisor/prelogin/slideVideo.dart';
 import 'package:vetadvisor/prelogin/slide_tile.dart';
 import 'package:video_player/video_player.dart';
@@ -164,6 +165,31 @@ class _MenuIniciarPageState extends State<MenuIniciarPage> {
                                 ),),
                             ),
                           ]),
+
+                      Padding(padding:EdgeInsets.all(20)),
+
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Builder(
+                              builder: (context) => ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                    shape: const StadiumBorder(),
+                                    backgroundColor: Colors.white),
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                        const HomeMinhaAgenda()),
+                                  );
+                                },
+                                child: const Text(
+                                  'Minha Agenda',
+                                  style: TextStyle(color: Color(0xFF3C10BB)),
+                                ),),
+                            ),
+                          ])
 
 
 

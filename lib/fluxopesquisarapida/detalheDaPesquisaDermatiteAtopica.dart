@@ -1,29 +1,18 @@
-//1.1 e 1.3
-
-import 'dart:developer';
+// 1.3 Detalhe Da Pesquisa Dermatite Atopica
 
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
-import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:carousel_slider/carousel_slider.dart';
-import 'package:vetadvisor/fluxopesquisarapida/detalheDaPesquisaDermatiteAtopica.dart';
-import 'package:vetadvisor/fluxopesquisarapida/home.dart';
-import 'package:vetadvisor/fluxopesquisarapida/resultadoDaPesquisa.dart';
-import 'package:vetadvisor/fluxopesquisarapida/servicos.dart';
-import 'package:vetadvisor/fluxoprontuariodigital/consultaPaciente.dart';
-import 'package:vetadvisor/prelogin/slideVideo.dart';
-import 'package:vetadvisor/prelogin/slide_tile.dart';
-import 'package:video_player/video_player.dart';
-import 'package:vetadvisor/recursos/Constants.dart';
-import 'package:rolling_switch/rolling_switch.dart';
-import '../firebase_options.dart';
-import '../recursos/dialogUtils.dart';
+import 'package:vetadvisor/fluxopesquisarapida/detalheDaPesquisa.dart';
+import 'package:vetadvisor/fluxopesquisarapida/detalheDaPesquisaExameRecomendado.dart';
 
-import 'package:vetadvisor/fluxoprontuariodigital/cadastreOPet.dart';
+import 'package:vetadvisor/fluxopesquisarapida/home.dart';
+import 'package:vetadvisor/fluxoprontuariodigital/consultaPaciente.dart';
+import '../firebase_options.dart';
+
 
 class DetalheDaPesquisaDermatiteAtopica extends StatelessWidget {
   const DetalheDaPesquisaDermatiteAtopica({super.key});
@@ -43,13 +32,16 @@ class DetalheDaPesquisaDermatiteAtopicaPage extends StatefulWidget {
 
 class _DetalheDaPesquisaDermatiteAtopicaPageState extends State<DetalheDaPesquisaDermatiteAtopicaPage> {
 
+  void initState(){
+    super.initState();
+    print("oi");
+    _dialogAddExercicio();
+  }
 
   String _nomeUsuarioLogado = "";
 
-
   late final FirebaseAuth auth;
   late final FirebaseApp app;
-
 
   //late Future<void> _initializeVideoPlayerFuture;
 
@@ -76,28 +68,10 @@ class _DetalheDaPesquisaDermatiteAtopicaPageState extends State<DetalheDaPesquis
     });
   }
 
-  int _currentPage = 0;
-
-  final _listSlide2 = [
-    'imagens/med01.jpg',
-    'imagens/med02.jpeg',
-    'imagens/med03.jpeg'
-  ];
-
-  ///////////*************************OUTRO VÍDEO
-  final _listSlideVideos = [
-    'videos/cuidados.mp4',
-    'videos/cuidados.mp4',
-    'videos/cuidados.mp4'
-  ];
-
-
 
   @override
   Widget build(BuildContext context) {
-    final bool isActive;
-    bool status = false;
-    int _indexCarrouselEspecialista = 0;
+
     return  Scaffold(
 
         body: CustomScrollView(slivers: [
@@ -481,6 +455,40 @@ class _DetalheDaPesquisaDermatiteAtopicaPageState extends State<DetalheDaPesquis
                                 Padding(padding: EdgeInsets.only(top: 10)),
                               ],),),
 
+
+
+                          Padding(padding: EdgeInsets.only(top: 10)),
+                          Row(
+                                  mainAxisAlignment: MainAxisAlignment.center,
+                                  children: [
+                                    Builder(
+                                        builder: (context) => ElevatedButton(
+                                            onPressed: () {
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) => const Home()),
+                                              );
+                                            },
+                                            style: ElevatedButton.styleFrom(
+                                                shape: const StadiumBorder(),
+                                                backgroundColor: Colors.white),
+                                            child:
+                                            Row(
+                                                children: [
+                                                  Text(
+                                                    'Pesquisar por diagnósticos diferenciais dessa enfermidade',
+                                                    style: TextStyle(
+                                                        color: Color(0xFF4116B4), fontSize: 8),
+
+                                                  ),
+                                                    ])
+                                        )),
+                                  ],
+                                ),
+
+                              ],),),
+
                           Container(
                               padding: const EdgeInsets.all(2),
                               //  margin: const EdgeInsets.only(top: 10),
@@ -494,9 +502,37 @@ class _DetalheDaPesquisaDermatiteAtopicaPageState extends State<DetalheDaPesquis
                                 size: 10,
                               )),
 
-                          Padding(padding: EdgeInsets.only(top: 10)),
+                          Padding(padding: EdgeInsets.only(top: 8)),
 
-                              ],),),
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Builder(
+                                  builder: (context) => ElevatedButton(
+                                      onPressed: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => const DetalheDaPesquisaExameRecomendado()),
+                                        );
+                                      },
+                                      style: ElevatedButton.styleFrom(
+                                          shape: const StadiumBorder(),
+                                          backgroundColor: Color(0XFF4116B4)),
+                                      child:
+                                      Row(
+                                          children: [
+                                            Text(
+                                              'Finalizar',
+                                              style: TextStyle(color: Colors.white),
+
+                                            ),])
+                                  )),
+                            ],
+                          ),
+
+                          Padding(padding: EdgeInsets.only(top: 8)),
+
                           Row(
                             mainAxisAlignment: MainAxisAlignment.center,
                             children: [
@@ -527,41 +563,742 @@ class _DetalheDaPesquisaDermatiteAtopicaPageState extends State<DetalheDaPesquis
                                   )),
                             ],
                           ),
+
+                          Container(
+                            margin: const EdgeInsets.only(left: 10, right: 10, top: 185),
+                            padding: const EdgeInsets.only(bottom: 10),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: const Color(0xFFF5F5F5),
+                              //color: Colors.orange,
+                            ),
+                            child: DefaultTabController(
+                                initialIndex: 1,
+                                //optional, starts from 0, select the tab by default
+                                length: 5,
+                                child: Column(children: const [
+                                  TabBar(
+                                      indicatorColor: Colors.transparent,
+                                      tabs: [
+                                        Tab(
+                                          icon: Icon(
+                                            MdiIcons.home, color: Colors.grey, size: 30,),
+                                        ),
+                                        Tab(
+                                          icon: Icon(MdiIcons.stethoscope,
+                                              color: Colors.grey, size: 30),
+                                        ),
+                                        Tab(
+                                          icon: Icon(MdiIcons.googleCirclesCommunities,
+                                              color: Colors.grey, size: 30),
+                                        ),
+                                        Tab(
+                                          icon: Icon(MdiIcons.calendar,
+                                              color: Colors.grey, size: 30),
+                                        ),
+                                        Tab(
+                                          icon: Icon(MdiIcons.dotsSquare,
+                                              color: Colors.grey, size: 30),
+                                        ),
+                                      ])
+                                ])),
+                          ),
                         ])
                 ),
               )
           )]));
   }
 
-
-
-
-
-  Future<void> _showMyDialog() async {
+  Future<void> _dialogAddExercicio() async {
     return showDialog<void>(
       context: context,
-      barrierDismissible: false, // user must tap button!
+      barrierDismissible: false,
       builder: (BuildContext context) {
-        return AlertDialog(
-          title: const Text('AlertDialog Title'),
-          content: SingleChildScrollView(
-            child: ListBody(
-              children: <Widget>[
-                Text('This is a demo alert dialog.'),
-                Text('Would you like to approve of this message?'),
-              ],
-            ),
-          ),
-          actions: <Widget>[
-            TextButton(
-              child: const Text('Approve'),
-              onPressed: () {
-                Navigator.of(context).pop();
-              },
-            ),
-          ],
+        return StatefulBuilder(
+            builder: (context, setStateForDialog) {
+              return AlertDialog(
+                shape: const RoundedRectangleBorder(
+                    borderRadius: BorderRadius.all(Radius.circular(20.0))),
+                backgroundColor: Colors.white.withOpacity(0.9),
+                //backgroundColor: Colors.white,
+
+                title:  Text("Pesquise por sistema (s) ou em\n todo banco de dados'",
+                  style: TextStyle(
+                      color: Color(0xFF4116B4),
+                      fontSize: 18
+                  ),),
+                /*Flexible(
+                    child: AutoSizeText(
+                      'Pesquise por sistema (s) ou em\n todo banco de dados',
+                      style: TextStyle(
+                          color: Color(0xFF4116B4),
+                          fontSize: 20
+                      ),
+                      maxLines: 2,
+                      textAlign: TextAlign.center,
+                    )),*/
+                content: SingleChildScrollView(
+                    child: Column(
+                      children: [
+
+
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Radio<SingingCharacterAreaMedica>(
+                              value: SingingCharacterAreaMedica.Oftalmicos,
+
+                              onChanged: (SingingCharacterAreaMedica? value) {
+
+                                setState(() {
+
+                                });
+                              },
+                              groupValue: null,
+                              fillColor:
+                              MaterialStateColor.resolveWith((states) => Colors.grey),
+                            ),
+                            const Text("Oftalmicos",
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Color(0xFF4116B4)
+                                )
+                            ),
+
+                            Padding(padding: EdgeInsets.all(10)),
+
+
+                            Radio<SingingCharacterAreaMedica>(
+                              value: SingingCharacterAreaMedica.Infecciosos,
+
+                              onChanged: (SingingCharacterAreaMedica? value) {
+
+                                setState(() {
+
+                                });
+                              },
+                              groupValue: null,
+                              fillColor:
+                              MaterialStateColor.resolveWith((states) => Colors.grey),
+                            ),
+                            const Text("Infecciosos",
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Color(0xFF4116B4)
+                                )
+                            ),
+                          ],
+                        ),
+
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Radio<SingingCharacterAreaMedica>(
+                              value: SingingCharacterAreaMedica.Dermatologicos,
+
+                              onChanged: (SingingCharacterAreaMedica? value) {
+
+                                setState(() {
+
+                                });
+                              },
+                              groupValue: null,
+                              fillColor:
+                              MaterialStateColor.resolveWith((states) => Colors.grey),
+                            ),
+                            const Text("Dermatologicos",
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Color(0xFF4116B4)
+                                )
+                            ),
+
+                            Padding(padding: EdgeInsets.all(10)),
+
+
+                            Radio<SingingCharacterAreaMedica>(
+                              value: SingingCharacterAreaMedica.MusculoEsqueletico,
+
+                              onChanged: (SingingCharacterAreaMedica? value) {
+
+                                setState(() {
+
+                                });
+                              },
+                              groupValue: null,
+                              fillColor:
+                              MaterialStateColor.resolveWith((states) => Colors.grey),
+                            ),
+                            const Text("Musculo",
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Color(0xFF4116B4)
+                                )
+                            ),
+                          ],
+                        ),
+
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Radio<SingingCharacterAreaMedica>(
+                              value: SingingCharacterAreaMedica.Neurologicos,
+
+                              onChanged: (SingingCharacterAreaMedica? value) {
+
+                                setState(() {
+
+                                });
+                              },
+                              groupValue: null,
+                              fillColor:
+                              MaterialStateColor.resolveWith((states) => Colors.grey),
+                            ),
+                            const Text("Neurológicos",
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Color(0xFF4116B4)
+                                )
+                            ),
+
+                            Padding(padding: EdgeInsets.all(10)),
+
+
+                            Radio<SingingCharacterAreaMedica>(
+                              value: SingingCharacterAreaMedica.MetabolicosEndocrinos,
+
+                              onChanged: (SingingCharacterAreaMedica? value) {
+
+                                setState(() {
+
+                                });
+                              },
+                              groupValue: null,
+                              fillColor:
+                              MaterialStateColor.resolveWith((states) => Colors.grey),
+                            ),
+                            const Text("Metabolicos",
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Color(0xFF4116B4)
+                                )
+                            ),
+                          ],
+                        ),
+
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Radio<SingingCharacterAreaMedica>(
+                              value: SingingCharacterAreaMedica.Oncologicos,
+
+                              onChanged: (SingingCharacterAreaMedica? value) {
+
+                                setState(() {
+
+                                });
+                              },
+                              groupValue: null,
+                              fillColor:
+                              MaterialStateColor.resolveWith((states) => Colors.grey),
+                            ),
+                            const Text("Oncologicos",
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Color(0xFF4116B4)
+                                )
+                            ),
+
+                            Padding(padding: EdgeInsets.all(10)),
+
+
+                            Radio<SingingCharacterAreaMedica>(
+                              value: SingingCharacterAreaMedica.Cardiologicos,
+
+                              onChanged: (SingingCharacterAreaMedica? value) {
+
+                                setState(() {
+
+                                });
+                              },
+                              groupValue: null,
+                              fillColor:
+                              MaterialStateColor.resolveWith((states) => Colors.grey),
+                            ),
+                            const Text("Cardiologicos",
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Color(0xFF4116B4)
+                                )
+                            ),
+                          ],
+                        ),
+
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Radio<SingingCharacterAreaMedica>(
+                              value: SingingCharacterAreaMedica.NefrologicosUrologicos,
+
+                              onChanged: (SingingCharacterAreaMedica? value) {
+
+                                setState(() {
+
+                                });
+                              },
+                              groupValue: null,
+                              fillColor:
+                              MaterialStateColor.resolveWith((states) => Colors.grey),
+                            ),
+                            const Text("Nefrologicos",
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Color(0xFF4116B4)
+                                )
+                            ),
+
+                            Padding(padding: EdgeInsets.all(10)),
+
+
+                            Radio<SingingCharacterAreaMedica>(
+                              value: SingingCharacterAreaMedica.Hematologicos,
+
+                              onChanged: (SingingCharacterAreaMedica? value) {
+
+                                setState(() {
+
+                                });
+                              },
+                              groupValue: null,
+                              fillColor:
+                              MaterialStateColor.resolveWith((states) => Colors.grey),
+                            ),
+                            const Text("Hematologicos",
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Color(0xFF4116B4)
+                                )
+                            ),
+                          ],
+                        ),
+
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Radio<SingingCharacterAreaMedica>(
+                              value: SingingCharacterAreaMedica.Respiratorios,
+
+                              onChanged: (SingingCharacterAreaMedica? value) {
+
+                                setState(() {
+
+                                });
+                              },
+                              groupValue: null,
+                              fillColor:
+                              MaterialStateColor.resolveWith((states) => Colors.grey),
+                            ),
+                            const Text("Respiratorios",
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Color(0xFF4116B4)
+                                )
+                            ),
+
+                            Padding(padding: EdgeInsets.all(10)),
+
+
+                            Radio<SingingCharacterAreaMedica>(
+                              value: SingingCharacterAreaMedica.Odontologicos,
+
+                              onChanged: (SingingCharacterAreaMedica? value) {
+
+                                setState(() {
+
+                                });
+                              },
+                              groupValue: null,
+                              fillColor:
+                              MaterialStateColor.resolveWith((states) => Colors.grey),
+                            ),
+                            const Text("Odontologicos",
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Color(0xFF4116B4)
+                                )
+                            ),
+                          ],
+                        ),
+
+                        Row(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            Radio<SingingCharacterAreaMedica>(
+                              value: SingingCharacterAreaMedica.Toxocologicos,
+
+                              onChanged: (SingingCharacterAreaMedica? value) {
+
+                                setState(() {
+
+                                });
+                              },
+                              groupValue: null,
+                              fillColor:
+                              MaterialStateColor.resolveWith((states) => Colors.grey),
+                            ),
+                            const Text("Toxocologicos",
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Color(0xFF4116B4)
+                                )
+                            ),
+
+                            Padding(padding: EdgeInsets.all(10)),
+
+
+                            Radio<SingingCharacterAreaMedica>(
+                              value: SingingCharacterAreaMedica.Teriogenologicos,
+
+                              onChanged: (SingingCharacterAreaMedica? value) {
+
+                                setState(() {
+
+                                });
+                              },
+                              groupValue: null,
+                              fillColor:
+                              MaterialStateColor.resolveWith((states) => Colors.grey),
+                            ),
+                            const Text("Teriogenologicos",
+                                style: TextStyle(
+                                    fontSize: 14,
+                                    color: Color(0xFF4116B4)
+                                )
+                            ),
+                          ],
+                        ),
+
+                      ],
+                    )
+
+
+
+
+                  /*Form(
+                      key: _formKey,
+                      child: ListBody(
+                        children: <Widget>[
+                          Text("Esse exercício será adicionado ao programa: "),
+                          const Padding(padding: EdgeInsets.only(bottom: 10)),
+                          TextFormField(
+                            style: const TextStyle(
+
+                            ),
+                            controller: _nome,
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                              labelText: "Nome",
+                              labelStyle: TextStyle(
+
+                              ),
+
+                            ),
+                            validator: (text){
+                              if(text == null || text.isEmpty){
+                                return "Por favor, digite o nome do exercício.";
+                              }
+                            },
+                          ),
+
+                          const Padding(padding: EdgeInsets.only(bottom: 10)),
+
+                          TextFormField(
+                            style: const TextStyle(
+
+                            ),
+                            controller: _repeticoes,
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                              labelText: "Repetições",
+                              labelStyle: TextStyle(
+
+                              ),
+
+                            ),
+                            validator: (text){
+                              if(text == null || text.isEmpty){
+                                return "Por favor, digite a quantidade de repetições.";
+                              }
+                            },
+                          ),
+
+                          const Padding(padding: EdgeInsets.only(bottom: 10)),
+
+                          TextFormField(
+                            style: const TextStyle(
+
+                            ),
+                            controller: _sequencia,
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                              labelText: "Sequência",
+                              labelStyle: TextStyle(
+
+                              ),
+
+                            ),
+                            validator: (text){
+                              if(text == null || text.isEmpty){
+                                return "Por favor, digite a sequência.";
+                              }
+                            },
+                          ),
+
+                          const Padding(padding: EdgeInsets.only(bottom: 10)),
+
+                          TextFormField(
+                            style: const TextStyle(
+
+                            ),
+                            controller: _series,
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                              labelText: "Séries",
+                              labelStyle: TextStyle(
+
+                              ),
+
+                            ),
+                            validator: (text){
+                              if(text == null || text.isEmpty){
+                                return "Por favor, digite a quantidade de séries.";
+                              }
+                            },
+                          ),
+
+                          const Padding(padding: EdgeInsets.only(bottom: 10)),
+
+                          TextFormField(
+                            style: const TextStyle(
+
+                            ),
+                            controller: _treino,
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                              labelText: "Treino",
+                              labelStyle: TextStyle(
+
+                              ),
+
+                            ),
+                            validator: (text){
+                              if(text == null || text.isEmpty){
+                                return "Por favor, digite o treino.";
+                              }
+                            },
+                          ),
+
+                          const Padding(padding: EdgeInsets.only(bottom: 10)),
+
+                          TextFormField(
+                            style: const TextStyle(
+
+                            ),
+                            controller: _descanso,
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                              labelText: "Descanso",
+                              labelStyle: TextStyle(
+
+                              ),
+
+                            ),
+                            validator: (text){
+                              if(text == null || text.isEmpty){
+                                return "Por favor, digite o descanso.";
+                              }
+                            },
+                          ),
+
+                          const Padding(padding: EdgeInsets.only(bottom: 10)),
+
+                          TextFormField(
+                            style: const TextStyle(
+
+                            ),
+                            controller: _grupo,
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                              labelText: "Grupo",
+                              labelStyle: TextStyle(
+
+                              ),
+
+                            ),
+                            validator: (text){
+                              if(text == null || text.isEmpty){
+                                return "Por favor, selecione o grupo.";
+                              }
+                            },
+                          ),
+
+                          const Padding(padding: EdgeInsets.only(bottom: 10)),
+
+                          TextFormField(
+                            style: const TextStyle(
+
+                            ),
+                            controller: _video,
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                              labelText: "Vídeo",
+                              labelStyle: TextStyle(
+
+                              ),
+
+                            ),
+                            validator: (text){
+                              if(text == null || text.isEmpty){
+                                return "Por favor, selecione o vídeo.";
+                              }
+                            },
+                          ),
+
+                          const Padding(padding: EdgeInsets.only(bottom: 10)),
+
+                          TextFormField(
+                            style: const TextStyle(
+
+                            ),
+                            controller: _capa,
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                              labelText: "Capa",
+                              labelStyle: TextStyle(
+
+                              ),
+
+                            ),
+                            validator: (text){
+                              if(text == null || text.isEmpty){
+                                return "Por favor, selecione a capa.";
+                              }
+                            },
+                          ),
+
+                          const Padding(padding: EdgeInsets.only(bottom: 10)),
+
+                          TextFormField(
+                            style: const TextStyle(
+
+                            ),
+                            controller: _observacoes,
+                            decoration: const InputDecoration(
+                              border: OutlineInputBorder(),
+                              labelText: "Observações",
+                              labelStyle: TextStyle(
+
+                              ),
+
+                            ),
+                            validator: (text){
+                              if(text == null || text.isEmpty){
+                                return "Por favor, digite as observações.";
+                              }
+                            },
+                          ),
+
+
+                        ],
+                      ),
+                    )*/
+
+
+                ),
+                actions: <Widget>[
+
+                  Column(
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Builder(
+                            builder: (context) => ElevatedButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => const DetalheDaPesquisa()),
+                                  );
+                                },
+                                style: ElevatedButton.styleFrom(
+                                    shape: const StadiumBorder(),
+                                    backgroundColor: Color(0XFF4116B4)),
+                                child: const Text(
+                                  'Pesquisar apenas nos sistemas selecionados',
+                                  style: TextStyle(color: Colors.white),
+                                )),
+                          ),
+                        ],
+                      ),
+
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Builder(
+                            builder: (context) => ElevatedButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => const DetalheDaPesquisa()),
+                                  );
+                                },
+                                style: ElevatedButton.styleFrom(
+                                    shape: const StadiumBorder(),
+                                    backgroundColor: Color(0XFF4116B4)),
+                                child: const Text(
+                                  'Pesquisar em todo banco de dados',
+                                  style: TextStyle(color: Colors.white),
+                                )),
+                          ),
+                        ],
+                      ),
+
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.center,
+                        children: [
+                          Builder(
+                            builder: (context) => ElevatedButton(
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) => const Home()),
+                                  );
+                                },
+                                style: ElevatedButton.styleFrom(
+                                    shape: const StadiumBorder(),
+                                    backgroundColor: Color(0XFF4116B4)),
+                                child: const Text(
+                                  'Cancelar',
+                                  style: TextStyle(color: Colors.white),
+                                )),
+                          ),
+                        ],
+                      ),
+
+                    ],
+                  )
+
+
+                ],
+              );
+            }
         );
+
       },
     );
   }
+
 }

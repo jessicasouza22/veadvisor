@@ -35,7 +35,8 @@ class _DetalheDaPesquisaExameRecomendadoState extends State<DetalheDaPesquisaExa
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-        appBar: AppBar(
+        appBar:
+        AppBar(
             backgroundColor: Colors.transparent,
             toolbarHeight: 80,
             elevation: 30,
@@ -100,8 +101,14 @@ class _DetalheDaPesquisaExameRecomendadoState extends State<DetalheDaPesquisaExa
                         ],
                       )))
             ]),
-        body: SingleChildScrollView(
-          child: Column(children: [
+        body: CustomScrollView(slivers: [
+
+        SliverFillRemaining(
+        hasScrollBody: true,
+    child: Container(
+    color: Color(0xFFF5F5F5),
+    child: SingleChildScrollView(
+    child: Column(children: [
 
 
             Container(
@@ -134,7 +141,7 @@ class _DetalheDaPesquisaExameRecomendadoState extends State<DetalheDaPesquisaExa
                                           context) => const DetalheDaPesquisaRealizarNovaPesquisa()),
                                 );
 
-                                //print("clicado na seta");
+                                //print("clicado na seta");f
                               },
                               icon:  Icon(MdiIcons.closeCircleOutline,
                                   color: Colors.red, size: 25))),
@@ -248,6 +255,6 @@ class _DetalheDaPesquisaExameRecomendadoState extends State<DetalheDaPesquisaExa
                   ])),
             ),
           ]),
-        ));
+        )))]));
   }
 }

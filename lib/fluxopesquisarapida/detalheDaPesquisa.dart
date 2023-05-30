@@ -15,6 +15,7 @@ import 'package:vetadvisor/fluxopesquisarapida/home.dart';
 import 'package:vetadvisor/fluxopesquisarapida/resultadoDaPesquisa.dart';
 import 'package:vetadvisor/fluxopesquisarapida/servicos.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/consultaPaciente.dart';
+import 'package:vetadvisor/fluxoprontuariodigital/perfilPaciente.dart';
 import 'package:vetadvisor/prelogin/slideVideo.dart';
 import 'package:vetadvisor/prelogin/slide_tile.dart';
 import 'package:video_player/video_player.dart';
@@ -58,9 +59,57 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
     WidgetsBinding.instance.addPostFrameCallback((_) {
       showDialog(
         context: context,
-        builder: (BuildContext context) {
-          return AlertDialog(
-            title: Column(children: [
+        builder: (BuildContext context)
+      {
+        return Container(
+            padding: EdgeInsets.only(left: 10),
+            margin: EdgeInsets.only(left: 30, right: 30, top: 200,bottom: 500),
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.all(Radius.circular(10))),
+            child: Column(children: [
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.end,
+                  children: [
+
+                    Icon(
+                  MdiIcons.close,
+                  color: Color(0xff59616E),
+                  size: 20,
+                ),
+                    Icon(
+                      MdiIcons.close,
+                      color: Colors.transparent,
+                      size: 20,
+                    )
+
+              ]),
+              //  Text('Atenção'),
+
+              Row(
+                children: [
+                  Icon(
+                    MdiIcons.alertCircleOutline,
+                    size: 22,
+                    color: Colors.pink,
+                  ),
+                  Padding(padding: EdgeInsets.only(left: 10)),
+                  Text(
+                    "Clique no símbolo de (+) para acessar as\ninformações a respeito dessa patologia ",
+                    style: TextStyle(color: Color(0xff59616E), fontSize: 10),
+                  )
+                ],
+              ),
+
+            ]));
+      },
+      );
+    });
+  }
+
+            /*AlertDialog(
+            title:
+            Column(children: [
               Row(children: [
                 Icon(
                   MdiIcons.close,
@@ -74,7 +123,7 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
                 children: [
                   Icon(
                     MdiIcons.alertCircleOutline,
-                    size: 30,
+                    size: 20,
                   ),
                   Padding(padding: EdgeInsets.only(left: 10)),
                   Text(
@@ -84,11 +133,8 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
                 ],
               ),
             ]),
-          );
-        },
-      );
-    });
-  }
+          );*/
+
 
   Future<void> carregaDadosLogin() async {
     app = await Firebase.initializeApp(
@@ -116,68 +162,73 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
     bool status = false;
     int _indexCarrouselEspecialista = 0;
     return Scaffold(
-        body: CustomScrollView(slivers: [
-      SliverAppBar(
-          backgroundColor: Colors.transparent,
-          toolbarHeight: 80,
-          elevation: 30,
-          pinned: true,
-          expandedHeight: 50,
-          flexibleSpace: Container(
-            decoration: const BoxDecoration(
-              borderRadius: BorderRadius.only(
-                  bottomRight: Radius.circular(45),
-                  bottomLeft: Radius.circular(10),
-                  topRight: Radius.circular(20),
-                  topLeft: Radius.circular(20)),
-              // LinearGradient
-              gradient: LinearGradient(
-                begin: Alignment.topCenter,
-                end: Alignment.bottomCenter,
-                // colors for gradient
-                colors: [
-                  Color(0xFF4116B4),
-                  Color(0xff4116B4),
-                  Color(0xff7347EF),
-                  Color(0xffE3EDF7),
-                ],
+        appBar: AppBar(
+            backgroundColor: Colors.transparent,
+            toolbarHeight: 80,
+            elevation: 30,
+            //inned: true,
+            //expandedHeight: 50,
+            flexibleSpace: Container(
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.only(
+                    bottomRight: Radius.circular(45),
+                    bottomLeft: Radius.circular(10),
+                    topRight: Radius.circular(20),
+                    topLeft: Radius.circular(20)),
+                // LinearGradient
+                gradient: LinearGradient(
+                  begin: Alignment.topCenter,
+                  end: Alignment.bottomCenter,
+                  // colors for gradient
+                  colors: [
+                    Color(0xFF4116B4),
+                    Color(0xff4116B4),
+                    Color(0xff7347EF),
+                    Color(0xffE3EDF7),
+                  ],
+                ),
               ),
             ),
-          ),
-          // title of appbar
+            // title of appbar
 
-          actions: [
-            Expanded(
-                child: Padding(
-                    padding: const EdgeInsets.only(left: 40),
-                    child: Row(
-                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Builder(
-                            builder: (context) => IconButton(
-                                onPressed: () {
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) =>
-                                            const ConsultaPaciente()),
-                                  );
+            actions: [
+              Expanded(
+                  child: Padding(
+                      padding: const EdgeInsets.only(left: 5),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Builder(
+                              builder: (context) => IconButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (
+                                              context) => const PerfilPaciente()),
+                                    );
 
-                                  //print("clicado na seta");
-                                },
-                                icon: const Icon(Icons.arrow_back))),
-                        AutoSizeText(
-                          "Detalhe da pesquisa $_nomeUsuarioLogado",
-                          //textAlign: TextAlign.center,
-                        ),
-                        IconButton(
-                            onPressed: () {
-                              print("clicado no notificacao");
-                            },
-                            icon: Icon(MdiIcons.bellBadgeOutline)),
-                      ],
-                    )))
-          ]),
+                                    //print("clicado na seta");
+                                  },
+                                  icon: const Icon(Icons.arrow_back))),
+                          Text(
+                            "Detalhe da pesquisa",
+                            //textAlign: TextAlign.center,
+
+                            style: TextStyle(
+                              fontSize: 12,
+                            ),
+                          ),
+                          IconButton(
+                              onPressed: () {
+                                //print("clicado no notificacao");
+                              },
+                              icon: const Icon(MdiIcons.bellBadgeOutline)),
+                        ],
+                      )))
+            ]),
+        body: CustomScrollView(slivers: [
+
       SliverFillRemaining(
           hasScrollBody: true,
           child: Container(

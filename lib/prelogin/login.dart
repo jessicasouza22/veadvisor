@@ -64,7 +64,7 @@ class _LoginPageState extends State<LoginPage> {
               decoration: const BoxDecoration(
                   image: DecorationImage(
                       image: AssetImage('imagens/homeGeral.png'),
-                      fit: BoxFit.fill,
+                      fit: BoxFit.fitWidth,
                       //colorFilter: new ColorFilter.mode(Cores.azulSafe.withOpacity(1), BlendMode.dstATop))
               ),
               ),
@@ -208,13 +208,16 @@ class _LoginPageState extends State<LoginPage> {
                                               password: _senha.text
                                           );
 
-                                          print(credential.user);
+                                          //print(credential.user);
+                                          /*
                                           Navigator.push(
                                             context,
                                             MaterialPageRoute(
-                                                builder: (context) => const Logado()),
+                                                builder: (context) => const Termos()),
 
                                           );
+
+                                           */
 
                                         } on FirebaseAuthException catch (e) {
 
@@ -245,28 +248,36 @@ class _LoginPageState extends State<LoginPage> {
                               children: [
                                 // ChechBox colocado dentro de um Sized box
                                 // para remover o padding natural que o ele tem
-                                SizedBox(
-                                  width: 24,
-                                  height: 24,
-                                  child: Radio(
-                                    //fillColor: Color.white,
-                                    value: false,
-                                    groupValue: false,
 
-                                    onChanged: (value) {},
-                                  ),
-                                ),
-                                const Padding(padding: EdgeInsets.all(5.0)),
-                                const Flexible(child: AutoSizeText(
-                                  'Quero receber novidades, promoções e ofertas personalizadas da VetAdvisor',
-                                  textAlign: TextAlign.justify,
-                                  maxLines: 4,
-                                  style: TextStyle(
-                                    fontSize: 12,
-                                    fontFamily: 'Inter Variable Font',
-                                    color: Colors.white,
-                                  ),
-                                ))
+                                Padding(padding: EdgeInsets.all(5.0)),
+
+
+                                Flexible(
+                                    child: GestureDetector(
+                                      onTap: () {
+                                        Navigator.push(
+                                          context,
+                                          MaterialPageRoute(
+                                              builder: (context) => const Termos()),
+
+                                        );
+                                      },
+                                      child: AutoSizeText(
+                                        'Cadastre-se agora',
+                                        textAlign: TextAlign.justify,
+                                        maxLines: 4,
+                                        style: TextStyle(
+                                          fontSize: 12,
+                                          fontFamily: 'Inter Variable Font',
+                                          color: Colors.white,
+                                        ),
+                                      )
+                                    )
+
+
+
+
+                                )
 
                               ],
                             ),

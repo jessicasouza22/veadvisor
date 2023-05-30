@@ -4,6 +4,7 @@ import 'dart:io';
 import 'package:flutter/material.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/cadastreOPet.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/perfilPaciente.dart';
+import 'package:vetadvisor/prelogin/termos.dart';
 
 
 import '../recursos/Constants.dart';
@@ -32,6 +33,18 @@ class PerfilPage extends StatefulWidget {
 }
 
 class _PerfilPageState extends State<PerfilPage> {
+
+
+  final _formKey = GlobalKey<FormState>();
+  final _nome = TextEditingController();
+  final _email = TextEditingController();
+  final _crmv = TextEditingController();
+  final _celular = TextEditingController();
+  final _cpf = TextEditingController();
+  final _endereco = TextEditingController();
+  final _complemento = TextEditingController();
+
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -40,12 +53,17 @@ class _PerfilPageState extends State<PerfilPage> {
           leading:  Builder(
               builder: (context) => IconButton(
                   onPressed: () {
+                    Navigator.of(context).pop();
+                    /*
                     Navigator.push(
                       context,
                       MaterialPageRoute(
                           builder: (
-                              context) => const CadastreOPet()),
+                              context) => const Termos()),
                     );
+
+                     */
+
 
                     //print("clicado na seta");
                   },
@@ -102,105 +120,165 @@ class _PerfilPageState extends State<PerfilPage> {
                   ),
                 ],
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
-                child: Column(
-                crossAxisAlignment: CrossAxisAlignment.start,
-                children: [
-                  const Text('*Nome e Sobrenome', textAlign: TextAlign.start,
-                      style: TextStyle(
-                          color: Colors.white)
-                  ),
-                const Padding(
-                  padding: EdgeInsets.only(bottom: 5)),
-                  Container(
-                    decoration: const BoxDecoration(
-                      color: Colors.white,
-                      borderRadius: BorderRadius.all(Radius.circular(17)),
-                    ),
-                    child: TextFormField(
-                      obscureText: true,
-                      textAlign: TextAlign.center,
-                      decoration: InputDecoration(
-                        border: OutlineInputBorder(
-                          borderRadius: BorderRadius.circular(17),
-                          borderSide: const BorderSide(
-                            color: Color(0xFF3C10BB),
-                            width: 1.0,
-                          ),
-                        ),
-                      ),
-                    ),
-                  )
-                ],
-                ),
-              ),
-              Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
+
+              Form(
+                key: _formKey,
+                child: Column (
                   children: [
-                    const Text('*E-mail', textAlign: TextAlign.start,
-                        style: TextStyle(
-                            color: Colors.white)
-                    ),
-                    const Padding(
-                        padding: EdgeInsets.only(bottom: 5)),
-                    Container(
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.all(Radius.circular(17)),
-                      ),
-                      child: TextFormField(
-                        obscureText: true,
-                        textAlign: TextAlign.center,
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(17),
-                            borderSide: const BorderSide(
-                              color: Color(0xFF3C10BB),
-                              width: 1.0,
-                            ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text('*Nome e Sobrenome', textAlign: TextAlign.start,
+                              style: TextStyle(
+                                  color: Colors.white)
                           ),
-                        ),
+                          const Padding(
+                              padding: EdgeInsets.only(bottom: 5)),
+                          Container(
+                            decoration: const BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.all(Radius.circular(17)),
+                            ),
+                            child: TextFormField(
+                              validator: (text){
+                                if(text == null || text.isEmpty){
+                                  return "Por favor, digite o seu nome completo.";
+                                }
+                              },
+                              textAlign: TextAlign.center,
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(17),
+                                  borderSide: const BorderSide(
+                                    color: Color(0xFF3C10BB),
+                                    width: 1.0,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
                       ),
-                    )
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text('*E-mail', textAlign: TextAlign.start,
+                              style: TextStyle(
+                                  color: Colors.white)
+                          ),
+                          const Padding(
+                              padding: EdgeInsets.only(bottom: 5)),
+                          Container(
+                            decoration: const BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.all(Radius.circular(17)),
+                            ),
+                            child: TextFormField(
+                              validator: (text){
+                                if(text == null || text.isEmpty){
+                                  return "Por favor, digite o seu e-mail.";
+                                }
+                              },
+                              textAlign: TextAlign.center,
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(17),
+                                  borderSide: const BorderSide(
+                                    color: Color(0xFF3C10BB),
+                                    width: 1.0,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text('*CRMV', textAlign: TextAlign.start,
+                              style: TextStyle(
+                                  color: Colors.white)
+                          ),
+                          const Padding(
+                              padding: EdgeInsets.only(bottom: 5)),
+                          Container(
+                            decoration: const BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.all(Radius.circular(17)),
+                            ),
+                            child: TextFormField(
+                              validator: (text){
+                                if(text == null || text.isEmpty){
+                                  return "Por favor, digite o seu CRMV.";
+                                }
+                              },
+                              textAlign: TextAlign.center,
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(17),
+                                  borderSide: const BorderSide(
+                                    color: Color(0xFF3C10BB),
+                                    width: 1.0,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+                    Padding(
+                      padding: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
+                      child: Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          const Text('*Número de celular', textAlign: TextAlign.start,
+                              style: TextStyle(
+                                  color: Colors.white)
+                          ),
+                          const Padding(
+                              padding: EdgeInsets.only(bottom: 5)),
+                          Container(
+                            decoration: const BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.all(Radius.circular(17)),
+                            ),
+                            child: TextFormField(
+                              validator: (text){
+                                if(text == null || text.isEmpty){
+                                  return "Por favor, digite o número do seu celular.";
+                                }
+                              },
+                              textAlign: TextAlign.center,
+                              decoration: InputDecoration(
+                                border: OutlineInputBorder(
+                                  borderRadius: BorderRadius.circular(17),
+                                  borderSide: const BorderSide(
+                                    color: Color(0xFF3C10BB),
+                                    width: 1.0,
+                                  ),
+                                ),
+                              ),
+                            ),
+                          )
+                        ],
+                      ),
+                    ),
+
                   ],
                 ),
               ),
-              Padding(
-                padding: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
-                child: Column(
-                  crossAxisAlignment: CrossAxisAlignment.start,
-                  children: [
-                    const Text('*Número de celular', textAlign: TextAlign.start,
-                        style: TextStyle(
-                            color: Colors.white)
-                    ),
-                    const Padding(
-                        padding: EdgeInsets.only(bottom: 5)),
-                    Container(
-                      decoration: const BoxDecoration(
-                        color: Colors.white,
-                        borderRadius: BorderRadius.all(Radius.circular(17)),
-                      ),
-                      child: TextFormField(
-                        obscureText: true,
-                        textAlign: TextAlign.center,
-                        decoration: InputDecoration(
-                          border: OutlineInputBorder(
-                            borderRadius: BorderRadius.circular(17),
-                            borderSide: const BorderSide(
-                              color: Color(0xFF3C10BB),
-                              width: 1.0,
-                            ),
-                          ),
-                        ),
-                      ),
-                    )
-                  ],
-                ),
-              ),
+
+
               Padding(
                 padding: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
                 child: Column(
@@ -218,7 +296,7 @@ class _PerfilPageState extends State<PerfilPage> {
                         borderRadius: BorderRadius.all(Radius.circular(17)),
                       ),
                       child: TextFormField(
-                        obscureText: true,
+
                         textAlign: TextAlign.center,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
@@ -251,7 +329,7 @@ class _PerfilPageState extends State<PerfilPage> {
                         borderRadius: BorderRadius.all(Radius.circular(17)),
                       ),
                       child: TextFormField(
-                        obscureText: true,
+
                         textAlign: TextAlign.center,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
@@ -391,7 +469,7 @@ class _PerfilPageState extends State<PerfilPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text("Formação profissional",
+                    const Text("Estado civil",
                         style: TextStyle(
                             color: Colors.white
                         )
@@ -414,7 +492,7 @@ class _PerfilPageState extends State<PerfilPage> {
                               fillColor:
                               MaterialStateColor.resolveWith((states) => Colors.white),
                             ),
-                            const Text("Graduado",
+                            const Text("Casado",
                                 style: TextStyle(
                                     fontSize: 10,
                                     color: Colors.white
@@ -436,7 +514,7 @@ class _PerfilPageState extends State<PerfilPage> {
 
                                 }
                             ),
-                            const Text("Pós-graduado",
+                            const Text("Divorciado",
                                 style: TextStyle(
                                     fontSize: 10,
                                     color: Colors.white
@@ -458,7 +536,7 @@ class _PerfilPageState extends State<PerfilPage> {
 
                                 }
                             ),
-                            const Text("Mestre/Doutor",
+                            const Text("Outro",
                                 style: TextStyle(
                                     fontSize: 10,
                                     color: Colors.white
@@ -477,7 +555,7 @@ class _PerfilPageState extends State<PerfilPage> {
                 child: Column(
                   crossAxisAlignment: CrossAxisAlignment.start,
                   children: [
-                    const Text("Formação profissional",
+                    const Text("Gênero",
                         style: TextStyle(
                             color: Colors.white
                         )
@@ -500,7 +578,7 @@ class _PerfilPageState extends State<PerfilPage> {
                               fillColor:
                               MaterialStateColor.resolveWith((states) => Colors.white),
                             ),
-                            const Text("Graduado",
+                            const Text("Masculino",
                                 style: TextStyle(
                                     fontSize: 10,
                                     color: Colors.white
@@ -522,7 +600,7 @@ class _PerfilPageState extends State<PerfilPage> {
 
                                 }
                             ),
-                            const Text("Pós-graduado",
+                            const Text("Feminino",
                                 style: TextStyle(
                                     fontSize: 10,
                                     color: Colors.white
@@ -544,7 +622,7 @@ class _PerfilPageState extends State<PerfilPage> {
 
                                 }
                             ),
-                            const Text("Mestre/Doutor",
+                            const Text("Outros",
                                 style: TextStyle(
                                     fontSize: 10,
                                     color: Colors.white
@@ -562,11 +640,23 @@ class _PerfilPageState extends State<PerfilPage> {
               Builder(
                 builder: (context) => ElevatedButton(
                     onPressed: () {
+
+
+                      if (_formKey.currentState!.validate()) {
+                        _finalizaCadastro();
+                      }
+
+
+                      /*
                       Navigator.push(
                         context,
                         MaterialPageRoute(
                             builder: (context) => const PerfilPaciente()),
                       );
+
+                       */
+
+
                     },
                     style: ElevatedButton.styleFrom(
                         shape: const StadiumBorder(),
@@ -581,5 +671,9 @@ class _PerfilPageState extends State<PerfilPage> {
           ),
         ),
       );
+  }
+
+  void _finalizaCadastro() {
+    print("Cadastrando");
   }
 }

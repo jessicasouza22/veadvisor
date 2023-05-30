@@ -7,6 +7,7 @@ import 'package:vetadvisor/prelogin/criarConta.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/perfil.dart';
 import 'package:vetadvisor/prelogin/logado.dart';
 import 'package:vetadvisor/prelogin/login.dart';
+import 'package:vetadvisor/prelogin/termos.dart';
 import 'package:vetadvisor/recursos/menuIniciar.dart';
 
 import 'firebase_options.dart';
@@ -26,6 +27,14 @@ void main()  async {
   FirebaseAuth.instance
       .authStateChanges()
       .listen((User? user) {
+    runApp( Phoenix(
+        child: const MaterialApp(
+            debugShowCheckedModeBanner: false,
+            home: Login()
+        )
+    )
+    );
+        /*
         if (user == null) {
           runApp( Phoenix(
               child: const MaterialApp(
@@ -39,12 +48,16 @@ void main()  async {
           runApp( Phoenix(
             child: const MaterialApp(
                 debugShowCheckedModeBanner: false,
-                home: MenuIniciar()
+                home: Termos()
             )
           )
           );
           //print('User is signed in!');
         }
+
+         */
+
+
       });
 
 

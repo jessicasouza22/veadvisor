@@ -5,7 +5,10 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:vetadvisor/fluxopesquisarapida/detalheDaPesquisaDermatiteAtopica.dart';
+import 'package:vetadvisor/fluxopesquisarapida/detalheDaPesquisaResultado01.dart';
 import 'package:vetadvisor/fluxopesquisarapida/home.dart';
+import 'package:vetadvisor/fluxopesquisarapida/resultadoDaPesquisa.dart';
+import 'package:vetadvisor/fluxopesquisarapida/servicos.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/cadastreOPet.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/perfilPaciente.dart';
 import 'package:vetadvisor/inicio.dart';
@@ -19,6 +22,13 @@ final List<String> imageUrls = [
   'https://example.com/image3.jpg',
 ];
 
+int _currentPage = 0;
+
+final List<String> imageList = [
+  'imagens/med01.jpg',
+  'imagens/med02.jpeg',
+  'imagens/med03.jpeg'
+];
 
 class DetalheDaPesquisaRealizarNovaPesquisa extends StatelessWidget {
   const DetalheDaPesquisaRealizarNovaPesquisa ({super.key});
@@ -412,7 +422,7 @@ class _DetalheDaPesquisaRealizarNovaPesquisaState extends State<DetalheDaPesquis
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const Home()),
+                                builder: (context) => const DetalheDaPesquisaResultado01()),
                           );
                         },
                         style: ElevatedButton.styleFrom(
@@ -434,7 +444,7 @@ class _DetalheDaPesquisaRealizarNovaPesquisaState extends State<DetalheDaPesquis
 
 
 
-            Padding(padding: EdgeInsets.only(top: 10, bottom: 50)),
+           // Padding(padding: EdgeInsets.only(top: 10, bottom: 50)),
 
             Row(
 
@@ -472,44 +482,96 @@ class _DetalheDaPesquisaRealizarNovaPesquisaState extends State<DetalheDaPesquis
                   size: 16,
                 ),
               ],
+            ), 
+            Padding(padding: EdgeInsets.all(10)),
+
+            Text("Médicos Veterinários recomendados para este diagnóstico:",
+                style: TextStyle(
+                    color: Color(0xFF4116B4), fontSize: 13, fontWeight: FontWeight.bold)
             ),
 
-
+            Padding(padding: EdgeInsets.all(10)),
 
             CarouselSlider(
-              options: CarouselOptions(
-                aspectRatio: 16 / 9,
-                viewportFraction: 0.8,
-                initialPage: 0,
-                enableInfiniteScroll: true,
-                autoPlay: true,
-              ),
-              items: imageUrls.map((url) {
-                return Builder(
-                  builder: (BuildContext context) {
-                    return Container(
-                      padding: EdgeInsets.all(30),
+                    options: CarouselOptions(
+                      height: 200,
+                      enlargeCenterPage: true,
+                      autoPlay: true,
+                    ),
+                    items: imageList.map((imagePath) {
+                      return Builder(
+                        builder: (BuildContext context) {
+                          return Container(
 
-                      width: MediaQuery.of(context).size.width,
-                      margin: EdgeInsets.symmetric(horizontal: 2.0),
-                      decoration: BoxDecoration(
-                        color: Colors.grey,
-                      ),
-                      child: Image.network(
-                        url,
-                        fit: BoxFit.cover,
-                      ),
-                    );
-                  },
-                );
-              }).toList(),
-            ),
+                            child: Column(
+                              children: [
+                                Column(
+                                  children: [
+                                    Image.asset(
+                                      imagePath,
+                                      fit: BoxFit.cover,
+                                    )
+                                  ],
+                                ),
+                                Column(
+                                  children: [
+                                    Row(
+                                      children: [
+                                        Text("Dr. Serena Gome"),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text("Dermatologista"),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        Icon(Icons.star,
+                                          color: Colors.yellow,
+                                          size: 10,),
+                                        Icon(Icons.star,
+                                          color: Colors.yellow,
+                                          size: 10,),
+                                        Icon(Icons.star,
+                                          color: Colors.yellow,
+                                          size: 10,),
+                                        Icon(Icons.star,
+                                          color: Colors.yellow,
+                                          size: 10,),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
+                                        Text("150,00 a consulta"),
+                                      ],
+                                    ),
+                                    Row(
+                                      children: [
 
+                                        Icon(MdiIcons.mapMarker,
+                                          color: Color(0xFFC7C9D9),
+                                          size: 10,),
+                                        Text("3km de você"),
+                                      ],
+                                    ),
 
+                                  ],
+                                )
+                              ],
+                            ),
 
-
-
-
+                            /*width: MediaQuery.of(context).size.width,
+                            margin: EdgeInsets.symmetric(horizontal: 5.0),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(30),
+                            ),
+                            child: ,*/
+                          );
+                        },
+                      );
+                    }).toList(),
+                  ),
 
             Container(
               margin: const EdgeInsets.only(left: 10, right: 10),

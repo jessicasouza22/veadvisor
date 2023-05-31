@@ -30,7 +30,7 @@ void main()  async {
     runApp( Phoenix(
         child: const MaterialApp(
             debugShowCheckedModeBanner: false,
-            home: Login()
+            home: MenuIniciar()
         )
     )
     );

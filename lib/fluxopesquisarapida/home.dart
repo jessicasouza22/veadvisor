@@ -588,7 +588,7 @@ class _HomePageState extends State<HomePage> {
 
                       Container(
                         //color: Colors.white,
-                        
+
                         margin:  EdgeInsets.all(15),
                         decoration: const BoxDecoration(
                           image: DecorationImage(
@@ -686,53 +686,42 @@ class _HomePageState extends State<HomePage> {
         return StatefulBuilder(
             builder: (context, setStateForDialog) {
               return AlertDialog(
-                shape: const RoundedRectangleBorder(
+                shape:  RoundedRectangleBorder(
                     borderRadius: BorderRadius.all(Radius.circular(20.0))),
                 backgroundColor: Colors.white.withOpacity(0.9),
-                //backgroundColor: Colors.white,
+                contentPadding: EdgeInsets.zero,
+
 
                 title:  Text("Pesquise por sistema (s) ou em\n todo banco de dados'",
                   style: TextStyle(
                       color: Color(0xFF4116B4),
                       fontSize: 18
                   ),),
-                /*Flexible(
-                    child: AutoSizeText(
-                      'Pesquise por sistema (s) ou em\n todo banco de dados',
-                      style: TextStyle(
-                          color: Color(0xFF4116B4),
-                          fontSize: 20
-                      ),
-                      maxLines: 2,
-                      textAlign: TextAlign.center,
-                    )),*/
-                content: SingleChildScrollView(
+                              content: SingleChildScrollView(
                     child: Column(
+                      children:[
+                        Column(
                       children: [
+                        Radio<SingingCharacterAreaMedica>(
+                          value: SingingCharacterAreaMedica.Oftalmicos,
+
+                          onChanged: (SingingCharacterAreaMedica? value) {
+
+                            setState(() {
+
+                            });
+                          },
+                          groupValue: null,
+                          fillColor:
+                          MaterialStateColor.resolveWith((states) => Colors.grey),
+                        ),
 
 
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
-                            Radio<SingingCharacterAreaMedica>(
-                              value: SingingCharacterAreaMedica.Oftalmicos,
 
-                              onChanged: (SingingCharacterAreaMedica? value) {
 
-                                setState(() {
-
-                                });
-                              },
-                              groupValue: null,
-                              fillColor:
-                              MaterialStateColor.resolveWith((states) => Colors.grey),
-                            ),
-                            const Text("Oftalmicos",
-                                style: TextStyle(
-                                    fontSize: 14,
-                                    color: Color(0xFF4116B4)
-                                )
-                            ),
 
                             Padding(padding: EdgeInsets.all(10)),
 
@@ -752,7 +741,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                             const Text("Infecciosos",
                                 style: TextStyle(
-                                    fontSize: 14,
+                                    fontSize: 12,
                                     color: Color(0xFF4116B4)
                                 )
                             ),
@@ -760,7 +749,7 @@ class _HomePageState extends State<HomePage> {
                         ),
 
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Radio<SingingCharacterAreaMedica>(
                               value: SingingCharacterAreaMedica.Dermatologicos,
@@ -777,7 +766,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                             const Text("Dermatologicos",
                                 style: TextStyle(
-                                    fontSize: 14,
+                                    fontSize: 12,
                                     color: Color(0xFF4116B4)
                                 )
                             ),
@@ -800,7 +789,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                             const Text("Musculo",
                                 style: TextStyle(
-                                    fontSize: 14,
+                                    fontSize: 12,
                                     color: Color(0xFF4116B4)
                                 )
                             ),
@@ -808,7 +797,7 @@ class _HomePageState extends State<HomePage> {
                         ),
 
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Radio<SingingCharacterAreaMedica>(
                               value: SingingCharacterAreaMedica.Neurologicos,
@@ -820,12 +809,13 @@ class _HomePageState extends State<HomePage> {
                                 });
                               },
                               groupValue: null,
+
                               fillColor:
                               MaterialStateColor.resolveWith((states) => Colors.grey),
                             ),
                             const Text("Neurológicos",
                                 style: TextStyle(
-                                    fontSize: 14,
+                                    fontSize: 12,
                                     color: Color(0xFF4116B4)
                                 )
                             ),
@@ -848,7 +838,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                             const Text("Metabolicos",
                                 style: TextStyle(
-                                    fontSize: 14,
+                                    fontSize: 12,
                                     color: Color(0xFF4116B4)
                                 )
                             ),
@@ -856,7 +846,7 @@ class _HomePageState extends State<HomePage> {
                         ),
 
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                            mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Radio<SingingCharacterAreaMedica>(
                               value: SingingCharacterAreaMedica.Oncologicos,
@@ -873,7 +863,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                             const Text("Oncologicos",
                                 style: TextStyle(
-                                    fontSize: 14,
+                                    fontSize: 12,
                                     color: Color(0xFF4116B4)
                                 )
                             ),
@@ -896,7 +886,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                             const Text("Cardiologicos",
                                 style: TextStyle(
-                                    fontSize: 14,
+                                    fontSize: 12,
                                     color: Color(0xFF4116B4)
                                 )
                             ),
@@ -904,7 +894,7 @@ class _HomePageState extends State<HomePage> {
                         ),
 
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Radio<SingingCharacterAreaMedica>(
                               value: SingingCharacterAreaMedica.NefrologicosUrologicos,
@@ -921,7 +911,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                             const Text("Nefrologicos",
                                 style: TextStyle(
-                                    fontSize: 14,
+                                    fontSize: 12,
                                     color: Color(0xFF4116B4)
                                 )
                             ),
@@ -944,7 +934,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                             const Text("Hematologicos",
                                 style: TextStyle(
-                                    fontSize: 14,
+                                    fontSize: 12,
                                     color: Color(0xFF4116B4)
                                 )
                             ),
@@ -952,7 +942,7 @@ class _HomePageState extends State<HomePage> {
                         ),
 
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          mainAxisAlignment: MainAxisAlignment.start,
                           children: [
                             Radio<SingingCharacterAreaMedica>(
                               value: SingingCharacterAreaMedica.Respiratorios,
@@ -969,7 +959,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                             const Text("Respiratorios",
                                 style: TextStyle(
-                                    fontSize: 14,
+                                    fontSize: 12,
                                     color: Color(0xFF4116B4)
                                 )
                             ),
@@ -992,7 +982,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                             const Text("Odontologicos",
                                 style: TextStyle(
-                                    fontSize: 14,
+                                    fontSize: 12,
                                     color: Color(0xFF4116B4)
                                 )
                             ),
@@ -1017,7 +1007,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                             const Text("Toxocologicos",
                                 style: TextStyle(
-                                    fontSize: 14,
+                                    fontSize: 12,
                                     color: Color(0xFF4116B4)
                                 )
                             ),
@@ -1040,7 +1030,7 @@ class _HomePageState extends State<HomePage> {
                             ),
                             const Text("Teriogenologicos",
                                 style: TextStyle(
-                                    fontSize: 14,
+                                    fontSize: 12,
                                     color: Color(0xFF4116B4)
                                 )
                             ),
@@ -1048,241 +1038,21 @@ class _HomePageState extends State<HomePage> {
                         ),
 
                       ],
+                        ),
+
+                        Column(
+                          children: [
+                            const Text
+                              ("Oftalmicos",
+                                style: TextStyle(
+                                    fontSize: 12,
+                                    color: Color(0xFF4116B4)
+                                )
+                            ),
+                          ],
+                        )
+                                ]
                     )
-
-
-
-
-                  /*Form(
-                      key: _formKey,
-                      child: ListBody(
-                        children: <Widget>[
-                          Text("Esse exercício será adicionado ao programa: "),
-                          const Padding(padding: EdgeInsets.only(bottom: 10)),
-                          TextFormField(
-                            style: const TextStyle(
-
-                            ),
-                            controller: _nome,
-                            decoration: const InputDecoration(
-                              border: OutlineInputBorder(),
-                              labelText: "Nome",
-                              labelStyle: TextStyle(
-
-                              ),
-
-                            ),
-                            validator: (text){
-                              if(text == null || text.isEmpty){
-                                return "Por favor, digite o nome do exercício.";
-                              }
-                            },
-                          ),
-
-                          const Padding(padding: EdgeInsets.only(bottom: 10)),
-
-                          TextFormField(
-                            style: const TextStyle(
-
-                            ),
-                            controller: _repeticoes,
-                            decoration: const InputDecoration(
-                              border: OutlineInputBorder(),
-                              labelText: "Repetições",
-                              labelStyle: TextStyle(
-
-                              ),
-
-                            ),
-                            validator: (text){
-                              if(text == null || text.isEmpty){
-                                return "Por favor, digite a quantidade de repetições.";
-                              }
-                            },
-                          ),
-
-                          const Padding(padding: EdgeInsets.only(bottom: 10)),
-
-                          TextFormField(
-                            style: const TextStyle(
-
-                            ),
-                            controller: _sequencia,
-                            decoration: const InputDecoration(
-                              border: OutlineInputBorder(),
-                              labelText: "Sequência",
-                              labelStyle: TextStyle(
-
-                              ),
-
-                            ),
-                            validator: (text){
-                              if(text == null || text.isEmpty){
-                                return "Por favor, digite a sequência.";
-                              }
-                            },
-                          ),
-
-                          const Padding(padding: EdgeInsets.only(bottom: 10)),
-
-                          TextFormField(
-                            style: const TextStyle(
-
-                            ),
-                            controller: _series,
-                            decoration: const InputDecoration(
-                              border: OutlineInputBorder(),
-                              labelText: "Séries",
-                              labelStyle: TextStyle(
-
-                              ),
-
-                            ),
-                            validator: (text){
-                              if(text == null || text.isEmpty){
-                                return "Por favor, digite a quantidade de séries.";
-                              }
-                            },
-                          ),
-
-                          const Padding(padding: EdgeInsets.only(bottom: 10)),
-
-                          TextFormField(
-                            style: const TextStyle(
-
-                            ),
-                            controller: _treino,
-                            decoration: const InputDecoration(
-                              border: OutlineInputBorder(),
-                              labelText: "Treino",
-                              labelStyle: TextStyle(
-
-                              ),
-
-                            ),
-                            validator: (text){
-                              if(text == null || text.isEmpty){
-                                return "Por favor, digite o treino.";
-                              }
-                            },
-                          ),
-
-                          const Padding(padding: EdgeInsets.only(bottom: 10)),
-
-                          TextFormField(
-                            style: const TextStyle(
-
-                            ),
-                            controller: _descanso,
-                            decoration: const InputDecoration(
-                              border: OutlineInputBorder(),
-                              labelText: "Descanso",
-                              labelStyle: TextStyle(
-
-                              ),
-
-                            ),
-                            validator: (text){
-                              if(text == null || text.isEmpty){
-                                return "Por favor, digite o descanso.";
-                              }
-                            },
-                          ),
-
-                          const Padding(padding: EdgeInsets.only(bottom: 10)),
-
-                          TextFormField(
-                            style: const TextStyle(
-
-                            ),
-                            controller: _grupo,
-                            decoration: const InputDecoration(
-                              border: OutlineInputBorder(),
-                              labelText: "Grupo",
-                              labelStyle: TextStyle(
-
-                              ),
-
-                            ),
-                            validator: (text){
-                              if(text == null || text.isEmpty){
-                                return "Por favor, selecione o grupo.";
-                              }
-                            },
-                          ),
-
-                          const Padding(padding: EdgeInsets.only(bottom: 10)),
-
-                          TextFormField(
-                            style: const TextStyle(
-
-                            ),
-                            controller: _video,
-                            decoration: const InputDecoration(
-                              border: OutlineInputBorder(),
-                              labelText: "Vídeo",
-                              labelStyle: TextStyle(
-
-                              ),
-
-                            ),
-                            validator: (text){
-                              if(text == null || text.isEmpty){
-                                return "Por favor, selecione o vídeo.";
-                              }
-                            },
-                          ),
-
-                          const Padding(padding: EdgeInsets.only(bottom: 10)),
-
-                          TextFormField(
-                            style: const TextStyle(
-
-                            ),
-                            controller: _capa,
-                            decoration: const InputDecoration(
-                              border: OutlineInputBorder(),
-                              labelText: "Capa",
-                              labelStyle: TextStyle(
-
-                              ),
-
-                            ),
-                            validator: (text){
-                              if(text == null || text.isEmpty){
-                                return "Por favor, selecione a capa.";
-                              }
-                            },
-                          ),
-
-                          const Padding(padding: EdgeInsets.only(bottom: 10)),
-
-                          TextFormField(
-                            style: const TextStyle(
-
-                            ),
-                            controller: _observacoes,
-                            decoration: const InputDecoration(
-                              border: OutlineInputBorder(),
-                              labelText: "Observações",
-                              labelStyle: TextStyle(
-
-                              ),
-
-                            ),
-                            validator: (text){
-                              if(text == null || text.isEmpty){
-                                return "Por favor, digite as observações.";
-                              }
-                            },
-                          ),
-
-
-                        ],
-                      ),
-                    )*/
-
-
                 ),
                 actions: <Widget>[
 
@@ -1305,7 +1075,7 @@ class _HomePageState extends State<HomePage> {
                                     backgroundColor: Color(0XFF4116B4)),
                                 child: const Text(
                                   'Pesquisar apenas nos sistemas selecionados',
-                                  style: TextStyle(color: Colors.white),
+                                  style: TextStyle(color: Colors.white, fontSize: 12),
                                 )),
                           ),
                         ],
@@ -1328,7 +1098,7 @@ class _HomePageState extends State<HomePage> {
                                     backgroundColor: Color(0XFF4116B4)),
                                 child: const Text(
                                   'Pesquisar em todo banco de dados',
-                                  style: TextStyle(color: Colors.white),
+                                  style: TextStyle(color: Colors.white, fontSize: 12),
                                 )),
                           ),
                         ],
@@ -1351,73 +1121,21 @@ class _HomePageState extends State<HomePage> {
                                     backgroundColor: Color(0XFF4116B4)),
                                 child: const Text(
                                   'Cancelar',
-                                  style: TextStyle(color: Colors.white),
+                                  style: TextStyle(color: Colors.white, fontSize: 12),
                                 )),
                           ),
                         ],
                       ),
 
                     ],
-                  )
+                  )]);
 
-                /* TextButton(
-                    child: const Text("Cancelar"),
-                    onPressed: () {
-                      setStateForDialog(() {
-                        //_senha.clear();
-                        //_emailParaReautenticar.clear();
-
-
-                      });
-
-                      Navigator.of(context).pop();
-                    },
-                  ),
-                  TextButton(
-                    child: const Text("Adicionar"),
-                    onPressed: () {
-
-                      //_salvaExercicio();
-                      Navigator.of(context).pop();
-                      /*
-                      if(!_carregandoLogin) {
-                        if(!_carregandoLogin) {
-                          setState(() {
-
-                            _carregandoLogin = true;
-                            //_contador();
-                          });
-
-                          _getApiKey(_emailParaReautenticar.text, _senha.text);
-
-                        } else {
-                          setState(() {
-                            _textoBotaoEntrar = _textosBotaoEntrar[0];
-                            _carregandoLogin = false;
-                          });
-                        }
-                      }
-
-                      setStateForDialog(() {
-                        _senha.clear();
-                        _emailParaReautenticar.clear();
-
-
-                      }
+                                    }
                       );
 
 
                       Navigator.of(context).pop();
 
-                      */
-                    },
-                  ),*/
-                ],
-              );
-            }
-        );
 
-      },
-    );
-  }
-}
+
+});}}

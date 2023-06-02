@@ -1,4 +1,4 @@
-//1.1 e 1.2  Detalhe Da Pesquisa
+//1.1  Detalhe Da Pesquisa
 
 import 'dart:developer';
 
@@ -62,7 +62,7 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
         builder: (BuildContext context)
       {
         return Container(
-            padding: EdgeInsets.only(left: 10),
+            padding: EdgeInsets.only(left: 10, top: 10),
             margin: EdgeInsets.only(left: 30, right: 30, top: 200,bottom: 500),
             decoration: BoxDecoration(
                 color: Colors.white,
@@ -93,10 +93,10 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
                     size: 22,
                     color: Colors.pink,
                   ),
-                  Padding(padding: EdgeInsets.only(left: 10)),
+                  Padding(padding: EdgeInsets.only(left: 11)),
                   Text(
                     "Clique no símbolo de (+) para acessar as\ninformações a respeito dessa patologia ",
-                    style: TextStyle(color: Color(0xff59616E), fontSize: 10),
+                    style: TextStyle(color: Color(0xff59616E), fontSize: 10, decoration: TextDecoration.none),
                   )
                 ],
               ),
@@ -106,34 +106,6 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
       );
     });
   }
-
-            /*AlertDialog(
-            title:
-            Column(children: [
-              Row(children: [
-                Icon(
-                  MdiIcons.close,
-                  color: Color(0xff59616E),
-                  size: 20,
-                ),
-              ]),
-              //  Text('Atenção'),
-
-              Row(
-                children: [
-                  Icon(
-                    MdiIcons.alertCircleOutline,
-                    size: 20,
-                  ),
-                  Padding(padding: EdgeInsets.only(left: 10)),
-                  Text(
-                    "Clique no símbolo de (+) para acessar as\ninformações a respeito dessa patologia",
-                    style: TextStyle(color: Color(0xff59616E), fontSize: 12),
-                  )
-                ],
-              ),
-            ]),
-          );*/
 
 
   Future<void> carregaDadosLogin() async {
@@ -248,17 +220,18 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
                       children: [
                         SizedBox(
                           height: 30,
-                          width: 250,
+                          width: 350,
                           child: TextFormField(
                             //para senha: obscureText: true,
 
-                            textAlign: TextAlign.left,
+                            textAlign: TextAlign.center,
 
                             style: const TextStyle(
                               fontSize: 12,
                             ),
                             decoration: InputDecoration(
-                                fillColor: const Color(0xFF12EC1A),
+                                border: InputBorder.none, // tira a borda do TextField
+                              //  fillColor: const Color(0xFF12EC1A),
 
                                 // contentPadding: EdgeInsets.fromLTRB(20, 0, 12, 0),
                                 prefixIcon: Builder(
@@ -289,56 +262,7 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
                     "Prurido generalizado; Maneios de cabeça; Febre",
                     style: TextStyle(color: Color(0xFF8F90A6)),
                   )
-                  /* Column(
-                            children: [
 
-                              Row(
-                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                  children: [
-                                    SizedBox(
-                                      height: 30,
-                                      width: 250,
-
-                                      child:
-                                      TextFormField(
-                                        //para senha: obscureText: true,
-
-                                        textAlign: TextAlign.left,
-
-                                        style: const TextStyle(
-                                          fontSize: 12,
-                                        ),
-                                        decoration: InputDecoration(
-                                           // fillColor: const Color(0xFF12EC1A),
-
-                                            // contentPadding: EdgeInsets.fromLTRB(20, 0, 12, 0),
-                                            //prefixIcon:
-                                            /*Builder(
-                                                builder: (context) => IconButton(
-                                                    onPressed: () {
-
-
-
-                                                    },
-                                                    icon: const Icon(Icons.search,size: 15,
-                                                        color: Color(0xFF3C10BB)))),*/
-
-                                            hintText: "Prurido generalizado; Maneios de cabeça; Febre",
-
-                                            /*suffixIcon: const Icon(
-                                              MdiIcons.navigationVariant,
-                                              size: 15,
-                                              color: Color(0xFF3C10BB),
-
-                                            )*/
-                                        ),
-                                      ),),
-
-
-
-
-                                  ]),
-                         ]),*/
                   ),
               // Padding(padding: EdgeInsets.only(top: 5)),
 
@@ -419,28 +343,17 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
               ),
 
               Container(
-                padding: const EdgeInsets.all(2),
-                //  margin: const EdgeInsets.only(top: 10),
-                decoration: BoxDecoration(
-                  borderRadius: BorderRadius.circular(50),
-                  color: const Color(0xFF4116B4),
-                ),
-                child: Builder(
-                    builder: (context) => IconButton(
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                    const DetalheDaPesquisaDermatiteAtopica()),
-                          );
-                        },
-                        icon: Icon(
-                          Icons.add,
-                          color: Colors.white,
-                          size: 10,
-                        ))),
-              ),
+                      padding: const EdgeInsets.all(2),
+                      //  margin: const EdgeInsets.only(top: 10),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        color: const Color(0xFF4116B4),
+                      ),
+                      child: const Icon(
+                        Icons.add,
+                        color: Colors.white,
+                        size: 10,
+                      )),
 
               Container(
                 padding: EdgeInsets.only(left: 10),
@@ -599,7 +512,7 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
                           Navigator.push(
                             context,
                             MaterialPageRoute(
-                                builder: (context) => const Home()),
+                                builder: (context) => const DetalheDaPesquisaDermatiteAtopica()),
                           );
                         },
                         style: ElevatedButton.styleFrom(
@@ -643,18 +556,50 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
                           ]))),
                 ],
               ),
+
+              Container(
+                    margin: const EdgeInsets.only(left: 10, right: 10),
+                    padding: const EdgeInsets.only(bottom: 50),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(20),
+                      color: const Color(0xFFF5F5F5),
+                      //color: Colors.orange,
+                    ),
+                    child: DefaultTabController(
+                        initialIndex: 1,
+                        //optional, starts from 0, select the tab by default
+                        length: 5,
+                        child: Column(children: const [
+                          TabBar(indicatorColor: Colors.transparent, tabs: [
+                            Tab(
+                              icon: Icon(
+                                MdiIcons.home,
+                                color: Colors.grey,
+                                size: 30,
+                              ),
+                            ),
+                            Tab(
+                              icon: Icon(MdiIcons.stethoscope,
+                                  color: Colors.grey, size: 30),
+                            ),
+                            Tab(
+                              icon: Icon(MdiIcons.googleCirclesCommunities,
+                                  color: Colors.grey, size: 30),
+                            ),
+                            Tab(
+                              icon: Icon(MdiIcons.calendar,
+                                  color: Colors.grey, size: 30),
+                            ),
+                            Tab(
+                              icon: Icon(MdiIcons.dotsSquare,
+                                  color: Colors.grey, size: 30),
+                            ),
+                          ])
+                        ])),
+                  ),
             ])),
           ))
     ]));
   }
-
-/*void _exibirDialogo() {
-    showDialog(
-      context:  context,
-      builder:  (BuildContext context) {
-        return AlertDialog();
-      },
-    );
-  }*/
 
 }

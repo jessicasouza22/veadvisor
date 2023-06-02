@@ -61,7 +61,7 @@ class _DetalheDaPesquisaDermatiteAtopicaPageState extends State<DetalheDaPesquis
         builder: (BuildContext context)
         {
           return Container(
-              padding: EdgeInsets.only(left: 10),
+              padding: EdgeInsets.only(left: 10, top: 10),
               margin: EdgeInsets.only(left: 30, right: 30, top: 200,bottom: 500),
               decoration: BoxDecoration(
                   color: Colors.white,
@@ -95,7 +95,7 @@ class _DetalheDaPesquisaDermatiteAtopicaPageState extends State<DetalheDaPesquis
                     Padding(padding: EdgeInsets.only(left: 10)),
                     Text(
                       "Você sabia que dá para gerar um novo resultados a\npartir desta enfermidade, basta clicar no mais (+) e\nautomaticamente ele virá para a barra de pesquisa.\nDessa forma permitindo realizar uma nova pesquisa ",
-                      style: TextStyle(color: Color(0xff59616E), fontSize: 8),
+                      style: TextStyle(color: Color(0xff59616E), fontSize: 8, decoration: TextDecoration.none),
                     )
                   ],
                 ),
@@ -209,71 +209,46 @@ class _DetalheDaPesquisaDermatiteAtopicaPageState extends State<DetalheDaPesquis
                           Padding(padding: EdgeInsets.only(top: 10)),
 
                           Container(
-
-
                             margin: EdgeInsets.only(left: 20, right: 20, top: 10),
                             decoration: BoxDecoration(
                                 color: Colors.white,
-                                borderRadius: BorderRadius.all( Radius.circular(10))),
+                                borderRadius: BorderRadius.all(Radius.circular(10))),
+                            child: Column(children: [
+                              Row(
+                                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    SizedBox(
+                                      height: 30,
+                                      width: 350,
+                                      child: TextFormField(
+                                        //para senha: obscureText: true,
 
-                            child: Column(
-                                children: [
+                                        textAlign: TextAlign.center,
 
-                                  Row(
-                                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                      children: [
-                                        SizedBox(
-                                          height: 30,
-                                          width: 250,
+                                        style: const TextStyle(
+                                          fontSize: 12,
+                                        ),
+                                        decoration: InputDecoration(
+                                            border: InputBorder.none, // tira a borda do TextField
+                                            //  fillColor: const Color(0xFF12EC1A),
 
-                                          child:
-                                          TextFormField(
-                                            //para senha: obscureText: true,
-
-                                            textAlign: TextAlign.left,
-
-                                            style: const TextStyle(
-                                              fontSize: 12,
-                                            ),
-                                            decoration: InputDecoration(
-                                                fillColor: const Color(0xFF12EC1A),
-
-                                                // contentPadding: EdgeInsets.fromLTRB(20, 0, 12, 0),
-                                                prefixIcon:
-
-                                                Builder(
-                                                    builder: (context) => IconButton(
-                                                        onPressed: () {
-
-
-
-                                                        },
-                                                        icon: const Icon(Icons.search,size: 15,
-                                                            color: Color(0xFF979797)))),
-
-                                                hintText: "Adicione mais informações",
-
-                                                suffixIcon: const Icon(
-                                                  MdiIcons.navigationVariant,
-                                                  size: 15,
-                                                  color: Color(0xFF979797),
-
-                                                )
-                                            ),
-                                          ),),
-
-
-
-
-                                      ]),
-
-
-
-
-
-
-
-                                ]),
+                                            // contentPadding: EdgeInsets.fromLTRB(20, 0, 12, 0),
+                                            prefixIcon: Builder(
+                                                builder: (context) => IconButton(
+                                                    onPressed: () {},
+                                                    icon: const Icon(Icons.search,
+                                                        size: 15,
+                                                        color: Color(0xFF979797)))),
+                                            hintText: "Adicione mais informações",
+                                            suffixIcon: const Icon(
+                                              MdiIcons.navigationVariant,
+                                              size: 15,
+                                              color: Color(0xFF979797),
+                                            )),
+                                      ),
+                                    ),
+                                  ]),
+                            ]),
                           ),
 
                           Container(

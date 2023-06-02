@@ -1,4 +1,4 @@
-// 1.4 Detalhe Da Pesquisa Realizar Nova Pesquisa
+// 1.6 Detalhe Da Pesquisa Realizar Nova Pesquisa
 
 import 'dart:io';
 import 'package:auto_size_text/auto_size_text.dart';
@@ -128,54 +128,61 @@ class _DetalheDaPesquisaRealizarNovaPesquisaState extends State<DetalheDaPesquis
                 child: SingleChildScrollView(
                 child: Column(children: [
 
-          Container(
-          margin: EdgeInsets.only(left: 20,right: 20, top: 30, bottom: 10),
-            padding: EdgeInsets.only(left: 20,right: 20,top: 10,bottom: 10),
-            decoration: BoxDecoration(
-                color: Colors.white
-            ),
-            child:
-            Container(
-              margin: EdgeInsets.only(left: 20, right: 20, top: 10),
-              decoration: BoxDecoration(
-                  color: Colors.white,
-                  borderRadius: BorderRadius.all(Radius.circular(10))),
-              child: Column(children: [
-                Row(
-                  // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                    children: [
-                      SizedBox(
-                        height: 30,
-                        width: 250,
-                        child: TextFormField(
-                          //para senha: obscureText: true,
+           Container(
+                    margin: EdgeInsets.only(left: 20, right: 20, top: 10),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all(Radius.circular(10))),
+                    child: Column(children: [
+                      Row(
+                        // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                          children: [
+                            SizedBox(
+                              height: 30,
+                              width: 350,
+                              child: TextFormField(
+                                //para senha: obscureText: true,
 
-                          textAlign: TextAlign.left,
+                                textAlign: TextAlign.center,
 
-                          style: const TextStyle(
-                            fontSize: 12,
-                          ),
-                          decoration: InputDecoration(
-                              fillColor: const Color(0xFF12EC1A),
+                                style: const TextStyle(
+                                  fontSize: 12,
+                                ),
+                                decoration: InputDecoration(
+                                    border: InputBorder.none, // tira a borda do TextField
+                                    //  fillColor: const Color(0xFF12EC1A),
 
-                              // contentPadding: EdgeInsets.fromLTRB(20, 0, 12, 0),
-                              prefixIcon: Builder(
-                                  builder: (context) => IconButton(
-                                      onPressed: () {},
-                                      icon: const Icon(Icons.search,
-                                          size: 15,
-                                          color: Color(0xFF979797)))),
-                              hintText: "Adicione mais informações",
-                              suffixIcon: const Icon(
-                                MdiIcons.navigationVariant,
-                                size: 15,
-                                color: Color(0xFF979797),
-                              )),
-                        ),
-                      ),
+                                    // contentPadding: EdgeInsets.fromLTRB(20, 0, 12, 0),
+                                    prefixIcon: Builder(
+                                        builder: (context) => IconButton(
+                                            onPressed: () {},
+                                            icon: const Icon(Icons.search,
+                                                size: 15,
+                                                color: Color(0xFF979797)))),
+                                    hintText: "Adicione mais informações",
+                                    suffixIcon: const Icon(
+                                      MdiIcons.navigationVariant,
+                                      size: 15,
+                                      color: Color(0xFF979797),
+                                    )),
+                              ),
+                            ),
+                          ]),
                     ]),
-              ]),
-            ),),
+                  ),
+           Container(
+                    padding: EdgeInsets.all(10),
+                    margin: EdgeInsets.only(left: 20, right: 20, top: 10),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.all( Radius.circular(10))),
+
+                    child: Text("Prurido generalizado; Maneios de cabeça; Febre",
+                      style: TextStyle(
+                          color:  Color(0xFF8F90A6)
+                      ),),),
+
+
 
             Row(
               mainAxisAlignment: MainAxisAlignment.center,

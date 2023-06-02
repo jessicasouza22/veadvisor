@@ -51,74 +51,20 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
 
     return  Scaffold(
-
-        body: CustomScrollView(slivers: [
-          SliverAppBar(
-              backgroundColor: Colors.transparent,
-              toolbarHeight: 80,
-              elevation: 30,
-              pinned: true,
-              expandedHeight: 50,
-              flexibleSpace: Container(
-                decoration: const BoxDecoration(
-                  borderRadius: BorderRadius.only(
-                      bottomRight: Radius.circular(45),
-                      bottomLeft: Radius.circular(10),
-                      topRight: Radius.circular(20),
-                      topLeft: Radius.circular(20)),
-                  // LinearGradient
-                  gradient: LinearGradient(
-                    begin: Alignment.topCenter,
-                    end: Alignment.bottomCenter,
-                    // colors for gradient
-                    colors: [
-                      Color(0xFF4116B4),
-                      Color(0xff4116B4),
-                      Color(0xff7347EF),
-                      Color(0xffE3EDF7),
-                    ],
-                  ),
-                ),
-              ),
-              // title of appbar
-
-              actions: [
-                Expanded(
-                    child: Padding(
-                        padding: const EdgeInsets.only(left: 0),
-                        child: Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-
-                            Builder(
-                                builder: (context) => IconButton(
-                                    onPressed: () {
-                                      Navigator.push(
-                                        context,
-                                        MaterialPageRoute(
-                                            builder: (
-                                                context) => const Logado()),
-                                      );
-
-                                      //print("clicado na seta");
-                                    },
-                                    icon: const Icon(Icons.arrow_back))),
-                            AutoSizeText(
-                              "Serviços",
-                              //textAlign: TextAlign.center,
-                            ),
-                            IconButton(
-                                onPressed: () {
-                                  print("clicado no notificacao");
-                                },
-                                icon: Icon(MdiIcons.bellBadgeOutline)),
-                          ],
-                        )))
-              ]),
-          SliverFillRemaining(
-              hasScrollBody: true,
-              child: Container(
-                decoration: const BoxDecoration(
+        appBar: AppBar(
+            backgroundColor: Colors.transparent,
+            toolbarHeight: 80,
+            elevation: 30,
+            //inned: true,
+            //expandedHeight: 50,
+            flexibleSpace: Container(
+              decoration: const BoxDecoration(
+                borderRadius: BorderRadius.only(
+                    bottomRight: Radius.circular(45),
+                    bottomLeft: Radius.circular(10),
+                    topRight: Radius.circular(20),
+                    topLeft: Radius.circular(20)),
+                // LinearGradient
                 gradient: LinearGradient(
                   begin: Alignment.topCenter,
                   end: Alignment.bottomCenter,
@@ -129,12 +75,55 @@ class _HomePageState extends State<HomePage> {
                     Color(0xff7347EF),
                     Color(0xffE3EDF7),
                   ],
-                )),
+                ),
+              ),
+            ),
+            // title of appbar
 
+            actions: [
+              Expanded(
+                  child: Padding(
+                      padding: const EdgeInsets.only(left: 5),
+                      child: Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                          Builder(
+                              builder: (context) => IconButton(
+                                  onPressed: () {
+                                    Navigator.push(
+                                      context,
+                                      MaterialPageRoute(
+                                          builder: (
+                                              context) => const PerfilPaciente()),
+                                    );
 
-                //color: Color(0xFFF5F5F5),
+                                    //print("clicado na seta");
+                                  },
+                                  icon: const Icon(Icons.arrow_back))),
+                          Text(
+                            "Serviço",
+                            //textAlign: TextAlign.center,
+
+                            style: TextStyle(
+                              fontSize: 12,
+                            ),
+                          ),
+                          IconButton(
+                              onPressed: () {
+                                //print("clicado no notificacao");
+                              },
+                              icon: const Icon(MdiIcons.bellBadgeOutline)),
+                        ],
+                      )))
+            ]),
+        body: CustomScrollView(slivers: [
+
+          SliverFillRemaining(
+              hasScrollBody: true,
+              child: Container(
+                color:  Color(0xFF3C10BB),
                 child: SingleChildScrollView(
-                    child: Column(children: [
+                    child:Column(children: [
                       const Padding(padding: EdgeInsets.only(top: 15)),
 
                       Row(
@@ -220,13 +209,13 @@ class _HomePageState extends State<HomePage> {
                                   children: [
                                     SizedBox(
                                       height: 30,
-                                      width: 250,
+                                      width: 350,
 
                                       child:
                                       TextFormField(
                                         //para senha: obscureText: true,
 
-                                        textAlign: TextAlign.left,
+                                        textAlign: TextAlign.center,
 
                                         style: const TextStyle(
                                           fontSize: 12,
@@ -698,9 +687,10 @@ class _HomePageState extends State<HomePage> {
                       fontSize: 18
                   ),),
                               content: SingleChildScrollView(
-                    child: Column(
+                    child: Row(
                       children:[
                         Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
                         Radio<SingingCharacterAreaMedica>(
                           value: SingingCharacterAreaMedica.Oftalmicos,
@@ -716,18 +706,175 @@ class _HomePageState extends State<HomePage> {
                           MaterialStateColor.resolveWith((states) => Colors.grey),
                         ),
 
+                        Radio<SingingCharacterAreaMedica>(
+                          value: SingingCharacterAreaMedica.Dermatologicos,
+
+                          onChanged: (SingingCharacterAreaMedica? value) {
+
+                            setState(() {
+
+                            });
+                          },
+                          groupValue: null,
+                          fillColor:
+                          MaterialStateColor.resolveWith((states) => Colors.grey),
+                        ),
+
+                        Radio<SingingCharacterAreaMedica>(
+                          value: SingingCharacterAreaMedica.NefrologicosUrologicos,
+
+                          onChanged: (SingingCharacterAreaMedica? value) {
+
+                            setState(() {
+
+                            });
+                          },
+                          groupValue: null,
+                          fillColor:
+                          MaterialStateColor.resolveWith((states) => Colors.grey),
+                        ),
+
+                        Radio<SingingCharacterAreaMedica>(
+                          value: SingingCharacterAreaMedica.Oncologicos,
+
+                          onChanged: (SingingCharacterAreaMedica? value) {
+
+                            setState(() {
+
+                            });
+                          },
+                          groupValue: null,
+                          fillColor:
+                          MaterialStateColor.resolveWith((states) => Colors.grey),
+                        ),
+
+                        Radio<SingingCharacterAreaMedica>(
+                          value: SingingCharacterAreaMedica.NefrologicosUrologicos,
+
+                          onChanged: (SingingCharacterAreaMedica? value) {
+
+                            setState(() {
+
+                            });
+                          },
+                          groupValue: null,
+
+                          fillColor:
+                          MaterialStateColor.resolveWith((states) => Colors.grey),
+                        ),
+
+                        Radio<SingingCharacterAreaMedica>(
+                          value: SingingCharacterAreaMedica.Respiratorios,
+
+                          onChanged: (SingingCharacterAreaMedica? value) {
+
+                            setState(() {
+
+                            });
+                          },
+                          groupValue: null,
+                          fillColor:
+                          MaterialStateColor.resolveWith((states) => Colors.grey),
+                        ),
+
+                        Radio<SingingCharacterAreaMedica>(
+                          value: SingingCharacterAreaMedica.Toxocologicos,
+
+                          onChanged: (SingingCharacterAreaMedica? value) {
+
+                            setState(() {
+
+                            });
+                          },
+                          groupValue: null,
+                          fillColor:
+                          MaterialStateColor.resolveWith((states) => Colors.grey),
+                        ),
+
+                                      ],
+                        ),
+
+                        Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+                        Row(
+                          children: [
+                        Text("Oftálmícos",
+                            style: TextStyle(
+                                fontSize: 12,
+                                color: Color(0xFF4116B4)
+                            )
+                        ),
+                        ]),
+                        Padding(padding: EdgeInsets.only(bottom: 40)),
 
                         Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Text("Dermatológicos",
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      color: Color(0xFF4116B4)
+                                  )
+                              ),
+                            ]),
+
+                        Padding(padding: EdgeInsets.only(bottom: 40)),
+
+                        Row(
+                            children: [
+                              Text("Neurológicos",
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      color: Color(0xFF4116B4)
+                                  )
+                              ),
+                            ]),
+
+                        Padding(padding: EdgeInsets.only(bottom: 40)),
+
+                        Row(
+                            children: [
+                              Text("Oncológicos",
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      color: Color(0xFF4116B4)
+                                  )
+                              ),
+                            ]),
+
+                        Padding(padding: EdgeInsets.only(bottom: 50)),
+
+                        Row(
+                            children: [
+                              Text("Nefrológicos e\n urológicos",
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      color: Color(0xFF4116B4)
+                                  )
+                              ),
+                            ]),
+
+                        Padding(padding: EdgeInsets.only(bottom: 40)),
+
+                        Row(
+                            children: [
+                              Text("Toxocológicos",
+                                  style: TextStyle(
+                                      fontSize: 12,
+                                      color: Color(0xFF4116B4)
+                                  )
+                              ),
+                            ]),
+
+
+                      ],
+                    ),
+
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-
-
-
-                            Padding(padding: EdgeInsets.all(10)),
-
-
                             Radio<SingingCharacterAreaMedica>(
-                              value: SingingCharacterAreaMedica.Infecciosos,
+                              value: SingingCharacterAreaMedica.Oftalmicos,
 
                               onChanged: (SingingCharacterAreaMedica? value) {
 
@@ -739,18 +886,7 @@ class _HomePageState extends State<HomePage> {
                               fillColor:
                               MaterialStateColor.resolveWith((states) => Colors.grey),
                             ),
-                            const Text("Infecciosos",
-                                style: TextStyle(
-                                    fontSize: 12,
-                                    color: Color(0xFF4116B4)
-                                )
-                            ),
-                          ],
-                        ),
 
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
                             Radio<SingingCharacterAreaMedica>(
                               value: SingingCharacterAreaMedica.Dermatologicos,
 
@@ -764,138 +900,7 @@ class _HomePageState extends State<HomePage> {
                               fillColor:
                               MaterialStateColor.resolveWith((states) => Colors.grey),
                             ),
-                            const Text("Dermatologicos",
-                                style: TextStyle(
-                                    fontSize: 12,
-                                    color: Color(0xFF4116B4)
-                                )
-                            ),
 
-                            Padding(padding: EdgeInsets.all(10)),
-
-
-                            Radio<SingingCharacterAreaMedica>(
-                              value: SingingCharacterAreaMedica.MusculoEsqueletico,
-
-                              onChanged: (SingingCharacterAreaMedica? value) {
-
-                                setState(() {
-
-                                });
-                              },
-                              groupValue: null,
-                              fillColor:
-                              MaterialStateColor.resolveWith((states) => Colors.grey),
-                            ),
-                            const Text("Musculo",
-                                style: TextStyle(
-                                    fontSize: 12,
-                                    color: Color(0xFF4116B4)
-                                )
-                            ),
-                          ],
-                        ),
-
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Radio<SingingCharacterAreaMedica>(
-                              value: SingingCharacterAreaMedica.Neurologicos,
-
-                              onChanged: (SingingCharacterAreaMedica? value) {
-
-                                setState(() {
-
-                                });
-                              },
-                              groupValue: null,
-
-                              fillColor:
-                              MaterialStateColor.resolveWith((states) => Colors.grey),
-                            ),
-                            const Text("Neurológicos",
-                                style: TextStyle(
-                                    fontSize: 12,
-                                    color: Color(0xFF4116B4)
-                                )
-                            ),
-
-                            Padding(padding: EdgeInsets.all(10)),
-
-
-                            Radio<SingingCharacterAreaMedica>(
-                              value: SingingCharacterAreaMedica.MetabolicosEndocrinos,
-
-                              onChanged: (SingingCharacterAreaMedica? value) {
-
-                                setState(() {
-
-                                });
-                              },
-                              groupValue: null,
-                              fillColor:
-                              MaterialStateColor.resolveWith((states) => Colors.grey),
-                            ),
-                            const Text("Metabolicos",
-                                style: TextStyle(
-                                    fontSize: 12,
-                                    color: Color(0xFF4116B4)
-                                )
-                            ),
-                          ],
-                        ),
-
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
-                            Radio<SingingCharacterAreaMedica>(
-                              value: SingingCharacterAreaMedica.Oncologicos,
-
-                              onChanged: (SingingCharacterAreaMedica? value) {
-
-                                setState(() {
-
-                                });
-                              },
-                              groupValue: null,
-                              fillColor:
-                              MaterialStateColor.resolveWith((states) => Colors.grey),
-                            ),
-                            const Text("Oncologicos",
-                                style: TextStyle(
-                                    fontSize: 12,
-                                    color: Color(0xFF4116B4)
-                                )
-                            ),
-
-                            Padding(padding: EdgeInsets.all(10)),
-
-
-                            Radio<SingingCharacterAreaMedica>(
-                              value: SingingCharacterAreaMedica.Cardiologicos,
-
-                              onChanged: (SingingCharacterAreaMedica? value) {
-
-                                setState(() {
-
-                                });
-                              },
-                              groupValue: null,
-                              fillColor:
-                              MaterialStateColor.resolveWith((states) => Colors.grey),
-                            ),
-                            const Text("Cardiologicos",
-                                style: TextStyle(
-                                    fontSize: 12,
-                                    color: Color(0xFF4116B4)
-                                )
-                            ),
-                          ],
-                        ),
-
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
                             Radio<SingingCharacterAreaMedica>(
                               value: SingingCharacterAreaMedica.NefrologicosUrologicos,
 
@@ -909,18 +914,9 @@ class _HomePageState extends State<HomePage> {
                               fillColor:
                               MaterialStateColor.resolveWith((states) => Colors.grey),
                             ),
-                            const Text("Nefrologicos",
-                                style: TextStyle(
-                                    fontSize: 12,
-                                    color: Color(0xFF4116B4)
-                                )
-                            ),
-
-                            Padding(padding: EdgeInsets.all(10)),
-
 
                             Radio<SingingCharacterAreaMedica>(
-                              value: SingingCharacterAreaMedica.Hematologicos,
+                              value: SingingCharacterAreaMedica.Oncologicos,
 
                               onChanged: (SingingCharacterAreaMedica? value) {
 
@@ -932,18 +928,22 @@ class _HomePageState extends State<HomePage> {
                               fillColor:
                               MaterialStateColor.resolveWith((states) => Colors.grey),
                             ),
-                            const Text("Hematologicos",
-                                style: TextStyle(
-                                    fontSize: 12,
-                                    color: Color(0xFF4116B4)
-                                )
-                            ),
-                          ],
-                        ),
 
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.start,
-                          children: [
+                            Radio<SingingCharacterAreaMedica>(
+                              value: SingingCharacterAreaMedica.NefrologicosUrologicos,
+
+                              onChanged: (SingingCharacterAreaMedica? value) {
+
+                                setState(() {
+
+                                });
+                              },
+                              groupValue: null,
+
+                              fillColor:
+                              MaterialStateColor.resolveWith((states) => Colors.grey),
+                            ),
+
                             Radio<SingingCharacterAreaMedica>(
                               value: SingingCharacterAreaMedica.Respiratorios,
 
@@ -957,41 +957,7 @@ class _HomePageState extends State<HomePage> {
                               fillColor:
                               MaterialStateColor.resolveWith((states) => Colors.grey),
                             ),
-                            const Text("Respiratorios",
-                                style: TextStyle(
-                                    fontSize: 12,
-                                    color: Color(0xFF4116B4)
-                                )
-                            ),
 
-                            Padding(padding: EdgeInsets.all(10)),
-
-
-                            Radio<SingingCharacterAreaMedica>(
-                              value: SingingCharacterAreaMedica.Odontologicos,
-
-                              onChanged: (SingingCharacterAreaMedica? value) {
-
-                                setState(() {
-
-                                });
-                              },
-                              groupValue: null,
-                              fillColor:
-                              MaterialStateColor.resolveWith((states) => Colors.grey),
-                            ),
-                            const Text("Odontologicos",
-                                style: TextStyle(
-                                    fontSize: 12,
-                                    color: Color(0xFF4116B4)
-                                )
-                            ),
-                          ],
-                        ),
-
-                        Row(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
                             Radio<SingingCharacterAreaMedica>(
                               value: SingingCharacterAreaMedica.Toxocologicos,
 
@@ -1005,55 +971,89 @@ class _HomePageState extends State<HomePage> {
                               fillColor:
                               MaterialStateColor.resolveWith((states) => Colors.grey),
                             ),
-                            const Text("Toxocologicos",
-                                style: TextStyle(
-                                    fontSize: 12,
-                                    color: Color(0xFF4116B4)
-                                )
-                            ),
 
-                            Padding(padding: EdgeInsets.all(10)),
-
-
-                            Radio<SingingCharacterAreaMedica>(
-                              value: SingingCharacterAreaMedica.Teriogenologicos,
-
-                              onChanged: (SingingCharacterAreaMedica? value) {
-
-                                setState(() {
-
-                                });
-                              },
-                              groupValue: null,
-                              fillColor:
-                              MaterialStateColor.resolveWith((states) => Colors.grey),
-                            ),
-                            const Text("Teriogenologicos",
-                                style: TextStyle(
-                                    fontSize: 12,
-                                    color: Color(0xFF4116B4)
-                                )
-                            ),
                           ],
-                        ),
-
-                      ],
                         ),
 
                         Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
                           children: [
-                            const Text
-                              ("Oftalmicos",
-                                style: TextStyle(
-                                    fontSize: 12,
-                                    color: Color(0xFF4116B4)
-                                )
-                            ),
+                            Row(
+                                children: [
+                                  Text("Oftálmícos",
+                                      style: TextStyle(
+                                          fontSize: 12,
+                                          color: Color(0xFF4116B4)
+                                      )
+                                  ),
+                                ]),
+                            Padding(padding: EdgeInsets.only(bottom: 40)),
+
+                            Row(
+                                children: [
+                                  Text("Dermatológicos",
+                                      style: TextStyle(
+                                          fontSize: 12,
+                                          color: Color(0xFF4116B4)
+                                      )
+                                  ),
+                                ]),
+
+                            Padding(padding: EdgeInsets.only(bottom: 40)),
+
+                            Row(
+                                children: [
+                                  Text("Neurológicos",
+                                      style: TextStyle(
+                                          fontSize: 12,
+                                          color: Color(0xFF4116B4)
+                                      )
+                                  ),
+                                ]),
+
+                            Padding(padding: EdgeInsets.only(bottom: 40)),
+
+                            Row(
+                                children: [
+                                  Text("Oncológicos",
+                                      style: TextStyle(
+                                          fontSize: 12,
+                                          color: Color(0xFF4116B4)
+                                      )
+                                  ),
+                                ]),
+
+                            Padding(padding: EdgeInsets.only(bottom: 50)),
+
+                            Row(
+                                children: [
+                                  Text("Nefrológicos e\n urológicos",
+                                      style: TextStyle(
+                                          fontSize: 12,
+                                          color: Color(0xFF4116B4)
+                                      )
+                                  ),
+                                ]),
+
+                            Padding(padding: EdgeInsets.only(bottom: 40)),
+
+                            Row(
+                                children: [
+                                  Text("Toxocológicos",
+                                      style: TextStyle(
+                                          fontSize: 12,
+                                          color: Color(0xFF4116B4)
+                                      )
+                                  ),
+                                ]),
+
+
                           ],
-                        )
-                                ]
-                    )
-                ),
+                        ),
+                ]),
+
+
+                                  ),
                 actions: <Widget>[
 
                   Column(

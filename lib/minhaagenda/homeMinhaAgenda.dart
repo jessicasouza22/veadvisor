@@ -10,6 +10,7 @@ import 'package:vetadvisor/fluxoprontuariodigital/cadastreOPet.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/perfilPaciente.dart';
 import 'package:vetadvisor/inicio.dart';
 import 'package:vetadvisor/recursos/Constants.dart';
+import 'package:carousel_slider/carousel_slider.dart';
 
 List<String> estados = [
   'Acre',
@@ -41,6 +42,15 @@ List<String> estados = [
   'Tocantins'
 ];
 
+List<String> agendadas = ['hoje', 'amanha'];
+
+List<String> situacao = ['atual', 'atrasada', 'agendada'];
+
+List<String> config = ['alterar', 'excluir'];
+
+List<int> daysOfMonth = List<int>.generate(30, (index) => index + 1);
+int visibleDays = 6;
+
 class HomeMinhaAgenda extends StatelessWidget {
   const HomeMinhaAgenda({super.key});
 
@@ -67,6 +77,10 @@ class _HomeMinhaAgendaState extends State<HomeMinhaAgendaPage> {
   DateTime data = DateTime.now();
 
   String? selectedEstado;
+  String? selectedAgendadas;
+  String? selectedSituacao;
+  String? selectedConfig;
+  bool programada = false;
 
   //String? torna a variiavel atrasada
 
@@ -183,63 +197,268 @@ class _HomeMinhaAgendaState extends State<HomeMinhaAgendaPage> {
                   ]),
               Padding(padding: EdgeInsets.all(10)),
 
-               Row(children: [
-
-                   DropdownButton<String>(
-                    value: selectedEstado,
-                    hint: const Text('Local'),
-                    onChanged: (value) {
-                      setState(() {
-                        selectedEstado;
-                      });
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                Expanded(
+                    child: DropdownButton<String>(
+                  value: selectedEstado,
+                  underline: Container(
+                    height: 0,
+                    color: Colors.transparent,
+                  ),
+                  hint: const Text('Local'),
+                  onChanged: (value) {
+                    setState(() {
+                      selectedEstado;
+                    });
+                  },
+                  items: estados.map<DropdownMenuItem<String>>(
+                    (String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
                     },
-                    items: estados.map<DropdownMenuItem<String>>(
-                      (String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      },
-                    ).toList(),
+                  ).toList(),
+                )),
+
+                Padding(padding: EdgeInsets.all(5)),
+
+                Expanded(
+                    child: DropdownButton<String>(
+                  value: selectedAgendadas,
+                  underline: Container(
+                    height: 0,
+                    color: Colors.transparent,
+                  ),
+                  hint: const Text('Agendadas'),
+                  onChanged: (value) {
+                    setState(() {
+                      selectedAgendadas;
+                    });
+                  },
+                  items: agendadas.map<DropdownMenuItem<String>>(
+                    (String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    },
+                  ).toList(),
+                )),
+
+                Padding(padding: EdgeInsets.all(5)),
+
+                Expanded(
+                    child: DropdownButton<String>(
+                  value: selectedSituacao,
+                  underline: Container(
+                    height: 0,
+                    color: Colors.transparent,
+                  ),
+                  hint: const Text('Situacao'),
+                  onChanged: (value) {
+                    setState(() {
+                      selectedSituacao;
+                    });
+                  },
+                  items: agendadas.map<DropdownMenuItem<String>>(
+                    (String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    },
+                  ).toList(),
+                )),
+
+                Padding(padding: EdgeInsets.all(5)),
+
+                Expanded(
+                    child: DropdownButton<String>(
+                  value: selectedConfig,
+                  underline: Container(
+                    height: 0,
+                    color: Colors.transparent,
+                  ),
+                  hint: const Icon(MdiIcons.cog),
+                  onChanged: (value) {
+                    setState(() {
+                      selectedConfig;
+                    });
+                  },
+                  items: config.map<DropdownMenuItem<String>>(
+                    (String value) {
+                      return DropdownMenuItem<String>(
+                        value: value,
+                        child: Text(value),
+                      );
+                    },
+                  ).toList(),
+                  icon: Icon(null),
+                )),
+
+                Padding(padding: EdgeInsets.all(5)),
+
+                // SizedBox(height: 16),
+              ]),
+
+              Padding(padding: EdgeInsets.all(10)),
+
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text(
+                      " |  Próximas consultas ",
+                      style: TextStyle(
+                          color: Color(0xFF3C10BB),
+                          fontSize: 14,
+                          decoration: TextDecoration.none),
+                    ),
+
+                    ElevatedButton(
+                        style: TextButton.styleFrom(
+                          // padding: const EdgeInsets.only(top: 4, right: 10, left: 10, bottom: 4),
+
+                          backgroundColor: Colors.white,
+                          shape: RoundedRectangleBorder(
+                              borderRadius: BorderRadius.circular(20)),
+                          // Background Color
+                        ),
+                        onPressed: () {}, child:
+
+                          Text("Ver todas",
+                            style: TextStyle(
+                              color: Color(0xFF8F90A6),
+                              fontSize: 12,
+                            ),),),]),
+
+
+
+              Container(
+                  margin: const EdgeInsets.only(top: 10, left: 10, right: 10),
+                  // padding: const EdgeInsets.only(bottom: 240),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(20),
+                    color: Colors.white,
+                    //color: Colors.orange,
                   ),
 
-                   DropdownButton<String>(
-                   value: selectedEstado,
-                   hint: const Text('Local'),
-                   onChanged: (value) {
-                     setState(() {
-                       selectedEstado;
-                     });
-                   },
-                   items: estados.map<DropdownMenuItem<String>>(
-                         (String value) {
-                       return DropdownMenuItem<String>(
-                         value: value,
-                         child: Text(value),
-                       );
-                     },
-                   ).toList(),
-                 ),
+                  child:
+                  Column(
+                      children: [
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                            children: [
+                              Text(
+                                "Paciente",
+                                style: TextStyle(
+                                    color: Color(0xFF3C10BB),
+                                    fontSize: 14,
+                                    decoration: TextDecoration.none),
+                              ),
 
-                   DropdownButton<String>(
-                   value: selectedEstado,
-                   hint: const Text('Local'),
-                   onChanged: (value) {
-                     setState(() {
-                       selectedEstado;
-                     });
-                   },
-                   items: estados.map<DropdownMenuItem<String>>(
-                         (String value) {
-                       return DropdownMenuItem<String>(
-                         value: value,
-                         child: Text(value),
-                       );
-                     },
-                   ).toList(),
-                 ),
-                  // SizedBox(height: 16),
-                ]),
+                              ElevatedButton(
+                                  style: TextButton.styleFrom(
+                                    // padding: const EdgeInsets.only(top: 4, right: 10, left: 10, bottom: 4),
+
+                                    backgroundColor: Color(0xFF3C10BB),
+                                    shape: RoundedRectangleBorder(
+                                        borderRadius: BorderRadius.circular(20)),
+                                    // Background Color
+                                  ),
+                                  onPressed: () {}, child:
+
+                                    Text("Ver Perfil",
+                                      style: TextStyle(
+                                        color: Colors.white,
+                                        fontSize: 10,
+                                      ),)),]),
+                        Row(
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+
+                              Container(
+                                margin: EdgeInsets.only(top: 10, bottom: 10),
+                                height: 110,
+                                width: 250,
+                                decoration:
+                                BoxDecoration(
+                                  image: const
+                                  DecorationImage(
+                                      image:
+                                      AssetImage(
+                                          "imagens/telaInicioPropaganda01.png"
+                                      )
+                                  ),
+                                  color: Colors.blue,
+                                  borderRadius: BorderRadius.circular(15),
+
+                                ),
+
+                              )
+                            ]
+                        ),
+                      ])),
+
+              Row(
+                children: [
+                  Text("Status desta consulta:"),
+                  Switch(
+                    value: programada,
+                    onChanged: (bool newValue) {
+                      setState(() {
+                        programada = newValue;
+                      });
+                    },
+                    activeColor: Colors.green,
+                    inactiveThumbColor: Colors.grey,
+                  )
+
+                ],
+              ),
+
+
+              CarouselSlider(
+                items: List.generate(30, (index) {
+                  return Container(
+                    width: 40,
+                    //height: 10,
+                    decoration: BoxDecoration(
+                      color: Color(0xFF3C10BB),
+                        borderRadius: BorderRadius.circular(20)
+                    ),
+                    child: Center(
+                      child: Column(
+                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        children: [
+                        Padding(padding: EdgeInsets.all(2)),
+                        Text(
+                        (index + 1).toString(),
+                        style: TextStyle(fontSize: 14, color: Colors.white)),
+
+                        Icon(MdiIcons.slashForward, size: 26,color: Colors.white),
+
+                        Text("Terca", style: TextStyle(fontSize: 8, color: Colors.white)),
+
+                        Padding(padding: EdgeInsets.all(2))
+
+                      ]),
+                    ),
+                  );
+                }),
+                options: CarouselOptions(
+                  aspectRatio: 4.0,
+                  enlargeCenterPage: true,
+                  enableInfiniteScroll: false,
+                  initialPage: 0,
+                  viewportFraction: 5/30,
+                  //itemCount: 30,
+                ),
+              ),
+
+
+
+
 
               Container(
                 margin: const EdgeInsets.only(left: 10, right: 10),

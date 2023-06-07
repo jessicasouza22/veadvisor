@@ -26,6 +26,7 @@ import '../recursos/dialogUtils.dart';
 
 import 'package:vetadvisor/fluxoprontuariodigital/cadastreOPet.dart';
 
+
 class DetalheDaPesquisa extends StatelessWidget {
   const DetalheDaPesquisa({super.key});
 

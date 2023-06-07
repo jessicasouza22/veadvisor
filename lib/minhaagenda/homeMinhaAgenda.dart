@@ -1,4 +1,4 @@
-// 1.4 Detalhe Da Pesquisa Realizar Nova Pesquisa
+// 1.0 e 1.2 homeMinhaAgenda
 
 import 'package:intl/intl.dart';
 import 'dart:io';
@@ -83,6 +83,63 @@ class _HomeMinhaAgendaState extends State<HomeMinhaAgendaPage> {
   bool programada = false;
 
   //String? torna a variiavel atrasada
+  void initState() {
+    super.initState();
+    mostrarAlerta();
+    print("oi");
+  }
+
+  void mostrarAlerta() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context)
+        {
+          return Container(
+              padding: EdgeInsets.only(left: 10, top: 10),
+              margin: EdgeInsets.only(left: 30, right: 30, top: 200,bottom: 300),
+              decoration: BoxDecoration(
+                  color: Colors.white,
+                  borderRadius: BorderRadius.all(Radius.circular(10))),
+              child: Column(children: [
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.end,
+                    children: [
+
+                      Icon(
+                        MdiIcons.close,
+                        color: Color(0xff59616E),
+                        size: 20,
+                      ),
+                      Icon(
+                        MdiIcons.close,
+                        color: Colors.transparent,
+                        size: 20,
+                      )
+
+                    ]),
+                //  Text('Atenção'),
+
+               Column(
+                  children: [
+                    Icon(
+                      MdiIcons.alertCircleOutline,
+                      size: 40,
+                      color: Colors.pink,
+                    ),
+                    Padding(padding: EdgeInsets.only(left: 11)),
+                    Text(
+                      "Agora com sua agenda inteligente você pode enviar\nenviar mensagem via whatsApp, ligar para o cliente\nou ainda reagendar caso alguem cancele ou tenha\nhorário de atendimento disponível.",
+                      style: TextStyle(color: Color(0xff59616E), fontSize: 10, decoration: TextDecoration.none),
+                    )
+                  ],
+                ),
+
+              ]));
+        },
+      );
+    });
+  }
 
   @override
   Widget build(BuildContext context) {
@@ -454,6 +511,416 @@ class _HomeMinhaAgendaState extends State<HomeMinhaAgendaPage> {
                   viewportFraction: 5/30,
                   //itemCount: 30,
                 ),
+              ),
+
+
+              const Divider(
+                color: Color(0xFF979797),
+                thickness: 0.8,
+                endIndent: 0,
+                indent: 0,
+              ),
+
+
+
+              Row(
+          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+          children: [
+            Text("Período da manhã",
+              style: TextStyle(
+                fontSize: 20,
+                color: Color(0xFF4116B4)
+              ),),]),
+
+              Padding(padding: EdgeInsets.all(5)),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    height: 50,
+                    width: 90,
+                    padding: EdgeInsets.only(left: 12, top: 15),
+                    decoration: BoxDecoration(
+                      color: Color(0xFF4116B4),
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 1,
+                          blurRadius: 5,
+                          offset: Offset(0, 3), // Define a posição da sombra em relação ao container
+                        ),
+                      ],
+                    ),
+                child: Text("10:10 am",
+                style: TextStyle(
+                  color: Colors.white,
+                  fontWeight: FontWeight.bold,
+
+                ),
+                ),
+                    ),
+
+                  Container(
+                    height: 50,
+                    width: 90,
+                    padding: EdgeInsets.only(left: 12, top: 15),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 1,
+                          blurRadius: 5,
+                          offset: Offset(0, 3), // Define a posição da sombra em relação ao container
+                        ),
+                      ],
+                    ),
+                    child: Text("10:10 am",
+                      style: TextStyle(
+                        color: Color(0xFF4116B4),
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+
+                  Container(
+                    height: 50,
+                    width: 90,
+                    padding: EdgeInsets.only(left: 12, top: 15),
+                    decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 1,
+                          blurRadius: 5,
+                          offset: Offset(0, 3), // Define a posição da sombra em relação ao container
+                        ),
+                      ],
+                    ),
+                    child: Text("10:10 am",
+                      style: TextStyle(
+                        color: Color(0xFF4116B4),
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                  ]),
+
+              Padding(padding: EdgeInsets.all(5)),
+
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+
+                    Container(
+                      height: 50,
+                      width: 90,
+                      padding: EdgeInsets.only(left: 12, top: 15),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 1,
+                            blurRadius: 5,
+                            offset: Offset(0, 3), // Define a posição da sombra em relação ao container
+                          ),
+                        ],
+                      ),
+                      child: Text("10:10 am",
+                        style: TextStyle(
+                          color: Color(0xFF4116B4),
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+
+                    Container(
+                      height: 50,
+                      width: 90,
+                      padding: EdgeInsets.only(left: 12, top: 15),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 1,
+                            blurRadius: 5,
+                            offset: Offset(0, 3), // Define a posição da sombra em relação ao container
+                          ),
+                        ],
+                      ),
+                      child: Text("10:10 am",
+                        style: TextStyle(
+                          color: Color(0xFF4116B4),
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+
+                    Container(
+                      height: 50,
+                      width: 90,
+                      padding: EdgeInsets.only(left: 12, top: 15),
+                      decoration: BoxDecoration(
+                        color: Colors.transparent,
+                        borderRadius: BorderRadius.circular(10),
+
+                      ),
+                      child: Text("10:10 am",
+                        style: TextStyle(
+                          color: Colors.transparent,
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ]),
+
+              Padding(padding: EdgeInsets.all(5)),
+
+              const Divider(
+                color: Color(0xFF979797),
+                thickness: 0.8,
+                endIndent: 0,
+                indent: 0,
+              ),
+
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Período da tarde",
+                      style: TextStyle(
+                          fontSize: 20,
+                          color: Color(0xFF4116B4)
+                      ),),]),
+
+              Padding(padding: EdgeInsets.all(5)),
+
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+
+                    Container(
+                      height: 50,
+                      width: 90,
+                      padding: EdgeInsets.only(left: 12, top: 15),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 1,
+                            blurRadius: 5,
+                            offset: Offset(0, 3), // Define a posição da sombra em relação ao container
+                          ),
+                        ],
+                      ),
+                      child: Text("10:10 am",
+                        style: TextStyle(
+                          color: Color(0xFF4116B4),
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+
+                    Container(
+                      height: 50,
+                      width: 90,
+                      padding: EdgeInsets.only(left: 12, top: 15),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 1,
+                            blurRadius: 5,
+                            offset: Offset(0, 3), // Define a posição da sombra em relação ao container
+                          ),
+                        ],
+                      ),
+                      child: Text("10:10 am",
+                        style: TextStyle(
+                          color: Color(0xFF4116B4),
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+
+                    Container(
+                      height: 50,
+                      width: 90,
+                      padding: EdgeInsets.only(left: 12, top: 15),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 1,
+                            blurRadius: 5,
+                            offset: Offset(0, 3), // Define a posição da sombra em relação ao container
+                          ),
+                        ],
+                      ),
+                      child: Text("10:10 am",
+                        style: TextStyle(
+                          color: Color(0xFF4116B4),
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ]),
+
+              Padding(padding: EdgeInsets.all(5)),
+
+              const Divider(
+                color: Color(0xFF979797),
+                thickness: 0.8,
+                endIndent: 0,
+                indent: 0,
+              ),
+
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    Text("Período noturno",
+                      style: TextStyle(
+                          fontSize: 20,
+                          color: Color(0xFF4116B4)
+                      ),),]),
+
+              Padding(padding: EdgeInsets.all(5)),
+
+              Row(
+                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+
+                    Container(
+                      height: 50,
+                      width: 90,
+                      padding: EdgeInsets.only(left: 12, top: 15),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 1,
+                            blurRadius: 5,
+                            offset: Offset(0, 3), // Define a posição da sombra em relação ao container
+                          ),
+                        ],
+                      ),
+                      child: Text("10:10 am",
+                        style: TextStyle(
+                          color: Color(0xFF4116B4),
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+
+                    Container(
+                      height: 50,
+                      width: 90,
+                      padding: EdgeInsets.only(left: 12, top: 15),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 1,
+                            blurRadius: 5,
+                            offset: Offset(0, 3), // Define a posição da sombra em relação ao container
+                          ),
+                        ],
+                      ),
+                      child: Text("10:10 am",
+                        style: TextStyle(
+                          color: Color(0xFF4116B4),
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+
+                    Container(
+                      height: 50,
+                      width: 90,
+                      padding: EdgeInsets.only(left: 12, top: 15),
+                      decoration: BoxDecoration(
+                        color: Colors.white,
+                        borderRadius: BorderRadius.circular(10),
+                        boxShadow: [
+                          BoxShadow(
+                            color: Colors.grey.withOpacity(0.5),
+                            spreadRadius: 1,
+                            blurRadius: 5,
+                            offset: Offset(0, 3), // Define a posição da sombra em relação ao container
+                          ),
+                        ],
+                      ),
+                      child: Text("10:10 am",
+                        style: TextStyle(
+                          color: Color(0xFF4116B4),
+                          fontWeight: FontWeight.bold,
+                        ),
+                      ),
+                    ),
+                  ]),
+
+              Padding(padding: EdgeInsets.all(5)),
+
+              Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Icon(MdiIcons.circle,
+                  color: Color(0xFF4116B4),
+                  size: 12,
+                  ),
+
+                  Text(" Agendado",
+                    style: TextStyle(
+                        fontSize: 12,
+                        color: Color(0xFF4116B4)
+                    ),),
+
+                  Padding(padding: EdgeInsets.only(left: 20)),
+
+                  Icon(MdiIcons.circle,
+                    color: Color(0xFFEC1212),
+                    size: 12,
+                  ),
+
+                  Text(" Cancelado",
+                    style: TextStyle(
+                        fontSize: 12,
+                        color: Color(0xFF4116B4)
+                    ),),
+
+                  Padding(padding: EdgeInsets.only(left: 20)),
+
+                  Icon(MdiIcons.circle,
+                    color: Color(0xFF12EC1A),
+                    size: 12,
+                  ),
+
+                  Text(" Concluidas",
+                    style: TextStyle(
+                        fontSize: 12,
+                        color: Color(0xFF4116B4)
+                    ),),
+
+
+                ],
               ),
 
 

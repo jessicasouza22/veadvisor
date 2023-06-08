@@ -9,6 +9,7 @@ import 'package:vetadvisor/fluxopesquisarapida/detalheDaPesquisaDermatiteAtopica
 import 'package:vetadvisor/fluxoprontuariodigital/cadastreOPet.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/perfilPaciente.dart';
 import 'package:vetadvisor/inicio.dart';
+import 'package:vetadvisor/minhaagenda/proximaConsulta.dart';
 import 'package:vetadvisor/recursos/Constants.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
@@ -127,11 +128,121 @@ class _HomeMinhaAgendaState extends State<HomeMinhaAgendaPage> {
                       size: 40,
                       color: Colors.pink,
                     ),
-                    Padding(padding: EdgeInsets.only(left: 11)),
-                    Text(
-                      "Agora com sua agenda inteligente você pode enviar\nenviar mensagem via whatsApp, ligar para o cliente\nou ainda reagendar caso alguem cancele ou tenha\nhorário de atendimento disponível.",
+                    Padding(padding: EdgeInsets.only(left: 11,top: 5)),
+                    Align(
+                      alignment: Alignment.center,
+                      child:
+                      Text("Agora com sua agenda inteligente você pode enviar\nenviar mensagem via whatsApp, ligar para o cliente\nou ainda reagendar caso alguem cancele ou tenha\nhorário de atendimento disponível.",
                       style: TextStyle(color: Color(0xff59616E), fontSize: 10, decoration: TextDecoration.none),
-                    )
+                    )),
+
+                    Padding(padding: EdgeInsets.all(10)),
+
+                    Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+
+                    Container(
+                     padding: EdgeInsets.all(12),
+                     margin:  EdgeInsets.only(left: 30),
+                     decoration: BoxDecoration(
+                     borderRadius: BorderRadius.circular(50),
+                     color: const Color(0xff7DC168),),
+                        child:
+                        Icon(MdiIcons.whatsapp,
+                        size: 30,
+                        color: Colors.white,
+                        )),
+
+                    Container(
+                            padding: const EdgeInsets.all(12),
+                            //  margin: const EdgeInsets.only(top: 10),decoration: BoxDecoration(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(50),
+                              color: const Color(0xFF3C10BB),),
+                            child:
+                            Icon(MdiIcons.phone,
+                              size: 30,
+                              color: Colors.white,
+                            )),
+
+                    Container(
+                            padding: const EdgeInsets.all(12),
+                            margin:  EdgeInsets.only(right: 30),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(50),
+                              color: const Color(0xFF3C10BB),),
+                            child:
+                            Icon(MdiIcons.calendarMonthOutline,
+                              size: 30,
+                              color: Colors.white,
+                            )),
+                      ],
+                    ),
+
+                    Padding(padding: EdgeInsets.all(5)),
+
+                    Row(
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      children: [
+
+                        Container(
+                            padding: EdgeInsets.all(5),
+                            margin:  EdgeInsets.only(left: 25),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: const Color(0xFF3C10BB),),
+                            child:
+                           Align(
+                             alignment: Alignment.center,
+                                child:Text(
+                              "WhatsApp",
+                              style: TextStyle(
+                                fontSize: 10,
+                                color: Colors.white,
+                                  decoration: TextDecoration.none
+                              )),
+                            )),
+
+                        Container(
+                            padding: EdgeInsets.all(5),
+                           // margin:  EdgeInsets.only(left: 5),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: const Color(0xFF3C10BB),),
+                            child:
+                            Center(
+                              child:Text(
+                                  "Ligar",
+                                  style: TextStyle(
+                                      fontSize: 10,
+                                      color: Colors.white,
+                                      decoration: TextDecoration.none
+                                  )),
+                            )),
+
+                        Container(
+                            padding: EdgeInsets.all(5),
+                            margin:  EdgeInsets.only(right: 15),
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(20),
+                              color: const Color(0xFF3C10BB),),
+                            child:
+                            Center(
+                              child:Text(
+                                  "Reagendar",
+                                  style: TextStyle(
+                                      fontSize: 10,
+                                      color: Colors.white,
+                                      decoration: TextDecoration.none
+                                  )),
+                            )),
+                      ]),
+
+
+
+
+
                   ],
                 ),
 
@@ -372,6 +483,8 @@ class _HomeMinhaAgendaState extends State<HomeMinhaAgendaPage> {
                           decoration: TextDecoration.none),
                     ),
 
+
+
                     ElevatedButton(
                         style: TextButton.styleFrom(
                           // padding: const EdgeInsets.only(top: 4, right: 10, left: 10, bottom: 4),
@@ -381,7 +494,13 @@ class _HomeMinhaAgendaState extends State<HomeMinhaAgendaPage> {
                               borderRadius: BorderRadius.circular(20)),
                           // Background Color
                         ),
-                        onPressed: () {}, child:
+                        onPressed: () {
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) => const ProximaConsulta()),
+                          );
+                        }, child:
 
                           Text("Ver todas",
                             style: TextStyle(

@@ -423,7 +423,8 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
                     borderRadius: BorderRadius.circular(50),
                     color: const Color(0xFF4116B4),
                   ),
-                  child: const Icon(
+                  child: const
+                  Icon(
                     Icons.add,
                     color: Colors.white,
                     size: 10,

@@ -129,12 +129,13 @@ class _HomeMinhaAgendaState extends State<HomeMinhaAgendaPage> {
                       color: Colors.pink,
                     ),
                     Padding(padding: EdgeInsets.only(left: 11,top: 5)),
-                    Align(
-                      alignment: Alignment.center,
-                      child:
-                      Text("Agora com sua agenda inteligente você pode enviar\nenviar mensagem via whatsApp, ligar para o cliente\nou ainda reagendar caso alguem cancele ou tenha\nhorário de atendimento disponível.",
-                      style: TextStyle(color: Color(0xff59616E), fontSize: 10, decoration: TextDecoration.none),
-                    )),
+
+                    Center(
+                        child:
+                        Text("Agora com sua agenda inteligente você pode enviar\nenviar mensagem via whatsApp, ligar para o cliente\nou ainda reagendar caso alguem cancele ou tenha\nhorário de atendimento disponível.",
+                          style: TextStyle(color: Color(0xff59616E), fontSize: 10, decoration: TextDecoration.none),
+                        )),
+
 
                     Padding(padding: EdgeInsets.all(10)),
 
@@ -483,30 +484,24 @@ class _HomeMinhaAgendaState extends State<HomeMinhaAgendaPage> {
                           decoration: TextDecoration.none),
                     ),
 
-
-
-                    ElevatedButton(
-                        style: TextButton.styleFrom(
-                          // padding: const EdgeInsets.only(top: 4, right: 10, left: 10, bottom: 4),
-
-                          backgroundColor: Colors.white,
-                          shape: RoundedRectangleBorder(
-                              borderRadius: BorderRadius.circular(20)),
-                          // Background Color
-                        ),
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) => const ProximaConsulta()),
-                          );
-                        }, child:
-
-                          Text("Ver todas",
+                    Builder(
+                      builder: (context) => ElevatedButton(
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) => const ProximaConsulta()),
+                            );
+                          },
+                          style: ElevatedButton.styleFrom(
+                              shape: const StadiumBorder(),
+                              backgroundColor: Colors.white),
+                          child: const Text("Ver todas",
                             style: TextStyle(
                               color: Color(0xFF8F90A6),
                               fontSize: 12,
-                            ),),),]),
+                            ),),
+                          ))]),
 
 
 

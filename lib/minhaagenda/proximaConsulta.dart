@@ -9,6 +9,7 @@ import 'package:vetadvisor/fluxopesquisarapida/detalheDaPesquisaDermatiteAtopica
 import 'package:vetadvisor/fluxoprontuariodigital/cadastreOPet.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/perfilPaciente.dart';
 import 'package:vetadvisor/inicio.dart';
+import 'package:vetadvisor/minhaagenda/atendimento.dart';
 import 'package:vetadvisor/recursos/Constants.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 
@@ -122,22 +123,24 @@ class _ProximaConsultaState extends State<ProximaConsultaPage> {
                               decoration: TextDecoration.none),
                         ),
 
-                        ElevatedButton(
-                          style: TextButton.styleFrom(
-                            // padding: const EdgeInsets.only(top: 4, right: 10, left: 10, bottom: 4),
-
-                            backgroundColor: Colors.white,
-                            shape: RoundedRectangleBorder(
-                                borderRadius: BorderRadius.circular(20)),
-                            // Background Color
-                          ),
-                          onPressed: () {}, child:
-
-                        Text("Ver todas",
-                          style: TextStyle(
-                            color: Color(0xFF8F90A6),
-                            fontSize: 12,
-                          ),),),]),
+                        Builder(
+                            builder: (context) => ElevatedButton(
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const Atendimento()),
+                                );
+                              },
+                              style: ElevatedButton.styleFrom(
+                                  shape: const StadiumBorder(),
+                                  backgroundColor: Colors.white),
+                              child: const Text("Ver todas",
+                                style: TextStyle(
+                                  color: Color(0xFF8F90A6),
+                                  fontSize: 12,
+                                ),),
+                            )),]),
 
 
 
@@ -221,6 +224,480 @@ class _ProximaConsultaState extends State<ProximaConsultaPage> {
                         ),]),
 
                   Padding(padding: EdgeInsets.all(10)),
+
+                  Row(
+                    children: [
+                      Column(
+                        children: [
+                          Icon(MdiIcons.circle,
+                          size: 12,
+                          color: Color(0xFF03B3F7),),
+                          Container(
+                            padding: EdgeInsets.zero,
+                            height: 80,
+                            width: 1,
+                            color: Color(0xffD8D8D8),
+                          ),
+
+                          Icon(MdiIcons.circle,
+                            size: 12,
+                            color: Color(0xFF01B87E),),
+                          Container(
+                            padding: EdgeInsets.zero,
+                            height: 80,
+                            width: 1,
+                            color: Color(0xffD8D8D8),
+                          ),
+
+                          Icon(MdiIcons.circle,
+                            size: 12,
+                            color: Color(0xFFC95656),),
+                          Container(
+                            padding: EdgeInsets.zero,
+                            height: 80,
+                            width: 1,
+                            color: Color(0xffD8D8D8),
+                          ),
+
+                          Icon(MdiIcons.circle,
+                            size: 12,
+                            color: Color(0xFF6461D5),),
+
+                        ],
+                      ),
+
+                      Column(
+                        children: [
+                          Container(
+                            padding: EdgeInsets.only(left: 10, top: 5,bottom: 5, right: 70),
+                            margin: EdgeInsets.only(left: 20),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(20),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey,
+                                  offset: Offset(0, 1), // Deslocamento horizontal e vertical da sombra
+                                  blurRadius: 1.0, // Raio do borrão da sombra
+                                  spreadRadius: 0.0, // Espalhamento da sombra
+                                ),
+                              ],
+                            ),
+                            child:
+                            Row(
+
+                              children: [
+                                Column(
+                              children: [
+                                Container(
+                                 decoration: BoxDecoration(
+                                 color: Colors.lightGreenAccent,
+                                 borderRadius: BorderRadius.circular(20),
+                                ),
+                                  child:
+                                  Container(
+
+                                      //margin: EdgeInsets.only(bottom: 10,right: 190),
+                                      padding: EdgeInsets.all(6),
+                                      decoration: BoxDecoration(
+                                      color: Color(0xFFD8E0E3),
+                                      borderRadius: BorderRadius.circular(10),
+                                    ),
+                                  child: Center(
+                                  child:
+                                  CircleAvatar(
+                                    radius: 20,
+                                    backgroundColor: Colors.pink,
+
+                                    child: ClipOval(
+
+                                      child:
+                                      Image.asset("imagens/rask.jpeg"),
+
+                                    ),
+                                  ))),
+                                ),
+                          ]),
+                                Padding(padding: EdgeInsets.only(left: 10)),
+                            Column(
+                                crossAxisAlignment: CrossAxisAlignment.start,
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Text("Jubinha, Shinauzer, 4 anos",
+                                    style: TextStyle(
+                                      fontSize: 12,
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold,
+                                    ),)
+                                  ],
+                                ),
+
+                                Padding(padding: EdgeInsets.all(2)),
+
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Text("Tutor: Luana",
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                        color: Color(0xFF82888A),
+
+                                      ),)
+                                  ],
+                                ),
+
+                                Padding(padding: EdgeInsets.all(2)),
+
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.start,
+                                  children: [
+                                    Icon(MdiIcons.alarmCheck,
+                                    color: Color(0xff12EC1A),
+                                    size: 14,),
+                                    Padding(padding: EdgeInsets.only(left: 5)),
+                                    Text("01:00 pm",
+                                      style: TextStyle(
+                                        fontSize: 12,
+                                        color: Color(0xFF82888A),
+
+                                      ),)
+                                  ],
+                                ),
+                              ]),
+                              ],
+                            ),
+
+
+                          ),
+
+                          Padding(padding: EdgeInsets.all(10)),
+
+                          Container(
+                            padding: EdgeInsets.only(left: 10, top: 5,bottom: 5, right: 70),
+                            margin: EdgeInsets.only(left: 20),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(20),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey,
+                                  offset: Offset(0, 1), // Deslocamento horizontal e vertical da sombra
+                                  blurRadius: 1.0, // Raio do borrão da sombra
+                                  spreadRadius: 0.0, // Espalhamento da sombra
+                                ),
+                              ],
+                            ),
+                            child:
+                            Row(
+
+                              children: [
+                                Column(
+                                    children: [
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          color: Colors.lightGreenAccent,
+                                          borderRadius: BorderRadius.circular(20),
+                                        ),
+                                        child:
+                                        Container(
+
+                                          //margin: EdgeInsets.only(bottom: 10,right: 190),
+                                            padding: EdgeInsets.all(6),
+                                            decoration: BoxDecoration(
+                                              color: Color(0xFFD8E0E3),
+                                              borderRadius: BorderRadius.circular(10),
+                                            ),
+                                            child: Center(
+                                                child:
+                                                CircleAvatar(
+                                                  radius: 20,
+                                                  backgroundColor: Colors.pink,
+
+                                                  child: ClipOval(
+
+                                                    child:
+                                                    Image.asset("imagens/rask.jpeg"),
+
+                                                  ),
+                                                ))),
+                                      ),
+                                    ]),
+                                Padding(padding: EdgeInsets.only(left: 10)),
+                                Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        children: [
+                                          Text("Jubinha, Shinauzer, 4 anos",
+                                            style: TextStyle(
+                                              fontSize: 12,
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.bold,
+                                            ),)
+                                        ],
+                                      ),
+
+                                      Padding(padding: EdgeInsets.all(2)),
+
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        children: [
+                                          Text("Tutor: Luana",
+                                            style: TextStyle(
+                                              fontSize: 12,
+                                              color: Color(0xFF82888A),
+
+                                            ),)
+                                        ],
+                                      ),
+
+                                      Padding(padding: EdgeInsets.all(2)),
+
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        children: [
+                                          Icon(MdiIcons.alarmCheck,
+                                            color: Color(0xff12EC1A),
+                                            size: 14,),
+                                          Padding(padding: EdgeInsets.only(left: 5)),
+                                          Text("01:00 pm",
+                                            style: TextStyle(
+                                              fontSize: 12,
+                                              color: Color(0xFF82888A),
+
+                                            ),)
+                                        ],
+                                      ),
+                                    ]),
+                              ],
+                            ),
+
+
+                          ),
+
+                          Padding(padding: EdgeInsets.all(10)),
+
+                          Container(
+                            padding: EdgeInsets.only(left: 10, top: 5,bottom: 5, right: 70),
+                            margin: EdgeInsets.only(left: 20),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(20),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey,
+                                  offset: Offset(0, 1), // Deslocamento horizontal e vertical da sombra
+                                  blurRadius: 1.0, // Raio do borrão da sombra
+                                  spreadRadius: 0.0, // Espalhamento da sombra
+                                ),
+                              ],
+                            ),
+                            child:
+                            Row(
+
+                              children: [
+                                Column(
+                                    children: [
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          color: Colors.lightGreenAccent,
+                                          borderRadius: BorderRadius.circular(20),
+                                        ),
+                                        child:
+                                        Container(
+
+                                          //margin: EdgeInsets.only(bottom: 10,right: 190),
+                                            padding: EdgeInsets.all(6),
+                                            decoration: BoxDecoration(
+                                              color: Color(0xFFD8E0E3),
+                                              borderRadius: BorderRadius.circular(10),
+                                            ),
+                                            child: Center(
+                                                child:
+                                                CircleAvatar(
+                                                  radius: 20,
+                                                  backgroundColor: Colors.pink,
+
+                                                  child: ClipOval(
+
+                                                    child:
+                                                    Image.asset("imagens/rask.jpeg"),
+
+                                                  ),
+                                                ))),
+                                      ),
+                                    ]),
+                                Padding(padding: EdgeInsets.only(left: 10)),
+                                Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        children: [
+                                          Text("Jubinha, Shinauzer, 4 anos",
+                                            style: TextStyle(
+                                              fontSize: 12,
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.bold,
+                                            ),)
+                                        ],
+                                      ),
+
+                                      Padding(padding: EdgeInsets.all(2)),
+
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        children: [
+                                          Text("Tutor: Luana",
+                                            style: TextStyle(
+                                              fontSize: 12,
+                                              color: Color(0xFF82888A),
+
+                                            ),)
+                                        ],
+                                      ),
+
+                                      Padding(padding: EdgeInsets.all(2)),
+
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        children: [
+                                          Icon(MdiIcons.alarmCheck,
+                                            color: Color(0xff12EC1A),
+                                            size: 14,),
+                                          Padding(padding: EdgeInsets.only(left: 5)),
+                                          Text("01:00 pm",
+                                            style: TextStyle(
+                                              fontSize: 12,
+                                              color: Color(0xFF82888A),
+
+                                            ),)
+                                        ],
+                                      ),
+                                    ]),
+                              ],
+                            ),
+
+
+                          ),
+
+                          Padding(padding: EdgeInsets.all(10)),
+
+                          Container(
+                            padding: EdgeInsets.only(left: 10, top: 5,bottom: 5, right: 70),
+                            margin: EdgeInsets.only(left: 20),
+                            decoration: BoxDecoration(
+                              color: Colors.white,
+                              borderRadius: BorderRadius.circular(20),
+                              boxShadow: [
+                                BoxShadow(
+                                  color: Colors.grey,
+                                  offset: Offset(0, 1), // Deslocamento horizontal e vertical da sombra
+                                  blurRadius: 1.0, // Raio do borrão da sombra
+                                  spreadRadius: 0.0, // Espalhamento da sombra
+                                ),
+                              ],
+                            ),
+                            child:
+                            Row(
+
+                              children: [
+                                Column(
+                                    children: [
+                                      Container(
+                                        decoration: BoxDecoration(
+                                          color: Colors.lightGreenAccent,
+                                          borderRadius: BorderRadius.circular(20),
+                                        ),
+                                        child:
+                                        Container(
+
+                                          //margin: EdgeInsets.only(bottom: 10,right: 190),
+                                            padding: EdgeInsets.all(6),
+                                            decoration: BoxDecoration(
+                                              color: Color(0xFFD8E0E3),
+                                              borderRadius: BorderRadius.circular(10),
+                                            ),
+                                            child: Center(
+                                                child:
+                                                CircleAvatar(
+                                                  radius: 20,
+                                                  backgroundColor: Colors.pink,
+
+                                                  child: ClipOval(
+
+                                                    child:
+                                                    Image.asset("imagens/rask.jpeg"),
+
+                                                  ),
+                                                ))),
+                                      ),
+                                    ]),
+                                Padding(padding: EdgeInsets.only(left: 10)),
+                                Column(
+                                    crossAxisAlignment: CrossAxisAlignment.start,
+                                    children: [
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        children: [
+                                          Text("Jubinha, Shinauzer, 4 anos",
+                                            style: TextStyle(
+                                              fontSize: 12,
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.bold,
+                                            ),)
+                                        ],
+                                      ),
+
+                                      Padding(padding: EdgeInsets.all(2)),
+
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        children: [
+                                          Text("Tutor: Luana",
+                                            style: TextStyle(
+                                              fontSize: 12,
+                                              color: Color(0xFF82888A),
+
+                                            ),)
+                                        ],
+                                      ),
+
+                                      Padding(padding: EdgeInsets.all(2)),
+
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        children: [
+                                          Icon(MdiIcons.alarmCheck,
+                                            color: Color(0xff12EC1A),
+                                            size: 14,),
+                                          Padding(padding: EdgeInsets.only(left: 5)),
+                                          Text("01:00 pm",
+                                            style: TextStyle(
+                                              fontSize: 12,
+                                              color: Color(0xFF82888A),
+
+                                            ),)
+                                        ],
+                                      ),
+                                    ]),
+                              ],
+                            ),
+
+
+                          ),
+
+
+                        ],
+                      )
+                    ],
+                  ),
+
+
+
 
 
 

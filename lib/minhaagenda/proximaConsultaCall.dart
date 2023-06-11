@@ -1,4 +1,5 @@
-// 1.6 Atendimento
+//1.7 Proxima Consulta Call
+
 
 import 'package:intl/intl.dart';
 import 'dart:io';
@@ -9,31 +10,33 @@ import 'package:vetadvisor/fluxopesquisarapida/detalheDaPesquisaDermatiteAtopica
 import 'package:vetadvisor/fluxoprontuariodigital/cadastreOPet.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/perfilPaciente.dart';
 import 'package:vetadvisor/inicio.dart';
-import 'package:vetadvisor/minhaagenda/proximaConsultaCall.dart';
 import 'package:vetadvisor/recursos/Constants.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import 'atendimento.dart';
 
-class Atendimento extends StatelessWidget {
-  const Atendimento({super.key});
+
+class ProximaConsultaCall extends StatelessWidget {
+  const ProximaConsultaCall({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const AtendimentoPage();
+    return const ProximaConsultaCallPage();
   }
 }
 
-class AtendimentoPage extends StatefulWidget {
-  const AtendimentoPage({Key? key}) : super(key: key);
+class ProximaConsultaCallPage extends StatefulWidget {
+  const ProximaConsultaCallPage({Key? key}) : super(key: key);
 
   @override
-  State<AtendimentoPage> createState() => _AtendimentoState();
+  State<ProximaConsultaCallPage> createState() => _ProximaConsultaCallState();
 }
 
-class _AtendimentoState extends State<AtendimentoPage> {
+class _ProximaConsultaCallState extends State<ProximaConsultaCallPage> {
 
 
+  String _nomeUsuarioLogado = "";
 
 
   @override
@@ -104,88 +107,124 @@ class _AtendimentoState extends State<AtendimentoPage> {
                         ],
                       )))
             ]),
-        body: SingleChildScrollView(
-            child: Column(children: [
-              Container(
-                margin: EdgeInsets.only(left: 10, right: 10, top: 30, bottom: 10),
-                padding: EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
-                decoration: BoxDecoration(color: Colors.white),
-                child: Column(children: [
+        body:
+
+        Container(
+        decoration: const BoxDecoration(
+        image: DecorationImage(
+        image: AssetImage('imagens/homeGeral.png'),
+        fit: BoxFit.fitWidth,
+        //colorFilter: new ColorFilter.mode(Cores.azulSafe.withOpacity(1), BlendMode.dstATop))
+                             ),
+                             ),
+        child: SingleChildScrollView(
+        child: Column(children: [
+
+          Padding(padding: EdgeInsets.all(20)),
 
 
-                  Container(
-                    margin: EdgeInsets.only(top: 30, left: 15),
-                    //padding: EdgeInsets.all(6),
+          Text("Incoming Call...",
+          style: TextStyle(
+            color: Colors.white,
+            fontSize: 10
+          ),),
 
-                      child: CircleAvatar(
-                        radius: 50, // raio do círculo
-                        backgroundImage: AssetImage('imagens/icone.png'),
-                        backgroundColor: Colors.blue, // cor de fundo do círculo
-                      )
+          Padding(padding: EdgeInsets.all(50)),
+
+          Container(
+
+              margin: EdgeInsets.only(left: 150, right: 150),
+              padding: EdgeInsets.all(5),
+              decoration: BoxDecoration(
+                color: Color(0xFFD8E0E3),
+                borderRadius: BorderRadius.circular(15),
+              ),
+              child: Center(
+                  child:
+                  CircleAvatar(
+                    radius: 30,
+                    backgroundColor: Colors.pink,
+
+                    child: ClipOval(
+
+                      child:
+                      Image.asset("imagens/uhtred.jpeg"),
+
+                    ),
+                  ))),
+
+          Text(
+            "$_nomeUsuarioLogado\n\n$_nomeUsuarioLogado Joao",
+            style: TextStyle(fontSize: 14, color: Colors.white),
+          ),
 
 
-                            ),
+
+          Padding(padding: EdgeInsets.all(20)),
 
 
-                  Padding(padding: EdgeInsets.all(30)),
+          Container(
+            padding: EdgeInsets.all(10),
+            margin: EdgeInsets.only(left: 50,right: 50),
+              decoration: BoxDecoration(
+              color: Colors.transparent.withOpacity(0.1),
+                borderRadius: BorderRadius.circular(30),
+              ),
+            child: Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
 
-                  Text("Atendimento",
-                  style: TextStyle(
-                    fontSize:20,
-                    //color: Color(0xff)
+                Container(
+                    padding: EdgeInsets.all(15),
+                    // margin:  EdgeInsets.only(left: 5),
+                    decoration: BoxDecoration(
+                      borderRadius: BorderRadius.circular(50),
+                      color: const Color(0xFFEE9393),),
+                    child:
+                    Icon(MdiIcons.phoneHangup,
+                    color: Colors.white,
+                    size: 30,
+                    ),),
+
+                Padding(padding: EdgeInsets.only(left: 10)),
+
+                Container(
+                  padding: EdgeInsets.all(15),
+                  // margin:  EdgeInsets.only(left: 5),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(50),
+                    color: const Color(0xFF34A853),),
+                  child:
+                  Icon(MdiIcons.phone,
+                    color: Colors.white,
+                    size: 30,
                   ),),
 
+                Padding(padding: EdgeInsets.only(left: 10)),
 
-                  Padding(padding: EdgeInsets.all(30)),
+                Container(
+                  padding: EdgeInsets.all(15),
+                  // margin:  EdgeInsets.only(left: 5),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(50),
+                    color: Colors.white),
+                  child:
+                  Icon(MdiIcons.messageReplyTextOutline,
+                    color: Color(0xff4116B4),
+                    size: 30,
+                  ),),
 
-
-                  Builder(
-                    builder: (context) => ElevatedButton(
-                        style: ElevatedButton.styleFrom(
-                            shape: const StadiumBorder(),
-                            backgroundColor: Colors.green),
-                        onPressed: () {
-                          Navigator.push(
-                            context,
-                            MaterialPageRoute(
-                                builder: (context) =>
-                                const ProximaConsultaCall()),
-                          );
-                        },
-                        child: const Text(
-                          'Iniciar Conversa',
-                          style: TextStyle(color: Colors.white),
-                        )),
-                  ),
-
-                  const Divider(
-                    color: Color(0xFF979797),
-                    thickness: 0.8,
-                    endIndent: 0,
-                    indent: 0,
-                  ),
-
-                  Padding(padding: EdgeInsets.all(20)),
-
-                  Text("Ainda nao tem WhatsApp?",
-                    style: TextStyle(
-                      fontSize:18,
-                      //color: Color(0xff)
-                    ),),
-
-                  TextButton(
-
-                    child: Text('Baixar',
-                    style: TextStyle(
-                      fontSize: 18
-                    ),),
-                    onPressed: _launchURL,
-                  ),
+              ],
+            ),
+          ),
 
 
 
 
 
+
+
+          Padding(padding: EdgeInsets.all(20)),
 
 
 
@@ -231,14 +270,7 @@ class _AtendimentoState extends State<AtendimentoPage> {
                   ),
                 ]),
               )
-            ])));
+    ));
   }
 }
-_launchURL() async {
-  const url = 'https://www.whatsapp.com/download/';
-  if (await canLaunch(url)) {
-    await launch(url);
-  } else {
-    throw 'Não foi possível abrir a URL: $url';
-  }
-}
+

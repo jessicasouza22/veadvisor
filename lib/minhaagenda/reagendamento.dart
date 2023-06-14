@@ -16,6 +16,20 @@ import 'package:url_launcher/url_launcher.dart';
 
 import 'atendimento.dart';
 
+List<String> meses = [
+  'Janeiro',
+  'Fevereiro',
+  'Março',
+  'Abril',
+  'Maio',
+  'Junho',
+  'Julho',
+  'Agosto',
+  'Setembro',
+  'Outubro',
+  'Novembro',
+  'Dezembro',
+];
 
 class Reagendamento extends StatelessWidget {
   const Reagendamento({super.key});
@@ -37,7 +51,7 @@ class _ReagendamentoState extends State<ReagendamentoPage> {
 
 
   String _nomeUsuarioLogado = "";
-
+  String? selecioneMes;
 
   @override
   Widget build(BuildContext context) {
@@ -107,118 +121,224 @@ class _ReagendamentoState extends State<ReagendamentoPage> {
                         ],
                       )))
             ]),
-        body:
-
-        Container(
-            decoration: const BoxDecoration(
-              image: DecorationImage(
-                image: AssetImage('imagens/homeGeral.png'),
-                fit: BoxFit.fitWidth,
-                //colorFilter: new ColorFilter.mode(Cores.azulSafe.withOpacity(1), BlendMode.dstATop))
-              ),
-            ),
-            child: SingleChildScrollView(
+        body: SingleChildScrollView(
               child: Column(children: [
 
-                Padding(padding: EdgeInsets.all(20)),
+               Container(
+                 margin: EdgeInsets.only(top: 5),
+                 padding: EdgeInsets.all(5),
+                 child: Row(
+                   mainAxisAlignment: MainAxisAlignment.center,
+                   children: [
+                     Container(
+                       decoration: BoxDecoration(
+                       color: Color(0xFF12EC1A)
+                       ),
+                       child: Icon(
+                         MdiIcons.circleOutline,
+                         size: 18,
+                       ),
+                     ),
+                     Padding(padding: EdgeInsets.only(left: 10)),
+                     Text("Reagendar com outro especialista",
+                     style: TextStyle(
+                       color: Color(0xff4116B4),
+                       fontSize: 16
+                     ),)
+                   ],
+                 ),
+               ),
+
+                Padding(padding: EdgeInsets.all(10)),
+
+                Row(
 
 
-                Text("Incoming Call...",
-                  style: TextStyle(
-                      color: Colors.white,
-                      fontSize: 10
-                  ),),
+                  children: [
+                    Column(
+                        children: [
 
-                Padding(padding: EdgeInsets.all(50)),
+                            Container(
 
-                Container(
+                                margin: EdgeInsets.only(left: 20),
+                                padding: EdgeInsets.all(6),
+                                decoration: BoxDecoration(
+                                  color: Colors.white,
+                                  borderRadius: BorderRadius.circular(50),
+                                  border: Border.all(
+                                    color: Color(0xff4116B4),  // Cor rosa para a borda
+                                    width: 2,  // Espessura da borda
+                                  ),
+                                ),
+                                child: Center(
+                                    child:
+                                    CircleAvatar(
+                                      radius: 20,
+                                      backgroundColor: Colors.transparent,
 
-                    margin: EdgeInsets.only(left: 150, right: 150),
-                    padding: EdgeInsets.all(5),
-                    decoration: BoxDecoration(
-                      color: Color(0xFFD8E0E3),
-                      borderRadius: BorderRadius.circular(15),
-                    ),
-                    child: Center(
-                        child:
-                        CircleAvatar(
-                          radius: 30,
-                          backgroundColor: Colors.pink,
+                                      child: ClipOval(
 
-                          child: ClipOval(
+                                        child:
+                                        Image.asset("imagens/rask.jpeg"),
 
-                            child:
-                            Image.asset("imagens/uhtred.jpeg"),
+                                      ),
+                                    ))),
 
+                        ]),
+                    Padding(padding: EdgeInsets.only(left: 10)),
+                    Column(
+                        crossAxisAlignment: CrossAxisAlignment.start,
+                        children: [
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Text("Dr. Laurenzo ",
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: Colors.black,
+                                  fontWeight: FontWeight.bold,
+                                ),)
+                            ],
                           ),
-                        ))),
 
-                Text(
-                  "$_nomeUsuarioLogado\n\n$_nomeUsuarioLogado Joao",
-                  style: TextStyle(fontSize: 14, color: Colors.white),
+                          Padding(padding: EdgeInsets.all(2)),
+
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+                              Text("Clínico Geral - CRM 00532 ",
+                                style: TextStyle(
+                                  fontSize: 12,
+                                  color: Color(0xFF82888A),
+
+                                ),)
+                            ],
+                          ),
+
+                          Padding(padding: EdgeInsets.all(2)),
+
+                          Row(
+                            mainAxisAlignment: MainAxisAlignment.start,
+                            children: [
+
+                              Text("150,00 da consulta",
+                                style: TextStyle(
+                                  fontSize: 10,
+                                  color: Color(0xFF82888A),
+
+                                ),),
+
+                              Icon(Icons.star,
+                              size: 10,
+                              color: Color(0xffFFC817)),
+
+
+                              Text("(5.0)",
+                                style: TextStyle(
+                                  fontSize: 10,
+                                  color: Color(0xFF82888A),
+
+                                ),),
+
+
+
+
+                            ],
+                          ),
+                        ]),
+                  ],
                 ),
 
-
-
-                Padding(padding: EdgeInsets.all(20)),
-
-
                 Container(
-                  padding: EdgeInsets.all(10),
-                  margin: EdgeInsets.only(left: 50,right: 50),
-                  decoration: BoxDecoration(
-                    color: Colors.transparent.withOpacity(0.1),
-                    borderRadius: BorderRadius.circular(30),
-                  ),
+                  margin: EdgeInsets.only(top: 5),
+                  padding: EdgeInsets.all(5),
                   child: Row(
-                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    mainAxisAlignment: MainAxisAlignment.center,
                     children: [
-
                       Container(
-                        padding: EdgeInsets.all(15),
-                        // margin:  EdgeInsets.only(left: 5),
                         decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
-                          color: const Color(0xFFEE9393),),
-                        child:
-                        Icon(MdiIcons.phoneHangup,
-                          color: Colors.white,
-                          size: 30,
-                        ),),
-
+                            color: Colors.white
+                        ),
+                        child: Icon(
+                          MdiIcons.circleOutline,
+                          size: 18,
+                        ),
+                      ),
                       Padding(padding: EdgeInsets.only(left: 10)),
-
-                      Container(
-                        padding: EdgeInsets.all(15),
-                        // margin:  EdgeInsets.only(left: 5),
-                        decoration: BoxDecoration(
-                          borderRadius: BorderRadius.circular(50),
-                          color: const Color(0xFF34A853),),
-                        child:
-                        Icon(MdiIcons.phone,
-                          color: Colors.white,
-                          size: 30,
-                        ),),
-
-                      Padding(padding: EdgeInsets.only(left: 10)),
-
-                      Container(
-                        padding: EdgeInsets.all(15),
-                        // margin:  EdgeInsets.only(left: 5),
-                        decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(50),
-                            color: Colors.white),
-                        child:
-                        Icon(MdiIcons.messageReplyTextOutline,
-                          color: Color(0xff4116B4),
-                          size: 30,
-                        ),),
-
+                      Text("Reagendar com outro especialista",
+                        style: TextStyle(
+                            color: Color(0xff4116B4),
+                            fontSize: 16
+                        ),)
                     ],
                   ),
                 ),
 
+                Text("Qual procedimento você\nquer reagendar?",
+                    textAlign: TextAlign.center),
 
+                Container(
+                  margin: EdgeInsets.only(top: 5),
+                  padding: EdgeInsets.all(5),
+                  child: Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                        decoration: BoxDecoration(
+                            color: Color(0xFF12EC1A)
+                        ),
+                        child: Icon(
+                          MdiIcons.circleOutline,
+                          size: 14,
+                        ),
+                      ),
+                      Padding(padding: EdgeInsets.only(left: 10)),
+                      Text("Consultas",
+                        style: TextStyle(
+                            color: Color(0xff59616E),
+                            fontSize: 16
+                        ),)
+                    ],
+                  ),
+                ),
+
+                Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                  Expanded(
+                      child: DropdownButton<String>(
+                        value: selecioneMes,
+                        underline: Container(
+                          height: 0,
+                          color: Colors.transparent,
+                        ),
+                        hint: const Text('Mes',
+                        style: TextStyle(
+                          color: Color(0xff4116B4),
+                        ),),
+                        onChanged: (value) {
+                          setState(() {
+                            selecioneMes;
+                          });
+                        },
+                        icon: Icon(
+                          Icons.arrow_drop_down, // Ícone padrão da seta para baixo
+                          color: Color(0xff4116B4), // Cor personalizada da seta
+                        ),
+                        items: meses.map<DropdownMenuItem<String>>(
+                              (String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            );
+                          },
+                        ).toList(),
+                      )),
+
+                  Padding(padding: EdgeInsets.all(5)),
+                                    // SizedBox(height: 16),
+                ]),
+
+               
+                
 
 
 
@@ -270,7 +390,7 @@ class _ReagendamentoState extends State<ReagendamentoPage> {
                 ),
               ]),
             )
-        ));
+        );
   }
 }
 

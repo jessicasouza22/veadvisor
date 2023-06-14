@@ -10,6 +10,7 @@ import 'package:vetadvisor/fluxopesquisarapida/detalheDaPesquisaDermatiteAtopica
 import 'package:vetadvisor/fluxoprontuariodigital/cadastreOPet.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/perfilPaciente.dart';
 import 'package:vetadvisor/inicio.dart';
+import 'package:vetadvisor/minhaagenda/reagendamento.dart';
 import 'package:vetadvisor/recursos/Constants.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -209,10 +210,29 @@ class _ProximaConsultaCallState extends State<ProximaConsultaCallPage> {
                     borderRadius: BorderRadius.circular(50),
                     color: Colors.white),
                   child:
-                  Icon(MdiIcons.messageReplyTextOutline,
-                    color: Color(0xff4116B4),
-                    size: 30,
-                  ),),
+
+                  Builder(
+                    builder: (context) => IconButton(
+                        style: ElevatedButton.styleFrom(
+                            shape: const StadiumBorder(),
+                            backgroundColor: Colors.green),
+                        onPressed: () {
+
+                          Navigator.push(
+                            context,
+                            MaterialPageRoute(
+                                builder: (context) =>
+                                const Reagendamento()),
+                          );
+                          print("Foi");
+                        },
+                        icon:  Icon(MdiIcons.messageReplyTextOutline,
+                          color: Color(0xff4116B4),
+                          size: 30,
+                        ),)),
+                  ),
+
+
 
               ],
             ),

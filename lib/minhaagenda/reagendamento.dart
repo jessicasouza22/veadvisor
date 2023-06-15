@@ -10,6 +10,8 @@ import 'package:vetadvisor/fluxopesquisarapida/detalheDaPesquisaDermatiteAtopica
 import 'package:vetadvisor/fluxoprontuariodigital/cadastreOPet.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/perfilPaciente.dart';
 import 'package:vetadvisor/inicio.dart';
+import 'package:vetadvisor/minhaagenda/proximaConsultaCall.dart';
+import 'package:vetadvisor/minhaagenda/reagendamento02.dart';
 import 'package:vetadvisor/recursos/Constants.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:url_launcher/url_launcher.dart';
@@ -370,6 +372,318 @@ class _ReagendamentoState extends State<ReagendamentoPage> {
                 ]),
 
               Padding(padding: EdgeInsets.all(20)),
+
+
+                const Divider(
+                  color: Color(0xFF979797),
+                  thickness: 0.8,
+                  endIndent: 0,
+                  indent: 0,
+                ),
+
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("Período manha",
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Color(0xFF4116B4)
+                        ),),]),
+
+                Padding(padding: EdgeInsets.all(5)),
+
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+
+                      Container(
+                        height: 50,
+                        width: 90,
+                        padding: EdgeInsets.only(left: 12, top: 15),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 1,
+                              blurRadius: 5,
+                              offset: Offset(0, 3), // Define a posição da sombra em relação ao container
+                            ),
+                          ],
+                        ),
+                        child: Text("10:10 am",
+                          style: TextStyle(
+                            color: Color(0xFF4116B4),
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+
+                      Container(
+                        height: 50,
+                        width: 90,
+                        padding: EdgeInsets.only(left: 12, top: 15),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 1,
+                              blurRadius: 5,
+                              offset: Offset(0, 3), // Define a posição da sombra em relação ao container
+                            ),
+                          ],
+                        ),
+                        child: Text("10:10 am",
+                          style: TextStyle(
+                            color: Color(0xFF4116B4),
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+
+                      Container(
+                        height: 50,
+                        width: 90,
+                        padding: EdgeInsets.only(left: 12, top: 15),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 1,
+                              blurRadius: 5,
+                              offset: Offset(0, 3), // Define a posição da sombra em relação ao container
+                            ),
+                          ],
+                        ),
+                        child: Text("10:10 am",
+                          style: TextStyle(
+                            color: Color(0xFF4116B4),
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ]),
+
+                const Divider(
+                  color: Color(0xFF979797),
+                  thickness: 0.8,
+                  endIndent: 0,
+                  indent: 0,
+                ),
+
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("Período da tarde",
+                        style: TextStyle(
+                            fontSize: 20,
+
+                            color: Color(0xFF4116B4)
+                        ),),]),
+
+                Padding(padding: EdgeInsets.all(5)),
+
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+
+                      Container(
+                        height: 50,
+                        width: 90,
+                        padding: EdgeInsets.only(left: 12, top: 15),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 1,
+                              blurRadius: 5,
+                              offset: Offset(0, 3), // Define a posição da sombra em relação ao container
+                            ),
+                          ],
+                        ),
+                        child: Text("10:10 am",
+                          style: TextStyle(
+                            color: Color(0xFF4116B4),
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+
+                      Container(
+                        height: 50,
+                        width: 90,
+                        padding: EdgeInsets.only(left: 12, top: 15),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 1,
+                              blurRadius: 5,
+                              offset: Offset(0, 3), // Define a posição da sombra em relação ao container
+                            ),
+                          ],
+                        ),
+                        child: Text("10:10 am",
+                          style: TextStyle(
+                            color: Color(0xFF4116B4),
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+
+                      Container(
+                        height: 50,
+                        width: 90,
+                        padding: EdgeInsets.only(left: 12, top: 15),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 1,
+                              blurRadius: 5,
+                              offset: Offset(0, 3), // Define a posição da sombra em relação ao container
+                            ),
+                          ],
+                        ),
+                        child: Text("10:10 am",
+                          style: TextStyle(
+                            color: Color(0xFF4116B4),
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ]),
+
+                Padding(padding: EdgeInsets.all(5)),
+
+                const Divider(
+                  color: Color(0xFF979797),
+                  thickness: 0.8,
+                  endIndent: 0,
+                  indent: 0,
+                ),
+
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      Text("Período noturno",
+                        style: TextStyle(
+                            fontSize: 20,
+                            color: Color(0xFF4116B4)
+                        ),),]),
+
+                Padding(padding: EdgeInsets.all(5)),
+
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+
+                      Container(
+                        height: 50,
+                        width: 90,
+                        padding: EdgeInsets.only(left: 12, top: 15),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 1,
+                              blurRadius: 5,
+                              offset: Offset(0, 3), // Define a posição da sombra em relação ao container
+                            ),
+                          ],
+                        ),
+                        child: Text("10:10 am",
+                          style: TextStyle(
+                            color: Color(0xFF4116B4),
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+
+                      Container(
+                        height: 50,
+                        width: 90,
+                        padding: EdgeInsets.only(left: 12, top: 15),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 1,
+                              blurRadius: 5,
+                              offset: Offset(0, 3), // Define a posição da sombra em relação ao container
+                            ),
+                          ],
+                        ),
+                        child: Text("10:10 am",
+                          style: TextStyle(
+                            color: Color(0xFF4116B4),
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+
+                      Container(
+                        height: 50,
+                        width: 90,
+                        padding: EdgeInsets.only(left: 12, top: 15),
+                        decoration: BoxDecoration(
+                          color: Colors.white,
+                          borderRadius: BorderRadius.circular(10),
+                          boxShadow: [
+                            BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 1,
+                              blurRadius: 5,
+                              offset: Offset(0, 3), // Define a posição da sombra em relação ao container
+                            ),
+                          ],
+                        ),
+                        child: Text("10:10 am",
+                          style: TextStyle(
+                            color: Color(0xFF4116B4),
+                            fontWeight: FontWeight.bold,
+                          ),
+                        ),
+                      ),
+                    ]),
+
+                Padding(padding: EdgeInsets.all(5)),
+
+                Builder(
+                  builder: (context) => ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          shape: const StadiumBorder(),
+                          backgroundColor: Color(0xff12EC1A)),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                              const Reagendamento02()),
+                        );
+                      },
+                      child: const Text(
+                        'Iniciar Conversa',
+                        style: TextStyle(color: Color(0xff1A3D8E)),
+                      )),
+                ),
+
+
 
 
 

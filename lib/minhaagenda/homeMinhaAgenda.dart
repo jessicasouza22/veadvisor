@@ -812,6 +812,7 @@ class _HomeMinhaAgendaState extends State<HomeMinhaAgendaPage> {
                     Text("Período da tarde",
                       style: TextStyle(
                           fontSize: 20,
+
                           color: Color(0xFF4116B4)
                       ),),]),
 

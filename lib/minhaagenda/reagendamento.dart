@@ -53,6 +53,8 @@ class _ReagendamentoState extends State<ReagendamentoPage> {
   String _nomeUsuarioLogado = "";
   String? selecioneMes;
 
+  DateTime _selectedDate = DateTime.now();
+
   @override
   Widget build(BuildContext context) {
     return Scaffold(
@@ -124,7 +126,7 @@ class _ReagendamentoState extends State<ReagendamentoPage> {
         body: SingleChildScrollView(
               child: Column(children: [
 
-               Container(
+                Container(
                  margin: EdgeInsets.only(top: 5),
                  padding: EdgeInsets.all(5),
                  child: Row(
@@ -333,18 +335,44 @@ class _ReagendamentoState extends State<ReagendamentoPage> {
                         ).toList(),
                       )),
 
+                  Expanded(
+                      child: DropdownButton<String>(
+                        value: selecioneMes,
+                        underline: Container(
+                          height: 0,
+                          color: Colors.transparent,
+                        ),
+                        hint: const Text('Mes',
+                          style: TextStyle(
+                            color: Color(0xff4116B4),
+                          ),),
+                        onChanged: (value) {
+                          setState(() {
+                            selecioneMes;
+                          });
+                        },
+                        icon: Icon(
+                          Icons.arrow_drop_down, // Ícone padrão da seta para baixo
+                          color: Color(0xff4116B4), // Cor personalizada da seta
+                        ),
+                        items: meses.map<DropdownMenuItem<String>>(
+                              (String value) {
+                            return DropdownMenuItem<String>(
+                              value: value,
+                              child: Text(value),
+                            );
+                          },
+                        ).toList(),
+                      )),
+
                   Padding(padding: EdgeInsets.all(5)),
                                     // SizedBox(height: 16),
                 ]),
 
-               
-                
+              Padding(padding: EdgeInsets.all(20)),
 
 
 
-
-
-                Padding(padding: EdgeInsets.all(20)),
 
 
 
@@ -392,5 +420,16 @@ class _ReagendamentoState extends State<ReagendamentoPage> {
             )
         );
   }
+
+  int _getDaysInMonth(int year, int month) {
+    if (month == 12) {
+      return 31;
+    } else {
+      return DateTime(year, month + 1, 0).day;
+    }
+  }
+
+
+
 }
 

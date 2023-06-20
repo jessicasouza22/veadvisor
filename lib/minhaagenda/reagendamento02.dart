@@ -11,10 +11,12 @@ import 'package:vetadvisor/fluxoprontuariodigital/cadastreOPet.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/perfilPaciente.dart';
 import 'package:vetadvisor/inicio.dart';
 import 'package:vetadvisor/minhaagenda/proximaConsultaCall.dart';
+import 'package:vetadvisor/minhaagenda/resumoDoReagendamento.dart';
 import 'package:vetadvisor/recursos/Constants.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:url_launcher/url_launcher.dart';
 
+import '../fluxoprontuariodigital/novaConsulta.dart';
 import 'atendimento.dart';
 
 List<String> meses = [
@@ -272,7 +274,7 @@ class _Reagendamento02State extends State<Reagendamento02Page> {
                     crossAxisAlignment: CrossAxisAlignment.start,
                     children: [
                       Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
                         children: [
                           Text("Dr. Laurenzo ",
                             style: TextStyle(
@@ -280,6 +282,8 @@ class _Reagendamento02State extends State<Reagendamento02Page> {
                               color: Colors.black,
                               fontWeight: FontWeight.bold,
                             ),),
+
+                          Padding(padding: EdgeInsets.only(left: 85)),
                           Icon(Icons.star,
                               size: 10,
                               color: Color(0xffFFC817)),
@@ -292,7 +296,7 @@ class _Reagendamento02State extends State<Reagendamento02Page> {
                               )),
 
                           Icon(MdiIcons.chevronRight,
-                              size: 20,
+                              size: 30,
                               color: Color(0xff979797)),
 
 
@@ -376,30 +380,442 @@ class _Reagendamento02State extends State<Reagendamento02Page> {
               ],
             ),
 
-            Container(
-              margin: EdgeInsets.only(top: 5),
-              padding: EdgeInsets.all(5),
-              child: Row(
-                mainAxisAlignment: MainAxisAlignment.center,
-                children: [
-                  Container(
-                    decoration: BoxDecoration(
-                        color: Colors.white
-                    ),
-                    child: Icon(
-                      MdiIcons.circleOutline,
-                      size: 18,
-                    ),
-                  ),
-                  Padding(padding: EdgeInsets.only(left: 10)),
-                  Text("Reagendar com outro especialista",
-                    style: TextStyle(
-                        color: Color(0xff4116B4),
-                        fontSize: 16
-                    ),)
-                ],
-              ),
+            Row(
+
+
+              children: [
+                Column(
+                    children: [
+
+                      Container(
+
+                          margin: EdgeInsets.only(left: 20),
+                          padding: EdgeInsets.all(6),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(50),
+                            border: Border.all(
+                              color: Color(0xff4116B4),  // Cor rosa para a borda
+                              width: 2,  // Espessura da borda
+                            ),
+                          ),
+                          child: Center(
+                              child:
+                              CircleAvatar(
+                                radius: 20,
+                                backgroundColor: Colors.transparent,
+
+                                child: ClipOval(
+
+                                  child:
+                                  Image.asset("imagens/rask.jpeg"),
+
+                                ),
+                              ))),
+
+                    ]),
+                Padding(padding: EdgeInsets.only(left: 10)),
+                Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Text("Dr. Laurenzo ",
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),),
+
+                          Padding(padding: EdgeInsets.only(left: 85)),
+                          Icon(Icons.star,
+                              size: 10,
+                              color: Color(0xffFFC817)),
+
+                          Text("7 avaliacoes",
+                              style: TextStyle(
+                                fontSize: 10,
+                                color: Color(0xFF82888A),
+
+                              )),
+
+                          Icon(MdiIcons.chevronRight,
+                              size: 30,
+                              color: Color(0xff979797)),
+
+
+
+                        ],
+                      ),
+
+                      Padding(padding: EdgeInsets.all(2)),
+
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text("Clínico Geral - CRM 00532 ",
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Color(0xFF82888A),
+
+                            ),),
+                          Icon(MdiIcons.mapMarkerOutline),
+                          Text("3 km de você",
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Color(0xFF82888A),
+
+                            ),),
+
+
+
+
+
+
+
+
+                        ],
+                      ),
+
+                      Padding(padding: EdgeInsets.all(2)),
+
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+
+                          Text("150,00 da consulta",
+                            style: TextStyle(
+                              fontSize: 10,
+                              color: Color(0xFF82888A),
+
+                            ),),
+
+
+                        ],
+                      ),
+
+                      Padding(padding: EdgeInsets.all(2)),
+
+                      SizedBox(
+                        height: 15,
+                        width: 120,
+                        child:
+                        Builder(
+                          builder: (context) => ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  shape: const StadiumBorder(),
+                                  backgroundColor: Color(0xff12EC1A)),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                      const ProximaConsultaCall()),
+                                );
+                              },
+                              child: const Text(
+                                'Agendar consulta',
+                                style: TextStyle(color: Color(0xff1A3D8E), fontSize: 10),
+                              )),
+                        ),),
+
+
+                    ]),
+              ],
             ),
+
+            Row(
+
+
+              children: [
+                Column(
+                    children: [
+
+                      Container(
+
+                          margin: EdgeInsets.only(left: 20),
+                          padding: EdgeInsets.all(6),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(50),
+                            border: Border.all(
+                              color: Color(0xff4116B4),  // Cor rosa para a borda
+                              width: 2,  // Espessura da borda
+                            ),
+                          ),
+                          child: Center(
+                              child:
+                              CircleAvatar(
+                                radius: 20,
+                                backgroundColor: Colors.transparent,
+
+                                child: ClipOval(
+
+                                  child:
+                                  Image.asset("imagens/rask.jpeg"),
+
+                                ),
+                              ))),
+
+                    ]),
+                Padding(padding: EdgeInsets.only(left: 10)),
+                Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Text("Dr. Laurenzo ",
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),),
+
+                          Padding(padding: EdgeInsets.only(left: 85)),
+                          Icon(Icons.star,
+                              size: 10,
+                              color: Color(0xffFFC817)),
+
+                          Text("7 avaliacoes",
+                              style: TextStyle(
+                                fontSize: 10,
+                                color: Color(0xFF82888A),
+
+                              )),
+
+                          Icon(MdiIcons.chevronRight,
+                              size: 30,
+                              color: Color(0xff979797)),
+
+
+
+                        ],
+                      ),
+
+                      Padding(padding: EdgeInsets.all(2)),
+
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text("Clínico Geral - CRM 00532 ",
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Color(0xFF82888A),
+
+                            ),),
+                          Icon(MdiIcons.mapMarkerOutline),
+                          Text("3 km de você",
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Color(0xFF82888A),
+
+                            ),),
+
+
+
+
+
+
+
+
+                        ],
+                      ),
+
+                      Padding(padding: EdgeInsets.all(2)),
+
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+
+                          Text("150,00 da consulta",
+                            style: TextStyle(
+                              fontSize: 10,
+                              color: Color(0xFF82888A),
+
+                            ),),
+
+
+                        ],
+                      ),
+
+                      Padding(padding: EdgeInsets.all(2)),
+
+                      SizedBox(
+                        height: 15,
+                        width: 120,
+                        child:
+                        Builder(
+                          builder: (context) => ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  shape: const StadiumBorder(),
+                                  backgroundColor: Color(0xff12EC1A)),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                      const ProximaConsultaCall()),
+                                );
+                              },
+                              child: const Text(
+                                'Agendar consulta',
+                                style: TextStyle(color: Color(0xff1A3D8E), fontSize: 10),
+                              )),
+                        ),),
+
+
+                    ]),
+              ],
+            ),
+
+            Row(
+
+
+              children: [
+                Column(
+                    children: [
+
+                      Container(
+
+                          margin: EdgeInsets.only(left: 20),
+                          padding: EdgeInsets.all(6),
+                          decoration: BoxDecoration(
+                            color: Colors.white,
+                            borderRadius: BorderRadius.circular(50),
+                            border: Border.all(
+                              color: Color(0xff4116B4),  // Cor rosa para a borda
+                              width: 2,  // Espessura da borda
+                            ),
+                          ),
+                          child: Center(
+                              child:
+                              CircleAvatar(
+                                radius: 20,
+                                backgroundColor: Colors.transparent,
+
+                                child: ClipOval(
+
+                                  child:
+                                  Image.asset("imagens/rask.jpeg"),
+
+                                ),
+                              ))),
+
+                    ]),
+                Padding(padding: EdgeInsets.only(left: 10)),
+                Column(
+                    crossAxisAlignment: CrossAxisAlignment.start,
+                    children: [
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceEvenly,
+                        children: [
+                          Text("Dr. Laurenzo ",
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Colors.black,
+                              fontWeight: FontWeight.bold,
+                            ),),
+
+                          Padding(padding: EdgeInsets.only(left: 85)),
+                          Icon(Icons.star,
+                              size: 10,
+                              color: Color(0xffFFC817)),
+
+                          Text("7 avaliacoes",
+                              style: TextStyle(
+                                fontSize: 10,
+                                color: Color(0xFF82888A),
+
+                              )),
+
+                          Icon(MdiIcons.chevronRight,
+                              size: 30,
+                              color: Color(0xff979797)),
+
+
+
+                        ],
+                      ),
+
+                      Padding(padding: EdgeInsets.all(2)),
+
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+                          Text("Clínico Geral - CRM 00532 ",
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Color(0xFF82888A),
+
+                            ),),
+                          Icon(MdiIcons.mapMarkerOutline),
+                          Text("3 km de você",
+                            style: TextStyle(
+                              fontSize: 12,
+                              color: Color(0xFF82888A),
+
+                            ),),
+
+
+
+
+
+
+
+
+                        ],
+                      ),
+
+                      Padding(padding: EdgeInsets.all(2)),
+
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.start,
+                        children: [
+
+                          Text("150,00 da consulta",
+                            style: TextStyle(
+                              fontSize: 10,
+                              color: Color(0xFF82888A),
+
+                            ),),
+
+
+                        ],
+                      ),
+
+                      Padding(padding: EdgeInsets.all(2)),
+
+                      SizedBox(
+                        height: 15,
+                        width: 120,
+                        child:
+                        Builder(
+                          builder: (context) => ElevatedButton(
+                              style: ElevatedButton.styleFrom(
+                                  shape: const StadiumBorder(),
+                                  backgroundColor: Color(0xff12EC1A)),
+                              onPressed: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) =>
+                                      const ProximaConsultaCall()),
+                                );
+                              },
+                              child: const Text(
+                                'Agendar consulta',
+                                style: TextStyle(color: Color(0xff1A3D8E), fontSize: 10),
+                              )),
+                        ),),
+
+
+                    ]),
+              ],
+            ),
+
+            Padding(padding: EdgeInsets.all(10)),
 
             Text("Qual procedimento você\nquer reagendar?",
                 textAlign: TextAlign.center),
@@ -793,15 +1209,10 @@ class _Reagendamento02State extends State<Reagendamento02Page> {
                       shape: const StadiumBorder(),
                       backgroundColor: Color(0xff12EC1A)),
                   onPressed: () {
-                    Navigator.push(
-                      context,
-                      MaterialPageRoute(
-                          builder: (context) =>
-                          const ProximaConsultaCall()),
-                    );
+                   mostrarAlerta();
                   },
                   child: const Text(
-                    'Iniciar Conversa',
+                    'Reaendar',
                     style: TextStyle(color: Color(0xff1A3D8E)),
                   )),
             ),
@@ -866,7 +1277,102 @@ class _Reagendamento02State extends State<Reagendamento02Page> {
     }
   }
 
+  void mostrarAlerta() {
+    WidgetsBinding.instance.addPostFrameCallback((_) {
+      showDialog(
+        context: context,
+        builder: (BuildContext context)
+        {
+          return Container(
+             // padding: EdgeInsets.only(left: 10, top: 10),
+              margin: EdgeInsets.only(left: 30, right: 30, top: 200,bottom: 300),
+              decoration: BoxDecoration(
+                  color: Colors.white.withOpacity(0.8),
+                  borderRadius: BorderRadius.all(Radius.circular(10))),
+              child: Column(children: [
 
+                Padding(padding: EdgeInsets.all(10)),
+
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+
+                     SizedBox(
+                       height: 70,
+                       width: 70,
+                     child:
+                     Image.asset("imagens/starreagendamento02.png")
+                     ),
+
+                    ]),
+                Padding(padding: EdgeInsets.all(7)),
+
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Container(
+                          padding: EdgeInsets.all(12),
+                         // margin:  EdgeInsets.only(left: 30),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50),
+                            color: const Color(0xff7DC168),),
+                          child:
+                          Icon(MdiIcons.check,
+                            size: 30,
+                            color: Colors.white,
+                          )),
+
+                    ]),
+
+                Padding(padding: EdgeInsets.all(7)),
+
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Text("Sua consulta foi\nreagendada com sucesso",
+                        style: TextStyle(
+                            color: Color(0xff4116B4),
+                            fontSize: 16,
+                            fontWeight: FontWeight.bold,
+                            //textAlign: TextAlign.center,
+
+                        ),)
+
+                    ]),
+
+                Padding(padding: EdgeInsets.all(7)),
+
+                Row(
+                    mainAxisAlignment: MainAxisAlignment.center,
+                    children: [
+                      Builder(
+                        builder: (context) => ElevatedButton(
+                          style: ElevatedButton.styleFrom(
+                              shape: const StadiumBorder(),
+                              backgroundColor: Colors.white),
+                          onPressed: () {
+                            Navigator.push(
+                              context,
+                              MaterialPageRoute(
+                                  builder: (context) =>
+                                  const ResumoDoAgendamento()),
+                            );
+                          },
+                          child: const Text(
+                            'Veja o resumo da consulta',
+                            style: TextStyle(color: Color(0xFF3C10BB)),
+                          ),),
+                      ),
+                    ]),
+                //  Text('Atenção'),
+
+
+
+              ]));
+        },
+      );
+    });
+  }
 
 }
 

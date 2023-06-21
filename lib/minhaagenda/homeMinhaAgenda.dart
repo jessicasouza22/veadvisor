@@ -83,6 +83,8 @@ class _HomeMinhaAgendaState extends State<HomeMinhaAgendaPage> {
   String? selectedConfig;
   bool programada = false;
 
+  ScrollController _scrollController = ScrollController();
+
   //String? torna a variiavel atrasada
   void initState() {
     super.initState();
@@ -589,7 +591,7 @@ class _HomeMinhaAgendaState extends State<HomeMinhaAgendaPage> {
               ),
 
 
-              CarouselSlider(
+              /*CarouselSlider(
                 items: List.generate(30, (index) {
                   return Container(
                     width: 40,
@@ -625,6 +627,35 @@ class _HomeMinhaAgendaState extends State<HomeMinhaAgendaPage> {
                   viewportFraction: 5/30,
                   //itemCount: 30,
                 ),
+              ),*/
+
+              Column(
+                children: [
+                  Expanded(
+                    child: ListView.builder(
+                      controller: _scrollController,
+                      itemCount: 100,
+                      itemBuilder: (BuildContext context, int index) {
+                        return ListTile(
+                          title: Text('Item $index'),
+                        );
+                      },
+                    ),
+                  ),
+                  Row(
+                    mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                    children: [
+                      IconButton(
+                        icon: Icon(Icons.arrow_upward),
+                        onPressed: scrollToTop,
+                      ),
+                      IconButton(
+                        icon: Icon(Icons.arrow_downward),
+                        onPressed: scrollToBottom,
+                      ),
+                    ],
+                  ),
+                ],
               ),
 
 
@@ -1085,5 +1116,21 @@ class _HomeMinhaAgendaState extends State<HomeMinhaAgendaPage> {
             ]),
           )
         ])));
+  }
+
+  void scrollToBottom() {
+    _scrollController.animateTo(
+      _scrollController.position.maxScrollExtent,
+      duration: Duration(milliseconds: 500),
+      curve: Curves.easeInOut,
+    );
+  }
+
+  void scrollToTop() {
+    _scrollController.animateTo(
+      0,
+      duration: Duration(milliseconds: 500),
+      curve: Curves.easeInOut,
+    );
   }
 }

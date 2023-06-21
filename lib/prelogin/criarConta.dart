@@ -229,7 +229,7 @@ class _CriarContaPageState extends State<CriarContaPage> {
                              Navigator.push(
                                context,
                                MaterialPageRoute(
-                                   builder: (context) => const Termos ()),
+                                   builder: (context) => Termos ()),
                              );
                            },
                                icon: Icon(MdiIcons.chevronDown, color: Colors.white, size: 40.0)

@@ -3,6 +3,8 @@ import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/novaConsulta.dart';
+import 'package:vetadvisor/minhaagenda/atendimento.dart';
+import 'package:vetadvisor/minhaagenda/homeMinhaAgenda.dart';
 import 'package:vetadvisor/prelogin/criarConta.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/perfil.dart';
 import 'package:vetadvisor/prelogin/logado.dart';
@@ -27,14 +29,22 @@ void main()  async {
   FirebaseAuth.instance
       .authStateChanges()
       .listen((User? user) {
+
+
+        /*
     runApp( Phoenix(
         child: const MaterialApp(
             debugShowCheckedModeBanner: false,
-            home: MenuIniciar()
+            home: HomeMinhaAgenda()
         )
     )
     );
-        /*
+
+         */
+
+
+
+
         if (user == null) {
           runApp( Phoenix(
               child: const MaterialApp(
@@ -46,7 +56,7 @@ void main()  async {
           //print('User is currently signed out!');
         } else {
           runApp( Phoenix(
-            child: const MaterialApp(
+            child: MaterialApp(
                 debugShowCheckedModeBanner: false,
                 home: Termos()
             )
@@ -55,10 +65,14 @@ void main()  async {
           //print('User is signed in!');
         }
 
-         */
+
+
+
 
 
       });
+
+
 
 
 }

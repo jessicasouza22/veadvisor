@@ -4,6 +4,7 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
+import 'package:social_login_buttons/social_login_buttons.dart';
 import 'package:vetadvisor/helper.dart';
 import 'package:vetadvisor/prelogin/logado.dart';
 import 'package:vetadvisor/teste02.dart';
@@ -60,25 +61,22 @@ class _LoginPageState extends State<LoginPage> {
   @override
   Widget build(BuildContext context) {
     return Scaffold(
-          body: Container(
-              decoration: const BoxDecoration(
-                  image: DecorationImage(
+          body: Column(
+            children: [
+              Expanded(child: Container(
+
+                  decoration: const BoxDecoration(
+                    image: DecorationImage(
                       image: AssetImage('imagens/homeGeral.png'),
                       fit: BoxFit.fitWidth,
                       //colorFilter: new ColorFilter.mode(Cores.azulSafe.withOpacity(1), BlendMode.dstATop))
-              ),
-              ),
+                    ),
+                  ),
 
 
-        child: CustomScrollView(
-            slivers: [
-              SliverFillRemaining(
-                hasScrollBody: true,
-                child:
-                Container(
+                  child: SingleChildScrollView(
                     child: Padding(
-                      padding: const EdgeInsets.only(left: 30, right: 30),
-                      child: SingleChildScrollView(
+                        padding: const EdgeInsets.only(left: 30, right: 30),
                         child: Column(
 
                           children: [
@@ -114,102 +112,116 @@ class _LoginPageState extends State<LoginPage> {
                               style: TextStyle(fontSize: 30.0, color: Colors.white),
                             ),
                             const Padding(padding: EdgeInsets.all(10.0)),
-
                             Form(
-                              key: _formKey,
-                              child: Stack(
-                                children: [
-
-
-                                  Column(
+                                key: _formKey,
+                                child: Stack(
                                     children: [
-                                      Container(
-                                        decoration: const BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius: BorderRadius.all(Radius.circular(17)),
-                                        ),
-                                        child: TextFormField(
-                                          controller: _email,
-                                          //obscureText: true,
-                                          textAlign: TextAlign.center,
-                                          decoration: InputDecoration(
-                                            //fillColor: Colors.orange,
-                                            border: OutlineInputBorder(
-                                              borderRadius: BorderRadius.circular(17),
-                                              borderSide: const BorderSide(
-                                                color: Color(0xFF3C10BB),
-                                                width: 1.0,
-                                              ),
+
+
+                                      Column(
+                                        children: [
+                                          Container(
+                                            decoration: const BoxDecoration(
+                                              color: Colors.white,
+                                              borderRadius: BorderRadius.all(Radius.circular(17)),
                                             ),
-                                            hintText: 'E-mail',
-                                          ),
-                                          validator: (text){
-                                            if(text == null || text.isEmpty){
-                                              return "Por favor, digite o seu e-mail.";
-                                            }
-                                          },
-                                        ),
-                                      ),
-                                      const Padding(padding: EdgeInsets.all(15.0)),
-                                      Container(
-                                        decoration: const BoxDecoration(
-                                          color: Colors.white,
-                                          borderRadius: BorderRadius.all(Radius.circular(17)),
-                                        ),
-                                        child: TextFormField(
-                                          controller: _senha,
-                                          obscureText: true,
-                                          textAlign: TextAlign.center,
-                                          decoration: InputDecoration(
-                                            //fillColor: Colors.orange,
-                                            border: OutlineInputBorder(
-                                              borderRadius: BorderRadius.circular(17),
-                                              borderSide: const BorderSide(
-                                                color: Color(0xFF3C10BB),
-                                                width: 1.0,
+                                            child: TextFormField(
+                                              controller: _email,
+                                              //obscureText: true,
+                                              textAlign: TextAlign.center,
+                                              decoration: InputDecoration(
+                                                //fillColor: Colors.orange,
+                                                border: OutlineInputBorder(
+                                                  borderRadius: BorderRadius.circular(17),
+                                                  borderSide: const BorderSide(
+                                                    color: Color(0xFF3C10BB),
+                                                    width: 1.0,
+                                                  ),
+                                                ),
+                                                hintText: 'E-mail',
                                               ),
+                                              validator: (text){
+                                                if(text == null || text.isEmpty){
+                                                  return "Por favor, digite o seu e-mail.";
+                                                }
+                                              },
                                             ),
-                                            hintText: 'Senha',
                                           ),
-                                          validator: (text){
-                                            if(text == null || text.isEmpty){
-                                              return "Por favor, digite a sua senha.";
-                                            }
-                                          },
-                                        ),
-                                      ),
-                                      const Padding(padding: EdgeInsets.all(15.0)),
-                                ],
-                              )
-                                ]
-                              )
+                                          const Padding(padding: EdgeInsets.all(15.0)),
+                                          Container(
+                                            decoration: const BoxDecoration(
+                                              color: Colors.white,
+                                              borderRadius: BorderRadius.all(Radius.circular(17)),
+                                            ),
+                                            child: TextFormField(
+                                              controller: _senha,
+                                              obscureText: true,
+                                              textAlign: TextAlign.center,
+                                              decoration: InputDecoration(
+                                                //fillColor: Colors.orange,
+                                                border: OutlineInputBorder(
+                                                  borderRadius: BorderRadius.circular(17),
+                                                  borderSide: const BorderSide(
+                                                    color: Color(0xFF3C10BB),
+                                                    width: 1.0,
+                                                  ),
+                                                ),
+                                                hintText: 'Senha',
+                                              ),
+                                              validator: (text){
+                                                if(text == null || text.isEmpty){
+                                                  return "Por favor, digite a sua senha.";
+                                                }
+                                              },
+                                            ),
+                                          ),
+
+                                        ],
+                                      )
+                                    ]
+                                )
                             ),
 
+                            const Padding(padding: EdgeInsets.all(10.0)),
+                            const Row(
+                              crossAxisAlignment: CrossAxisAlignment.center,
+                              children: [
+                                Text(
+                                  "Esqueci minha senha", style: (TextStyle(
+                                    color: Colors.white
+                                )
+                                ),
+                                ),
+                                Padding(padding: EdgeInsets.only(left: 5)),
+                                Icon(Icons.arrow_circle_right_outlined,
+                                color: Colors.white,)
+                              ],
+                            ),
+                            
+                            const Padding(padding: EdgeInsets.all(10.0)),
+                            Padding(
+                                padding: EdgeInsets.only(left: 30, right: 30),
+                                child: Column(
+                                  children: [
+                                    SocialLoginButton(
+                                        borderRadius: 90,
+                                        height: 40,
+                                        backgroundColor: Colors.white,
+                                        textColor: Colors.blue,
+                                        buttonType: SocialLoginButtonType.generalLogin,
+                                        onPressed: () async {
 
+                                          if (_formKey.currentState!.validate()) {
 
-                            ElevatedButton(
-                                    style: TextButton.styleFrom(
-                                      padding: const EdgeInsets.only(
-                                          top: 10, right: 80, left: 80, bottom: 10),
-                                      primary: Colors.blue,
-                                      backgroundColor: Colors.white,
-                                      shape: RoundedRectangleBorder(
-                                          borderRadius: BorderRadius.circular(30.0)),
-                                      // Background Color
-                                    ),
-                                    onPressed: () async {
+                                            try {
 
-                                      if (_formKey.currentState!.validate()) {
+                                              final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+                                                  email: _email.text,
+                                                  password: _senha.text
+                                              );
 
-                                        try {
-
-                                          final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
-                                              email: _email.text,
-                                              password: _senha.text
-                                          );
-
-                                          //print(credential.user);
-                                          /*
+                                              //print(credential.user);
+                                              /*
                                           Navigator.push(
                                             context,
                                             MaterialPageRoute(
@@ -219,88 +231,95 @@ class _LoginPageState extends State<LoginPage> {
 
                                            */
 
-                                        } on FirebaseAuthException catch (e) {
+                                            } on FirebaseAuthException catch (e) {
 
-                                          if (e.code == 'user-not-found') {
-                                            _dialogErro("Usuário não encontrado");
-                                          } else if (e.code == 'wrong-password') {
-                                            _dialogErro("Usuário ou senha inválidos");
+                                              if (e.code == 'user-not-found') {
+                                                _dialogErro("Usuário não encontrado");
+                                              } else if (e.code == 'wrong-password') {
+                                                _dialogErro("Usuário ou senha inválidos");
+                                              }
+                                            }
                                           }
+
+
                                         }
-                                      }
-
-
-
-                                    },
-                                    child: const Text('ENTRAR')),
-                            const Padding(padding: EdgeInsets.all(10.0)),
-
-
-                            const Divider(
-                              color: Colors.white,
-                              thickness: 0.2,
-                              endIndent: 5,
-                              indent: 30,),
-
-
-                            Row(
-                              crossAxisAlignment: CrossAxisAlignment.start,
-                              children: [
-                                // ChechBox colocado dentro de um Sized box
-                                // para remover o padding natural que o ele tem
-
-                                Padding(padding: EdgeInsets.all(5.0)),
-
-
-                                Flexible(
-                                    child: GestureDetector(
-                                      onTap: () {
-                                        Navigator.push(
-                                          context,
-                                          MaterialPageRoute(
-                                              builder: (context) => const Termos()),
-
-                                        );
-                                      },
-                                      child: AutoSizeText(
-                                        'Cadastre-se agora',
-                                        textAlign: TextAlign.justify,
-                                        maxLines: 4,
-                                        style: TextStyle(
-                                          fontSize: 12,
-                                          fontFamily: 'Inter Variable Font',
-                                          color: Colors.white,
                                         ),
-                                      )
+                                    const Padding(padding: EdgeInsets.all(10.0)),
+
+                                    const Text("ou", style: TextStyle(
+                                        color: Colors.white
                                     )
-
-
-
-
+                                    ),
+                                    const Padding(padding: EdgeInsets.all(10.0)),
+                                    SocialLoginButton(
+                                      borderRadius: 90,
+                                      height: 40,
+                                      buttonType: SocialLoginButtonType.google,
+                                      mode: SocialLoginButtonMode.multi,
+                                      onPressed: () {},
+                                    ),
+                                    const Padding(padding: EdgeInsets.all(10.0)),
+                                    SocialLoginButton(
+                                      borderRadius: 90,
+                                      height: 40,
+                                      buttonType: SocialLoginButtonType.apple,
+                                      mode: SocialLoginButtonMode.multi,
+                                      onPressed: () {},
+                                    ),
+                                    const Padding(padding: EdgeInsets.all(10.0)),
+                                    SocialLoginButton(
+                                      borderRadius: 90,
+                                      height: 40,
+                                      buttonType: SocialLoginButtonType.facebook,
+                                      mode: SocialLoginButtonMode.multi,
+                                      onPressed: () {},
+                                    )
+                                  ],
                                 )
 
+
+                            ),
+
+                            const Padding(padding: EdgeInsets.all(10.0)),
+
+                            const Row(
+                              children: [
+                                Text(
+                                  "Ainda não é cadastrado? Junte-se a nós,", style: TextStyle(
+                                  color: Colors.white,
+                                ),
+                                ),
                               ],
                             ),
 
+                            GestureDetector(
+                              child: const Row(
+                                crossAxisAlignment: CrossAxisAlignment.center,
+                                children: [
+                                  Text(
+                                    "Cadastre-se agora", style: TextStyle(
+                                      color: Colors.white,
+                                      fontWeight: FontWeight.bold
+                                  ),
+                                  ),
+                                  Padding(padding: EdgeInsets.only(left: 5)),
+                                  Icon(Icons.arrow_circle_right_outlined,
+                                    color: Colors.white,)
+                                ],
+                              ),
+                            ),
+
+
+                            const Padding(padding: EdgeInsets.all(10.0)),
+
                           ],
-                        ),
-                      )
-
-
-                    )
-
-
-
-                ),
-              )
+                        )
+                    ),
+                  )
+              ))
             ],
-
-
           )
-
-
-        ))
-    ;
+    );
   }
 
   Future<void> _dialogErro(String mensagem) async {

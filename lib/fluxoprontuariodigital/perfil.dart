@@ -96,7 +96,7 @@ class _PerfilPageState extends State<PerfilPage> {
                         fit: BoxFit.cover,
                         width: 60,
                         height: 60,
-                      ) : Image.asset("imagens/user.png"),
+                      ) : Image.asset("imagens/avatar.png"),
 
                       onTap: (){
 

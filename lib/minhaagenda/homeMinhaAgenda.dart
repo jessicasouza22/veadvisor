@@ -43,6 +43,8 @@ List<String> estados = [
   'Tocantins'
 ];
 
+List<String> periodo = ['Matutino', 'Vespertino', 'Noturno'];
+
 List<String> agendadas = ['hoje', 'amanha'];
 
 List<String> situacao = ['atual', 'atrasada', 'agendada'];
@@ -82,6 +84,8 @@ class _HomeMinhaAgendaState extends State<HomeMinhaAgendaPage> {
   String? selectedSituacao;
   String? selectedConfig;
   bool programada = false;
+  String? selecioneMes;
+  String? selecionePeriodo;
 
   ScrollController _scrollController = ScrollController();
 
@@ -91,6 +95,14 @@ class _HomeMinhaAgendaState extends State<HomeMinhaAgendaPage> {
     mostrarAlerta();
     print("oi");
   }
+
+  void dispose() {
+    _scrollController.dispose();
+    super.dispose();
+  }
+
+
+
 
   void mostrarAlerta() {
     WidgetsBinding.instance.addPostFrameCallback((_) {
@@ -376,17 +388,23 @@ class _HomeMinhaAgendaState extends State<HomeMinhaAgendaPage> {
                     height: 0,
                     color: Colors.transparent,
                   ),
-                  hint: const Text('Local'),
+                  hint: Text('Local'),
                   onChanged: (value) {
                     setState(() {
                       selectedEstado;
                     });
                   },
-                  items: estados.map<DropdownMenuItem<String>>(
+                  items:
+                  estados.map<DropdownMenuItem<String>>(
                     (String value) {
                       return DropdownMenuItem<String>(
                         value: value,
-                        child: Text(value),
+                        child: Container(
+                            decoration: BoxDecoration(
+                              borderRadius: BorderRadius.circular(10),
+                              color: Colors.green
+                            ),
+                            child: Text(value)),
                       );
                     },
                   ).toList(),
@@ -576,6 +594,8 @@ class _HomeMinhaAgendaState extends State<HomeMinhaAgendaPage> {
               Row(
                 children: [
                   Text("Status desta consulta:"),
+                  Padding(padding: EdgeInsets.only(left: 55)),
+                  Text("Programada"),
                   Switch(
                     value: programada,
                     onChanged: (bool newValue) {
@@ -589,6 +609,93 @@ class _HomeMinhaAgendaState extends State<HomeMinhaAgendaPage> {
 
                 ],
               ),
+
+              Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
+                Expanded(
+                    child: DropdownButton<String>(
+                      value: selecioneMes,
+                      underline: Container(
+                        height: 0,
+                        color: Colors.transparent,
+                      ),
+                      hint:
+                      Row(
+                      children: [
+                      
+                      Text('Junho',
+                        style: TextStyle(
+                          color: Color(0xff4116B4),
+                          fontWeight: FontWeight.bold
+                        ),),
+                        Container(
+                          //padding: EdgeInsets.only(1),
+                          decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50),
+                            color: Color(0xff12EC1A)
+                          ),
+                          child: Icon(
+                            MdiIcons.check,
+                            color: Colors.white,
+                            size: 2,
+                          ) ,
+                        )
+
+                      ]),
+                      
+                      
+                      onChanged: (value) {
+                        setState(() {
+                          selecioneMes;
+                        });
+                      },
+                      icon: Icon(
+                        Icons.arrow_drop_down, // Ícone padrão da seta para baixo
+                        color: Color(0xff4116B4), // Cor personalizada da seta
+                      ),
+                      items: meses.map<DropdownMenuItem<String>>(
+                            (String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        },
+                      ).toList(),
+                    )),
+
+                Expanded(
+                    child: DropdownButton<String>(
+                      value: selecionePeriodo,
+                      underline: Container(
+                        height: 0,
+                        color: Colors.transparent,
+                      ),
+                      hint: const Text('Periodo',
+                        style: TextStyle(
+                          color: Color(0xff4116B4),
+                            fontWeight: FontWeight.bold,
+                        ),),
+                      onChanged: (value) {
+                        setState(() {
+                          selecionePeriodo;
+                        });
+                      },
+                      icon: Icon(
+                        Icons.arrow_drop_down, // Ícone padrão da seta para baixo
+                        color: Color(0xff4116B4), // Cor personalizada da seta
+                      ),
+                      items: periodo.map<DropdownMenuItem<String>>(
+                            (String value) {
+                          return DropdownMenuItem<String>(
+                            value: value,
+                            child: Text(value),
+                          );
+                        },
+                      ).toList(),
+                    )),
+
+                Padding(padding: EdgeInsets.all(5)),
+                // SizedBox(height: 16),
+              ]),
 
 
               /*CarouselSlider(
@@ -629,20 +736,22 @@ class _HomeMinhaAgendaState extends State<HomeMinhaAgendaPage> {
                 ),
               ),*/
 
-              Column(
+              /*Liew(
+                shrinkWrap: true,
+                scrollDirection: Axis.vertical,
                 children: [
-                  Expanded(
-                    child: ListView.builder(
-                      controller: _scrollController,
-                      itemCount: 100,
-                      itemBuilder: (BuildContext context, int index) {
-                        return ListTile(
-                          title: Text('Item $index'),
-                        );
-                      },
-                    ),
-                  ),
-                  Row(
+                  Container(
+                      width: 10,
+                      //height: 10,
+                      decoration: BoxDecoration(
+                          color: Color(0xFF3C10BB),
+                          borderRadius: BorderRadius.circular(20)
+                      ),
+                  child: Text("oi")),
+                ],
+              ),*/
+
+                 /* Row(
                     mainAxisAlignment: MainAxisAlignment.spaceBetween,
                     children: [
                       IconButton(
@@ -654,10 +763,108 @@ class _HomeMinhaAgendaState extends State<HomeMinhaAgendaPage> {
                         onPressed: scrollToBottom,
                       ),
                     ],
-                  ),
-                ],
-              ),
+                  ),*/
 
+        
+
+              Column(
+          children: [
+            Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                IconButton(
+                  onPressed: () {
+                    _scrollController.animateTo(
+                      _scrollController.offset - 100,
+                      duration: Duration(milliseconds: 500),
+                      curve: Curves.ease,
+                    );
+                  },
+                  icon: Icon(MdiIcons.chevronLeft,
+                  color: Color(0xFF3C10BB)),
+                ),
+                IconButton(
+                  onPressed: () {
+                    _scrollController.animateTo(
+                      _scrollController.offset + 100,
+                      duration: Duration(milliseconds: 500),
+                      curve: Curves.ease,
+                    );
+                  },
+                  icon: Icon(MdiIcons.chevronRight,
+                      color: Color(0xFF3C10BB)),
+                ),
+              ],
+            ),
+
+            SingleChildScrollView(
+              scrollDirection: Axis.horizontal,
+              controller: _scrollController,
+              child: Row(
+                children:
+                List.generate(
+                  30,
+                      (index) => Container(
+                    width: 46,
+                    height: 65,
+                    margin: EdgeInsets.all(4),
+                        padding: EdgeInsets.all(7),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(16),
+                          color: Color(0xFF3C10BB),
+                            boxShadow: [BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 2,
+                              blurRadius: 5,
+                              offset: Offset(0, 3),
+                            )]
+                        ),
+                        child: Column(
+
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text("12",
+                                style: TextStyle(
+                                  fontSize: 10,
+                                  color: Colors.white,
+                                ),)
+                              ],
+                            ),
+
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Transform.rotate(
+                                  angle: 30 * (3.1415926535897932 / 180), // Converter 10 graus para radianos
+                                  child:
+                                Icon(MdiIcons.slashForward,
+                                  size: 20,
+                                  color: Colors.white,
+                                )),
+                              ],
+                            ),
+
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text("Seg",
+                                  style: TextStyle(
+                                    fontSize: 10,
+                                    color: Colors.white,
+                                  ),)
+                              ],
+                            )
+                          ],
+                        ),
+                  ),
+                ),
+
+              ),
+            ),
+          ],
+        ),
 
               const Divider(
                 color: Color(0xFF979797),

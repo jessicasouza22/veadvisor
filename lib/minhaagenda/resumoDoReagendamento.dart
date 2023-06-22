@@ -15,6 +15,7 @@ import 'package:vetadvisor/minhaagenda/proximaConsultaCall.dart';
 import 'package:vetadvisor/recursos/Constants.dart';
 import 'package:carousel_slider/carousel_slider.dart';
 import 'package:url_launcher/url_launcher.dart';
+import 'package:vetadvisor/recursos/menuIniciar.dart';
 
 import '../fluxoprontuariodigital/novaConsulta.dart';
 import 'atendimento.dart';
@@ -332,7 +333,7 @@ class _ResumoDoAgendamentoState extends State<ResumoDoAgendamentoPage> {
                           context,
                           MaterialPageRoute(
                               builder: (context) =>
-                              const NovaConsulta()),
+                              const MenuIniciar()),
                         );
                       },
                       child: const Text(

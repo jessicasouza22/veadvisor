@@ -383,6 +383,7 @@ class _HomeMinhaAgendaState extends State<HomeMinhaAgendaPage> {
               Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
                 Expanded(
                     child: DropdownButton<String>(
+                      borderRadius: BorderRadius.circular(10),
                   value: selectedEstado,
                   underline: Container(
                     height: 0,
@@ -399,12 +400,7 @@ class _HomeMinhaAgendaState extends State<HomeMinhaAgendaPage> {
                     (String value) {
                       return DropdownMenuItem<String>(
                         value: value,
-                        child: Container(
-                            decoration: BoxDecoration(
-                              borderRadius: BorderRadius.circular(10),
-                              color: Colors.green
-                            ),
-                            child: Text(value)),
+                        child:  Text(value),
                       );
                     },
                   ).toList(),

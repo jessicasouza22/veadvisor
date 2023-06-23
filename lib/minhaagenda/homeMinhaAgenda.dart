@@ -49,6 +49,8 @@ List<String> agendadas = ['hoje', 'amanha'];
 
 List<String> situacao = ['atual', 'atrasada', 'agendada'];
 
+List<String> local = ['Vitally', 'CliniCor', 'Life'];
+
 List<String> config = ['alterar', 'excluir'];
 
 List<int> daysOfMonth = List<int>.generate(30, (index) => index + 1);
@@ -86,6 +88,7 @@ class _HomeMinhaAgendaState extends State<HomeMinhaAgendaPage> {
   bool programada = false;
   String? selecioneMes;
   String? selecionePeriodo;
+  String? selecioneLocal;
 
   ScrollController _scrollController = ScrollController();
 
@@ -381,30 +384,74 @@ class _HomeMinhaAgendaState extends State<HomeMinhaAgendaPage> {
               Padding(padding: EdgeInsets.all(10)),
 
               Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-                Expanded(
-                    child: DropdownButton<String>(
+                Container(
+                  padding: EdgeInsets.zero,
+                  margin: EdgeInsets.zero,
+                  decoration: BoxDecoration(
+                    color: Colors.white,
+                      border: Border.all(
+                        color: Color(0xffDFE1E6),  // Defina a cor desejada aqui
+                        width: 2.0,  // Defina a largura da borda
+                      )
+
+                  ),
+                child: DropdownButton<String>(
                       borderRadius: BorderRadius.circular(10),
-                  value: selectedEstado,
+
+
+                  value: selecioneLocal,
                   underline: Container(
                     height: 0,
                     color: Colors.transparent,
                   ),
-                  hint: Text('Local'),
+                  hint: Text('Local',
+                  style: TextStyle(
+                    color: Color(0xff253858),
+                      fontSize: 12
+
+                  ),),
+
                   onChanged: (value) {
                     setState(() {
-                      selectedEstado;
+                      selecioneLocal;
                     });
                   },
                   items:
-                  estados.map<DropdownMenuItem<String>>(
+                  local.map<DropdownMenuItem<String>>(
+
                     (String value) {
                       return DropdownMenuItem<String>(
                         value: value,
-                        child:  Text(value),
+                        child:
+                        Column(
+                            children:[
+                              Row(
+                                  children: [
+                                    Text(value,
+                                      style: TextStyle(
+                                        color: Color(0xffBFC9CA),
+                                        fontSize: 12
+
+
+                                      ),),]),
+                                    Row(
+                                        children:[
+                                          Divider(
+                                            color: Colors.cyan,
+                                            thickness: 0.8,
+                                            endIndent: 0,
+                                            indent: 0,
+                                          )
+                                        ]
+                                    )
+
+                                  ]),
+
                       );
                     },
                   ).toList(),
                 )),
+
 
                 Padding(padding: EdgeInsets.all(5)),
 
@@ -415,7 +462,12 @@ class _HomeMinhaAgendaState extends State<HomeMinhaAgendaPage> {
                     height: 0,
                     color: Colors.transparent,
                   ),
-                  hint: const Text('Agendadas'),
+                  hint:  Text('Agendadas',
+                      style: TextStyle(
+                        color: Color(0xff253858),
+                          fontSize: 12
+
+                      )),
                   onChanged: (value) {
                     setState(() {
                       selectedAgendadas;
@@ -425,13 +477,36 @@ class _HomeMinhaAgendaState extends State<HomeMinhaAgendaPage> {
                     (String value) {
                       return DropdownMenuItem<String>(
                         value: value,
-                        child: Text(value),
+                        child:
+                        Column(
+                            children:[
+                              Row(
+                                  children: [
+                                    Text(value,
+                                      style: TextStyle(
+                                          color: Color(0xffBFC9CA),
+                                          fontSize: 12
+
+
+                                      ),),]),
+                              Row(
+                                  children:[
+                                    Divider(
+                                      color: Colors.cyan,
+                                      thickness: 0.8,
+                                      endIndent: 0,
+                                      indent: 0,
+                                    )
+                                  ]
+                              )
+
+                            ]),
                       );
                     },
                   ).toList(),
                 )),
 
-                Padding(padding: EdgeInsets.all(5)),
+                Padding(padding: EdgeInsets.all(6)),
 
                 Expanded(
                     child: DropdownButton<String>(
@@ -440,7 +515,12 @@ class _HomeMinhaAgendaState extends State<HomeMinhaAgendaPage> {
                     height: 0,
                     color: Colors.transparent,
                   ),
-                  hint: const Text('Situacao'),
+                  hint: const Text('Situacao',
+                      style: TextStyle(
+                          color: Color(0xff253858),
+                          fontSize: 12
+
+                      )),
                   onChanged: (value) {
                     setState(() {
                       selectedSituacao;
@@ -450,7 +530,29 @@ class _HomeMinhaAgendaState extends State<HomeMinhaAgendaPage> {
                     (String value) {
                       return DropdownMenuItem<String>(
                         value: value,
-                        child: Text(value),
+                        child: Column(
+                            children:[
+                              Row(
+                                  children: [
+                                    Text(value,
+                                      style: TextStyle(
+                                          color: Color(0xffBFC9CA),
+                                          fontSize: 12
+
+
+                                      ),),]),
+                              Row(
+                                  children:[
+                                    Divider(
+                                      color: Colors.cyan,
+                                      thickness: 0.8,
+                                      endIndent: 0,
+                                      indent: 0,
+                                    )
+                                  ]
+                              )
+
+                            ]),
                       );
                     },
                   ).toList(),

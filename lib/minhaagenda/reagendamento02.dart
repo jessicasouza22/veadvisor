@@ -1,5 +1,6 @@
 //1.8 Reagendamento
-
+import 'package:flutter/cupertino.dart';
+import 'package:intl/intl.dart';
 
 import 'package:intl/intl.dart';
 import 'dart:io';
@@ -19,10 +20,49 @@ import 'package:url_launcher/url_launcher.dart';
 import '../fluxoprontuariodigital/novaConsulta.dart';
 import 'atendimento.dart';
 
-List<String> meses = [
+List<String> estados = [
+  'Acre',
+  'Alagoas',
+  'Amapá',
+  'Amazonas',
+  'Bahia',
+  'Ceará',
+  'Distrito Federal',
+  'Espírito Santo',
+  'Goiás',
+  'Maranhão',
+  'Mato Grosso',
+  'Mato Grosso do Sul',
+  'Minas Gerais',
+  'Pará',
+  'Paraíba',
+  'Paraná',
+  'Pernambuco',
+  'Piauí',
+  'Rio de Janeiro',
+  'Rio Grande do Norte',
+  'Rio Grande do Sul',
+  'Rondônia',
+  'Roraima',
+  'Santa Catarina',
+  'São Paulo',
+  'Sergipe',
+  'Tocantins'
+];
+
+List<String> periodo = ['Matutino', 'Vespertino', 'Noturno'];
+
+List<String> status = ['Ativo', 'Inativo'];
+
+List<String> situacao = ['Agendada', 'Cancelada', 'Realizou', 'Faltou'];
+
+List<String> local = ['Vitally', 'CliniCor', 'Life'];
+
+List<String> config = ['alterar', 'excluir'];
+final meses = [
   'Janeiro',
   'Fevereiro',
-  'Março',
+  'Marco',
   'Abril',
   'Maio',
   'Junho',
@@ -31,7 +71,7 @@ List<String> meses = [
   'Setembro',
   'Outubro',
   'Novembro',
-  'Dezembro',
+  'Dezembro'
 ];
 
 class Reagendamento02 extends StatelessWidget {
@@ -52,9 +92,16 @@ class Reagendamento02Page extends StatefulWidget {
 
 class _Reagendamento02State extends State<Reagendamento02Page> {
 
-
+  ScrollController _scrollController = ScrollController();
   String _nomeUsuarioLogado = "";
   String? selecioneMes;
+  String? selecioneStatus;
+  String? selectedConfig;
+  bool programada = false;
+  String? selecionePeriodo;
+  String? selecioneLocal;
+  String? selecioneSituacao;
+
 
   DateTime _selectedDate = DateTime.now();
 
@@ -846,72 +893,273 @@ class _Reagendamento02State extends State<Reagendamento02Page> {
             ),
 
             Row(mainAxisAlignment: MainAxisAlignment.spaceBetween, children: [
-              Expanded(
-                  child: DropdownButton<String>(
-                    value: selecioneMes,
-                    underline: Container(
-                      height: 0,
-                      color: Colors.transparent,
-                    ),
-                    hint: const Text('Mes',
-                      style: TextStyle(
-                        color: Color(0xff4116B4),
-                      ),),
-                    onChanged: (value) {
-                      setState(() {
-                        selecioneMes;
-                      });
-                    },
-                    icon: Icon(
-                      Icons.arrow_drop_down, // Ícone padrão da seta para baixo
-                      color: Color(0xff4116B4), // Cor personalizada da seta
-                    ),
-                    items: meses.map<DropdownMenuItem<String>>(
-                          (String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      },
-                    ).toList(),
-                  )),
+              DropdownButton<String>(
+                borderRadius: BorderRadius.circular(10),
+                value: selecioneMes,
+                underline: Container(
+                  height: 0,
+                  color: Colors.transparent,
+                ),
+                hint:
+                Row(
+                    children: [
 
-              Expanded(
-                  child: DropdownButton<String>(
-                    value: selecioneMes,
-                    underline: Container(
-                      height: 0,
-                      color: Colors.transparent,
-                    ),
-                    hint: const Text('Mes',
-                      style: TextStyle(
-                        color: Color(0xff4116B4),
-                      ),),
-                    onChanged: (value) {
-                      setState(() {
-                        selecioneMes;
-                      });
-                    },
-                    icon: Icon(
-                      Icons.arrow_drop_down, // Ícone padrão da seta para baixo
-                      color: Color(0xff4116B4), // Cor personalizada da seta
-                    ),
-                    items: meses.map<DropdownMenuItem<String>>(
-                          (String value) {
-                        return DropdownMenuItem<String>(
-                          value: value,
-                          child: Text(value),
-                        );
-                      },
-                    ).toList(),
-                  )),
+                      Text('Junho',
+                        style: TextStyle(
+                            color: Color(0xff4116B4),
+                            fontWeight: FontWeight.bold
+                        ),),
+                      Container(
+                        //padding: EdgeInsets.only(1),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(50),
+                            color: Color(0xff12EC1A)
+                        ),
+                        child: Icon(
+                          MdiIcons.check,
+                          color: Colors.white,
+                          size: 2,
+                        ) ,
+                      )
+
+                    ]),
+
+
+                onChanged: (value) {
+                  setState(() {
+                    selecioneMes;
+                  });
+                },
+                icon: Icon(
+                  Icons.arrow_drop_down, // Ícone padrão da seta para baixo
+                  color: Color(0xff4116B4), // Cor personalizada da seta
+                ),
+                items: meses.map<DropdownMenuItem<String>>(
+                      (String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children:[
+                            Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+
+                                  Text(value,
+                                    style: TextStyle(
+                                        color: Color(0xffBFC9CA),
+                                        fontSize: 12
+
+
+                                    ),),
+
+                                  Padding(padding: EdgeInsets.only(left: 10)),
+
+                                  Container(
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(50),
+                                          color: Color(0xff12EC1A)
+                                      ),
+                                      child: Icon(MdiIcons.check,
+                                        size: 12,
+                                        color: Colors.white,)
+                                  )
+
+
+                                ]),
+
+
+                            Divider(
+
+                              color: Color(0xff979797),
+                              thickness: 0.6,
+                              endIndent: 0,
+                              indent: 0,
+
+                            )
+
+                          ]),
+                    );
+                  },
+                ).toList(),
+              ),
+
+              DropdownButton<String>(
+                borderRadius: BorderRadius.circular(10),
+                value: selecionePeriodo,
+                underline: Container(
+                  height: 0,
+                  color: Colors.transparent,
+                ),
+                hint: const Text('Periodo',
+                  style: TextStyle(
+                    color: Color(0xff4116B4),
+                    fontWeight: FontWeight.bold,
+                  ),),
+                onChanged: (value) {
+                  setState(() {
+                    selecionePeriodo;
+                  });
+                },
+                icon: Icon(
+                  Icons.arrow_drop_down, // Ícone padrão da seta para baixo
+                  color: Color(0xff4116B4), // Cor personalizada da seta
+                ),
+                items: periodo.map<DropdownMenuItem<String>>(
+                      (String value) {
+                    return DropdownMenuItem<String>(
+                      value: value,
+                      child: Column(
+                          mainAxisSize: MainAxisSize.min,
+                          children:[
+                            Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                mainAxisSize: MainAxisSize.min,
+                                children: [
+
+                                  Text(value,
+                                    style: TextStyle(
+                                        color: Color(0xffBFC9CA),
+                                        fontSize: 12
+
+
+                                    ),),
+
+                                  Padding(padding: EdgeInsets.only(left: 10)),
+
+                                  Container(
+                                      decoration: BoxDecoration(
+                                          borderRadius: BorderRadius.circular(50),
+                                          color: Color(0xff12EC1A)
+                                      ),
+                                      child: Icon(MdiIcons.check,
+                                        size: 12,
+                                        color: Colors.white,)
+                                  )
+
+
+                                ]),
+
+
+                            Divider(
+
+                              color: Color(0xff979797),
+                              thickness: 0.6,
+                              endIndent: 0,
+                              indent: 0,
+
+                            )
+
+                          ]),
+                    );
+                  },
+                ).toList(),
+              ),
 
               Padding(padding: EdgeInsets.all(5)),
               // SizedBox(height: 16),
             ]),
 
-            Padding(padding: EdgeInsets.all(20)),
 
+            Column(
+              children: [
+                Row(
+                  mainAxisAlignment: MainAxisAlignment.center,
+                  children: [
+                    IconButton(
+                      onPressed: () {
+                        _scrollController.animateTo(
+                          _scrollController.offset - 100,
+                          duration: Duration(milliseconds: 500),
+                          curve: Curves.ease,
+                        );
+                      },
+                      icon: Icon(MdiIcons.chevronLeft,
+                          color: Color(0xFF3C10BB)),
+                    ),
+                    IconButton(
+                      onPressed: () {
+                        _scrollController.animateTo(
+                          _scrollController.offset + 100,
+                          duration: Duration(milliseconds: 500),
+                          curve: Curves.ease,
+                        );
+                      },
+                      icon: Icon(MdiIcons.chevronRight,
+                          color: Color(0xFF3C10BB)),
+                    ),
+                  ],
+                ),
+
+                SingleChildScrollView(
+                  scrollDirection: Axis.horizontal,
+                  controller: _scrollController,
+                  child: Row(
+                    children:
+                    List.generate(
+                      30,
+                          (index) => Container(
+                        width: 46,
+                        height: 65,
+                        margin: EdgeInsets.all(4),
+                        padding: EdgeInsets.all(7),
+                        decoration: BoxDecoration(
+                            borderRadius: BorderRadius.circular(16),
+                            color: Color(0xFF3C10BB),
+                            boxShadow: [BoxShadow(
+                              color: Colors.grey.withOpacity(0.5),
+                              spreadRadius: 2,
+                              blurRadius: 5,
+                              offset: Offset(0, 3),
+                            )]
+                        ),
+                        child: Column(
+
+                          children: [
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text("12",
+                                  style: TextStyle(
+                                    fontSize: 10,
+                                    color: Colors.white,
+                                  ),)
+                              ],
+                            ),
+
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Transform.rotate(
+                                    angle: 30 * (3.1415926535897932 / 180), // Converter 10 graus para radianos
+                                    child:
+                                    Icon(MdiIcons.slashForward,
+                                      size: 20,
+                                      color: Colors.white,
+                                    )),
+                              ],
+                            ),
+
+                            Row(
+                              mainAxisAlignment: MainAxisAlignment.center,
+                              children: [
+                                Text("Seg",
+                                  style: TextStyle(
+                                    fontSize: 10,
+                                    color: Colors.white,
+                                  ),)
+                              ],
+                            )
+                          ],
+                        ),
+                      ),
+                    ),
+
+                  ),
+                ),
+              ],
+            ),
 
             const Divider(
               color: Color(0xFF979797),
@@ -920,14 +1168,95 @@ class _Reagendamento02State extends State<Reagendamento02Page> {
               indent: 0,
             ),
 
+
+
             Row(
                 mainAxisAlignment: MainAxisAlignment.spaceBetween,
                 children: [
-                  Text("Período manha",
+                  Text("Período da manhã",
                     style: TextStyle(
                         fontSize: 20,
                         color: Color(0xFF4116B4)
                     ),),]),
+
+            Padding(padding: EdgeInsets.all(5)),
+
+            Row(
+                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                children: [
+                  Container(
+                    height: 50,
+                    width: 90,
+                    padding: EdgeInsets.only(left: 12, top: 15),
+                    decoration: BoxDecoration(
+                      color: Color(0xFF4116B4),
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 1,
+                          blurRadius: 5,
+                          offset: Offset(0, 3), // Define a posição da sombra em relação ao container
+                        ),
+                      ],
+                    ),
+                    child: Text("10:10 am",
+                      style: TextStyle(
+                        color: Colors.white,
+                        fontWeight: FontWeight.bold,
+
+                      ),
+                    ),
+                  ),
+
+                  Container(
+                    height: 50,
+                    width: 90,
+                    padding: EdgeInsets.only(left: 12, top: 15),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 1,
+                          blurRadius: 5,
+                          offset: Offset(0, 3), // Define a posição da sombra em relação ao container
+                        ),
+                      ],
+                    ),
+                    child: Text("10:10 am",
+                      style: TextStyle(
+                        color: Color(0xFF4116B4),
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+
+                  Container(
+                    height: 50,
+                    width: 90,
+                    padding: EdgeInsets.only(left: 12, top: 15),
+                    decoration: BoxDecoration(
+                      color: Colors.white,
+                      borderRadius: BorderRadius.circular(10),
+                      boxShadow: [
+                        BoxShadow(
+                          color: Colors.grey.withOpacity(0.5),
+                          spreadRadius: 1,
+                          blurRadius: 5,
+                          offset: Offset(0, 3), // Define a posição da sombra em relação ao container
+                        ),
+                      ],
+                    ),
+                    child: Text("10:10 am",
+                      style: TextStyle(
+                        color: Color(0xFF4116B4),
+                        fontWeight: FontWeight.bold,
+                      ),
+                    ),
+                  ),
+                ]),
 
             Padding(padding: EdgeInsets.all(5)),
 
@@ -988,25 +1317,20 @@ class _Reagendamento02State extends State<Reagendamento02Page> {
                     width: 90,
                     padding: EdgeInsets.only(left: 12, top: 15),
                     decoration: BoxDecoration(
-                      color: Colors.white,
+                      color: Colors.transparent,
                       borderRadius: BorderRadius.circular(10),
-                      boxShadow: [
-                        BoxShadow(
-                          color: Colors.grey.withOpacity(0.5),
-                          spreadRadius: 1,
-                          blurRadius: 5,
-                          offset: Offset(0, 3), // Define a posição da sombra em relação ao container
-                        ),
-                      ],
+
                     ),
                     child: Text("10:10 am",
                       style: TextStyle(
-                        color: Color(0xFF4116B4),
+                        color: Colors.transparent,
                         fontWeight: FontWeight.bold,
                       ),
                     ),
                   ),
                 ]),
+
+            Padding(padding: EdgeInsets.all(5)),
 
             const Divider(
               color: Color(0xFF979797),
@@ -1201,6 +1525,7 @@ class _Reagendamento02State extends State<Reagendamento02Page> {
                   ),
                 ]),
 
+
             Padding(padding: EdgeInsets.all(5)),
 
             Builder(
@@ -1209,7 +1534,7 @@ class _Reagendamento02State extends State<Reagendamento02Page> {
                       shape: const StadiumBorder(),
                       backgroundColor: Color(0xff12EC1A)),
                   onPressed: () {
-                   mostrarAlerta();
+                    _showAlertDialog(context);
                   },
                   child: const Text(
                     'Reaendar',
@@ -1277,101 +1602,99 @@ class _Reagendamento02State extends State<Reagendamento02Page> {
     }
   }
 
-  void mostrarAlerta() {
-    WidgetsBinding.instance.addPostFrameCallback((_) {
-      showDialog(
-        context: context,
-        builder: (BuildContext context)
-        {
-          return Container(
-             // padding: EdgeInsets.only(left: 10, top: 10),
-              margin: EdgeInsets.only(left: 30, right: 30, top: 200,bottom: 300),
-              decoration: BoxDecoration(
-                  color: Colors.white.withOpacity(0.8),
-                  borderRadius: BorderRadius.all(Radius.circular(10))),
-              child: Column(children: [
 
-                Padding(padding: EdgeInsets.all(10)),
 
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
+  void _showAlertDialog(BuildContext context) {
+    showCupertinoModalPopup<void>(
+      context: context,
+      builder: (BuildContext context) => CupertinoAlertDialog(
+        // title: const Text('Atenção'),
+        content:
+          Column(children: [
 
-                     SizedBox(
-                       height: 70,
-                       width: 70,
-                     child:
-                     Image.asset("imagens/starreagendamento02.png")
-                     ),
+            Padding(padding: EdgeInsets.all(10)),
 
-                    ]),
-                Padding(padding: EdgeInsets.all(7)),
+            Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
 
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Container(
-                          padding: EdgeInsets.all(12),
-                         // margin:  EdgeInsets.only(left: 30),
-                          decoration: BoxDecoration(
-                            borderRadius: BorderRadius.circular(50),
-                            color: const Color(0xff7DC168),),
-                          child:
-                          Icon(MdiIcons.check,
-                            size: 30,
-                            color: Colors.white,
-                          )),
+                  SizedBox(
+                      height: 70,
+                      width: 70,
+                      child:
+                      Image.asset("imagens/starreagendamento02.png")
+                  ),
 
-                    ]),
+                ]),
+            Padding(padding: EdgeInsets.all(7)),
 
-                Padding(padding: EdgeInsets.all(7)),
+            Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Container(
+                      padding: EdgeInsets.all(12),
+                      // margin:  EdgeInsets.only(left: 30),
+                      decoration: BoxDecoration(
+                        borderRadius: BorderRadius.circular(50),
+                        color: const Color(0xff7DC168),),
+                      child:
+                      Icon(MdiIcons.check,
+                        size: 30,
+                        color: Colors.white,
+                      )),
 
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Text("Sua consulta foi\nreagendada com sucesso",
-                        style: TextStyle(
-                            color: Color(0xff4116B4),
-                            fontSize: 16,
-                            fontWeight: FontWeight.bold,
-                            //textAlign: TextAlign.center,
+                ]),
 
-                        ),)
+            Padding(padding: EdgeInsets.all(7)),
 
-                    ]),
+            Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Text("Sua consulta foi\nreagendada com sucesso",
+                    style: TextStyle(
+                      color: Color(0xff4116B4),
+                      fontSize: 16,
+                      fontWeight: FontWeight.bold,
+                      //textAlign: TextAlign.center,
 
-                Padding(padding: EdgeInsets.all(7)),
+                    ),)
 
-                Row(
-                    mainAxisAlignment: MainAxisAlignment.center,
-                    children: [
-                      Builder(
-                        builder: (context) => ElevatedButton(
-                          style: ElevatedButton.styleFrom(
-                              shape: const StadiumBorder(),
-                              backgroundColor: Colors.white),
-                          onPressed: () {
-                            Navigator.push(
-                              context,
-                              MaterialPageRoute(
-                                  builder: (context) =>
-                                  const ResumoDoAgendamento()),
-                            );
-                          },
-                          child: const Text(
-                            'Veja o resumo da consulta',
-                            style: TextStyle(color: Color(0xFF3C10BB)),
-                          ),),
-                      ),
-                    ]),
-                //  Text('Atenção'),
+                ]),
+
+            Padding(padding: EdgeInsets.all(7)),
+
+            Row(
+                mainAxisAlignment: MainAxisAlignment.center,
+                children: [
+                  Builder(
+                    builder: (context) => ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          shape: const StadiumBorder(),
+                          backgroundColor: Colors.white),
+                      onPressed: () {
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                              const ResumoDoAgendamento()),
+                        );
+                      },
+                      child: const Text(
+                        'Veja o resumo da consulta',
+                        style: TextStyle(color: Color(0xFF3C10BB)),
+                      ),),
+                  ),
+                ]),
+            //  Text('Atenção'),
 
 
 
-              ]));
-        },
-      );
-    });
+          ]),
+        actions: <CupertinoDialogAction>[
+
+        ],
+      ),
+    );
   }
 
 }

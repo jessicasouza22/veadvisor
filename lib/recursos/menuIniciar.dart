@@ -5,6 +5,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:vetadvisor/fluxodehistoricodepesquisadesejavel/homeHistoricoPesquisaDesejavel.dart';
 
 import 'package:vetadvisor/fluxopesquisarapida/home.dart';
 
@@ -186,6 +187,31 @@ class _MenuIniciarPageState extends State<MenuIniciarPage> {
                                 },
                                 child: const Text(
                                   'Minha Agenda',
+                                  style: TextStyle(color: Color(0xFF3C10BB)),
+                                ),),
+                            ),
+                          ]),
+
+                      Padding(padding:EdgeInsets.all(20)),
+
+                      Row(
+                          mainAxisAlignment: MainAxisAlignment.center,
+                          children: [
+                            Builder(
+                              builder: (context) => ElevatedButton(
+                                style: ElevatedButton.styleFrom(
+                                    shape: const StadiumBorder(),
+                                    backgroundColor: Colors.white),
+                                onPressed: () {
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(
+                                        builder: (context) =>
+                                        const HomeHistoricoPesquisaDesejavel()),
+                                  );
+                                },
+                                child: const Text(
+                                  'Historico de Pesquisa Desejavel',
                                   style: TextStyle(color: Color(0xFF3C10BB)),
                                 ),),
                             ),

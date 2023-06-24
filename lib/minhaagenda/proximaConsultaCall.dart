@@ -149,13 +149,13 @@ class _ProximaConsultaCallState extends State<ProximaConsultaCallPage> {
                     child: ClipOval(
 
                       child:
-                      Image.asset("imagens/uhtred.jpeg"),
+                      Image.asset("imagens/Uhtred.png"),
 
                     ),
                   ))),
 
           Text(
-            "$_nomeUsuarioLogado\n\n$_nomeUsuarioLogado Joao",
+            "$_nomeUsuarioLogado\n\n$_nomeUsuarioLogado Uhtred Of Bebbanburg",
             style: TextStyle(fontSize: 14, color: Colors.white),
           ),
 
@@ -204,7 +204,7 @@ class _ProximaConsultaCallState extends State<ProximaConsultaCallPage> {
                 Padding(padding: EdgeInsets.only(left: 10)),
 
                 Container(
-                  padding: EdgeInsets.all(15),
+                  padding: EdgeInsets.all(6),
                   // margin:  EdgeInsets.only(left: 5),
                   decoration: BoxDecoration(
                     borderRadius: BorderRadius.circular(50),

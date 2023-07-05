@@ -880,4 +880,7 @@ class _ConsultaPacienteState extends State<ConsultaPacientePage> {
           ]),
         ));
   }
+  void finalizaCadastroOutro() {
+    print("Olá, mundo!");
+  }
 }

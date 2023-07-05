@@ -8,6 +8,7 @@ import 'package:vetadvisor/prelogin/termos.dart';
 
 
 import '../recursos/Constants.dart';
+import 'consultaPaciente.dart';
 enum SingingCharacterFormacao { Graduado, Pos, Mestre }
 enum SingingCharacterEstado { Casado, Divorciado, Outro }
 enum SingingCharacterGenero { Masculino, Feminino, Especifique }
@@ -643,7 +644,7 @@ class _PerfilPageState extends State<PerfilPage> {
 
 
                       if (_formKey.currentState!.validate()) {
-                        _finalizaCadastro();
+                        finalizaCadastro();
                       }
 
 
@@ -673,7 +674,11 @@ class _PerfilPageState extends State<PerfilPage> {
       );
   }
 
-  void _finalizaCadastro() {
+  void finalizaCadastro() {
+
+    ConsultaPaciente consultapaciente = ConsultaPaciente();
+
+
     print("Cadastrando");
   }
 }

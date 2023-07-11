@@ -543,7 +543,8 @@ class _HomeHistoricoPesquisaDesejavelState extends State<HomeHistoricoPesquisaDe
                                             decoration: TextDecoration.none),
                                       ),
 
-                                      ElevatedButton(
+                                      Builder(
+                                          builder: (context) =>  ElevatedButton(
                                           style: TextButton.styleFrom(
                                             // padding: const EdgeInsets.only(top: 4, right: 10, left: 10, bottom: 4),
 
@@ -552,7 +553,16 @@ class _HomeHistoricoPesquisaDesejavelState extends State<HomeHistoricoPesquisaDe
                                                 borderRadius: BorderRadius.circular(20)),
                                             // Background Color
                                           ),
-                                          onPressed: () {}, child:
+                                          onPressed: () {
+
+                                            {
+                                              Navigator.push(
+                                                context,
+                                                MaterialPageRoute(
+                                                    builder: (context) => const HistoricoDePesquisaDesejavel()),
+                                              );
+                                            }
+                                          }, child:
                                       Row(
                                           children: [
                                             Text("Ver todos",
@@ -561,7 +571,7 @@ class _HomeHistoricoPesquisaDesejavelState extends State<HomeHistoricoPesquisaDe
                                                 fontSize: 12,
                                               ),),
 
-                                            Icon(MdiIcons.chevronRight, color: Color(0xFF59616E), size: 16)])),
+                                            Icon(MdiIcons.chevronRight, color: Color(0xFF59616E), size: 16)]))),
 
                                     ]),
                                 Row(

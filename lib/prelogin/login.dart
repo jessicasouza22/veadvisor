@@ -183,7 +183,7 @@ class _LoginPageState extends State<LoginPage> {
                             ),
 
                             const Padding(padding: EdgeInsets.all(10.0)),
-                            const Row(
+                             Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Text(
@@ -267,12 +267,14 @@ class _LoginPageState extends State<LoginPage> {
                                       onPressed: () {},
                                     ),
                                     const Padding(padding: EdgeInsets.all(10.0)),
-                                    SocialLoginButton(
-                                      borderRadius: 90,
-                                      height: 40,
-                                      buttonType: SocialLoginButtonType.facebook,
-                                      mode: SocialLoginButtonMode.multi,
-                                      onPressed: () {},
+                                    Center(
+                                      child: SocialLoginButton(
+                                        borderRadius: 90,
+                                        height: 40,
+                                        buttonType: SocialLoginButtonType.facebook,
+                                        mode: SocialLoginButtonMode.multi,
+                                        onPressed: () {},
+                                      ),
                                     )
                                   ],
                                 )
@@ -282,7 +284,7 @@ class _LoginPageState extends State<LoginPage> {
 
                             const Padding(padding: EdgeInsets.all(10.0)),
 
-                            const Row(
+                             Row(
                               children: [
                                 Text(
                                   "Ainda não é cadastrado? Junte-se a nós,", style: TextStyle(
@@ -293,7 +295,7 @@ class _LoginPageState extends State<LoginPage> {
                             ),
 
                             GestureDetector(
-                              child: const Row(
+                              child: Row(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Text(

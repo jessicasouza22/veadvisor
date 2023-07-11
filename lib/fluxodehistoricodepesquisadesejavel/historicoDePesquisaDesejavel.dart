@@ -173,6 +173,24 @@ class _HistoricoDePesquisaDesejavelState extends State<HistoricoDePesquisaDeseja
 
                       ),
 
+                      Row(
+
+                        children: [
+                          Container(
+                            margin: const EdgeInsets.only(left: 20, right: 10, top: 10, bottom: 1),
+                            child:
+                            Text("Resultado da pesquisa",
+                                style: TextStyle(
+                                  color: Color(0xFF3C10BB),
+                                  fontWeight: FontWeight.bold,
+                                  fontSize: 16,
+                                )
+
+                            ),),
+
+
+                        ],),
+
 
 
                       Container(
@@ -184,9 +202,29 @@ class _HistoricoDePesquisaDesejavelState extends State<HistoricoDePesquisaDeseja
                             borderRadius: BorderRadius.all( Radius.circular(10))),
 
                         child:
-                            Row(
+
+                        Column(
+                          children: [
+                        Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
+                                  SizedBox(
+                                    width: 1,
+                                    height: 1,
+                                    child:
+                                    Checkbox(
+                                        checkColor: Colors.white,
+                                        activeColor: Colors.green,
+                                        //fillColor: MaterialStateProperty.resolveWith(getColor),
+                                        value: false,
+                                        shape: CircleBorder(),
+                                        onChanged: (value) {}
+                                    ),
+
+                                  ),
+
+                                  Padding(padding: EdgeInsets.all(10)),
+
                                   Text("Resultado da pesquisa",
                                       style: TextStyle(
                                         color: Color(0xFF3C10BB),
@@ -196,7 +234,145 @@ class _HistoricoDePesquisaDesejavelState extends State<HistoricoDePesquisaDeseja
 
                                   ),
 
-                          ],),),
+                          ],),
+
+                        Row(
+                          children: [
+                            Divider(
+
+                              color: Color(0xff12EC1A),
+                              thickness: 0.8,
+                              endIndent: 200,
+                              indent: 50,
+
+                            ),
+                          ],
+                        ),
+
+                        Container(
+
+                            padding: EdgeInsets.only(left: 10, right: 10),
+                            margin: EdgeInsets.only(left: 20, right: 20, top: 10),
+                            decoration: BoxDecoration(
+                                color: Colors.white,
+                                borderRadius: BorderRadius.all( Radius.circular(10))),
+
+                            child: Column(
+                              children: [
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text("Hipersensibilidade alimentar",
+                                    style: TextStyle(
+                                      color: Colors.black,
+                                      fontWeight: FontWeight.bold,
+                                      fontSize: 10
+                                    ),),
+
+                                    Icon(
+                                      Icons.star,
+                                      color: Colors.yellow,
+                                      size: 12,
+                                    ),
+                                  ],
+                                ),
+
+                                Padding(padding: EdgeInsets.all(2)),
+
+                                Row(
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  children: [
+                                    Text("Alérgia comum em cães da raça shih tzu",
+                                      style: TextStyle(
+                                          color: Colors.black,
+                                          fontSize: 10
+                                      ),),
+
+                                  ],
+                                )
+                              ],
+                            )    ),
+
+                        Padding(padding: EdgeInsets.all(2)),
+
+                        Container(
+                                padding: const EdgeInsets.all(2),
+                                //  margin: const EdgeInsets.only(top: 10),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  color: Color(0xFF4116B4),
+
+                                ),
+                                child: const Icon(
+                                  Icons.add,
+                                  color: Colors.white,
+                                  size: 12,
+                                )),
+
+                        Container(
+
+                                padding: EdgeInsets.only(left: 10, right: 10),
+                                margin: EdgeInsets.only(left: 20, right: 20, top: 10),
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.all( Radius.circular(10))),
+
+                                child: Column(
+                                  children: [
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text("Hipersensibilidade alimentar",
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontWeight: FontWeight.bold,
+                                              fontSize: 10
+                                          ),),
+
+                                        Icon(
+                                          Icons.star,
+                                          color: Colors.yellow,
+                                          size: 12,
+                                        ),
+                                      ],
+                                    ),
+
+                                    Padding(padding: EdgeInsets.all(2)),
+
+                                    Row(
+                                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        Text("Alérgia comum em cães da raça shih tzu",
+                                          style: TextStyle(
+                                              color: Colors.black,
+                                              fontSize: 10
+                                          ),),
+
+                                      ],
+                                    )
+                                  ],
+                                )    ),
+
+                        Padding(padding: EdgeInsets.all(2)),
+
+                        Container(
+                                padding: const EdgeInsets.all(2),
+                                //  margin: const EdgeInsets.only(top: 10),
+                                decoration: BoxDecoration(
+                                  borderRadius: BorderRadius.circular(50),
+                                  color: Color(0xFF4116B4),
+
+                                ),
+                                child: const Icon(
+                                  Icons.add,
+                                  color: Colors.white,
+                                  size: 12,
+                                )),
+
+
+                      ]),),
+
+
 
 
 

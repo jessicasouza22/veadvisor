@@ -1,7 +1,9 @@
 // 2.2  Perfil
 
 import 'dart:io';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:vetadvisor/fluxopesquisarapida/home.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/cadastreOPet.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/perfilPaciente.dart';
 import 'package:vetadvisor/prelogin/termos.dart';
@@ -9,6 +11,8 @@ import 'package:vetadvisor/prelogin/termos.dart';
 
 import '../recursos/Constants.dart';
 import 'consultaPaciente.dart';
+
+
 enum SingingCharacterFormacao { Graduado, Pos, Mestre }
 enum SingingCharacterEstado { Casado, Divorciado, Outro }
 enum SingingCharacterGenero { Masculino, Feminino, Especifique }
@@ -44,6 +48,27 @@ class _PerfilPageState extends State<PerfilPage> {
   final _cpf = TextEditingController();
   final _endereco = TextEditingController();
   final _complemento = TextEditingController();
+
+  var db = FirebaseFirestore.instance;
+
+  @override
+  initState() {
+
+    parei aqui quando estava configurando o firebase para pegar os dados do banco para colocar na tela de perfil
+    db.collection("usuarios").where("capital", isEqualTo: true).get().then(
+          (querySnapshot) {
+        print("Successfully completed");
+        for (var docSnapshot in querySnapshot.docs) {
+          print('${docSnapshot.id} => ${docSnapshot.data()}');
+        }
+      },
+      onError: (e) => print("Error completing: $e"),
+    );
+
+
+    super.initState();
+
+  }
 
 
   @override
@@ -644,9 +669,14 @@ class _PerfilPageState extends State<PerfilPage> {
 
 
                       if (_formKey.currentState!.validate()) {
-                        finalizaCadastro();
-                      }
+                        //finalizaCadastro();
 
+                      }
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) => const Home()),
+                      );
 
                       /*
                       Navigator.push(

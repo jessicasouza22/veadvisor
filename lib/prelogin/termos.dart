@@ -4,6 +4,8 @@ import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:social_login_buttons/social_login_buttons.dart';
+import 'package:vetadvisor/fluxoprontuariodigital/cadastreOPet.dart';
+import 'package:vetadvisor/fluxoprontuariodigital/perfilPaciente.dart';
 import 'package:vetadvisor/recursos/Constants.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/perfil.dart';
 import 'package:vetadvisor/recursos/menuIniciar.dart';
@@ -218,7 +220,7 @@ class _Termos extends State<Termos> {
                                                     Navigator.push(
                                                       context,
                                                       MaterialPageRoute(
-                                                          builder: (context) => const MenuIniciar()),
+                                                          builder: (context) => const Perfil()),
                                                     );
                                                   } else {
                                                     //mostrarAlerta();

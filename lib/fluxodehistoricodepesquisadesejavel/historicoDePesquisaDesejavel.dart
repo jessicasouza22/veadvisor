@@ -248,16 +248,11 @@ class _HistoricoDePesquisaDesejavelState
                           ],
                         ),
 
-                        Row(
-                          children: const [
-                            Divider(
-                              color: Color(0xff12EC1A),
-                              thickness: 2.0,
-                              endIndent: 50,
-                              indent: 50,
-                            ),
-                          ],
-                        ),
+                        Divider(
+                          color: Color(0xff12EC1A),
+                          thickness: 2.0,
+                          endIndent: 100
+                      ),
 
                         Container(
                               padding: EdgeInsets.only(left: 10, right: 10),

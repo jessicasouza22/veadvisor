@@ -3,7 +3,7 @@ import 'package:auto_size_text/auto_size_text.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:vetadvisor/fluxodehistoricodepesquisadesejavel/historicoDePesquisaDesejavelDeletar.dart';
+import 'package:vetadvisor/fluxodehistoricodepesquisadesejavel/historicoDePesquisaDesejavel01.dart';
 import 'package:vetadvisor/fluxodehistoricodepesquisadesejavel/homeHistoricoPesquisaDesejavel.dart';
 import 'package:vetadvisor/fluxopesquisarapida/detalheDaPesquisa.dart';
 import 'package:vetadvisor/fluxopesquisarapida/servicos.dart';
@@ -16,23 +16,23 @@ import '../fluxopesquisarapida/home.dart';
 enum SingingCharacterAreaMedica{ Oftalmicos, Infecciosos, Dermatologicos, MusculoEsqueletico, Neurologicos, MetabolicosEndocrinos, Oncologicos, Cardiologicos, NefrologicosUrologicos, Hematologicos, Respiratorios, Odontologicos, Toxocologicos, Teriogenologicos}
 
 
-class HistoricoDePesquisaDesejavel01 extends StatelessWidget {
-  const HistoricoDePesquisaDesejavel01({super.key});
+class HistoricoDePesquisaDesejavelDeletar extends StatelessWidget {
+  const HistoricoDePesquisaDesejavelDeletar({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const HistoricoDePesquisaDesejavel01Page();
+    return const HistoricoDePesquisaDesejavelDeletarPage();
   }
 }
 
-class HistoricoDePesquisaDesejavel01Page extends StatefulWidget {
-  const HistoricoDePesquisaDesejavel01Page({Key? key}) : super(key: key);
+class HistoricoDePesquisaDesejavelDeletarPage extends StatefulWidget {
+  const HistoricoDePesquisaDesejavelDeletarPage({Key? key}) : super(key: key);
 
   @override
-  State<HistoricoDePesquisaDesejavel01Page> createState() => _HistoricoDePesquisaDesejavel01State();
+  State<HistoricoDePesquisaDesejavelDeletarPage> createState() => _HistoricoDePesquisaDesejavelDeletarState();
 }
 
-class _HistoricoDePesquisaDesejavel01State extends State<HistoricoDePesquisaDesejavel01Page> {
+class _HistoricoDePesquisaDesejavelDeletarState extends State<HistoricoDePesquisaDesejavelDeletarPage> {
 
   final _formKey = GlobalKey<FormState>();
   final _nome = TextEditingController();
@@ -145,7 +145,36 @@ class _HistoricoDePesquisaDesejavel01State extends State<HistoricoDePesquisaDese
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
-                                          const HistoricoDePesquisaDesejavelDeletar()),
+                                          const
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+
+                                          HistoricoDePesquisaDesejavel01()),
                                     );
 
                                     //print("clicado na seta");
@@ -192,7 +221,7 @@ class _HistoricoDePesquisaDesejavel01State extends State<HistoricoDePesquisaDese
                                     //print("clicado na seta");
                                   },
                                   icon: const Icon(MdiIcons.trashCanOutline,
-                                      color: Color(0xFF8F90A6), size: 16,))),
+                                    color: Color(0xFF8F90A6), size: 16,))),
 
                         ],
                       ),
@@ -277,9 +306,9 @@ class _HistoricoDePesquisaDesejavel01State extends State<HistoricoDePesquisaDese
                                       ],
                                     ),
                                     Divider(
-                                      color: Color(0xff12EC1A),
-                                      thickness: 2.0,
-                                      endIndent: 100
+                                        color: Color(0xff12EC1A),
+                                        thickness: 2.0,
+                                        endIndent: 100
                                     ),
 
 

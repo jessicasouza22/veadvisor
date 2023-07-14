@@ -1,5 +1,6 @@
 //Termos de serviço tutor
 import 'package:auto_size_text/auto_size_text.dart';
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -22,6 +23,28 @@ class _Termos extends State<Termos> {
   bool _aceito = false;
   bool _queroReceber = false;
 
+  var db = FirebaseFirestore.instance;
+
+  @override
+  initState() {
+
+
+    db.collection("usuarios").where("email", isEqualTo: "wallace_sjm@msn.com").get().then(
+          (querySnapshot) {
+
+        for (var docSnapshot in querySnapshot.docs) {
+
+          print('${docSnapshot.id} => ${docSnapshot.data()}');
+
+        }
+      },
+      onError: (e) => print("Error completing: $e"),
+    );
+
+
+    super.initState();
+
+  }
 
   @override
   Widget build(BuildContext context) {

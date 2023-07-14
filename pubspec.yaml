@@ -43,11 +43,10 @@ dependencies:
   rflutter_alert: ^2.0.7
   url_launcher: ^6.0.0
 
-
   rolling_switch: ^0.0.2
   video_player: ^2.6.0
-  firebase_auth: ^4.4.0
-  firebase_core: ^2.9.0
+  firebase_auth: ^4.6.3
+  firebase_core: ^2.14.0
   change_app_package_name: ^1.1.0
   firebase_messaging: ^14.4.0
   flutter_phoenix: ^1.1.0

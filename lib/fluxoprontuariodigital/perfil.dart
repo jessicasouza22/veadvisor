@@ -54,12 +54,21 @@ class _PerfilPageState extends State<PerfilPage> {
   @override
   initState() {
 
-    parei aqui quando estava configurando o firebase para pegar os dados do banco para colocar na tela de perfil
-    db.collection("usuarios").where("capital", isEqualTo: true).get().then(
+
+    db.collection("usuarios").where("email", isEqualTo: "wallace_sjm@msn.com").get().then(
           (querySnapshot) {
-        print("Successfully completed");
+
         for (var docSnapshot in querySnapshot.docs) {
-          print('${docSnapshot.id} => ${docSnapshot.data()}');
+          //print('${docSnapshot.id} => ${docSnapshot.data()}');
+          print('${docSnapshot.id} => ${docSnapshot.data().keys}');
+          print('${docSnapshot.id} => ${docSnapshot.data().values}');
+          if(docSnapshot.data().values.elementAt(4) == "wallace_sjm@msn.com") {
+            setState(() {
+              _nome.text = docSnapshot.data().values.elementAt(3);
+            });
+
+          }
+          //_nome.text = docSnapshot.data().values[""];
         }
       },
       onError: (e) => print("Error completing: $e"),
@@ -168,6 +177,7 @@ class _PerfilPageState extends State<PerfilPage> {
                               borderRadius: BorderRadius.all(Radius.circular(17)),
                             ),
                             child: TextFormField(
+                              controller: _nome,
                               validator: (text){
                                 if(text == null || text.isEmpty){
                                   return "Por favor, digite o seu nome completo.";
@@ -205,6 +215,7 @@ class _PerfilPageState extends State<PerfilPage> {
                               borderRadius: BorderRadius.all(Radius.circular(17)),
                             ),
                             child: TextFormField(
+                              controller: _email,
                               validator: (text){
                                 if(text == null || text.isEmpty){
                                   return "Por favor, digite o seu e-mail.";
@@ -242,6 +253,7 @@ class _PerfilPageState extends State<PerfilPage> {
                               borderRadius: BorderRadius.all(Radius.circular(17)),
                             ),
                             child: TextFormField(
+                              controller: _crmv,
                               validator: (text){
                                 if(text == null || text.isEmpty){
                                   return "Por favor, digite o seu CRMV.";
@@ -279,6 +291,7 @@ class _PerfilPageState extends State<PerfilPage> {
                               borderRadius: BorderRadius.all(Radius.circular(17)),
                             ),
                             child: TextFormField(
+                              controller: _celular,
                               validator: (text){
                                 if(text == null || text.isEmpty){
                                   return "Por favor, digite o número do seu celular.";
@@ -322,6 +335,7 @@ class _PerfilPageState extends State<PerfilPage> {
                         borderRadius: BorderRadius.all(Radius.circular(17)),
                       ),
                       child: TextFormField(
+                        controller: _cpf,
 
                         textAlign: TextAlign.center,
                         decoration: InputDecoration(
@@ -355,6 +369,7 @@ class _PerfilPageState extends State<PerfilPage> {
                         borderRadius: BorderRadius.all(Radius.circular(17)),
                       ),
                       child: TextFormField(
+                        controller: _endereco,
 
                         textAlign: TextAlign.center,
                         decoration: InputDecoration(
@@ -388,6 +403,7 @@ class _PerfilPageState extends State<PerfilPage> {
                         borderRadius: BorderRadius.all(Radius.circular(17)),
                       ),
                       child: TextFormField(
+                        controller: _complemento,
                         obscureText: true,
                         textAlign: TextAlign.center,
                         decoration: InputDecoration(

@@ -59,15 +59,20 @@ class _PerfilPageState extends State<PerfilPage> {
           (querySnapshot) {
 
         for (var docSnapshot in querySnapshot.docs) {
-          //print('${docSnapshot.id} => ${docSnapshot.data()}');
-          print('${docSnapshot.id} => ${docSnapshot.data().keys}');
-          print('${docSnapshot.id} => ${docSnapshot.data().values}');
-          if(docSnapshot.data().values.elementAt(4) == "wallace_sjm@msn.com") {
+
+
             setState(() {
-              _nome.text = docSnapshot.data().values.elementAt(3);
+              _nome.text = docSnapshot.data()["nome"];
+              _email.text = docSnapshot.data()["email"];
+              _crmv.text = docSnapshot.data()["crmv"];
+              _celular.text = docSnapshot.data()["celular"];
+              _cpf.text = docSnapshot.data()["cpf"];
+              _endereco.text = docSnapshot.data()["endereco"];
+              _complemento.text = docSnapshot.data()["complemento"];
+
             });
 
-          }
+
           //_nome.text = docSnapshot.data().values[""];
         }
       },

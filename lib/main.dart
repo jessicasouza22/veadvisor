@@ -1,3 +1,4 @@
+import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
@@ -25,6 +26,10 @@ void main()  async {
     options: DefaultFirebaseOptions.currentPlatform,
   );
   auth = FirebaseAuth.instanceFor(app: app);
+
+  bool _aceito = false;
+
+  var db = FirebaseFirestore.instance;
 
   FirebaseAuth.instance
       .authStateChanges()
@@ -55,14 +60,39 @@ void main()  async {
           );
           //print('User is currently signed out!');
         } else {
-          runApp( Phoenix(
-            child: MaterialApp(
-                debugShowCheckedModeBanner: false,
-                home: Termos()
-            )
-          )
+
+          db.collection("usuarios").where("email", isEqualTo: "wallace_sjm@msn.com").get().then(
+                (querySnapshot) {
+
+              for (var docSnapshot in querySnapshot.docs) {
+
+
+                _aceito = docSnapshot.data()["termos"];
+
+                if(_aceito) {
+                  runApp( Phoenix(
+                      child: const MaterialApp(
+                          debugShowCheckedModeBanner: false,
+                          home: Perfil()
+                      )
+                  ));
+                } else {
+                  runApp( Phoenix(
+                      child: MaterialApp(
+                          debugShowCheckedModeBanner: false,
+                          home: Termos()
+                      )
+                  ));
+                }
+                //print('${docSnapshot.id} =noMain> ${docSnapshot.data()}');
+
+              }
+            },
+            onError: (e) => print("Error completing: $e"),
           );
-          //print('User is signed in!');
+
+
+
         }
 
 

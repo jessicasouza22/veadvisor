@@ -24,6 +24,7 @@ class _Termos extends State<Termos> {
   bool _queroReceber = false;
 
   var db = FirebaseFirestore.instance;
+  var idDocumentoFirebase = "";
 
   @override
   initState() {
@@ -34,7 +35,13 @@ class _Termos extends State<Termos> {
 
         for (var docSnapshot in querySnapshot.docs) {
 
-          print('${docSnapshot.id} => ${docSnapshot.data()}');
+          idDocumentoFirebase = docSnapshot.id;
+          setState(() {
+            _aceito = docSnapshot.data()["termos"];
+            _queroReceber = docSnapshot.data()["novidades"];
+          });
+
+          // print('${docSnapshot.id} => ${docSnapshot.data()}');
 
         }
       },
@@ -239,7 +246,12 @@ class _Termos extends State<Termos> {
                                                 buttonType: SocialLoginButtonType.generalLogin,
                                                 onPressed: () {
 
+
                                                   if(_aceito) {
+
+                                                    final atualizaTermos = db.collection("usuarios").doc(idDocumentoFirebase);
+                                                    atualizaTermos.update({"novidades" : _queroReceber, "termos" : _aceito}).then((value) => null);
+
                                                     Navigator.push(
                                                       context,
                                                       MaterialPageRoute(

@@ -3,6 +3,7 @@
 import 'dart:io';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter/services.dart';
 import 'package:vetadvisor/fluxopesquisarapida/home.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/cadastreOPet.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/perfilPaciente.dart';
@@ -48,8 +49,14 @@ class _PerfilPageState extends State<PerfilPage> {
   final _cpf = TextEditingController();
   final _endereco = TextEditingController();
   final _complemento = TextEditingController();
+  String _formacaoProfissional = "Graduado";
+  String _estadoCivil = "Outro";
+  String _genero = "Outros";
+  bool _termos = false;
+  bool _novidades = false;
 
   var db = FirebaseFirestore.instance;
+  var idDocumentoFirebase = "";
 
   @override
   initState() {
@@ -60,16 +67,21 @@ class _PerfilPageState extends State<PerfilPage> {
 
         for (var docSnapshot in querySnapshot.docs) {
 
+          idDocumentoFirebase = docSnapshot.id;
 
             setState(() {
-              _nome.text = docSnapshot.data()["nome"];
-              _email.text = docSnapshot.data()["email"];
-              _crmv.text = docSnapshot.data()["crmv"];
-              _celular.text = docSnapshot.data()["celular"];
+              _nome.text = docSnapshot.data()["nome"] ?? "";
+              _email.text = docSnapshot.data()["email"] ?? "";
+              _crmv.text = docSnapshot.data()["crmv"] ?? "";
+              _celular.text = docSnapshot.data()["celular"] ?? "";
               _cpf.text = docSnapshot.data()["cpf"];
               _endereco.text = docSnapshot.data()["endereco"];
               _complemento.text = docSnapshot.data()["complemento"];
-
+              _formacaoProfissional = docSnapshot.data()["formacao"];
+              _estadoCivil = docSnapshot.data()["estadoCivil"];
+              _genero = docSnapshot.data()["genero"];
+              _termos = docSnapshot.data()["termos"];
+              _novidades = docSnapshot.data()["novidades"];
             });
 
 
@@ -83,6 +95,8 @@ class _PerfilPageState extends State<PerfilPage> {
     super.initState();
 
   }
+
+
 
 
   @override
@@ -190,6 +204,7 @@ class _PerfilPageState extends State<PerfilPage> {
                               },
                               textAlign: TextAlign.center,
                               decoration: InputDecoration(
+                                hintText: "Digite aqui o seu nome completo",
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(17),
                                   borderSide: const BorderSide(
@@ -228,6 +243,7 @@ class _PerfilPageState extends State<PerfilPage> {
                               },
                               textAlign: TextAlign.center,
                               decoration: InputDecoration(
+                                hintText: "Digite aqui o seu e-mail",
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(17),
                                   borderSide: const BorderSide(
@@ -258,6 +274,7 @@ class _PerfilPageState extends State<PerfilPage> {
                               borderRadius: BorderRadius.all(Radius.circular(17)),
                             ),
                             child: TextFormField(
+                              keyboardType: TextInputType.phone,
                               controller: _crmv,
                               validator: (text){
                                 if(text == null || text.isEmpty){
@@ -266,6 +283,7 @@ class _PerfilPageState extends State<PerfilPage> {
                               },
                               textAlign: TextAlign.center,
                               decoration: InputDecoration(
+                                hintText: "Digite aqui o seu CRMV",
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(17),
                                   borderSide: const BorderSide(
@@ -296,6 +314,7 @@ class _PerfilPageState extends State<PerfilPage> {
                               borderRadius: BorderRadius.all(Radius.circular(17)),
                             ),
                             child: TextFormField(
+                              keyboardType: TextInputType.phone,
                               controller: _celular,
                               validator: (text){
                                 if(text == null || text.isEmpty){
@@ -304,6 +323,7 @@ class _PerfilPageState extends State<PerfilPage> {
                               },
                               textAlign: TextAlign.center,
                               decoration: InputDecoration(
+                                hintText: "Digite aqui o seu celular",
                                 border: OutlineInputBorder(
                                   borderRadius: BorderRadius.circular(17),
                                   borderSide: const BorderSide(
@@ -409,7 +429,7 @@ class _PerfilPageState extends State<PerfilPage> {
                       ),
                       child: TextFormField(
                         controller: _complemento,
-                        obscureText: true,
+
                         textAlign: TextAlign.center,
                         decoration: InputDecoration(
                           border: OutlineInputBorder(
@@ -440,16 +460,16 @@ class _PerfilPageState extends State<PerfilPage> {
                       children: [
                         Row(
                           children: [
-                            Radio<SingingCharacterFormacao>(
-                              value: SingingCharacterFormacao.Graduado,
+                            Radio(
+                              value: "Graduado",
+                              groupValue: _formacaoProfissional,
 
-                              onChanged: (SingingCharacterFormacao? value) {
-
+                              onChanged: (value) {
                                 setState(() {
-
+                                  _formacaoProfissional = value!;
                                 });
                               },
-                              groupValue: null,
+
                               fillColor:
                               MaterialStateColor.resolveWith((states) => Colors.white),
                             ),
@@ -463,14 +483,14 @@ class _PerfilPageState extends State<PerfilPage> {
                         ),
                         Row(
                           children: [
-                            Radio<SingingCharacterFormacao>(
-                                value: SingingCharacterFormacao.Pos,
-                                groupValue: null,
+                            Radio(
+                                value: "Pós-graduado",
+                                groupValue: _formacaoProfissional,
                                 fillColor:
                                 MaterialStateColor.resolveWith((states) => Colors.white),
-                                onChanged: (SingingCharacterFormacao? value) {
+                                onChanged: (value) {
                                   setState(() {
-
+                                    _formacaoProfissional = value!;
                                   });
 
                                 }
@@ -485,14 +505,14 @@ class _PerfilPageState extends State<PerfilPage> {
                         ),
                         Row(
                           children: [
-                            Radio<SingingCharacterFormacao>(
-                                value: SingingCharacterFormacao.Mestre,
-                                groupValue: null,
+                            Radio(
+                                value: "Mestre/Doutor",
+                                groupValue: _formacaoProfissional,
                                 fillColor:
                                 MaterialStateColor.resolveWith((states) => Colors.white),
-                                onChanged: (SingingCharacterFormacao? value) {
+                                onChanged: (value) {
                                   setState(() {
-
+                                    _formacaoProfissional = value!;
                                   });
 
                                 }
@@ -526,16 +546,17 @@ class _PerfilPageState extends State<PerfilPage> {
                       children: [
                         Row(
                           children: [
-                            Radio<SingingCharacterFormacao>(
-                              value: SingingCharacterFormacao.Graduado,
+                            Radio(
+                              value: "Casado",
+                              groupValue: _estadoCivil,
 
-                              onChanged: (SingingCharacterFormacao? value) {
+                              onChanged: (value) {
 
                                 setState(() {
-
+                                  _estadoCivil = value!;
                                 });
                               },
-                              groupValue: null,
+
                               fillColor:
                               MaterialStateColor.resolveWith((states) => Colors.white),
                             ),
@@ -549,14 +570,14 @@ class _PerfilPageState extends State<PerfilPage> {
                         ),
                         Row(
                           children: [
-                            Radio<SingingCharacterFormacao>(
-                                value: SingingCharacterFormacao.Pos,
-                                groupValue: null,
+                            Radio(
+                                value: "Divorciado",
+                                groupValue: _estadoCivil,
                                 fillColor:
                                 MaterialStateColor.resolveWith((states) => Colors.white),
-                                onChanged: (SingingCharacterFormacao? value) {
+                                onChanged: (value) {
                                   setState(() {
-
+                                    _estadoCivil = value!;
                                   });
 
                                 }
@@ -571,14 +592,14 @@ class _PerfilPageState extends State<PerfilPage> {
                         ),
                         Row(
                           children: [
-                            Radio<SingingCharacterFormacao>(
-                                value: SingingCharacterFormacao.Mestre,
-                                groupValue: null,
+                            Radio(
+                                value: "Outro",
+                                groupValue: _estadoCivil,
                                 fillColor:
                                 MaterialStateColor.resolveWith((states) => Colors.white),
-                                onChanged: (SingingCharacterFormacao? value) {
+                                onChanged: (value) {
                                   setState(() {
-
+                                    _estadoCivil = value!;
                                   });
 
                                 }
@@ -612,16 +633,15 @@ class _PerfilPageState extends State<PerfilPage> {
                       children: [
                         Row(
                           children: [
-                            Radio<SingingCharacterFormacao>(
-                              value: SingingCharacterFormacao.Graduado,
-
-                              onChanged: (SingingCharacterFormacao? value) {
+                            Radio(
+                              value: "Masculino",
+                              groupValue: _genero,
+                              onChanged: (value) {
 
                                 setState(() {
-
+                                  _genero = value!;
                                 });
                               },
-                              groupValue: null,
                               fillColor:
                               MaterialStateColor.resolveWith((states) => Colors.white),
                             ),
@@ -635,14 +655,14 @@ class _PerfilPageState extends State<PerfilPage> {
                         ),
                         Row(
                           children: [
-                            Radio<SingingCharacterFormacao>(
-                                value: SingingCharacterFormacao.Pos,
-                                groupValue: null,
+                            Radio(
+                                value: "Feminino",
+                                groupValue: _genero,
                                 fillColor:
                                 MaterialStateColor.resolveWith((states) => Colors.white),
-                                onChanged: (SingingCharacterFormacao? value) {
+                                onChanged: (value) {
                                   setState(() {
-
+                                    _genero = value!;
                                   });
 
                                 }
@@ -657,14 +677,14 @@ class _PerfilPageState extends State<PerfilPage> {
                         ),
                         Row(
                           children: [
-                            Radio<SingingCharacterFormacao>(
-                                value: SingingCharacterFormacao.Mestre,
-                                groupValue: null,
+                            Radio(
+                                value: "Outros",
+                                groupValue: _genero,
                                 fillColor:
                                 MaterialStateColor.resolveWith((states) => Colors.white),
-                                onChanged: (SingingCharacterFormacao? value) {
+                                onChanged: (value) {
                                   setState(() {
-
+                                    _genero = value!;
                                   });
 
                                 }
@@ -690,14 +710,26 @@ class _PerfilPageState extends State<PerfilPage> {
 
 
                       if (_formKey.currentState!.validate()) {
-                        //finalizaCadastro();
+
+                        final usuario = <String, dynamic>{
+                          "nome": _nome.text,
+                          "email": _email.text,
+                          "crmv": _crmv.text,
+                          "celular": _celular.text,
+                          "cpf": _cpf.text,
+                          "endereco": _endereco.text,
+                          "complemento": _complemento.text,
+                          "formacao": _formacaoProfissional,
+                          "estadoCivil": _estadoCivil,
+                          "genero" : _genero,
+                          "termos" : _termos,
+                          "novidades" : _novidades
+                        };
+
+                        atualizaCadastro(usuario);
 
                       }
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const Home()),
-                      );
+
 
                       /*
                       Navigator.push(
@@ -725,11 +757,21 @@ class _PerfilPageState extends State<PerfilPage> {
       );
   }
 
-  void finalizaCadastro() {
+  void atualizaCadastro(usuario) {
 
-    ConsultaPaciente consultapaciente = ConsultaPaciente();
+    db.collection("usuarios")
+        .doc(idDocumentoFirebase)
+        .set(usuario).then((document) {
+          Navigator.push(
+              context,
+              MaterialPageRoute(
+                  builder: (context) => const Home())
+          );
+    }).catchError((onError) {
+
+    });
 
 
-    print("Cadastrando");
+
   }
 }

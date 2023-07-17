@@ -14,6 +14,7 @@ import 'package:vetadvisor/prelogin/termos.dart';
 import 'package:vetadvisor/recursos/menuIniciar.dart';
 
 import 'firebase_options.dart';
+import 'fluxopesquisarapida/home.dart';
 
 late final FirebaseApp app;
 late final FirebaseAuth auth;
@@ -27,6 +28,10 @@ void main()  async {
   );
   auth = FirebaseAuth.instanceFor(app: app);
 
+  final _nome = TextEditingController();
+  final _email = TextEditingController();
+  final _crmv = TextEditingController();
+  final _celular = TextEditingController();
   bool _aceito = false;
 
   var db = FirebaseFirestore.instance;
@@ -34,18 +39,6 @@ void main()  async {
   FirebaseAuth.instance
       .authStateChanges()
       .listen((User? user) {
-
-
-        /*
-    runApp( Phoenix(
-        child: const MaterialApp(
-            debugShowCheckedModeBanner: false,
-            home: HomeMinhaAgenda()
-        )
-    )
-    );
-
-         */
 
 
 
@@ -66,16 +59,29 @@ void main()  async {
 
               for (var docSnapshot in querySnapshot.docs) {
 
-
-                _aceito = docSnapshot.data()["termos"];
+                _nome.text = docSnapshot.data()["nome"] ?? "";
+                _email.text = docSnapshot.data()["email"] ?? "";
+                _crmv.text = docSnapshot.data()["crmv"] ?? "";
+                _celular.text = docSnapshot.data()["celular"] ?? "";
+                _aceito = docSnapshot.data()["termos"] ?? false;
 
                 if(_aceito) {
-                  runApp( Phoenix(
-                      child: const MaterialApp(
-                          debugShowCheckedModeBanner: false,
-                          home: Perfil()
-                      )
-                  ));
+                  if(_nome.text!= "" && _email.text != "" && _crmv.text != "" && _celular.text != "") {
+                    runApp( Phoenix(
+                        child: const MaterialApp(
+                            debugShowCheckedModeBanner: false,
+                            home: Home()
+                        )
+                    ));
+                  } else {
+                    runApp( Phoenix(
+                        child: const MaterialApp(
+                            debugShowCheckedModeBanner: false,
+                            home: Perfil()
+                        )
+                    ));
+                  }
+
                 } else {
                   runApp( Phoenix(
                       child: MaterialApp(

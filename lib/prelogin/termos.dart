@@ -37,8 +37,8 @@ class _Termos extends State<Termos> {
 
           idDocumentoFirebase = docSnapshot.id;
           setState(() {
-            _aceito = docSnapshot.data()["termos"];
-            _queroReceber = docSnapshot.data()["novidades"];
+            _aceito = docSnapshot.data()["termos"] ?? false;
+            _queroReceber = docSnapshot.data()["novidades"] ?? false;
           });
 
           // print('${docSnapshot.id} => ${docSnapshot.data()}');

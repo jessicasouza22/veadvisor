@@ -42,6 +42,7 @@ class _HomePageState extends State<HomePage> {
   final _capa = TextEditingController();
   final _observacoes = TextEditingController();
 
+  String _especiePaciente = "Cães";
 
 
 
@@ -139,7 +140,7 @@ class _HomePageState extends State<HomePage> {
 
                       const Padding(padding: EdgeInsets.only(top: 15)),
 
-                      Row(
+                      const Row(
                           mainAxisAlignment: MainAxisAlignment.center,
                           children: [
                             Text("Faça a triagem do seu paciente",
@@ -152,12 +153,88 @@ class _HomePageState extends State<HomePage> {
 
                       const Padding(padding: EdgeInsets.only(top: 15)),
 
-                      Row(
+                      ButtonBar(
+                        alignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Row(
+                            children: [
+                              Radio(
+                                value: "Cães",
+                                groupValue: _especiePaciente,
+
+                                onChanged: (value) {
+                                  setState(() {
+                                    _especiePaciente = value!;
+                                  });
+                                },
+
+                                fillColor:
+                                MaterialStateColor.resolveWith((states) => Colors.green),
+                              ),
+                              const Text("Cães",
+                                  style: TextStyle(
+                                      fontSize: 10,
+                                      color: Colors.white
+                                  )
+                              ),
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Radio(
+                                  value: "Gatos",
+                                  groupValue: _especiePaciente,
+                                  fillColor:
+                                  MaterialStateColor.resolveWith((states) => Colors.green),
+                                  onChanged: (value) {
+                                    setState(() {
+                                      _especiePaciente = value!;
+                                    });
+
+                                  }
+                              ),
+                              const Text("Gatos",
+                                  style: TextStyle(
+                                      fontSize: 10,
+                                      color: Colors.white
+                                  )
+                              )
+                            ],
+                          ),
+                          Row(
+                            children: [
+                              Radio(
+                                  value: "Pets exóticos",
+                                  groupValue: _especiePaciente,
+                                  fillColor:
+                                  MaterialStateColor.resolveWith((states) => Colors.green),
+                                  onChanged: (value) {
+                                    setState(() {
+                                      _especiePaciente = value!;
+                                    });
+
+                                  }
+                              ),
+                              const Text("Pets exóticos",
+                                  style: TextStyle(
+                                      fontSize: 10,
+                                      color: Colors.white
+                                  )
+                              )
+                            ],
+                          )
+
+                        ],
+                      ),
+
+                      /*
+                      const Row(
                         mainAxisAlignment: MainAxisAlignment.center,
-                        children: const [
+                        children: [
                           Padding(padding: EdgeInsets.only(left: 10)),
                           Icon(Icons.circle, size: 12, color: Colors.green),
                           Padding(padding: EdgeInsets.only(left: 10)),
+
                           Text(
                             "Cães",
                             style: TextStyle(
@@ -190,6 +267,8 @@ class _HomePageState extends State<HomePage> {
                           ),
                         ],
                       ),
+
+                       */
 
                       const Padding(padding: EdgeInsets.only(top: 15)),
 

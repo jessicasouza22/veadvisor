@@ -2,6 +2,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:firebase_core/firebase_core.dart';
 import 'package:flutter/material.dart';
+import 'package:flutter_native_splash/flutter_native_splash.dart';
 import 'package:flutter_phoenix/flutter_phoenix.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/novaConsulta.dart';
 import 'package:vetadvisor/minhaagenda/atendimento.dart';
@@ -20,7 +21,10 @@ late final FirebaseApp app;
 late final FirebaseAuth auth;
 
 void main()  async {
-  WidgetsFlutterBinding.ensureInitialized();
+
+  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
+
+  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
 
   // We store the app and auth to make testing with a named instance easier.
   app = await Firebase.initializeApp(
@@ -40,10 +44,8 @@ void main()  async {
       .authStateChanges()
       .listen((User? user) {
 
-
-
-
         if (user == null) {
+
           runApp( Phoenix(
               child: const MaterialApp(
                 debugShowCheckedModeBanner: false,
@@ -51,7 +53,7 @@ void main()  async {
               )
           )
           );
-          //print('User is currently signed out!');
+
         } else {
 
           db.collection("usuarios").where("email", isEqualTo: "wallace_sjm@msn.com").get().then(
@@ -66,6 +68,7 @@ void main()  async {
                 _aceito = docSnapshot.data()["termos"] ?? false;
 
                 if(_aceito) {
+
                   if(_nome.text!= "" && _email.text != "" && _crmv.text != "" && _celular.text != "") {
                     runApp( Phoenix(
                         child: const MaterialApp(
@@ -74,6 +77,7 @@ void main()  async {
                         )
                     ));
                   } else {
+
                     runApp( Phoenix(
                         child: const MaterialApp(
                             debugShowCheckedModeBanner: false,
@@ -101,16 +105,10 @@ void main()  async {
 
         }
 
-
-
-
-
-
       });
 
-
-
-
+  FlutterNativeSplash.remove();
 }
+
 
 

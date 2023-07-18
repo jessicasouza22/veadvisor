@@ -52,6 +52,8 @@ dependencies:
   flutter_phoenix: ^1.1.0
   social_login_buttons: ^1.0.7
   cloud_firestore: ^4.8.2
+  flutter_native_splash: ^2.3.1
+
 
 
 dev_dependencies:
@@ -64,6 +66,13 @@ dev_dependencies:
   # package. See that file for information about deactivating specific lint
   # rules and activating additional ones.
   flutter_lints: ^2.0.0
+
+flutter_native_splash:
+  color: "#ff0000"
+  image: /Volumes/AndroidStudioProjects/veadvisor/imagens/icone.png
+
+
+
 
 # For information on the generic Dart part of this file, see the
 # following page: https://dart.dev/tools/pub/pubspec

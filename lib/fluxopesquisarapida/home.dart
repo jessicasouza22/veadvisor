@@ -43,7 +43,7 @@ class _HomePageState extends State<HomePage> {
   final _observacoes = TextEditingController();
 
   String _especiePaciente = "Cães";
-
+  String _disturbios = "Teste";
   int _selectedIndex = 0;
 
   void _onItemTapped(int index) {
@@ -535,378 +535,124 @@ class _HomePageState extends State<HomePage> {
 
                   backgroundColor: Colors.white.withOpacity(0.9),
                   contentPadding: EdgeInsets.zero,
-
-
-
                   title:  const Text("Pesquise por sistema (s) ou em\n todo banco de dados'",
-
-                    style: TextStyle(color: Color(0xFF4116B4), fontSize: 18)
+                      style: TextStyle(color: Color(0xFF4116B4), fontSize: 18)
                   ),
-                              content: SingleChildScrollView(
+
+                  content: SingleChildScrollView(
                     child: Row(
-                      children:[
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                      mainAxisAlignment: MainAxisAlignment.spaceBetween,
                       children: [
-                        Radio<SingingCharacterAreaMedica>(
-                          value: SingingCharacterAreaMedica.Oftalmicos,
-
-                          onChanged: (SingingCharacterAreaMedica? value) {
-
-                            setState(() {
-
-                            });
-                          },
-                          groupValue: null,
-                          fillColor:
-                          MaterialStateColor.resolveWith((states) => Colors.grey),
-                        ),
-
-                        Radio<SingingCharacterAreaMedica>(
-                          value: SingingCharacterAreaMedica.Dermatologicos,
-
-                          onChanged: (SingingCharacterAreaMedica? value) {
-
-                            setState(() {
-
-                            });
-                          },
-                          groupValue: null,
-                          fillColor:
-                          MaterialStateColor.resolveWith((states) => Colors.grey),
-                        ),
-
-                        Radio<SingingCharacterAreaMedica>(
-                          value: SingingCharacterAreaMedica.NefrologicosUrologicos,
-
-                          onChanged: (SingingCharacterAreaMedica? value) {
-
-                            setState(() {
-
-                            });
-                          },
-                          groupValue: null,
-                          fillColor:
-                          MaterialStateColor.resolveWith((states) => Colors.grey),
-                        ),
-
-                        Radio<SingingCharacterAreaMedica>(
-                          value: SingingCharacterAreaMedica.Oncologicos,
-
-                          onChanged: (SingingCharacterAreaMedica? value) {
-
-                            setState(() {
-
-                            });
-                          },
-                          groupValue: null,
-                          fillColor:
-                          MaterialStateColor.resolveWith((states) => Colors.grey),
-                        ),
-
-                        Radio<SingingCharacterAreaMedica>(
-                          value: SingingCharacterAreaMedica.NefrologicosUrologicos,
-
-                          onChanged: (SingingCharacterAreaMedica? value) {
-
-                            setState(() {
-
-                            });
-                          },
-                          groupValue: null,
-
-                          fillColor:
-                          MaterialStateColor.resolveWith((states) => Colors.grey),
-                        ),
-
-                        Radio<SingingCharacterAreaMedica>(
-                          value: SingingCharacterAreaMedica.Respiratorios,
-
-                          onChanged: (SingingCharacterAreaMedica? value) {
-
-                            setState(() {
-
-                            });
-                          },
-                          groupValue: null,
-                          fillColor:
-                          MaterialStateColor.resolveWith((states) => Colors.grey),
-                        ),
-
-                        Radio<SingingCharacterAreaMedica>(
-                          value: SingingCharacterAreaMedica.Toxocologicos,
-
-                          onChanged: (SingingCharacterAreaMedica? value) {
-
-                            setState(() {
-
-                            });
-                          },
-                          groupValue: null,
-                          fillColor:
-                          MaterialStateColor.resolveWith((states) => Colors.grey),
-                        ),
-
-                                      ],
-                        ),
-
-                        const Column(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                      children: [
-                        Row(
-                          children: [
-                        Text("Oftálmícos",
-                            style: TextStyle(
-                                fontSize: 12,
-                                color: Color(0xFF4116B4)
-                            )
-                        ),
-                        ]),
-                        Padding(padding: EdgeInsets.only(bottom: 40)),
-
-                        Row(
+                        Expanded(
+                          child: Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceBetween,
                             children: [
-                              Text("Dermatológicos",
-                                  style: TextStyle(
-                                      fontSize: 12,
-                                      color: Color(0xFF4116B4)
-                                  )
+
+                              RadioListTile(
+                                groupValue: _disturbios,
+                                title: const Text("teste", style: TextStyle(color: Colors.black),),
+                                value: "Oftalmológicos",
+                                onChanged: (value) {
+                                  setStateForDialog(() {
+                                    _disturbios = value!;
+                                  });
+                                },
                               ),
-                            ]),
 
-                        Padding(padding: EdgeInsets.only(bottom: 40)),
-
-                        Row(
-                            children: [
-                              Text("Neurológicos",
-                                  style: TextStyle(
-                                      fontSize: 12,
-                                      color: Color(0xFF4116B4)
-                                  )
+                              Radio(
+                                groupValue: _disturbios,
+                                fillColor: MaterialStateColor.resolveWith((states) => Colors.grey),
+                                value: "Dermatológicos",
+                                onChanged: (value) {
+                                  setStateForDialog(() {
+                                    _disturbios = value!;
+                                  });
+                                },
                               ),
-                            ]),
-
-                        Padding(padding: EdgeInsets.only(bottom: 40)),
-
-                        Row(
-                            children: [
-                              Text("Oncológicos",
-                                  style: TextStyle(
-                                      fontSize: 12,
-                                      color: Color(0xFF4116B4)
-                                  )
+                              Radio(
+                                groupValue: _disturbios,
+                                fillColor: MaterialStateColor.resolveWith((states) => Colors.grey),
+                                value: "Neurológicos",
+                                onChanged: (value) {
+                                  setStateForDialog(() {
+                                    _disturbios = value!;
+                                  });
+                                },
                               ),
-                            ]),
-
-                        Padding(padding: EdgeInsets.only(bottom: 50)),
-
-                        Row(
-                            children: [
-                              Text("Nefrológicos e\n urológicos",
-                                  style: TextStyle(
-                                      fontSize: 12,
-                                      color: Color(0xFF4116B4)
-                                  )
+                              Radio(
+                                groupValue: _disturbios,
+                                fillColor: MaterialStateColor.resolveWith((states) => Colors.grey),
+                                value: "Oncológicos",
+                                onChanged: (value) {
+                                  setStateForDialog(() {
+                                    _disturbios = value!;
+                                  });
+                                },
                               ),
-                            ]),
 
-                        Padding(padding: EdgeInsets.only(bottom: 40)),
 
-                        Row(
-                            children: [
-                              Text("Toxocológicos",
-                                  style: TextStyle(
-                                      fontSize: 12,
-                                      color: Color(0xFF4116B4)
-                                  )
-                              ),
-                            ]),
+                            ],
+                          ),
+                        ),
+
+                        Expanded(
+                            child: Column(
+                              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                              children: [
+
+                                Radio(
+                                  groupValue: _disturbios,
+                                  fillColor: MaterialStateColor.resolveWith((states) => Colors.grey),
+                                  value: "Oftalmológicos0",
+
+                                  onChanged: (value) {
+                                    setStateForDialog(() {
+                                      _disturbios = value!;
+                                      print(value.toString());
+                                    });
+                                  },
+                                ),
+                                Radio(
+                                  groupValue: _disturbios,
+                                  fillColor: MaterialStateColor.resolveWith((states) => Colors.grey),
+                                  value: "Dermatológicos0",
+                                  onChanged: (value) {
+                                    setStateForDialog(() {
+                                      _disturbios = value!;
+                                      print(value.toString());
+                                    });
+
+                                  },
+                                ),
+                                Radio(
+                                  groupValue: _disturbios,
+                                  fillColor: MaterialStateColor.resolveWith((states) => Colors.grey),
+                                  value: "Neurológicos0",
+                                  onChanged: (value) {
+                                    setStateForDialog(() {
+                                      _disturbios = value!;
+                                    });
+                                  },
+                                ),
+                                Radio(
+                                  groupValue: _disturbios,
+                                  fillColor: MaterialStateColor.resolveWith((states) => Colors.grey),
+                                  value: "Oncológicos0",
+                                  onChanged: (value) {
+                                    setStateForDialog(() {
+                                      _disturbios = value!;
+                                    });
+                                  },
+                                ),
+
+
+                              ],
+                            ))
+
 
 
                       ],
-                    ),
-
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Radio<SingingCharacterAreaMedica>(
-                              value: SingingCharacterAreaMedica.Oftalmicos,
-
-                              onChanged: (SingingCharacterAreaMedica? value) {
-
-                                setState(() {
-
-                                });
-                              },
-                              groupValue: null,
-                              fillColor:
-                              MaterialStateColor.resolveWith((states) => Colors.grey),
-                            ),
-
-                            Radio<SingingCharacterAreaMedica>(
-                              value: SingingCharacterAreaMedica.Dermatologicos,
-
-                              onChanged: (SingingCharacterAreaMedica? value) {
-
-                                setState(() {
-
-                                });
-                              },
-                              groupValue: null,
-                              fillColor:
-                              MaterialStateColor.resolveWith((states) => Colors.grey),
-                            ),
-
-                            Radio<SingingCharacterAreaMedica>(
-                              value: SingingCharacterAreaMedica.NefrologicosUrologicos,
-
-                              onChanged: (SingingCharacterAreaMedica? value) {
-
-                                setState(() {
-
-                                });
-                              },
-                              groupValue: null,
-                              fillColor:
-                              MaterialStateColor.resolveWith((states) => Colors.grey),
-                            ),
-
-                            Radio<SingingCharacterAreaMedica>(
-                              value: SingingCharacterAreaMedica.Oncologicos,
-
-                              onChanged: (SingingCharacterAreaMedica? value) {
-
-                                setState(() {
-
-                                });
-                              },
-                              groupValue: null,
-                              fillColor:
-                              MaterialStateColor.resolveWith((states) => Colors.grey),
-                            ),
-
-                            Radio<SingingCharacterAreaMedica>(
-                              value: SingingCharacterAreaMedica.NefrologicosUrologicos,
-
-                              onChanged: (SingingCharacterAreaMedica? value) {
-
-                                setState(() {
-
-                                });
-                              },
-                              groupValue: null,
-
-                              fillColor:
-                              MaterialStateColor.resolveWith((states) => Colors.grey),
-                            ),
-
-                            Radio<SingingCharacterAreaMedica>(
-                              value: SingingCharacterAreaMedica.Respiratorios,
-
-                              onChanged: (SingingCharacterAreaMedica? value) {
-
-                                setState(() {
-
-                                });
-                              },
-                              groupValue: null,
-                              fillColor:
-                              MaterialStateColor.resolveWith((states) => Colors.grey),
-                            ),
-
-                            Radio<SingingCharacterAreaMedica>(
-                              value: SingingCharacterAreaMedica.Toxocologicos,
-
-                              onChanged: (SingingCharacterAreaMedica? value) {
-
-                                setState(() {
-
-                                });
-                              },
-                              groupValue: null,
-                              fillColor:
-                              MaterialStateColor.resolveWith((states) => Colors.grey),
-                            ),
-
-                          ],
-                        ),
-
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                          children: [
-                            Row(
-                                children: [
-                                  Text("Oftálmícos",
-                                      style: TextStyle(
-                                          fontSize: 12,
-                                          color: Color(0xFF4116B4)
-                                      )
-                                  ),
-                                ]),
-                            Padding(padding: EdgeInsets.only(bottom: 40)),
-
-                            Row(
-                                children: [
-                                  Text("Dermatológicos",
-                                      style: TextStyle(
-                                          fontSize: 12,
-                                          color: Color(0xFF4116B4)
-                                      )
-                                  ),
-                                ]),
-
-                            Padding(padding: EdgeInsets.only(bottom: 40)),
-
-                            Row(
-                                children: [
-                                  Text("Neurológicos",
-                                      style: TextStyle(
-                                          fontSize: 12,
-                                          color: Color(0xFF4116B4)
-                                      )
-                                  ),
-                                ]),
-
-                            Padding(padding: EdgeInsets.only(bottom: 40)),
-
-                            Row(
-                                children: [
-                                  Text("Oncológicos",
-                                      style: TextStyle(
-                                          fontSize: 12,
-                                          color: Color(0xFF4116B4)
-                                      )
-                                  ),
-                                ]),
-
-                            Padding(padding: EdgeInsets.only(bottom: 50)),
-
-                            Row(
-                                children: [
-                                  Text("Nefrológicos e\n urológicos",
-                                      style: TextStyle(
-                                          fontSize: 12,
-                                          color: Color(0xFF4116B4)
-                                      )
-                                  ),
-                                ]),
-
-                            Padding(padding: EdgeInsets.only(bottom: 40)),
-
-                            Row(
-                                children: [
-                                  Text("Toxocológicos",
-                                      style: TextStyle(
-                                          fontSize: 12,
-                                          color: Color(0xFF4116B4)
-                                      )
-                                  ),
-                                ]),
-
-
-                          ],
-                        ),
-                ]),
+                    )
 
 
                                   ),
@@ -989,5 +735,6 @@ class _HomePageState extends State<HomePage> {
                       Navigator.of(context).pop();
 
 
-
-});}}
+      });
+  }
+}

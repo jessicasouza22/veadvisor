@@ -6,6 +6,7 @@ import 'package:flutter/material.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:social_login_buttons/social_login_buttons.dart';
 import 'package:vetadvisor/helper.dart';
+import 'package:vetadvisor/prelogin/criarConta.dart';
 import 'package:vetadvisor/prelogin/logado.dart';
 import 'package:vetadvisor/teste02.dart';
 import 'package:vetadvisor/recursos/Constants.dart';
@@ -183,7 +184,7 @@ class _LoginPageState extends State<LoginPage> {
                             ),
 
                             const Padding(padding: EdgeInsets.all(10.0)),
-                             Row(
+                             const Row(
                               crossAxisAlignment: CrossAxisAlignment.center,
                               children: [
                                 Text(
@@ -284,7 +285,7 @@ class _LoginPageState extends State<LoginPage> {
 
                             const Padding(padding: EdgeInsets.all(10.0)),
 
-                             Row(
+                             const Row(
                               children: [
                                 Text(
                                   "Ainda não é cadastrado? Junte-se a nós,", style: TextStyle(
@@ -295,7 +296,14 @@ class _LoginPageState extends State<LoginPage> {
                             ),
 
                             GestureDetector(
-                              child: Row(
+                              onTap: () {
+                                Navigator.push(
+                                  context,
+                                  MaterialPageRoute(
+                                      builder: (context) => const CriarConta()),
+                                );
+                              },
+                              child: const Row(
                                 crossAxisAlignment: CrossAxisAlignment.center,
                                 children: [
                                   Text(

@@ -5,11 +5,15 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:vetadvisor/fluxopesquisarapida/detalheDaPesquisa.dart';
+import 'package:vetadvisor/fluxopesquisarapida/detalheDaPesquisaDermatiteAtopica.dart';
 import 'package:vetadvisor/fluxopesquisarapida/servicos.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/consultaPaciente.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/perfilPaciente.dart';
 import 'package:vetadvisor/prelogin/logado.dart';
 import 'dart:developer' as logDev;
+
+import '../objetos/doenca.dart';
+import '../recursos/Variaveis.dart';
 
 enum SingingCharacterAreaMedica{ Oftalmicos, Infecciosos, Dermatologicos, MusculoEsqueletico, Neurologicos, MetabolicosEndocrinos, Oncologicos, Cardiologicos, NefrologicosUrologicos, Hematologicos, Respiratorios, Odontologicos, Toxocologicos, Teriogenologicos}
 
@@ -180,8 +184,8 @@ class _HomePageState extends State<HomePage> {
                                       groupValue: _especiePaciente,
                                       onChanged: (value) {
                                         setState(() {
-                                          _especiePaciente = value!;
-
+                                          _especiePaciente = "Cães";
+                                          print(_especiePaciente);
                                         });
                                         },
 
@@ -206,7 +210,8 @@ class _HomePageState extends State<HomePage> {
                                         MaterialStateColor.resolveWith((states) => Colors.green),
                                         onChanged: (value) {
                                           setState(() {
-                                            _especiePaciente = value!;
+                                            _especiePaciente = "Gatos";
+                                            print(_especiePaciente);
                                           });
                                         }
                                     ),
@@ -228,7 +233,7 @@ class _HomePageState extends State<HomePage> {
                                         MaterialStateColor.resolveWith((states) => Colors.green),
                                         onChanged: (value) {
                                           setState(() {
-                                            _especiePaciente = value!;
+                                            _especiePaciente = "Pets exóticos";
                                           });
 
                                         }
@@ -1068,6 +1073,7 @@ class _HomePageState extends State<HomePage> {
                           Builder(
                             builder: (context) => ElevatedButton(
                                 onPressed: () {
+
                                   _buscaDoencas(true);
                                   /*
                                   Navigator.push(
@@ -1182,6 +1188,18 @@ class _HomePageState extends State<HomePage> {
 
   Future<void> _buscaDoencas(bool buscaCompleta) async {
 
+    /*
+    Navigator.push(
+      context,
+      MaterialPageRoute(
+          builder: (context) => const DetalheDaPesquisa()),
+    );
+
+     */
+
+
+    List<Doenca> _doencas = [];
+
     var querySnapshot;
 
 
@@ -1197,121 +1215,75 @@ class _HomePageState extends State<HomePage> {
     for (var document in querySnapshot.docs) {
       var sinal = "";
       var especie = "";
-      //var doenca = Doenca();
-      //doenca.ranking = 1;
-      //logDev.log(document.data().toString());
-      String sinais = document.data()["sinais"].toString();
+      var sinais = document.data()["sinais"].toString();
+      var especies = document.data()["especie"].toString();
+
       for (var i = 0; i < sinais.length; i++) {
+
         var char = sinais[i];
         if (char != ";") {
           sinal += char;
-          //print(sinal.toString());
         } else {
 
-          if(sinal.toString() == _busca.text) {
+          if (sinal == _busca.text) {
 
+            for (var i = 0; i < especies.length; i++) {
+              //print("I = $i tamanho = ${especies.length}");
 
+              var char = especies[i];
 
-
-
-
-            String especieData = document.data()["especie"].toString();
-            for (var j = 0; j < especieData.length; j++) {
-              var char = especieData[j];
               if (char != ";") {
-
                 especie += char;
-                //print(especie);
-              } else {
+
+
+              }
+              else {
+                print(especie + "2");
+
                 if(especie == _especiePaciente) {
-                  print(document.data()["nome"].toString());
+
+
+                  var doenca = Doenca(
+                    dicas: document.data()["dicas"].toString(),
+                    disturbio: document.data()["disturbio"].toString(),
+                    especie: document.data()["especie"].toString(),
+                    etaria: document.data()["etaria"].toString(),
+                    exComp: document.data()["exComp"].toString(),
+                    exCompRes: document.data()["exCompRes"].toString(),
+                    exFis: document.data()["exFis"].toString(),
+                    exFisTermosPopulares: document.data()["exFisTermosPopulares"].toString(),
+                    fatoresDeRisco: document.data()["fatoresDeRisco"].toString(),
+                    nome: document.data()["nome"].toString(),
+                    porte: document.data()["porte"].toString(),
+                    racial: document.data()["racial"].toString(),
+                    referencias: document.data()["referencias"].toString(),
+                    sexo: document.data()["sexo"].toString(),
+                    sinais: document.data()["sinais"].toString(),
+                    sinaisClinicosTermosPopulares: document.data()["sinaisClinicosTermosPopulares"].toString(),
+                  );
+
+                  _doencas.add(doenca);
+
+                  //print(document.data()["nome"].toString());
+
                 }
-
-                //print(especie);
-
                 especie = "";
               }
+
             }
+
+
+
           }
           sinal = "";
-          especie = "";
-          /*
-          if (sintomasRecebidos.contains(sinal)) {
-            doenca.nome = document.data()["nome"].toString();
-
-            if (!listaDoencas.any((item) => item.nome == doenca.nome)) {
-              if (document.data()["especie"].toString() == especieAnimal) {
-                doenca.ranking++;
-              }
-
-              var etaria = "";
-              String etariaData = document.data()["etaria"].toString();
-              for (var j = 0; j < etariaData.length; j++) {
-                var char = etariaData[j];
-                if (char != ";") {
-                  etaria += char;
-                } else if (etaria == idadeAnimal) {
-                  doenca.ranking++;
-                  etaria = "";
-                }
-              }
-
-              var sinais = "";
-              for (var j = 0; j < sinais.length; j++) {
-                var char = sinais[j];
-                if (char != ";") {
-                  sinais += char;
-                } else if (sinais == sintomasAnimal) {
-                  doenca.ranking++;
-                  sinais = "";
-                }
-              }
-
-              var especie = "";
-              String especieData = document.data()["especie"].toString();
-              for (var j = 0; j < especieData.length; j++) {
-                var char = especieData[j];
-                if (char != ";") {
-                  especie += char;
-                } else if (especie == especieAnimal) {
-                  doenca.ranking++;
-                  especie = "";
-                }
-              }
-
-              if (document.data()["porte"].toString() == porteAnimal) {
-                doenca.ranking++;
-              }
-
-              if (document.data()["racial"].toString() == racaAnimal) {
-                doenca.ranking++;
-              }
-
-              if (especieAnimal == "Cães") {
-                String especieData = document.data()["especie"].toString();
-                if (especieData == "Cães" ||
-                    especieData == "Cães;Gatos" ||
-                    especieData == "Gatos;Cães") {
-                  listaDoencas.add(doenca);
-                }
-              } else if (especieAnimal == "Gatos") {
-                String especieData = document.data()["especie"].toString();
-                if (especieData == "Gatos" ||
-                    especieData == "Cães;Gatos" ||
-                    especieData == "Gatos;Cães") {
-                  listaDoencas.add(doenca);
-                }
-              }
-            }
-            sinal = "";
-          }
-
-           */
-
-
         }
       }
+
+
+
+
     }
+
 
     /*
 
@@ -1324,6 +1296,8 @@ class _HomePageState extends State<HomePage> {
      */
 
 
+
   }
+
 
 }

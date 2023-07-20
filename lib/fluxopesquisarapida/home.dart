@@ -1196,6 +1196,7 @@ class _HomePageState extends State<HomePage> {
 
     for (var document in querySnapshot.docs) {
       var sinal = "";
+      var especie = "";
       //var doenca = Doenca();
       //doenca.ranking = 1;
       //logDev.log(document.data().toString());
@@ -1207,12 +1208,33 @@ class _HomePageState extends State<HomePage> {
           //print(sinal.toString());
         } else {
 
-
-
           if(sinal.toString() == _busca.text) {
-            print(document.data()["nome"].toString());
+
+
+
+
+
+
+            String especieData = document.data()["especie"].toString();
+            for (var j = 0; j < especieData.length; j++) {
+              var char = especieData[j];
+              if (char != ";") {
+
+                especie += char;
+                //print(especie);
+              } else {
+                if(especie == _especiePaciente) {
+                  print(document.data()["nome"].toString());
+                }
+
+                //print(especie);
+
+                especie = "";
+              }
+            }
           }
           sinal = "";
+          especie = "";
           /*
           if (sintomasRecebidos.contains(sinal)) {
             doenca.nome = document.data()["nome"].toString();

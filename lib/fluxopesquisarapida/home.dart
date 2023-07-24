@@ -284,7 +284,9 @@ class _HomePageState extends State<HomePage> {
                                                     icon: const Icon(MdiIcons.navigationVariant, size: 15),
                                                     color: const Color(0xFF3C10BB),
                                                     onPressed: () {
-
+                                                      //var atributosParaMigrar = ["etaria", "exComp", "exFis", "sexo", "sinaisClinicosTermosPolulares", "exCompRes", "exFisTermosPopulares", "porte", "fatoresDeRisco", "racial"];
+                                                      //migrateAttributesToArrays(atributosParaMigrar);
+                                                      //renameAttributesInDoencaCollection();
                                                       _dialogAddExercicio();
                                                       //_buscaDoencas();
                                                   },
@@ -1046,7 +1048,8 @@ class _HomePageState extends State<HomePage> {
                           Builder(
                             builder: (context) => ElevatedButton(
                                 onPressed: () {
-                                  _buscaDoencas(false);
+                                  //_buscaDoencas(false);
+                                  _searchDoencas(_busca.text, _especiePaciente, false);
                                   /*
                                   Navigator.push(
                                     context,
@@ -1074,7 +1077,8 @@ class _HomePageState extends State<HomePage> {
                             builder: (context) => ElevatedButton(
                                 onPressed: () {
 
-                                  _buscaDoencas(true);
+                                  //_buscaDoencas(true);
+                                  _searchDoencas(_busca.text, _especiePaciente, true);
                                   /*
                                   Navigator.push(
                                     context,
@@ -1186,118 +1190,113 @@ class _HomePageState extends State<HomePage> {
         });
   }
 
-  Future<void> _buscaDoencas(bool buscaCompleta) async {
-
-    /*
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-          builder: (context) => const DetalheDaPesquisa()),
-    );
-
-     */
 
 
-    List<Doenca> _doencas = [];
 
-    var querySnapshot;
+  // Nova funcao de busca, baseada na reestruturação do banco
+  // Falta ajustar para pegar todos os campos dos locais certos
+  // e abrir a tela certa, passando os atributos corretos.
+  // Ainda não upei no GitHub para usar como referencia o que ja estava pronto,
+  // pois já estava abrindo a proxima tela.
+  Future <void> _searchDoencas(String sinaisSearch, String especieSearch, bool buscaCompleta) async {
 
+    // Referência à coleção "doencas"
+    var collectionRef = FirebaseFirestore.instance.collection('doencas');
 
-    if(buscaCompleta) {
-      querySnapshot = await FirebaseFirestore.instance.collection("doencas").get();
-    } else {
-      querySnapshot = await FirebaseFirestore.instance.collection("doencas")
-          .where("disturbio", whereIn: _disturbiosSelecionados)
-          .get();
+    // Consulta para filtrar os documentos que possuem o valor "febre" no array "sinais"
+    var sinaisQuery = await collectionRef.where("novosSinais", arrayContains: sinaisSearch).get();
+
+    // Consulta para filtrar os documentos que possuem o valor "Gatos" no array "especie"
+    var especieQuery = await collectionRef.where("novasEspecies", arrayContains: especieSearch).get();
+
+    // Unir os resultados das duas consultas para encontrar os documentos que atendem a ambos os critérios
+    var documentosEncontrados = sinaisQuery.docs.where((sinaisDoc) =>
+        especieQuery.docs.any((especieDoc) => especieDoc.id == sinaisDoc.id));
+
+    // Imprimir os documentos encontrados
+    for (var documentSnapshot in documentosEncontrados) {
+      print("Documento encontrado: ${documentSnapshot.id}");
+      print("Nome: ${documentSnapshot.data()['nome']}");
+      print("Atributo sinais: ${documentSnapshot.data()['novosSinais']}");
+      print("Atributo especie: ${documentSnapshot.data()['novasEspecies']}");
     }
+  }
 
 
+  // FUncao para renomear atributos sem perder seus dados
+  /*
+  void renameAttributesInDoencaCollection() async {
+    // Referência à coleção "doenca"
+    var collectionRef = FirebaseFirestore.instance.collection('doencas');
+
+    // Consulta para obter todos os documentos da coleção
+    var querySnapshot = await collectionRef.get();
+
+    // Loop através de cada documento
     for (var document in querySnapshot.docs) {
-      var sinal = "";
-      var especie = "";
-      var sinais = document.data()["sinais"].toString();
-      var especies = document.data()["especie"].toString();
+      // Verificar se o atributo "novosSinais" está presente no documento
+      if (document.data().containsKey("novosSinais")) {
+        var novosSinais = document.data()["novosSinais"];
 
-      for (var i = 0; i < sinais.length; i++) {
+        // Atualizar o documento com o novo nome do atributo "sinais"
+        document.reference.update({"sinais": novosSinais});
 
-        var char = sinais[i];
-        if (char != ";") {
-          sinal += char;
+        // Deletar o atributo "novosSinais" do documento
+        document.reference.update({"novosSinais": FieldValue.delete()});
+      }
+
+      // Verificar se o atributo "novasEspecies" está presente no documento
+      if (document.data().containsKey("novasEspecies")) {
+        var novasEspecies = document.data()["novasEspecies"];
+
+        // Atualizar o documento com o novo nome do atributo "especie"
+        document.reference.update({"especie": novasEspecies});
+
+        // Deletar o atributo "novasEspecies" do documento
+        document.reference.update({"novasEspecies": FieldValue.delete()});
+      }
+    }
+  }
+
+
+   */
+
+  // Funcao que migra os campos de String separadas por ; para array de String
+  /*
+  void migrateAttributesToArrays(List<String> atributos) async {
+    // Referência à coleção "doenças"
+    var collectionRef = FirebaseFirestore.instance.collection('doencas');
+
+    // Consulta para obter todos os documentos da coleção
+    var querySnapshot = await collectionRef.get();
+
+    // Loop através de cada documento
+    for (var document in querySnapshot.docs) {
+      var dadosAtualizados = document.data(); // Sem necessidade de "!"
+
+      for (var atributo in atributos) {
+        // Verificar se o atributo existe no documento e se é do tipo String
+        if (dadosAtualizados.containsKey(atributo) &&
+            dadosAtualizados[atributo] is String) {
+          var valorAtributo = dadosAtualizados[atributo].toString();
+
+          // Separar os valores do atributo usando o caractere ";"
+          var listaDeValores = valorAtributo.split(";");
+
+          // Adicionar cada valor do atributo à lista de valores
+          dadosAtualizados[atributo] = listaDeValores;
         } else {
-
-          if (sinal == _busca.text) {
-
-            for (var i = 0; i < especies.length; i++) {
-              //print("I = $i tamanho = ${especies.length}");
-
-              var char = especies[i];
-
-              if (char != ";") {
-                especie += char;
-
-
-              }
-              else {
-                print(especie + "2");
-
-                if(especie == _especiePaciente) {
-
-
-                  var doenca = Doenca(
-                    dicas: document.data()["dicas"].toString(),
-                    disturbio: document.data()["disturbio"].toString(),
-                    especie: document.data()["especie"].toString(),
-                    etaria: document.data()["etaria"].toString(),
-                    exComp: document.data()["exComp"].toString(),
-                    exCompRes: document.data()["exCompRes"].toString(),
-                    exFis: document.data()["exFis"].toString(),
-                    exFisTermosPopulares: document.data()["exFisTermosPopulares"].toString(),
-                    fatoresDeRisco: document.data()["fatoresDeRisco"].toString(),
-                    nome: document.data()["nome"].toString(),
-                    porte: document.data()["porte"].toString(),
-                    racial: document.data()["racial"].toString(),
-                    referencias: document.data()["referencias"].toString(),
-                    sexo: document.data()["sexo"].toString(),
-                    sinais: document.data()["sinais"].toString(),
-                    sinaisClinicosTermosPopulares: document.data()["sinaisClinicosTermosPopulares"].toString(),
-                  );
-
-                  _doencas.add(doenca);
-
-                  //print(document.data()["nome"].toString());
-
-                }
-                especie = "";
-              }
-
-            }
-
-
-
-          }
-          sinal = "";
+          print("Atributo $atributo não é uma string no documento ${document.id}. Ignorando...");
         }
       }
 
+      // Atualizar o documento com os novos valores dos atributos
+      document.reference.update(dadosAtualizados);
 
-
-
+      print("Migração concluída com sucesso para o documento ${document.id}.");
     }
-
-
-    /*
-
-    listaDoencas.sort((a, b) => b.ranking.compareTo(a.ranking));
-
-    setState(() {
-      _listaDoencas = listaDoencas;
-    });
-
-     */
-
-
-
   }
 
+   */
 
 }

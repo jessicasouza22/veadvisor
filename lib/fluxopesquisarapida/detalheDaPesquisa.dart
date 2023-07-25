@@ -22,6 +22,8 @@ import 'package:video_player/video_player.dart';
 import 'package:vetadvisor/recursos/Constants.dart';
 import 'package:rolling_switch/rolling_switch.dart';
 import '../firebase_options.dart';
+import '../objetos/doenca.dart';
+import '../recursos/Variaveis.dart';
 import '../recursos/dialogUtils.dart';
 
 import 'package:vetadvisor/fluxoprontuariodigital/cadastreOPet.dart';
@@ -53,6 +55,8 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
   @override
   void initState() {
     super.initState();
+
+
     //mostrarAlerta();
   }
 
@@ -261,9 +265,16 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
                       decoration: const BoxDecoration(
                           color: Colors.white,
                           borderRadius: BorderRadius.all(Radius.circular(10))),
-                      child: const Text("Prurido generalizado; Maneios de cabeça; Febre",
-                        style: TextStyle(color: Color(0xFF8F90A6)),
+                      child: Row(
+                        crossAxisAlignment: CrossAxisAlignment.center,
+                        children: [
+                          Text(Variaveis.sintomaBuscado,
+                            style: TextStyle(color: Color(0xFF8F90A6)),
+                          ),
+                          Icon(Icons.highlight_remove_outlined, color: Colors.red, size: 12,)
+                        ],
                       )
+                      
                   ),
 
                   Padding(padding: EdgeInsets.only(top: 10)),
@@ -293,7 +304,7 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
                     child: CustomScrollView(
 
                         slivers: <Widget>[
-                          _getSlivers(_testes, context)
+                          _getSlivers(Variaveis.doencas, context)
                         ]
                     ),
                   ),
@@ -389,7 +400,7 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
         ));
   }
 
-  SliverList _getSlivers(List<String> myList, BuildContext context) {
+  SliverList _getSlivers(List<Doenca> myList, BuildContext context) {
     return SliverList(
 
       delegate: SliverChildBuilderDelegate((BuildContext context, int index) {
@@ -401,7 +412,7 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
     );
   }
 
-  buildRow(String teste, index) {
+  buildRow(Doenca doenca, index) {
 
 
     return Padding(
@@ -430,7 +441,7 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
                         Row(
                             mainAxisAlignment: MainAxisAlignment.start,
                             children: [
-                              Text(_testes[index],
+                              Text(doenca.nome!,
                                   style: const TextStyle(
                                       color: Colors.black,
                                       fontWeight: FontWeight.bold)),
@@ -465,16 +476,15 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
                             ),
                           ],
                         ),
-                        Padding(padding: EdgeInsets.only(top: 5)),
-                        Row(
-                          children: [
-                            Text("Alérgia comum em cães da raça shih tzu",
-                                style: TextStyle(
-                                  color: Color(0xFF59616E),
-                                )),
-                          ],
+                        const Padding(padding: EdgeInsets.only(top: 5)),
+                        Center(
+                          child: AutoSizeText(doenca.referencias!,
+                              style: TextStyle(
+                                color: Color(0xFF59616E),
+                              ), maxLines: 10),
                         ),
-                        Padding(padding: EdgeInsets.only(top: 10)),
+
+                        const Padding(padding: EdgeInsets.only(top: 10)),
 
                       ],
                     ),

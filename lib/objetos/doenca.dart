@@ -15,6 +15,7 @@ class Doenca {
   String? sexo;
   String? sinais;
   String? sinaisClinicosTermosPopulares;
+  int? rate;
 
   Doenca({
     this.dicas,
@@ -33,5 +34,6 @@ class Doenca {
     this.sexo,
     this.sinais,
     this.sinaisClinicosTermosPopulares,
+    this.rate,
   });
 }

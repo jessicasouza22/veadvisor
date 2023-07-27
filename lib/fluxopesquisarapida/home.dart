@@ -36,6 +36,8 @@ class HomePage extends StatefulWidget {
 
 class _HomePageState extends State<HomePage> {
 
+  bool _buscandoSintomaNoBancoDeDados = false;
+
   final _formKey = GlobalKey<FormState>();
 
   final _busca = TextEditingController();
@@ -560,7 +562,7 @@ class _HomePageState extends State<HomePage> {
 
                   backgroundColor: Colors.white.withOpacity(0.9),
                   contentPadding: EdgeInsets.zero,
-                  title:  const Text("Pesquise por sistema (s) ou em\n todo banco de dados'",
+                  title:  const Text("Pesquise por sistema (s) ou em todo banco de dados",
                       style: TextStyle(color: Color(0xFF4116B4), fontSize: 18)
                   ),
 
@@ -1049,19 +1051,15 @@ class _HomePageState extends State<HomePage> {
                             builder: (context) => ElevatedButton(
                                 onPressed: () {
                                   //_buscaDoencas(false);
-                                  _searchDoencas(_busca.text, _especiePaciente, false);
-                                  /*
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => const DetalheDaPesquisa()),
-                                  );
+                                  if(_disturbiosSelecionados.length > 0) {
+                                    _searchDoencas(_busca.text, _especiePaciente, false);
 
-                                   */
+                                  }
+
                                 },
                                 style: ElevatedButton.styleFrom(
                                     shape: const StadiumBorder(),
-                                    backgroundColor: Color(0XFF4116B4)),
+                                    backgroundColor: _disturbiosSelecionados.length > 0 ? Color(0XFF4116B4) : Colors.grey),
                                 child: const Text(
                                   'Pesquisar apenas nos sistemas selecionados',
                                   style: TextStyle(color: Colors.white, fontSize: 12),
@@ -1077,19 +1075,7 @@ class _HomePageState extends State<HomePage> {
                             builder: (context) => ElevatedButton(
                                 onPressed: () {
 
-
                                   _searchDoencas(_busca.text, _especiePaciente, true);
-
-                                  /*
-                                  Navigator.push(
-                                    context,
-                                    MaterialPageRoute(
-                                        builder: (context) => const DetalheDaPesquisa()),
-                                  );
-
-                                   */
-
-
 
 
                                 },
@@ -1195,6 +1181,15 @@ class _HomePageState extends State<HomePage> {
 
 
   Future<void> _searchDoencas(String sinaisSearch, String especieSearch, bool buscaCompleta) async {
+
+    // Para limpar o campo de busca. Desabilitado temporariamente para facilitar os testes
+    //_busca.text = "";
+
+    _exibirAlertDialog();
+    setState(() {
+      _buscandoSintomaNoBancoDeDados = true;
+    });
+
     List<Doenca> _doencas = [];
 
     // Referência à coleção "doencas"
@@ -1267,6 +1262,14 @@ class _HomePageState extends State<HomePage> {
 
     Variaveis.doencas = _doencas;
     Variaveis.sintomaBuscado = _busca.text;
+
+    setState(() {
+      _buscandoSintomaNoBancoDeDados = false;
+    });
+
+    // Necessário repetir para fechar o dialog de busca e o de carregamento
+    Navigator.of(context).pop();
+    Navigator.of(context).pop();
 
     Navigator.push(
       context,
@@ -1417,5 +1420,24 @@ class _HomePageState extends State<HomePage> {
   }
 
    */
+
+  void _exibirAlertDialog() {
+    showDialog(
+      context: context,
+      barrierDismissible: false, // Impedir que o diálogo seja fechado ao tocar fora dele
+      builder: (BuildContext context) {
+        return AlertDialog(
+          title: Text('Efetuando busca...'),
+          content: Container(
+
+            child: Center(child: CircularProgressIndicator()),
+          )
+
+
+
+        );
+      },
+    );
+  }
 
 }

@@ -183,13 +183,16 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
                           Builder(
                               builder: (context) => IconButton(
                                   onPressed: () {
-
+                                    Navigator.of(context).pop();
+                                    /*
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
                                           builder: (context) =>
                                           const PerfilPaciente()),
                                     );
+
+                                     */
 
                                     //print("clicado na seta");
                                   },
@@ -309,12 +312,6 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
                     ),
                   ),
 
-
-
-
-
-
-
                   Padding(padding: EdgeInsets.only(top: 20)),
 
                   Row(
@@ -323,12 +320,16 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
                       Builder(
                         builder: (context) => ElevatedButton(
                             onPressed: () {
+                              Navigator.of(context).pop();
+                              /*
                               Navigator.push(
                                 context,
                                 MaterialPageRoute(
                                     builder: (context) =>
                                     const DetalheDaPesquisaDermatiteAtopica()),
                               );
+
+                               */
                             },
                             style: ElevatedButton.styleFrom(
                                 shape: const StadiumBorder(),
@@ -422,89 +423,102 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
             Stack(
               alignment: Alignment.bottomCenter,
               children: [
-                Card(
-                  child: Container(
 
-                    padding: const EdgeInsets.only(left: 10, top:10),
-
-                    margin: const EdgeInsets.only(left: 20, right: 20, top: 10),
-
-                    decoration: const BoxDecoration(
-
-                        color: Colors.white,
-
-                        borderRadius: BorderRadius.all(Radius.circular(10))),
-
-                    child: Column(
-                      children: [
-                        Padding(padding: EdgeInsets.only(top: 5)),
-                        Row(
-                            mainAxisAlignment: MainAxisAlignment.start,
-                            children: [
-                              Text(doenca.nome!,
-                                  style: const TextStyle(
-                                      color: Colors.black,
-                                      fontWeight: FontWeight.bold)),
-                            ]),
-                        const Row(
-                          mainAxisAlignment: MainAxisAlignment.end,
-                          children: [
-                            Icon(
-                              Icons.star,
-                              color: Colors.yellow,
-                              size: 10,
-                            ),
-                            Icon(
-                              Icons.star,
-                              color: Colors.yellow,
-                              size: 10,
-                            ),
-                            Icon(
-                              Icons.star,
-                              color: Colors.yellow,
-                              size: 10,
-                            ),
-                            Icon(
-                              Icons.star,
-                              color: Colors.yellow,
-                              size: 10,
-                            ),
-                            Icon(
-                              Icons.star,
-                              color: Colors.yellow,
-                              size: 10,
-                            ),
-                          ],
-                        ),
-                        const Padding(padding: EdgeInsets.only(top: 5)),
-                        Center(
-                          child: AutoSizeText(doenca.referencias!,
-                              style: TextStyle(
-                                color: Color(0xFF59616E),
-                              ), maxLines: 10),
-                        ),
-
-                        const Padding(padding: EdgeInsets.only(top: 10)),
-
-                      ],
-                    ),
-
-                  ),
-                ),
                 Container(
-                    padding: const EdgeInsets.only(left:2, right: 2, top: 2, bottom: 2),
-                    //  margin: const EdgeInsets.only(top: 10),
-                    decoration: BoxDecoration(
-                      borderRadius: BorderRadius.circular(50),
-                      color: const Color(0xFF4116B4),
-                    ),
-                    child: const Icon(
-                      Icons.add,
-                      color: Colors.white,
-                      size: 10,
-                    )),
+                  margin: const EdgeInsets.only(bottom: 5),
+                    child: Card(
+                      child: Container(
+
+                        padding: const EdgeInsets.only(left: 10, top:10),
+
+                        margin: const EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
+
+                        decoration: const BoxDecoration(
+
+
+
+                            borderRadius: BorderRadius.all(Radius.circular(10))),
+
+                        child: Column(
+                          children: [
+                            Padding(padding: EdgeInsets.only(top: 5)),
+                            Row(
+                                mainAxisAlignment: MainAxisAlignment.start,
+                                children: [
+                                  Flexible(
+                                    child: AutoSizeText(doenca.nome!,
+                                        maxLines: 3,
+                                        style: const TextStyle(
+                                            color: Colors.black,
+                                            fontWeight: FontWeight.bold)),
+                                  )
+
+                                ]),
+                            const Row(
+                              mainAxisAlignment: MainAxisAlignment.end,
+                              children: [
+                                Icon(
+                                  Icons.star,
+                                  color: Colors.yellow,
+                                  size: 10,
+                                ),
+                                Icon(
+                                  Icons.star,
+                                  color: Colors.yellow,
+                                  size: 10,
+                                ),
+                                Icon(
+                                  Icons.star,
+                                  color: Colors.yellow,
+                                  size: 10,
+                                ),
+                                Icon(
+                                  Icons.star,
+                                  color: Colors.yellow,
+                                  size: 10,
+                                ),
+                                Icon(
+                                  Icons.star,
+                                  color: Colors.yellow,
+                                  size: 10,
+                                ),
+                              ],
+                            ),
+                            const Padding(padding: EdgeInsets.only(top: 5)),
+                            Center(
+                              child: AutoSizeText(doenca.referencias!,
+                                  style: TextStyle(
+                                    color: Color(0xFF59616E),
+                                  ), maxLines: 10),
+                            ),
+
+                            const Padding(padding: EdgeInsets.only(top: 10)),
+
+                          ],
+
+                        ),
+                      )
+                    )
+                ),
+
+                Positioned(
+                  bottom: 0,
+                    child: Container(
+                        padding: const EdgeInsets.only(left:2, right: 2, top: 2, bottom: 2),
+                        decoration: BoxDecoration(
+                          borderRadius: BorderRadius.circular(50),
+                          color: const Color(0xFF4116B4),
+                        ),
+                        child: const Icon(
+                          Icons.add,
+                          color: Colors.white,
+                          size: 10,
+                        )),
+                ),
+
               ],
-            )
+
+            ),
 
 
 

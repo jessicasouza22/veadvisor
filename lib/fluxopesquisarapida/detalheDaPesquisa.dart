@@ -21,6 +21,7 @@ import 'package:vetadvisor/prelogin/slide_tile.dart';
 import 'package:video_player/video_player.dart';
 import 'package:vetadvisor/recursos/Constants.dart';
 import 'package:rolling_switch/rolling_switch.dart';
+import '../firebase/doenca_service.dart';
 import '../firebase_options.dart';
 import '../objetos/doenca.dart';
 import '../recursos/Variaveis.dart';
@@ -47,7 +48,9 @@ class DetalheDaPesquisaPage extends StatefulWidget {
 class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
   String _nomeUsuarioLogado = "";
 
-  List<String> _testes = ["Teste1", "Teste2","Teste3", "Teste4"];
+  final _busca = TextEditingController();
+
+  bool _buscandoSintomaNoBancoDeDados = false;
 
   late final FirebaseAuth auth;
   late final FirebaseApp app;
@@ -69,10 +72,10 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
               padding: EdgeInsets.only(left: 10, top: 10),
               margin:
               EdgeInsets.only(left: 30, right: 30, top: 200, bottom: 500),
-              decoration: BoxDecoration(
+              decoration: const BoxDecoration(
                   color: Colors.white,
                   borderRadius: BorderRadius.all(Radius.circular(10))),
-              child: Column(children: [
+              child: const Column(children: [
                 Row(mainAxisAlignment: MainAxisAlignment.end, children: [
                   Icon(
                     MdiIcons.close,
@@ -183,6 +186,7 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
                           Builder(
                               builder: (context) => IconButton(
                                   onPressed: () {
+                                    Variaveis.sintomaBuscado.clear();
                                     Navigator.of(context).pop();
                                     /*
                                     Navigator.push(
@@ -233,6 +237,7 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
                           height: 30,
                           width: 350,
                           child: TextFormField(
+                            controller: _busca,
                             textAlign: TextAlign.center,
                             style: const TextStyle(
                                 fontSize: 12),
@@ -248,11 +253,29 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
                                             size: 15,
                                             color: Color(0xFF979797)))),
                                 hintText: "Adicione mais informações",
-                                suffixIcon: const Icon(
-                                  MdiIcons.navigationVariant,
-                                  size: 15,
-                                  color: Color(0xFF979797),
-                                )),
+                                suffixIcon: Builder(
+                                    builder: (context) => IconButton(
+                                        onPressed: () {
+
+                                          final currentFocus = FocusScope.of(context);
+                                          currentFocus.unfocus();
+
+                                          DialogUtils.dialogBuscandoNoBanco(context);
+
+                                          setState(() {
+                                            if(!Variaveis.sintomaBuscado.contains(_busca.text)) {
+
+                                              buscarDoencas(_busca.text, Variaveis.especieSelecionada, Variaveis.buscaCompleta);
+                                            } else {
+
+                                            }
+
+                                          });
+
+                                        },
+                                        icon: const Icon(Icons.add_circle_outline,
+                                            size: 15,
+                                            color: Color(0xFF979797)))),),
                           ),
 
                         ),
@@ -261,24 +284,63 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
                     ]),
                   ),
 
-
                   Container(
-                      padding: EdgeInsets.all(10),
-                      margin: EdgeInsets.only(left: 20, right: 20, top: 10),
-                      decoration: const BoxDecoration(
-                          color: Colors.white,
-                          borderRadius: BorderRadius.all(Radius.circular(10))),
-                      child: Row(
-                        crossAxisAlignment: CrossAxisAlignment.center,
-                        children: [
-                          Text(Variaveis.sintomaBuscado,
-                            style: TextStyle(color: Color(0xFF8F90A6)),
-                          ),
-                          Icon(Icons.highlight_remove_outlined, color: Colors.red, size: 12,)
-                        ],
-                      )
-                      
+                    margin: EdgeInsets.only(left: 10, right: 10, top: 10),
+
+                    child: Wrap(
+                      spacing: 8.0, // gap between adjacent chips
+                      runSpacing: 4.0, // gap between lines
+                      children: <Widget>[
+                        for (var nome in Variaveis.sintomaBuscado)
+
+                          Row(
+                            mainAxisSize: MainAxisSize.min,
+                            mainAxisAlignment: MainAxisAlignment.center,
+                            children: [
+                              Text(nome),
+                              const Padding(padding: EdgeInsets.only(right: 2)),
+                              GestureDetector(
+                                onTap: (){
+                                  if(Variaveis.sintomaBuscado.contains(nome)) {
+                                    setState(() {
+                                      Variaveis.sintomaBuscado.remove(nome);
+                                    });
+                                    for (var doencaDoSintomaClicado in Variaveis.doencas) {
+                                      bool jaExiste = Variaveis.doencas.any((doenca) => doenca.nome == nome);
+                                      if (!jaExiste) {
+                                        setState(() {
+                                          Variaveis.doencas.remove(doencaDoSintomaClicado);
+                                        });
+                                      }
+                                    }
+
+                                  }
+                                },
+                                child: const Icon(MdiIcons.closeCircleOutline, color: Colors.red, size: 10),
+                              )
+
+                            ],
+                          )
+
+                      ],
+                    ),
                   ),
+
+
+                  /*
+                  Container(
+                    color: Colors.red,
+                    padding: EdgeInsets.all(10),
+                    margin: EdgeInsets.only(left: 20, right: 20, top: 10),
+                    child: Wrap(
+
+                      direction: Axis.horizontal, // Define o alinhamento horizontal do Wrap
+                      alignment: WrapAlignment.start, // Define o alinhamento horizontal dos elementos no Wrap
+                      children: Variaveis.sintomaBuscado.map((item) => itemBuscado(item)).toList(),
+                    ),
+                  ),
+
+                   */
 
                   Padding(padding: EdgeInsets.only(top: 10)),
 
@@ -529,5 +591,111 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
         )
     );
   }
+
+  Widget itemBuscado(String item) {
+
+    return Row(
+      children: [
+        Text(item,
+          style: const TextStyle(color: Color(0xFF8F90A6)),
+        ),
+        GestureDetector(
+          onTap: (){
+            if(Variaveis.sintomaBuscado.contains(item)){
+              setState(() {
+                Variaveis.sintomaBuscado.remove(item);
+              });
+
+            }
+          },
+          child: const Icon(
+            Icons.highlight_remove_outlined,
+            color: Colors.red,
+            size: 12)
+        )
+
+      ],
+    );
+    /*
+    return Chip(
+      label: Text(item),
+      backgroundColor: Colors.blue,
+      labelStyle: TextStyle(color: Colors.white),
+    );
+
+     */
+
+
+
+
+
+
+  }
+
+  Widget itemPesquisado(String item) {
+    return Row(
+      children: [
+        Text(item),
+        Icon(MdiIcons.deleteCircleOutline)
+      ],
+    );
+
+  }
+
+  Future<void> buscarDoencas(sinal, especie, buscaCompleta) async {
+
+    List<Doenca> _doencasEncontradas = [];
+    try{
+      _doencasEncontradas = await DoencaService.buscaDoencas(sinal, especie, buscaCompleta);
+
+    } catch (Exception){
+
+    }
+    for (var doencaEncontrada in _doencasEncontradas) {
+      bool jaExiste = Variaveis.doencas.any((doenca) => doenca.nome == doencaEncontrada.nome);
+      if (!jaExiste) {
+        setState(() {
+          Variaveis.doencas.add(doencaEncontrada);
+        });
+      }
+    }
+
+
+    if(_doencasEncontradas.length > 0) {
+      Variaveis.sintomaBuscado.add(sinal);
+    } else {
+      final snackBar = SnackBar(
+        content: const Text('Não existem resultados para os parâmetros informados'),
+        action: SnackBarAction(
+          label: 'Fechar',
+          onPressed: () {
+            // Some code to undo the change.
+          },
+        ),
+      );
+
+      // Find the ScaffoldMessenger in the widget tree
+      // and use it to show a SnackBar.
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+
+    }
+
+
+
+    setState(() {
+      _buscandoSintomaNoBancoDeDados = false;
+    });
+
+    // Necessário repetir para fechar o dialog de busca e o de carregamento
+    Navigator.of(context).pop();
+
+
+
+
+  }
+
+
+
+
 
 }

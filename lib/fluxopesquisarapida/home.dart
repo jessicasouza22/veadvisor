@@ -10,8 +10,10 @@ import 'package:vetadvisor/fluxopesquisarapida/servicos.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/consultaPaciente.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/perfilPaciente.dart';
 import 'package:vetadvisor/prelogin/logado.dart';
+import 'package:vetadvisor/recursos/dialogUtils.dart';
 import 'dart:developer' as logDev;
 
+import '../firebase/doenca_service.dart';
 import '../objetos/doenca.dart';
 import '../recursos/Variaveis.dart';
 
@@ -42,9 +44,9 @@ class _HomePageState extends State<HomePage> {
 
   final _busca = TextEditingController();
 
-  String _especiePaciente = "Cães";
 
-  List<String> _disturbiosSelecionados = [];
+
+
 
   Map<String, bool> _disturbios = {
 
@@ -183,11 +185,11 @@ class _HomePageState extends State<HomePage> {
                                   children: [
                                     Radio(
                                       value: "Cães",
-                                      groupValue: _especiePaciente,
+                                      groupValue: Variaveis.especieSelecionada,
                                       onChanged: (value) {
                                         setState(() {
-                                          _especiePaciente = "Cães";
-                                          print(_especiePaciente);
+                                          Variaveis.especieSelecionada = "Cães";
+
                                         });
                                         },
 
@@ -207,13 +209,13 @@ class _HomePageState extends State<HomePage> {
                                   children: [
                                     Radio(
                                         value: "Gatos",
-                                        groupValue: _especiePaciente,
+                                        groupValue: Variaveis.especieSelecionada,
                                         fillColor:
                                         MaterialStateColor.resolveWith((states) => Colors.green),
                                         onChanged: (value) {
                                           setState(() {
-                                            _especiePaciente = "Gatos";
-                                            print(_especiePaciente);
+                                            Variaveis.especieSelecionada = "Gatos";
+
                                           });
                                         }
                                     ),
@@ -230,12 +232,12 @@ class _HomePageState extends State<HomePage> {
                                   children: [
                                     Radio(
                                         value: "Pets exóticos",
-                                        groupValue: _especiePaciente,
+                                        groupValue: Variaveis.especieSelecionada,
                                         fillColor:
                                         MaterialStateColor.resolveWith((states) => Colors.green),
                                         onChanged: (value) {
                                           setState(() {
-                                            _especiePaciente = "Pets exóticos";
+                                            Variaveis.especieSelecionada = "Pets exóticos";
                                           });
 
                                         }
@@ -270,7 +272,7 @@ class _HomePageState extends State<HomePage> {
                                             child: TextFormField(
                                               controller: _busca,
                                               textAlign: TextAlign.center,
-                                              style: const TextStyle(fontSize: 12),
+                                              //style: const TextStyle(fontSize: 12),
                                               decoration: InputDecoration(
                                                   fillColor: const Color(0xFF12EC1A),
                                                   prefixIcon: IconButton(
@@ -583,9 +585,9 @@ class _HomePageState extends State<HomePage> {
                                       setStateForDialog(() {
 
                                             if(!_disturbios["Distúrbios oftalmológicos"]!) {
-                                              if(!_disturbiosSelecionados.contains("Distúrbios oftalmológicos")) {
-                                                if(_disturbiosSelecionados.length < 10) {
-                                                  _disturbiosSelecionados.add("Distúrbios oftalmológicos");
+                                              if(!Variaveis.disturbiosSelecionados.contains("Distúrbios oftalmológicos")) {
+                                                if(Variaveis.disturbiosSelecionados.length < 10) {
+                                                  Variaveis.disturbiosSelecionados.add("Distúrbios oftalmológicos");
                                                   _disturbios["Distúrbios oftalmológicos"] = !_disturbios["Distúrbios oftalmológicos"]!;
                                                 } else {
                                                   _dialogNumeroMaximoDeDisturbios();
@@ -593,7 +595,7 @@ class _HomePageState extends State<HomePage> {
 
                                               }
                                             } else {
-                                              _disturbiosSelecionados.remove("Distúrbios oftalmológicos");
+                                              Variaveis.disturbiosSelecionados.remove("Distúrbios oftalmológicos");
                                               _disturbios["Distúrbios oftalmológicos"] = !_disturbios["Distúrbios oftalmológicos"]!;
                                             }
 
@@ -601,7 +603,7 @@ class _HomePageState extends State<HomePage> {
 
 
 
-                                        print(_disturbiosSelecionados.toString());
+                                        print(Variaveis.disturbiosSelecionados.toString());
                                       });
                                     },
                                   ),
@@ -621,16 +623,16 @@ class _HomePageState extends State<HomePage> {
                                     onChanged: (value) {
                                       setStateForDialog(() {
                                         if (!_disturbios["Distúrbios dermatológicos"]!) {
-                                          if (!_disturbiosSelecionados.contains("Distúrbios dermatológicos")) {
-                                            if (_disturbiosSelecionados.length < 10) {
-                                              _disturbiosSelecionados.add("Distúrbios dermatológicos");
+                                          if (!Variaveis.disturbiosSelecionados.contains("Distúrbios dermatológicos")) {
+                                            if (Variaveis.disturbiosSelecionados.length < 10) {
+                                              Variaveis.disturbiosSelecionados.add("Distúrbios dermatológicos");
                                               _disturbios["Distúrbios dermatológicos"] = !_disturbios["Distúrbios dermatológicos"]!;
                                             } else {
                                               _dialogNumeroMaximoDeDisturbios();
                                             }
                                           }
                                         } else {
-                                          _disturbiosSelecionados.remove("Distúrbios dermatológicos");
+                                          Variaveis.disturbiosSelecionados.remove("Distúrbios dermatológicos");
                                           _disturbios["Distúrbios dermatológicos"] = !_disturbios["Distúrbios dermatológicos"]!;
                                         }
 
@@ -652,16 +654,16 @@ class _HomePageState extends State<HomePage> {
                                     onChanged: (value) {
                                       setStateForDialog(() {
                                         if (!_disturbios["Distúrbios neurológicos"]!) {
-                                          if (!_disturbiosSelecionados.contains("Distúrbios neurológicos")) {
-                                            if (_disturbiosSelecionados.length < 10) {
-                                              _disturbiosSelecionados.add("Distúrbios neurológicos");
+                                          if (!Variaveis.disturbiosSelecionados.contains("Distúrbios neurológicos")) {
+                                            if (Variaveis.disturbiosSelecionados.length < 10) {
+                                              Variaveis.disturbiosSelecionados.add("Distúrbios neurológicos");
                                               _disturbios["Distúrbios neurológicos"] = !_disturbios["Distúrbios neurológicos"]!;
                                             } else {
                                               _dialogNumeroMaximoDeDisturbios();
                                             }
                                           }
                                         } else {
-                                          _disturbiosSelecionados.remove("Distúrbios neurológicos");
+                                          Variaveis.disturbiosSelecionados.remove("Distúrbios neurológicos");
                                           _disturbios["Distúrbios neurológicos"] = !_disturbios["Distúrbios neurológicos"]!;
                                         }
 
@@ -684,16 +686,16 @@ class _HomePageState extends State<HomePage> {
                                     onChanged: (value) {
                                       setStateForDialog(() {
                                         if (!_disturbios["Distúrbios oncológicos"]!) {
-                                          if (!_disturbiosSelecionados.contains("Distúrbios oncológicos")) {
-                                            if (_disturbiosSelecionados.length < 10) {
-                                              _disturbiosSelecionados.add("Distúrbios oncológicos");
+                                          if (!Variaveis.disturbiosSelecionados.contains("Distúrbios oncológicos")) {
+                                            if (Variaveis.disturbiosSelecionados.length < 10) {
+                                              Variaveis.disturbiosSelecionados.add("Distúrbios oncológicos");
                                               _disturbios["Distúrbios oncológicos"] = !_disturbios["Distúrbios oncológicos"]!;
                                             } else {
                                               _dialogNumeroMaximoDeDisturbios();
                                             }
                                           }
                                         } else {
-                                          _disturbiosSelecionados.remove("Distúrbios oncológicos");
+                                          Variaveis.disturbiosSelecionados.remove("Distúrbios oncológicos");
                                           _disturbios["Distúrbios oncológicos"] = !_disturbios["Distúrbios oncológicos"]!;
                                         }
 
@@ -715,16 +717,16 @@ class _HomePageState extends State<HomePage> {
                                     onChanged: (value) {
                                       setStateForDialog(() {
                                         if (!_disturbios["Distúrbios nefrológicos e urológicos"]!) {
-                                          if (!_disturbiosSelecionados.contains("Distúrbios nefrológicos e urológicos")) {
-                                            if (_disturbiosSelecionados.length < 10) {
-                                              _disturbiosSelecionados.add("Distúrbios nefrológicos e urológicos");
+                                          if (!Variaveis.disturbiosSelecionados.contains("Distúrbios nefrológicos e urológicos")) {
+                                            if (Variaveis.disturbiosSelecionados.length < 10) {
+                                              Variaveis.disturbiosSelecionados.add("Distúrbios nefrológicos e urológicos");
                                               _disturbios["Distúrbios nefrológicos e urológicos"] = !_disturbios["Distúrbios nefrológicos e urológicos"]!;
                                             } else {
                                               _dialogNumeroMaximoDeDisturbios();
                                             }
                                           }
                                         } else {
-                                          _disturbiosSelecionados.remove("Distúrbios nefrológicos e urológicos");
+                                          Variaveis.disturbiosSelecionados.remove("Distúrbios nefrológicos e urológicos");
                                           _disturbios["Distúrbios nefrológicos e urológicos"] = !_disturbios["Distúrbios nefrológicos e urológicos"]!;
                                         }
 
@@ -746,16 +748,16 @@ class _HomePageState extends State<HomePage> {
                                     onChanged: (value) {
                                       setStateForDialog(() {
                                         if (!_disturbios["Distúrbios respiratórios"]!) {
-                                          if (!_disturbiosSelecionados.contains("Distúrbios respiratórios")) {
-                                            if (_disturbiosSelecionados.length < 10) {
-                                              _disturbiosSelecionados.add("Distúrbios respiratórios");
+                                          if (!Variaveis.disturbiosSelecionados.contains("Distúrbios respiratórios")) {
+                                            if (Variaveis.disturbiosSelecionados.length < 10) {
+                                              Variaveis.disturbiosSelecionados.add("Distúrbios respiratórios");
                                               _disturbios["Distúrbios respiratórios"] = !_disturbios["Distúrbios respiratórios"]!;
                                             } else {
                                               _dialogNumeroMaximoDeDisturbios();
                                             }
                                           }
                                         } else {
-                                          _disturbiosSelecionados.remove("Distúrbios respiratórios");
+                                          Variaveis.disturbiosSelecionados.remove("Distúrbios respiratórios");
                                           _disturbios["Distúrbios respiratórios"] = !_disturbios["Distúrbios respiratórios"]!;
                                         }
 
@@ -777,16 +779,16 @@ class _HomePageState extends State<HomePage> {
                                     onChanged: (value) {
                                       setStateForDialog(() {
                                         if (!_disturbios["Distúrbios toxicológicos"]!) {
-                                          if (!_disturbiosSelecionados.contains("Distúrbios toxicológicos")) {
-                                            if (_disturbiosSelecionados.length < 10) {
-                                              _disturbiosSelecionados.add("Distúrbios toxicológicos");
+                                          if (!Variaveis.disturbiosSelecionados.contains("Distúrbios toxicológicos")) {
+                                            if (Variaveis.disturbiosSelecionados.length < 10) {
+                                              Variaveis.disturbiosSelecionados.add("Distúrbios toxicológicos");
                                               _disturbios["Distúrbios toxicológicos"] = !_disturbios["Distúrbios toxicológicos"]!;
                                             } else {
                                               _dialogNumeroMaximoDeDisturbios();
                                             }
                                           }
                                         } else {
-                                          _disturbiosSelecionados.remove("Distúrbios toxicológicos");
+                                          Variaveis.disturbiosSelecionados.remove("Distúrbios toxicológicos");
                                           _disturbios["Distúrbios toxicológicos"] = !_disturbios["Distúrbios toxicológicos"]!;
                                         }
 
@@ -821,16 +823,16 @@ class _HomePageState extends State<HomePage> {
                                       onChanged: (value) {
                                         setStateForDialog(() {
                                           if (!_disturbios["Distúrbios infecciosos"]!) {
-                                            if (!_disturbiosSelecionados.contains("Distúrbios infecciosos")) {
-                                              if (_disturbiosSelecionados.length < 10) {
-                                                _disturbiosSelecionados.add("Distúrbios infecciosos");
+                                            if (!Variaveis.disturbiosSelecionados.contains("Distúrbios infecciosos")) {
+                                              if (Variaveis.disturbiosSelecionados.length < 10) {
+                                                Variaveis.disturbiosSelecionados.add("Distúrbios infecciosos");
                                                 _disturbios["Distúrbios infecciosos"] = !_disturbios["Distúrbios infecciosos"]!;
                                               } else {
                                                 _dialogNumeroMaximoDeDisturbios();
                                               }
                                             }
                                           } else {
-                                          _disturbiosSelecionados.remove("Distúrbios infecciosos");
+                                          Variaveis.disturbiosSelecionados.remove("Distúrbios infecciosos");
                                           _disturbios["Distúrbios infecciosos"] = !_disturbios["Distúrbios infecciosos"]!;
                                           }
 
@@ -852,16 +854,16 @@ class _HomePageState extends State<HomePage> {
                                       onChanged: (value) {
                                         setStateForDialog(() {
                                           if (!_disturbios["Distúrbios musculoesqueléticos"]!) {
-                                            if (!_disturbiosSelecionados.contains("Distúrbios musculoesqueléticos")) {
-                                              if (_disturbiosSelecionados.length < 10) {
-                                                _disturbiosSelecionados.add("Distúrbios musculoesqueléticos");
+                                            if (!Variaveis.disturbiosSelecionados.contains("Distúrbios musculoesqueléticos")) {
+                                              if (Variaveis.disturbiosSelecionados.length < 10) {
+                                                Variaveis.disturbiosSelecionados.add("Distúrbios musculoesqueléticos");
                                                 _disturbios["Distúrbios musculoesqueléticos"] = !_disturbios["Distúrbios musculoesqueléticos"]!;
                                               } else {
                                                 _dialogNumeroMaximoDeDisturbios();
                                               }
                                             }
                                           } else {
-                                            _disturbiosSelecionados.remove("Distúrbios musculoesqueléticos");
+                                            Variaveis.disturbiosSelecionados.remove("Distúrbios musculoesqueléticos");
                                             _disturbios["Distúrbios musculoesqueléticos"] = !_disturbios["Distúrbios musculoesqueléticos"]!;
                                           }
 
@@ -883,16 +885,16 @@ class _HomePageState extends State<HomePage> {
                                       onChanged: (value) {
                                         setStateForDialog(() {
                                           if (!_disturbios["Distúrbios metabólicos e endócrinos"]!) {
-                                            if (!_disturbiosSelecionados.contains("Distúrbios metabólicos e endócrinos")) {
-                                              if (_disturbiosSelecionados.length < 10) {
-                                                _disturbiosSelecionados.add("Distúrbios metabólicos e endócrinos");
+                                            if (!Variaveis.disturbiosSelecionados.contains("Distúrbios metabólicos e endócrinos")) {
+                                              if (Variaveis.disturbiosSelecionados.length < 10) {
+                                                Variaveis.disturbiosSelecionados.add("Distúrbios metabólicos e endócrinos");
                                                 _disturbios["Distúrbios metabólicos e endócrinos"] = !_disturbios["Distúrbios metabólicos e endócrinos"]!;
                                               } else {
                                                 _dialogNumeroMaximoDeDisturbios();
                                               }
                                             }
                                           } else {
-                                            _disturbiosSelecionados.remove("Distúrbios metabólicos e endócrinos");
+                                            Variaveis.disturbiosSelecionados.remove("Distúrbios metabólicos e endócrinos");
                                             _disturbios["Distúrbios metabólicos e endócrinos"] = !_disturbios["Distúrbios metabólicos e endócrinos"]!;
                                           }
                                         });
@@ -913,16 +915,16 @@ class _HomePageState extends State<HomePage> {
                                       onChanged: (value) {
                                         setStateForDialog(() {
                                           if (!_disturbios["Distúrbios cardiológicos"]!) {
-                                            if (!_disturbiosSelecionados.contains("Distúrbios cardiológicos")) {
-                                              if (_disturbiosSelecionados.length < 10) {
-                                                _disturbiosSelecionados.add("Distúrbios cardiológicos");
+                                            if (!Variaveis.disturbiosSelecionados.contains("Distúrbios cardiológicos")) {
+                                              if (Variaveis.disturbiosSelecionados.length < 10) {
+                                                Variaveis.disturbiosSelecionados.add("Distúrbios cardiológicos");
                                                 _disturbios["Distúrbios cardiológicos"] = !_disturbios["Distúrbios cardiológicos"]!;
                                               } else {
                                                 _dialogNumeroMaximoDeDisturbios();
                                               }
                                             }
                                           } else {
-                                            _disturbiosSelecionados.remove("Distúrbios cardiológicos");
+                                            Variaveis.disturbiosSelecionados.remove("Distúrbios cardiológicos");
                                             _disturbios["Distúrbios cardiológicos"] = !_disturbios["Distúrbios cardiológicos"]!;
                                           }
                                         });
@@ -943,16 +945,16 @@ class _HomePageState extends State<HomePage> {
                                       onChanged: (value) {
                                         setStateForDialog(() {
                                           if (!_disturbios["Distúrbios hematológicos"]!) {
-                                            if (!_disturbiosSelecionados.contains("Distúrbios hematológicos")) {
-                                              if (_disturbiosSelecionados.length < 10) {
-                                                _disturbiosSelecionados.add("Distúrbios hematológicos");
+                                            if (!Variaveis.disturbiosSelecionados.contains("Distúrbios hematológicos")) {
+                                              if (Variaveis.disturbiosSelecionados.length < 10) {
+                                                Variaveis.disturbiosSelecionados.add("Distúrbios hematológicos");
                                                 _disturbios["Distúrbios hematológicos"] = !_disturbios["Distúrbios hematológicos"]!;
                                               } else {
                                                 _dialogNumeroMaximoDeDisturbios();
                                               }
                                             }
                                           } else {
-                                            _disturbiosSelecionados.remove("Distúrbios hematológicos");
+                                            Variaveis.disturbiosSelecionados.remove("Distúrbios hematológicos");
                                             _disturbios["Distúrbios hematológicos"] = !_disturbios["Distúrbios hematológicos"]!;
                                           }
                                         });
@@ -973,16 +975,16 @@ class _HomePageState extends State<HomePage> {
                                       onChanged: (value) {
                                         setStateForDialog(() {
                                           if (!_disturbios["Distúrbios odontológicos"]!) {
-                                            if (!_disturbiosSelecionados.contains("Distúrbios odontológicos")) {
-                                              if (_disturbiosSelecionados.length < 10) {
-                                                _disturbiosSelecionados.add("Distúrbios odontológicos");
+                                            if (!Variaveis.disturbiosSelecionados.contains("Distúrbios odontológicos")) {
+                                              if (Variaveis.disturbiosSelecionados.length < 10) {
+                                                Variaveis.disturbiosSelecionados.add("Distúrbios odontológicos");
                                                 _disturbios["Distúrbios odontológicos"] = !_disturbios["Distúrbios odontológicos"]!;
                                               } else {
                                                 _dialogNumeroMaximoDeDisturbios();
                                               }
                                             }
                                           } else {
-                                            _disturbiosSelecionados.remove("Distúrbios odontológicos");
+                                            Variaveis.disturbiosSelecionados.remove("Distúrbios odontológicos");
                                             _disturbios["Distúrbios odontológicos"] = !_disturbios["Distúrbios odontológicos"]!;
                                           }
                                         });
@@ -1003,16 +1005,16 @@ class _HomePageState extends State<HomePage> {
                                       onChanged: (value) {
                                         setStateForDialog(() {
                                           if (!_disturbios["Distúrbios teriogenológicos"]!) {
-                                            if (!_disturbiosSelecionados.contains("Distúrbios teriogenológicos")) {
-                                              if (_disturbiosSelecionados.length < 10) {
-                                                _disturbiosSelecionados.add("Distúrbios teriogenológicos");
+                                            if (!Variaveis.disturbiosSelecionados.contains("Distúrbios teriogenológicos")) {
+                                              if (Variaveis.disturbiosSelecionados.length < 10) {
+                                                Variaveis.disturbiosSelecionados.add("Distúrbios teriogenológicos");
                                                 _disturbios["Distúrbios teriogenológicos"] = !_disturbios["Distúrbios teriogenológicos"]!;
                                               } else {
                                                 _dialogNumeroMaximoDeDisturbios();
                                               }
                                             }
                                           } else {
-                                            _disturbiosSelecionados.remove("Distúrbios teriogenológicos");
+                                            Variaveis.disturbiosSelecionados.remove("Distúrbios teriogenológicos");
                                             _disturbios["Distúrbios teriogenológicos"] = !_disturbios["Distúrbios teriogenológicos"]!;
                                           }
                                         });
@@ -1051,15 +1053,28 @@ class _HomePageState extends State<HomePage> {
                             builder: (context) => ElevatedButton(
                                 onPressed: () {
                                   //_buscaDoencas(false);
-                                  if(_disturbiosSelecionados.length > 0) {
-                                    _searchDoencas(_busca.text, _especiePaciente, false);
+                                  if(Variaveis.disturbiosSelecionados.length > 0) {
+                                    //_searchDoencas(_busca.text, _especiePaciente, false);
+
+
+                                    DialogUtils.dialogBuscandoNoBanco(context);
+
+                                    setState(() {
+                                      _buscandoSintomaNoBancoDeDados = true;
+                                    });
+
+                                    Variaveis.buscaCompleta = false;
+                                    buscarDoencas(_busca.text, Variaveis.especieSelecionada, Variaveis.buscaCompleta);
+
+                                    final currentFocus = FocusScope.of(context);
+                                    currentFocus.unfocus();
 
                                   }
 
                                 },
                                 style: ElevatedButton.styleFrom(
                                     shape: const StadiumBorder(),
-                                    backgroundColor: _disturbiosSelecionados.length > 0 ? Color(0XFF4116B4) : Colors.grey),
+                                    backgroundColor: Variaveis.disturbiosSelecionados.length > 0 ? Color(0XFF4116B4) : Colors.grey),
                                 child: const Text(
                                   'Pesquisar apenas nos sistemas selecionados',
                                   style: TextStyle(color: Colors.white, fontSize: 12),
@@ -1075,8 +1090,23 @@ class _HomePageState extends State<HomePage> {
                             builder: (context) => ElevatedButton(
                                 onPressed: () {
 
-                                  _searchDoencas(_busca.text, _especiePaciente, true);
+                                  //_searchDoencas(_busca.text, _especiePaciente, true);
 
+
+                                  DialogUtils.dialogBuscandoNoBanco(context);
+
+                                  setState(() {
+                                    _buscandoSintomaNoBancoDeDados = true;
+                                  });
+
+                                  // Para limpar o campo de busca. Desabilitado temporariamente para facilitar os testes
+                                  //_busca.text = "";
+
+                                  Variaveis.buscaCompleta = true;
+                                  buscarDoencas(_busca.text, Variaveis.especieSelecionada, Variaveis.buscaCompleta);
+
+                                  final currentFocus = FocusScope.of(context);
+                                  currentFocus.unfocus();
 
                                 },
                                 style: ElevatedButton.styleFrom(
@@ -1180,12 +1210,71 @@ class _HomePageState extends State<HomePage> {
   }
 
 
+  Future<void> buscarDoencas(sinal, especie, buscaCompleta) async {
+
+    List<Doenca> _doencasEncontradas = [];
+
+    try{
+      _doencasEncontradas = await DoencaService.buscaDoencas(sinal, especie, buscaCompleta);
+
+    } catch (Exception){
+
+    }
+
+    Variaveis.sintomaBuscado.clear();
+
+    Variaveis.doencas = _doencasEncontradas;
+    Variaveis.sintomaBuscado.add(sinal);
+
+
+    setState(() {
+      _buscandoSintomaNoBancoDeDados = false;
+    });
+
+    // Necessário repetir para fechar o dialog de busca e o de carregamento
+    Navigator.of(context).pop();
+    Navigator.of(context).pop();
+
+    if(_doencasEncontradas.length > 0) {
+
+      _busca.clear();
+
+      Navigator.push(
+        context,
+        MaterialPageRoute(builder: (context) => const DetalheDaPesquisa()),
+      );
+    } else {
+
+
+
+
+      final snackBar = SnackBar(
+        content: const Text('Não existem resultados para os parâmetros informados'),
+        action: SnackBarAction(
+          label: 'Fechar',
+          onPressed: () {
+            // Some code to undo the change.
+          },
+        ),
+      );
+
+      // Find the ScaffoldMessenger in the widget tree
+      // and use it to show a SnackBar.
+      ScaffoldMessenger.of(context).showSnackBar(snackBar);
+
+
+    }
+
+
+  }
+
   Future<void> _searchDoencas(String sinaisSearch, String especieSearch, bool buscaCompleta) async {
 
     // Para limpar o campo de busca. Desabilitado temporariamente para facilitar os testes
     //_busca.text = "";
 
-    _exibirAlertDialog();
+    DialogUtils.dialogBuscandoNoBanco(context);
+
     setState(() {
       _buscandoSintomaNoBancoDeDados = true;
     });
@@ -1209,7 +1298,7 @@ class _HomePageState extends State<HomePage> {
       for (var document in querySnapshot.docs) {
         // Verificar se o atributo "disturbios" é uma String e está presente na lista de distúrbios selecionados
         if (document.data()["disturbio"] is String &&
-            _disturbiosSelecionados.contains(document.data()["disturbio"])) {
+            Variaveis.disturbiosSelecionados.contains(document.data()["disturbio"])) {
           var doenca = Doenca(
             dicas: document.data()["dicas"].toString(),
             disturbio: document.data()["disturbio"].toString(),
@@ -1261,7 +1350,7 @@ class _HomePageState extends State<HomePage> {
     }
 
     Variaveis.doencas = _doencas;
-    Variaveis.sintomaBuscado = _busca.text;
+    Variaveis.sintomaBuscado.add(_busca.text);
 
     setState(() {
       _buscandoSintomaNoBancoDeDados = false;
@@ -1275,75 +1364,9 @@ class _HomePageState extends State<HomePage> {
       context,
       MaterialPageRoute(builder: (context) => const DetalheDaPesquisa()),
     );
-  }
-
-  Future <void> _searchDoencas1(String sinaisSearch, String especieSearch, bool buscaCompleta) async {
-
-    List<Doenca> _doencas = [];
-
-    // Referência à coleção "doencas"
-    var collectionRef = FirebaseFirestore.instance.collection('doencas');
-
-    // Consulta para filtrar os documentos que possuem o valor "febre" no array "sinais"
-    var sinaisQuery = await collectionRef.where("novosSinais", arrayContains: sinaisSearch).get();
-
-    // Consulta para filtrar os documentos que possuem o valor "Gatos" no array "especie"
-    var especieQuery = await collectionRef.where("novasEspecies", arrayContains: especieSearch).get();
-
-
-    // Consulta para filtrar os documentos com base em outro critério (por exemplo, "outroCriterio")
-    var outroCriterioQuery = collectionRef.where("disturbio", isEqualTo: _disturbiosSelecionados);
-
-
-    // Unir os resultados das duas consultas para encontrar os documentos que atendem a ambos os critérios
-    var documentosEncontrados = sinaisQuery.docs
-        .where((sinaisDoc) => especieQuery.docs
-        .any((especieDoc) => especieDoc.id == sinaisDoc.id));
-
-    // Imprimir os documentos encontrados
-    for (var document in documentosEncontrados) {
-
-      var doenca = Doenca(
-        dicas: document.data()["dicas"].toString(),
-        disturbio: document.data()["disturbio"].toString(),
-        especie: document.data()["especie"].toString(),
-        etaria: document.data()["etaria"].toString(),
-        exComp: document.data()["exComp"].toString(),
-        exCompRes: document.data()["exCompRes"].toString(),
-        exFis: document.data()["exFis"].toString(),
-        exFisTermosPopulares: document.data()["exFisTermosPopulares"].toString(),
-        fatoresDeRisco: document.data()["fatoresDeRisco"].toString(),
-        nome: document.data()["nome"].toString(),
-        porte: document.data()["porte"].toString(),
-        racial: document.data()["racial"].toString(),
-        referencias: document.data()["referencias"].toString(),
-        sexo: document.data()["sexo"].toString(),
-        sinais: document.data()["sinais"].toString(),
-        sinaisClinicosTermosPopulares: document.data()["sinaisClinicosTermosPopulares"].toString(),
-      );
-
-      _doencas.add(doenca);
-
-      //print("Documento encontrado: ${documentSnapshot.id}");
-      //print("Nome: ${documentSnapshot.data()['nome']}");
-      //print("Atributo sinais: ${documentSnapshot.data()['novosSinais']}");
-      //print("Atributo especie: ${documentSnapshot.data()['novasEspecies']}");
-    }
-
-    Variaveis.doencas = _doencas;
-
-
-    Navigator.push(
-      context,
-      MaterialPageRoute(
-          builder: (context) => const DetalheDaPesquisa()),
-    );
-
-
 
 
   }
-
 
   // FUncao para renomear atributos sem perder seus dados
   /*
@@ -1420,6 +1443,13 @@ class _HomePageState extends State<HomePage> {
   }
 
    */
+
+
+
+
+
+
+
 
   void _exibirAlertDialog() {
     showDialog(

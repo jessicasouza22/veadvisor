@@ -52,6 +52,8 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
 
   bool _buscandoSintomaNoBancoDeDados = false;
 
+  bool _visibilidadeDoTituloResultadoDaPesquisa = true;
+
   late final FirebaseAuth auth;
   late final FirebaseApp app;
 
@@ -342,27 +344,34 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
 
                    */
 
-                  Padding(padding: EdgeInsets.only(top: 10)),
 
-                  Container(
-                      margin: EdgeInsets.only(right: 210),
-                      child: const Text("Resultado da pesquisa",
-                        style: TextStyle(
-                            color: Colors.black, fontWeight: FontWeight.bold),
-                      )
+
+                  Column(
+                    children: [
+                      Padding(padding: EdgeInsets.only(top: 10)),
+                      Container(
+                          margin: EdgeInsets.only(right: 210),
+                          child: const Text("Resultado da pesquisa",
+                            style: TextStyle(
+                                color: Colors.black, fontWeight: FontWeight.bold),
+                          )
+                      ),
+
+                      const Divider(
+
+                        color: Color(0xFF12EC1A),
+
+                        thickness: 0.8,
+
+                        endIndent: 230,
+
+                        indent: 20,
+
+                      ),
+                    ],
                   ),
 
-                  const Divider(
 
-                    color: Color(0xFF12EC1A),
-
-                    thickness: 0.8,
-
-                    endIndent: 230,
-
-                    indent: 20,
-
-                  ),
 
                   Flexible(
 
@@ -479,7 +488,7 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
 
 
     return Padding(
-        padding: const EdgeInsets.only(right: 5, left: 5, top: 5),
+        padding: const EdgeInsets.only(right: 5, left: 5),
         child: Column(
           children: [
             Stack(
@@ -487,35 +496,36 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
               children: [
 
                 Container(
+                  // esse container deve variar o tamanho de acordo com o conteúdo
                   margin: const EdgeInsets.only(bottom: 5),
                     child: Card(
                       child: Container(
 
-                        padding: const EdgeInsets.only(left: 10, top:10),
+                        padding: const EdgeInsets.only(left: 10),
 
-                        margin: const EdgeInsets.only(left: 20, right: 20, top: 10, bottom: 10),
+                        margin: const EdgeInsets.only(left: 20, right: 20, bottom: 10),
 
                         decoration: const BoxDecoration(
-
-
-
-                            borderRadius: BorderRadius.all(Radius.circular(10))),
+                            borderRadius: BorderRadius.all(Radius.circular(10)
+                            )
+                        ),
 
                         child: Column(
                           children: [
-                            Padding(padding: EdgeInsets.only(top: 5)),
+                            const Padding(padding: EdgeInsets.only(top: 5)),
                             Row(
                                 mainAxisAlignment: MainAxisAlignment.start,
                                 children: [
                                   Flexible(
                                     child: AutoSizeText(doenca.nome!,
                                         maxLines: 3,
-                                        style: const TextStyle(
-                                            color: Colors.black,
+                                        style: TextStyle(
+                                          color: !doenca.cardExpandido! ? Colors.black : const Color(0xFF4116B4),
+                                            fontSize: !doenca.cardExpandido! ? null : 20,
                                             fontWeight: FontWeight.bold)),
-                                  )
-
-                                ]),
+                                  ),
+                                ]
+                            ),
                             const Row(
                               mainAxisAlignment: MainAxisAlignment.end,
                               children: [
@@ -548,11 +558,90 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
                             ),
                             const Padding(padding: EdgeInsets.only(top: 5)),
                             Center(
-                              child: AutoSizeText(doenca.referencias!,
-                                  style: TextStyle(
+                              child: AutoSizeText(doenca.dicas! != "" ? doenca.dicas! : "Doença sem descrição cadastrada no banco de dados",
+                                  style: const TextStyle(
                                     color: Color(0xFF59616E),
                                   ), maxLines: 10),
                             ),
+                            Visibility(
+                              visible: doenca.cardExpandido!,
+                                child: Column(
+                                  crossAxisAlignment: CrossAxisAlignment.start,
+                                  children: [
+                                    const Padding(padding: EdgeInsets.only(top: 10)),
+                                    const AutoSizeText("Achados clínicos",
+
+                                          style: TextStyle(
+                                              fontWeight: FontWeight.bold,
+                                          color: Color(0xFF59616E))
+
+                                    ),
+                                    const Padding(padding: EdgeInsets.only(top: 10)),
+                                    Container(
+
+                                      child: Wrap(
+                                        spacing: 4,
+
+                                        children: (doenca.sinais ?? "")
+                                            .replaceAll("[", "")
+                                            .replaceAll("]", "")
+                                            .split(',')
+                                            .map((item) => Row(
+                                            mainAxisSize: MainAxisSize.min,
+
+                                          children: <Widget>[
+
+
+                                            achadosClinicos(item.trim())
+
+                                            /*
+                                            Text(item.trim(),
+                                                style: const TextStyle(color: Color(0xFF59616E))),
+                                            const Icon(Icons.add_circle_outline, color: Color(0xFF12EC1A), size: 10),
+
+                                             */
+                                          ]
+                                        )
+                                        )
+                                            .toList(),
+                                      ),
+                                    ),
+                                    const Padding(padding: EdgeInsets.only(top: 10)),
+                                    const AutoSizeText("Exames recomendados",
+
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: Color(0xFF59616E))
+
+                                    ),
+                                    const Padding(padding: EdgeInsets.only(top: 10)),
+                                    Center(
+                                      child: AutoSizeText(doenca.exComp!,
+                                          style: const TextStyle(
+                                              color: Color(0xFF59616E)
+                                          ), maxLines: 10),
+                                    ),
+                                    const Padding(padding: EdgeInsets.only(top: 10)),
+                                    const AutoSizeText("Fatores de risco",
+
+                                        style: TextStyle(
+                                            fontWeight: FontWeight.bold,
+                                            color: Color(0xFF59616E))
+
+                                    ),
+                                    const Padding(padding: EdgeInsets.only(top: 10)),
+                                    Center(
+                                      child: AutoSizeText(doenca.fatoresDeRisco!,
+                                          style: const TextStyle(
+                                              color: Color(0xFF59616E)
+                                          ), maxLines: 10),
+                                    ),
+
+
+                                  ],
+                                )
+                            ),
+
 
                             const Padding(padding: EdgeInsets.only(top: 10)),
 
@@ -571,21 +660,26 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
                           borderRadius: BorderRadius.circular(50),
                           color: const Color(0xFF4116B4),
                         ),
-                        child: const Icon(
-                          Icons.add,
-                          color: Colors.white,
-                          size: 10,
-                        )),
+                        child: GestureDetector(
+                          onTap: (){
+                            setState(() {
+                              doenca.cardExpandido = !doenca.cardExpandido!;
+                              _visibilidadeDoTituloResultadoDaPesquisa = !_visibilidadeDoTituloResultadoDaPesquisa;
+                            });
+
+                          },
+                          child: Icon(
+                            doenca.cardExpandido! ? Icons.remove : Icons.add,
+                            color: Colors.white,
+                            size: 10,
+                          ))
+
+                    ),
                 ),
 
               ],
 
             ),
-
-
-
-
-
 
           ],
         )
@@ -642,6 +736,43 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
 
   }
 
+
+
+  Widget achadosClinicos(String item) {
+
+    return Row(
+      children: [
+        Text(item,
+          style: const TextStyle(color: Color(0xFF8F90A6)),
+        ),
+        GestureDetector(
+            onTap: (){
+
+              print(item);
+            },
+            child: const Icon(
+                Icons.add_circle_outline,
+                color: Color(0xFF12EC1A),
+                size: 12)
+        )
+
+      ],
+    );
+    /*
+    return Chip(
+      label: Text(item),
+      backgroundColor: Colors.blue,
+      labelStyle: TextStyle(color: Colors.white),
+    );
+
+     */
+
+
+
+
+
+
+  }
   Future<void> buscarDoencas(sinal, especie, buscaCompleta) async {
 
     List<Doenca> _doencasEncontradas = [];

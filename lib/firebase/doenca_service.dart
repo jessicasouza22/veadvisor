@@ -49,6 +49,8 @@ class DoencaService {
             sexo: document.data()["sexo"].toString(),
             sinais: document.data()["sinais"].toString(),
             sinaisClinicosTermosPopulares: document.data()["sinaisClinicosTermosPopulares"].toString(),
+            cardExpandido: false,
+
           );
 
           _doencas.add(doenca);
@@ -61,22 +63,23 @@ class DoencaService {
       for (var document in sinaisQuery) {
 
         var doenca = Doenca(
-          dicas: document.data()["dicas"].toString(),
-          disturbio: document.data()["disturbio"].toString(),
-          especie: document.data()["especie"].toString(),
-          etaria: document.data()["etaria"].toString(),
-          exComp: document.data()["exComp"].toString(),
-          exCompRes: document.data()["exCompRes"].toString(),
-          exFis: document.data()["exFis"].toString(),
-          exFisTermosPopulares: document.data()["exFisTermosPopulares"].toString(),
-          fatoresDeRisco: document.data()["fatoresDeRisco"].toString(),
-          nome: document.data()["nome"].toString(),
-          porte: document.data()["porte"].toString(),
-          racial: document.data()["racial"].toString(),
-          referencias: document.data()["referencias"].toString(),
-          sexo: document.data()["sexo"].toString(),
-          sinais: document.data()["sinais"].toString(),
-          sinaisClinicosTermosPopulares: document.data()["sinaisClinicosTermosPopulares"].toString(),
+            dicas: document.data()["dicas"].toString(),
+            disturbio: document.data()["disturbio"].toString(),
+            especie: document.data()["especie"].toString(),
+            etaria: document.data()["etaria"].toString(),
+            exComp: document.data()["exComp"].toString(),
+            exCompRes: document.data()["exCompRes"].toString(),
+            exFis: document.data()["exFis"].toString(),
+            exFisTermosPopulares: document.data()["exFisTermosPopulares"].toString(),
+            fatoresDeRisco: document.data()["fatoresDeRisco"].toString(),
+            nome: document.data()["nome"].toString(),
+            porte: document.data()["porte"].toString(),
+            racial: document.data()["racial"].toString(),
+            referencias: document.data()["referencias"].toString(),
+            sexo: document.data()["sexo"].toString(),
+            sinais: document.data()["sinais"].toString(),
+            sinaisClinicosTermosPopulares: document.data()["sinaisClinicosTermosPopulares"].toString(),
+            cardExpandido: false
         );
 
 

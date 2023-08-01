@@ -16,6 +16,7 @@ class Doenca {
   String? sinais;
   String? sinaisClinicosTermosPopulares;
   int? rate;
+  bool? cardExpandido;
 
   Doenca({
     this.dicas,
@@ -35,5 +36,6 @@ class Doenca {
     this.sinais,
     this.sinaisClinicosTermosPopulares,
     this.rate,
+    this.cardExpandido,
   });
 }

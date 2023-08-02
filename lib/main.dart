@@ -22,9 +22,9 @@ late final FirebaseAuth auth;
 
 void main()  async {
 
-  WidgetsBinding widgetsBinding = WidgetsFlutterBinding.ensureInitialized();
 
-  FlutterNativeSplash.preserve(widgetsBinding: widgetsBinding);
+  WidgetsFlutterBinding.ensureInitialized();
+
 
   // We store the app and auth to make testing with a named instance easier.
   app = await Firebase.initializeApp(
@@ -107,7 +107,7 @@ void main()  async {
 
       });
 
-  FlutterNativeSplash.remove();
+
 }
 
 

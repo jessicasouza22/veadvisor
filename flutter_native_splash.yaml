@@ -1,7 +1,7 @@
 flutter_native_splash:
-  color: "#ff0000"
-  image: /Volumes/AndroidStudioProjects/veadvisor/imagens/icone.png
-  branding: /Volumes/AndroidStudioProjects/veadvisor/imagens/icone.png
+  color: "#451BAE"
+  image: imagens/splash.png
+  #branding: imagens/logo2.png
 
 
   #android_12:

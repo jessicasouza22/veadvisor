@@ -19,8 +19,14 @@ class DoencaService {
         .get();
 
     var sinaisQuery = especieQuery.docs
-        .where((document) => (document.data()["sinais"] as List)?.contains(sinaisSearch) ?? false)
+        .where((document) {
+      // Converte os valores para letras minúsculas antes de comparar
+      var sinais = (document.data()["sinais"] as List)?.map((sinal) => sinal.toLowerCase())?.toList();
+      var sinaisSearchTrimmed = sinaisSearch.trim().toLowerCase(); // Remove espaços em branco no início e final da palavra buscada
+      return sinais?.contains(sinaisSearchTrimmed) ?? false;
+    })
         .toList();
+
     // Verificar se a busca completa está ativada
     if (!buscaCompleta) {
 

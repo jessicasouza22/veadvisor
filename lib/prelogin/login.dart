@@ -1,18 +1,11 @@
 // Home Geral OK
- import 'package:auto_size_text/auto_size_text.dart';
 import 'package:firebase_auth/firebase_auth.dart';
 import 'package:flutter/foundation.dart';
 import 'package:flutter/material.dart';
-import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:social_login_buttons/social_login_buttons.dart';
-import 'package:vetadvisor/helper.dart';
 import 'package:vetadvisor/prelogin/criarConta.dart';
-import 'package:vetadvisor/prelogin/logado.dart';
-import 'package:vetadvisor/teste02.dart';
 import 'package:vetadvisor/recursos/Constants.dart';
-import 'package:vetadvisor/fluxoprontuariodigital/perfil.dart';
-import 'termos.dart';
-import 'logado.dart';
+
 
 
 
@@ -51,10 +44,7 @@ class _LoginPageState extends State<LoginPage> {
 
   @override
   initState() {
-
-
     super.initState();
-
   }
 
   String get name => 'foo';
@@ -110,7 +100,7 @@ class _LoginPageState extends State<LoginPage> {
                             Text(
                               Constants.bemVindo,
                               textAlign: TextAlign.center,
-                              style: TextStyle(fontSize: 30.0, color: Colors.white),
+                              style: const TextStyle(fontSize: 30.0, color: Colors.white),
                             ),
                             const Padding(padding: EdgeInsets.all(10.0)),
                             Form(
@@ -176,7 +166,6 @@ class _LoginPageState extends State<LoginPage> {
                                               },
                                             ),
                                           ),
-
                                         ],
                                       )
                                     ]
@@ -200,6 +189,7 @@ class _LoginPageState extends State<LoginPage> {
                             ),
                             
                             const Padding(padding: EdgeInsets.all(10.0)),
+
                             Padding(
                                 padding: EdgeInsets.only(left: 30, right: 30),
                                 child: Column(
@@ -221,17 +211,6 @@ class _LoginPageState extends State<LoginPage> {
                                                   password: _senha.text
                                               );
 
-                                              //print(credential.user);
-                                              /*
-                                          Navigator.push(
-                                            context,
-                                            MaterialPageRoute(
-                                                builder: (context) => const Termos()),
-
-                                          );
-
-                                           */
-
                                             } on FirebaseAuthException catch (e) {
 
                                               if (e.code == 'user-not-found') {
@@ -241,7 +220,6 @@ class _LoginPageState extends State<LoginPage> {
                                               }
                                             }
                                           }
-
 
                                         }
                                         ),
@@ -338,7 +316,7 @@ class _LoginPageState extends State<LoginPage> {
       barrierDismissible: true,
       builder: (BuildContext context) {
         return AlertDialog(
-          shape: RoundedRectangleBorder(
+          shape: const RoundedRectangleBorder(
               borderRadius: BorderRadius.all(Radius.circular(20.0))),
           backgroundColor: Colors.white.withOpacity(0.9),
 

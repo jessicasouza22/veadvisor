@@ -81,6 +81,56 @@ class _HomePageState extends State<HomePage> {
   Widget build(BuildContext context) {
 
     return  Scaffold(
+        drawer: Drawer(
+          child: Container(
+
+
+
+              child: ListView(
+                //padding: EdgeInsets.zero,
+                  children: const [
+                    DrawerHeader(
+
+                        child: Image(
+                          image: AssetImage("imagens/user.png"),
+                        )
+                    ),
+
+                    Column(
+
+                      children: [
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            /*
+                            Padding(padding: EdgeInsets.only(top:15, bottom: 15)),
+                            Text("Ainda não existem check-ups\ndinâmicos cadastrados", style: TextStyle(color: Colors.white)),
+                            Padding(padding: EdgeInsets.only(top:15, bottom: 15)),
+                            Text("Aguarde...", style: TextStyle(color: Colors.white)),
+                            Padding(padding: EdgeInsets.only(top:15, bottom: 15)),
+                            Text("Equipe SAFE®", style: TextStyle(color: Colors.white)),
+
+                             */
+                          ],
+                        ),
+                        Column(
+                          mainAxisAlignment: MainAxisAlignment.spaceAround,
+                          children: [
+                            Padding(padding: EdgeInsets.only(top:15, bottom: 15)),
+                            //Text("v.0.${_packageInfo.version}.2023", style: TextStyle(color: Colors.white)),
+
+                          ],
+                        )
+
+                      ],
+                    ),
+
+
+
+                  ]
+              )
+          ),
+        ),
       appBar: AppBar(
             backgroundColor: const Color(0xff4116B4),
             toolbarHeight: 80,
@@ -105,23 +155,45 @@ class _HomePageState extends State<HomePage> {
               ),
             ),
 
-            actions: [
+          actions: <Widget>[
+            PopupMenuButton<String>(
+              icon: const Icon(MdiIcons.bellBadgeOutline),
+              onSelected: opcoesDoMenu,
+              itemBuilder: (context) => [
+                PopupMenuItem<String>(value: "4", child: Text("Não existem mensagens")),
+                PopupMenuItem<String>(value: "4", child: Text("Sair"))
+              ],
+            ),
+
+
+/*
               Expanded(
                   child: Padding(
                       padding: const EdgeInsets.only(left: 5),
                       child: Row(
                         mainAxisAlignment: MainAxisAlignment.spaceBetween,
                         children: [
+
+
                           Builder(
                               builder: (context) => IconButton(
                                   onPressed: () {
+
+                                    /*
                                     Navigator.push(
                                       context,
                                       MaterialPageRoute(
                                           builder: (
                                               context) => const PerfilPaciente()));
+
+                                     */
+
+
                                     },
                                   icon: const Icon(MdiIcons.menu))),
+
+
+
                           const Text("Serviços",
                             style: TextStyle(
                                 fontWeight: FontWeight.bold
@@ -135,6 +207,10 @@ class _HomePageState extends State<HomePage> {
                       )
                   )
               )
+
+ */
+
+
             ]
       ),
       body: CustomScrollView(
@@ -1349,7 +1425,48 @@ class _HomePageState extends State<HomePage> {
 
 
 
+  Future<void> opcoesDoMenu(String escolha) async {
+    switch (escolha){
+      case "0":
 
+
+        //_dialogAlterarSenha();
+
+        break;
+
+      case "1":
+
+
+
+        break;
+
+      case "2":
+
+        //_dialogExcluirUsuario();
+
+        break;
+
+      case "3":
+
+        /*
+        Navigator.push(context,
+          MaterialPageRoute(builder: (context) => const MeusDados()),
+        );
+
+         */
+
+        break;
+
+      case "4":
+        //_showMyDialog();
+        break;
+
+      case "5":
+
+
+
+    }
+  }
 
 
   void _exibirAlertDialog() {

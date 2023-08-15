@@ -4,16 +4,20 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:vetadvisor/fluxodeagendamentodeconsulta/homeAgendamentoDeConsulta.dart';
+
 import 'package:vetadvisor/fluxopesquisarapida/detalheDaPesquisa.dart';
 import 'package:vetadvisor/fluxopesquisarapida/detalheDaPesquisaDermatiteAtopica.dart';
 import 'package:vetadvisor/fluxopesquisarapida/servicos.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/consultaPaciente.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/perfilPaciente.dart';
+import 'package:vetadvisor/minhaagenda/homeMinhaAgenda.dart';
 import 'package:vetadvisor/prelogin/logado.dart';
 import 'package:vetadvisor/recursos/dialogUtils.dart';
 import 'dart:developer' as logDev;
 
 import '../firebase/doenca_service.dart';
+
 import '../objetos/doenca.dart';
 import '../recursos/Variaveis.dart';
 
@@ -407,14 +411,30 @@ class _HomePageState extends State<HomePage> {
                                           padding: const EdgeInsets.only(left: 40, right: 40, top: 5, bottom: 10),
                                           decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),
                                             color: Colors.white),
-                                          child: const Column(
+                                          child: Column(
                                               children: [
                                                 Row(
                                                   mainAxisAlignment: MainAxisAlignment.center,
                                                   children:  [
-                                                    Icon(MdiIcons.calendarEdit,
-                                                      color: Color(0xFF4116B4),
-                                                      size: 60)
+
+                                                    Builder(
+                                                        builder: (context) => IconButton(
+                                                            onPressed: () {
+                                                              Navigator.push(
+                                                                context,
+                                                                MaterialPageRoute(
+                                                                    builder: (
+                                                                        context) => HomeAgendamentoDeConsulta()),
+                                                              );
+
+                                                              print("agendamento");
+                                                            },
+                                                            icon: const Icon(MdiIcons.calendarEdit,
+                                                                color: Color(0xFF4116B4),
+                                                                size: 60))),
+
+
+
                                                   ]
                                                 ),
                                                 Padding(padding: EdgeInsets.all(10)),

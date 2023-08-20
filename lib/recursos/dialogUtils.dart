@@ -82,6 +82,31 @@ class DialogUtils extends StatelessWidget {
     );
   }
 
+
+  static void dialogSalvandoNoBanco(BuildContext context) {
+    showCupertinoModalPopup<void>(
+      context: context,
+      builder: (BuildContext context) => CupertinoAlertDialog(
+        title: const Text('Salvando...'),
+        content: const CupertinoActivityIndicator(
+            radius: 20.0, color: CupertinoColors.activeBlue),
+        actions: <CupertinoDialogAction>[
+
+          CupertinoDialogAction(
+            isDefaultAction: true,
+            isDestructiveAction: true,
+            onPressed: () {
+              Navigator.pop(context);
+            },
+            child: const Text('Cancelar'),
+          ),
+        ],
+      ),
+    );
+  }
+
+
+
   @override
   Widget build(BuildContext context) {
     // TODO: implement build

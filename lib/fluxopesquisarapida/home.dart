@@ -1,6 +1,7 @@
 //1.O HOME FLUXO PESQUISA
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
+import 'package:firebase_auth/firebase_auth.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
@@ -9,7 +10,9 @@ import 'package:vetadvisor/fluxodeagendamentodeconsulta/homeAgendamentoDeConsult
 import 'package:vetadvisor/fluxopesquisarapida/detalheDaPesquisa.dart';
 import 'package:vetadvisor/fluxopesquisarapida/detalheDaPesquisaDermatiteAtopica.dart';
 import 'package:vetadvisor/fluxopesquisarapida/servicos.dart';
+import 'package:vetadvisor/fluxoprontuariodigital/cadastreOPet.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/consultaPaciente.dart';
+import 'package:vetadvisor/fluxoprontuariodigital/perfil.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/perfilPaciente.dart';
 import 'package:vetadvisor/minhaagenda/homeMinhaAgenda.dart';
 import 'package:vetadvisor/prelogin/logado.dart';
@@ -19,10 +22,13 @@ import 'dart:developer' as logDev;
 import '../firebase/doenca_service.dart';
 
 import '../objetos/doenca.dart';
+import '../objetos/paciente.dart';
+import '../prelogin/login.dart';
 import '../recursos/Variaveis.dart';
+import 'meusPets.dart';
 
 enum SingingCharacterAreaMedica{ Oftalmicos, Infecciosos, Dermatologicos, MusculoEsqueletico, Neurologicos, MetabolicosEndocrinos, Oncologicos, Cardiologicos, NefrologicosUrologicos, Hematologicos, Respiratorios, Odontologicos, Toxocologicos, Teriogenologicos}
-
+enum SampleItem { itemOne, itemTwo, itemThree }
 
 class Home extends StatelessWidget {
   const Home({super.key});
@@ -47,6 +53,8 @@ class _HomePageState extends State<HomePage> {
   final _formKey = GlobalKey<FormState>();
 
   final _busca = TextEditingController();
+
+  final _pacienteParaConsultar = TextEditingController();
 
 
 
@@ -92,7 +100,7 @@ class _HomePageState extends State<HomePage> {
 
               child: ListView(
                 //padding: EdgeInsets.zero,
-                  children: const [
+                  children: [
                     DrawerHeader(
 
                         child: Image(
@@ -100,34 +108,87 @@ class _HomePageState extends State<HomePage> {
                         )
                     ),
 
-                    Column(
+                    Padding(
+                      padding: EdgeInsets.only(left: 10, right: 10, top: 10),
+                      child: Column(
 
-                      children: [
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            /*
-                            Padding(padding: EdgeInsets.only(top:15, bottom: 15)),
-                            Text("Ainda não existem check-ups\ndinâmicos cadastrados", style: TextStyle(color: Colors.white)),
-                            Padding(padding: EdgeInsets.only(top:15, bottom: 15)),
-                            Text("Aguarde...", style: TextStyle(color: Colors.white)),
-                            Padding(padding: EdgeInsets.only(top:15, bottom: 15)),
-                            Text("Equipe SAFE®", style: TextStyle(color: Colors.white)),
+                        children: [
+                          Column(
+                            crossAxisAlignment: CrossAxisAlignment.start,
 
-                             */
-                          ],
-                        ),
-                        Column(
-                          mainAxisAlignment: MainAxisAlignment.spaceAround,
-                          children: [
-                            Padding(padding: EdgeInsets.only(top:15, bottom: 15)),
-                            //Text("v.0.${_packageInfo.version}.2023", style: TextStyle(color: Colors.white)),
+                            children: [
 
-                          ],
-                        )
+                              GestureDetector(
+                                child: Row(
+                                  children: [
+                                    Icon(Icons.person_outline_outlined),
+                                    Padding(padding: EdgeInsets.only(left: 5)),
+                                    Text("Meus dados", style: TextStyle(color: Colors.black)),
+                                  ],
+                                ),
+                                onTap: () {
 
-                      ],
-                    ),
+                                  Navigator.push(
+                                    context,
+                                    MaterialPageRoute(builder: (context) => const Perfil()),
+                                  );
+                                },
+                              ),
+
+                              Divider(
+                                height: 30,
+                              ),
+
+                              GestureDetector(
+                                child: const Row(
+                                  children: [
+                                    Icon(MdiIcons.pawOutline),
+                                    Padding(padding: EdgeInsets.only(left: 5)),
+                                    Text("Meus pacientes", style: TextStyle(color: Colors.black)),
+                                  ],
+                                ),
+                                onTap: () {
+
+                                  _buscarPacientes(FirebaseAuth.instance.currentUser?.email.toString());
+
+
+
+                                },
+                              ),
+
+                              Divider(
+                                height: 30,
+                              ),
+
+                              GestureDetector(
+                                child: Row(
+                                  children: [
+                                    Icon(Icons.exit_to_app_outlined),
+                                    Padding(padding: EdgeInsets.only(left: 5)),
+                                    Text("Sair", style: TextStyle(color: Colors.black)),
+                                  ],
+                                ),
+                                onTap: () {
+                                  _logOut();
+
+                                },
+                              )
+
+                            ],
+                          ),
+                          Column(
+                            mainAxisAlignment: MainAxisAlignment.spaceAround,
+                            children: [
+                              Padding(padding: EdgeInsets.only(top:15, bottom: 15)),
+                              //Text("v.0.${_packageInfo.version}.2023", style: TextStyle(color: Colors.white)),
+
+                            ],
+                          )
+
+                        ],
+                      ),
+                    )
+
 
 
 
@@ -158,14 +219,17 @@ class _HomePageState extends State<HomePage> {
                 ),
               ),
             ),
+          title: const Center(
+            child:  Text("Serviços"),
+          ),
 
           actions: <Widget>[
             PopupMenuButton<String>(
               icon: const Icon(MdiIcons.bellBadgeOutline),
               onSelected: opcoesDoMenu,
               itemBuilder: (context) => [
-                PopupMenuItem<String>(value: "4", child: Text("Não existem mensagens")),
-                PopupMenuItem<String>(value: "4", child: Text("Sair"))
+                PopupMenuItem<String>(value: "1", child: Text("Não existem mensagens")),
+
               ],
             ),
 
@@ -340,53 +404,48 @@ class _HomePageState extends State<HomePage> {
                                   color: Colors.white,
                                   borderRadius: BorderRadius.all( Radius.circular(10))),
 
-                              child: Column(
-                                  children: [
-                                    Row(
-                                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                                        children: [
-                                          SizedBox(
-                                            height: 30,
-                                            width: 350,
+                              child: TextFormField(
+                                controller: _busca,
+                                textAlign: TextAlign.center,
+                                //style: const TextStyle(fontSize: 12),
+                                decoration: InputDecoration(
+                                    fillColor: const Color(0xFF12EC1A),
 
-                                            child: TextFormField(
-                                              controller: _busca,
-                                              textAlign: TextAlign.center,
-                                              //style: const TextStyle(fontSize: 12),
-                                              decoration: InputDecoration(
-                                                  fillColor: const Color(0xFF12EC1A),
-                                                  prefixIcon: IconButton(
-                                                          onPressed: () {
+                                    prefixIcon: IconButton(
+                                        onPressed: () {
 
-                                                          },
-                                                          icon: const Icon(
-                                                              Icons.search,
-                                                              size: 15,
-                                                              color: Color(0xFF3C10BB))
-                                                  ),
-                                                  suffixIcon: IconButton(
-                                                    icon: const Icon(MdiIcons.navigationVariant, size: 15),
-                                                    color: const Color(0xFF3C10BB),
-                                                    onPressed: () {
-                                                      //var atributosParaMigrar = ["etaria", "exComp", "exFis", "sexo", "sinaisClinicosTermosPolulares", "exCompRes", "exFisTermosPopulares", "porte", "fatoresDeRisco", "racial"];
-                                                      //migrateAttributesToArrays(atributosParaMigrar);
-                                                      //renameAttributesInDoencaCollection();
-                                                      _dialogAddExercicio();
-                                                      //_buscaDoencas();
-                                                  },
-
-                                                  )
-                                              ),
-                                            ),
-                                          ),
-                                        ]
+                                        },
+                                        icon: const Icon(
+                                            Icons.search,
+                                            size: 15,
+                                            color: Colors.transparent)
                                     ),
-                                  ]
+
+
+                                    suffixIcon: IconButton(
+                                      icon: const Icon(Icons.search, size: 15),
+                                      color: const Color(0xFF3C10BB),
+                                      onPressed: () {
+                                        //var atributosParaMigrar = ["etaria", "exComp", "exFis", "sexo", "sinaisClinicosTermosPolulares", "exCompRes", "exFisTermosPopulares", "porte", "fatoresDeRisco", "racial"];
+                                        //migrateAttributesToArrays(atributosParaMigrar);
+                                        //renameAttributesInDoencaCollection();
+                                        //_dialogSelecionaSistemas();
+                                        _listarPacientes(FirebaseAuth.instance.currentUser?.email.toString());
+
+                                        _dialogSelecionaPaciente();
+                                        //_buscaDoencas();
+                                      },
+
+                                    )
+                                ),
+                                onFieldSubmitted: (value) {
+                                  _listarPacientes(FirebaseAuth.instance.currentUser?.email.toString());
+                                  _dialogSelecionaPaciente();
+                                },
                               ),
                             ),
 
                             Padding(padding: EdgeInsets.all(15)),
-
 
                             Center(
                               child: Column(
@@ -394,7 +453,7 @@ class _HomePageState extends State<HomePage> {
                                 children: [
                                   const Padding(
                                     padding: EdgeInsets.only(left: 30, right: 30),
-                                    child: Text("Minha Area",
+                                    child: Text("Minha área",
                                         style: TextStyle(
                                             color: Colors.white,
                                             fontSize: 16
@@ -407,57 +466,55 @@ class _HomePageState extends State<HomePage> {
                                   Row(
                                     mainAxisAlignment: MainAxisAlignment.center,
                                     children: [
-                                      Container(
-                                          padding: const EdgeInsets.only(left: 40, right: 40, top: 5, bottom: 10),
-                                          decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),
-                                            color: Colors.white),
-                                          child: Column(
-                                              children: [
-                                                Row(
-                                                  mainAxisAlignment: MainAxisAlignment.center,
-                                                  children:  [
-
-                                                    Builder(
-                                                        builder: (context) => IconButton(
-                                                            onPressed: () {
-                                                              Navigator.push(
-                                                                context,
-                                                                MaterialPageRoute(
-                                                                    builder: (
-                                                                        context) => HomeAgendamentoDeConsulta()),
-                                                              );
-
-                                                              print("agendamento");
-                                                            },
-                                                            icon: const Icon(MdiIcons.calendarEdit,
-                                                                color: Color(0xFF4116B4),
-                                                                size: 60))),
-
-
-
-                                                  ]
-                                                ),
-                                                Padding(padding: EdgeInsets.all(10)),
-                                                Row(
-                                                  mainAxisAlignment: MainAxisAlignment.center,
-                                                  children: [
-                                                    Text("Minha\nagenda",
-                                                      style: TextStyle(
-                                                        color: Color(0xFF4116B4),
-                                                        fontWeight: FontWeight.bold,
-                                                      ),),
-
-                                                  ],
-                                                ),
-                                              ]
-                                          )
+                                      GestureDetector(
+                                        onTap:(){
+                                          DialogUtils.showCustomDialog(
+                                              context,
+                                              title: "Versão beta",
+                                              text: "Agenda será liberada na próxima versão do Vet Advisor",
+                                              botaoConfirma: "OK",
+                                              botaoExtra: "",
+                                              botaoCancela: "",
+                                              funcaoBotaoConfirma: (){
+                                                Navigator.of(context).pop();
+                                              },
+                                              funcaoBotaoExtra: (){},
+                                              funcaoBotaoCancela: (){});
+                                        },
+                                        child: Container(
+                                            height: MediaQuery.of(context).size.width/3,
+                                            width: MediaQuery.of(context).size.width/3,
+                                            padding: const EdgeInsets.only(left: 0, right: 0, top: 0, bottom: 0),
+                                            decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),
+                                                color: Colors.white),
+                                            child: const Column(
+                                                children: [
+                                                  Icon(MdiIcons.calendarEdit,
+                                                      color: Color(0xFF4116B4),
+                                                      size: 60),
+                                                  Padding(padding: EdgeInsets.all(10)),
+                                                  Text("Minha\nagenda",
+                                                    style: TextStyle(
+                                                      color: Color(0xFF4116B4),
+                                                      fontWeight: FontWeight.bold,
+                                                    ),),
+                                                ]
+                                            )
+                                        ),
                                       ),
+
 
                                       const Padding(padding: EdgeInsets.only(left:10, right: 10)),
 
-                                      Container(
+                                      GestureDetector(
+                                        onTap: (){
+                                          _buscarPacientes(FirebaseAuth.instance.currentUser?.email.toString());
+                                        },
+                                        child: Container(
+                                          height: MediaQuery.of(context).size.width/3,
+                                          width: MediaQuery.of(context).size.width/3,
                                           padding: const EdgeInsets.only(
-                                              left: 40, right: 40, top: 5, bottom: 10),
+                                              left: 0, right: 0, top: 0, bottom: 0),
                                           decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: Colors.white),
                                           child: const Column(
                                               children: [
@@ -465,107 +522,150 @@ class _HomePageState extends State<HomePage> {
                                                   mainAxisAlignment: MainAxisAlignment.center,
                                                   children:  [
                                                     Icon(MdiIcons.dogSide,
-                                                      color: Color(0xFF4116B4),
-                                                      size: 60)
+                                                        color: Color(0xFF4116B4),
+                                                        size: 60)
                                                   ],
                                                 ),
 
                                                 Padding(padding: EdgeInsets.all(10)),
 
                                                 Row(
-                                                  mainAxisAlignment: MainAxisAlignment.center,
-                                                  children: [
-                                                    Text("Meus\npacientes",
-                                                      style: TextStyle(
-                                                        color: Color(0xFF4116B4),
-                                                        fontWeight: FontWeight.bold
+                                                    mainAxisAlignment: MainAxisAlignment.center,
+                                                    children: [
+                                                      Text("Meus\npacientes",
+                                                          style: TextStyle(
+                                                              color: Color(0xFF4116B4),
+                                                              fontWeight: FontWeight.bold
+                                                          )
                                                       )
-                                                    )
-                                                  ]
+                                                    ]
                                                 )
                                               ]
-                                          )
+                                          ),
+                                        ),
                                       )
+
                                     ]
                                   ),
 
                                   const Padding(padding: EdgeInsets.only(top:20)),
 
+
                                   Row(
                                       mainAxisAlignment: MainAxisAlignment.center,
                                       children: [
-                                        Container(
-                                            padding: const EdgeInsets.only(
-                                                left: 40, right: 40, top: 5, bottom: 10),
-                                            decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.circular(20),
-                                              color: Colors.white,
-                                            ),
-                                            child: const Column(
-                                                children: [
 
-                                                  Row(
-                                                    mainAxisAlignment: MainAxisAlignment.center,
-                                                    children:  [
+                                        GestureDetector(
+                                          onTap:(){
+                                            DialogUtils.showCustomDialog(
+                                                context,
+                                                title: "Versão beta",
+                                                text: "Exames será liberado na próxima versão do Vet Advisor",
+                                                botaoConfirma: "OK",
+                                                botaoExtra: "",
+                                                botaoCancela: "",
+                                                funcaoBotaoConfirma: (){
+                                                  Navigator.of(context).pop();
+                                                },
+                                                funcaoBotaoExtra: (){},
+                                                funcaoBotaoCancela: (){});
+                                            },
+                                          child: Container(
+                                              height: MediaQuery.of(context).size.width/3,
+                                              width: MediaQuery.of(context).size.width/3,
+                                              padding: const EdgeInsets.only(
+                                                  left: 0, right: 0, top: 0, bottom: 0),
+                                              decoration: BoxDecoration(
+                                                borderRadius: BorderRadius.circular(20),
+                                                color: Colors.white,
+                                              ),
+                                              child: const Column(
+                                                  children: [
 
-                                                      Icon(MdiIcons.notebookEditOutline,
-                                                        color: Color(0xFF4116B4),
-                                                        size: 60,),
+                                                    Row(
+                                                      mainAxisAlignment: MainAxisAlignment.center,
+                                                      children:  [
 
-                                                    ],
-                                                  ),
-                                                  Padding(padding: EdgeInsets.all(10)),
-                                                  Row(
-                                                    mainAxisAlignment: MainAxisAlignment.center,
-                                                    children: [
-                                                      Text("Exames\nliberados",
-                                                        style: TextStyle(
+                                                        Icon(MdiIcons.notebookEditOutline,
                                                           color: Color(0xFF4116B4),
-                                                          fontWeight: FontWeight.bold,
-                                                        ),),
+                                                          size: 60,),
 
-                                                    ],
-                                                  ),
-                                                ]
-                                            )
+                                                      ],
+                                                    ),
+                                                    Padding(padding: EdgeInsets.all(10)),
+                                                    Row(
+                                                      mainAxisAlignment: MainAxisAlignment.center,
+                                                      children: [
+                                                        Text("Exames\nliberados",
+                                                          style: TextStyle(
+                                                            color: Color(0xFF4116B4),
+                                                            fontWeight: FontWeight.bold,
+                                                          ),),
+
+                                                      ],
+                                                    ),
+                                                  ]
+                                              )
+                                          ),
                                         ),
+
                                         const Padding(padding: EdgeInsets.only(left:10, right: 10)),
-                                        Container(
-                                          //  margin: const EdgeInsets.only(left: 80, right: 10, top: 10, bottom: 1),
-                                            padding: const EdgeInsets.only(
-                                                left: 40, right: 40, top: 5, bottom: 10),
-                                            decoration: BoxDecoration(
-                                              borderRadius: BorderRadius.circular(20),
-                                              color: Colors.white,
-                                            ),
-                                            child: const Column(
-                                                children: [
 
-                                                  Row(
-                                                    mainAxisAlignment: MainAxisAlignment.center,
-                                                    children:  [
-                                                      Icon(MdiIcons.bookOpenPageVariantOutline,
-                                                        color: Color(0xFF4116B4),
-                                                        size: 60)
-                                                    ]
-                                                  ),
+                                        GestureDetector(
+                                          onTap: (){
+                                            DialogUtils.showCustomDialog(
+                                                context,
+                                                title: "Versão beta",
+                                                text: "Estudos será liberado na próxima versão do Vet Advisor",
+                                                botaoConfirma: "OK",
+                                                botaoExtra: "",
+                                                botaoCancela: "",
+                                                funcaoBotaoConfirma: (){
+                                                  Navigator.of(context).pop();
+                                                },
+                                                funcaoBotaoExtra: (){},
+                                                funcaoBotaoCancela: (){});
 
-                                                  Padding(padding: EdgeInsets.all(10)),
+                                          },
+                                          child: Container(
+                                              height: MediaQuery.of(context).size.width/3,
+                                              width: MediaQuery.of(context).size.width/3,
+                                              padding: const EdgeInsets.only(
+                                                  left: 0, right: 0, top: 0, bottom: 0),
+                                              decoration: BoxDecoration(
+                                                borderRadius: BorderRadius.circular(20),
+                                                color: Colors.white,
+                                              ),
+                                              child: const Column(
+                                                  children: [
 
-                                                  Row(
-                                                    mainAxisAlignment: MainAxisAlignment.center,
-                                                    children: [
-                                                      Text("Meus\nestudos",
-                                                        style: TextStyle(
-                                                          color: Color(0xFF4116B4),
-                                                          fontWeight: FontWeight.bold,
+                                                    Row(
+                                                        mainAxisAlignment: MainAxisAlignment.center,
+                                                        children:  [
+                                                          Icon(MdiIcons.bookOpenPageVariantOutline,
+                                                              color: Color(0xFF4116B4),
+                                                              size: 60)
+                                                        ]
+                                                    ),
+
+                                                    Padding(padding: EdgeInsets.all(10)),
+
+                                                    Row(
+                                                      mainAxisAlignment: MainAxisAlignment.center,
+                                                      children: [
+                                                        Text("Meus\nestudos",
+                                                            style: TextStyle(
+                                                              color: Color(0xFF4116B4),
+                                                              fontWeight: FontWeight.bold,
+                                                            )
                                                         )
-                                                      )
-                                                    ],
-                                                  ),
-                                                ]
-                                            )
+                                                      ],
+                                                    ),
+                                                  ]
+                                              )
+                                          ),
                                         )
+
                                       ]
                                   )
                                 ]
@@ -574,6 +674,7 @@ class _HomePageState extends State<HomePage> {
 
                             const Padding(padding: EdgeInsets.all(10)),
 
+                            /*
                             const Padding(padding: EdgeInsets.only(left:20, right: 20),
                                 child: Center(
                                   child: AutoSizeText("Cadastre-se gratuitamente",
@@ -601,6 +702,11 @@ class _HomePageState extends State<HomePage> {
                             ),
 
                             const Padding(padding: EdgeInsets.all(10)),
+
+
+                             */
+
+
                           ]
                       )
                   ),
@@ -646,7 +752,7 @@ class _HomePageState extends State<HomePage> {
     );
   }
 
-  Future<void> _dialogAddExercicio() async {
+  Future<void> _dialogSelecionaSistemas() async {
     return showDialog<void>(
       context: context,
       barrierDismissible: false,
@@ -699,7 +805,7 @@ class _HomePageState extends State<HomePage> {
 
 
 
-                                        print(Variaveis.disturbiosSelecionados.toString());
+                                        //print(Variaveis.disturbiosSelecionados.toString());
                                       });
                                     },
                                   ),
@@ -1248,6 +1354,118 @@ class _HomePageState extends State<HomePage> {
       });
   }
 
+  Future<void> _dialogSelecionaPaciente() async {
+
+    Paciente? selectedPaciente;
+
+    return showDialog<void>(
+        context: context,
+        barrierDismissible: false,
+        builder: (BuildContext context) {
+          return StatefulBuilder(
+              builder: (context, setStateForDialog) {
+                return AlertDialog(
+                    shape: const RoundedRectangleBorder(
+                        borderRadius: BorderRadius.all(Radius.circular(20.0))
+                    ),
+
+                    backgroundColor: Colors.white.withOpacity(0.9),
+                    contentPadding: EdgeInsets.zero,
+                    title:  const Text("Selecione o paciente que deseja consultar",
+                        style: TextStyle(color: Color(0xFF4116B4), fontSize: 18)
+                    ),
+
+                    content: SingleChildScrollView(
+                        child: Padding(
+                          padding: EdgeInsets.only(left: 20, right: 20),
+                          child: TextFormField(
+                            textAlign: TextAlign.center,
+                            controller: _pacienteParaConsultar,
+                            decoration: InputDecoration(
+                              suffixIcon: PopupMenuButton<Paciente>(
+                                initialValue: selectedPaciente,
+                                onSelected: (Paciente paciente) {
+                                  setState(() {
+                                    selectedPaciente = paciente;
+                                    _pacienteParaConsultar.text = paciente.nome!;
+                                    Variaveis.pacienteEmConsulta = paciente;
+                                  });
+                                },
+                                itemBuilder: (BuildContext context) => Variaveis.pacientes
+                                    .map((paciente) => PopupMenuItem<Paciente>(
+                                      value: paciente,
+                                      child: Text(paciente.nome.toString()),
+                                ))
+                                    .toList(),
+                              ),
+                            ),
+
+                          )
+                        )
+
+
+                    ),
+                    actions: <Widget>[
+
+                      Row(
+                        mainAxisAlignment: MainAxisAlignment.spaceAround,
+                        children: [
+                          Builder(
+                            builder: (context) => ElevatedButton(
+                                onPressed: () {
+
+                                  setState(() {
+                                    _buscandoSintomaNoBancoDeDados = true;
+                                  });
+
+                                  // Para limpar o campo de busca. Desabilitado temporariamente para facilitar os testes
+                                  Navigator.of(context).pop();
+                                  _dialogSelecionaSistemas();
+
+
+
+
+                                  final currentFocus = FocusScope.of(context);
+                                  currentFocus.unfocus();
+
+                                },
+                                style: ElevatedButton.styleFrom(
+                                    shape: const StadiumBorder(),
+                                    backgroundColor: Color(0XFF4116B4)),
+                                child: const Text(
+                                  'Selecionar',
+                                  style: TextStyle(color: Colors.white, fontSize: 12),
+                                )),
+                          ),
+
+                          Builder(
+                            builder: (context) => ElevatedButton(
+                                onPressed: () {
+                                  Navigator.of(context).pop();
+                                },
+                                style: ElevatedButton.styleFrom(
+                                    shape: const StadiumBorder(),
+                                    backgroundColor: Color(0XFF4116B4)),
+                                child: const Text(
+                                  'Cancelar',
+                                  style: TextStyle(color: Colors.white, fontSize: 12),
+                                )),
+                          ),
+
+                        ],
+                      )]);
+
+              }
+          );
+
+
+          Navigator.of(context).pop();
+
+
+        });
+  }
+
+
   Future<void> _dialogNumeroMaximoDeDisturbios() async {
     return showDialog<void>(
         context: context,
@@ -1313,7 +1531,7 @@ class _HomePageState extends State<HomePage> {
     try{
       _doencasEncontradas = await DoencaService.buscaDoencas(sinal, especie, buscaCompleta);
 
-    } catch (Exception){
+    } on Exception{
 
     }
 
@@ -1507,5 +1725,88 @@ class _HomePageState extends State<HomePage> {
       },
     );
   }
+
+  Future<void> _buscarPacientes(email) async {
+
+
+
+    List<Paciente> _pacientesEncontrados = [];
+    try{
+      _pacientesEncontrados = await DoencaService.buscaPacientes(email).whenComplete(() {
+        Navigator.push(
+          context,
+          MaterialPageRoute(builder: (context) => const MeusPacientes()),
+        );
+      });
+
+    } catch (Exception){
+
+    }
+    for (var pacienteEncontrado in _pacientesEncontrados) {
+      bool jaExiste = Variaveis.pacientes.any((paciente) => paciente.nome == pacienteEncontrado.nome);
+      if (!jaExiste) {
+        setState(() {
+          Variaveis.pacientes.add(pacienteEncontrado);
+        });
+      }
+    }
+
+
+
+    setState(() {
+      _buscandoSintomaNoBancoDeDados = false;
+    });
+
+    // Necessário repetir para fechar o dialog de busca e o de carregamento
+    //Navigator.of(context).pop();
+
+
+
+
+  }
+
+  Future<List<Paciente>> _listarPacientes(email) async {
+
+
+
+    List<Paciente> _pacientesEncontrados = [];
+    try{
+      _pacientesEncontrados = await DoencaService.buscaPacientes(email).whenComplete(() {
+        
+      });
+
+    } catch (Exception){
+
+    }
+    for (var pacienteEncontrado in _pacientesEncontrados) {
+      bool jaExiste = Variaveis.pacientes.any((paciente) => paciente.nome == pacienteEncontrado.nome);
+      if (!jaExiste) {
+        setState(() {
+          Variaveis.pacientes.add(pacienteEncontrado);
+        });
+      }
+    }
+
+    setState(() {
+      _buscandoSintomaNoBancoDeDados = false;
+    });
+    
+    return _pacientesEncontrados;
+
+    // Necessário repetir para fechar o dialog de busca e o de carregamento
+    //Navigator.of(context).pop();
+
+  }
+
+  Future<void> _logOut() async {
+    // add something to set user == null
+    try {
+      await FirebaseAuth.instance.signOut();
+    } catch (e) {
+      return;
+    }
+  }
+
+
 
 }

@@ -6,6 +6,8 @@ import 'package:social_login_buttons/social_login_buttons.dart';
 import 'package:vetadvisor/prelogin/criarConta.dart';
 import 'package:vetadvisor/recursos/Constants.dart';
 
+import '../recursos/dialogUtils.dart';
+
 
 
 
@@ -206,10 +208,12 @@ class _LoginPageState extends State<LoginPage> {
 
                                             try {
 
-                                              final credential = await FirebaseAuth.instance.signInWithEmailAndPassword(
+                                              final usuario = await FirebaseAuth.instance.signInWithEmailAndPassword(
                                                   email: _email.text,
                                                   password: _senha.text
                                               );
+
+
 
                                             } on FirebaseAuthException catch (e) {
 
@@ -234,8 +238,21 @@ class _LoginPageState extends State<LoginPage> {
                                       borderRadius: 90,
                                       height: 40,
                                       buttonType: SocialLoginButtonType.google,
-                                      mode: SocialLoginButtonMode.multi,
-                                      onPressed: () {},
+                                      //mode: SocialLoginButtonMode.multi,
+                                      onPressed: () {
+                                        DialogUtils.showCustomDialog(
+                                            context,
+                                            title: "Versão beta",
+                                            text: "Login com Google será liberado na próxima versão do Vet Advisor",
+                                            botaoConfirma: "OK",
+                                            botaoExtra: "",
+                                            botaoCancela: "",
+                                            funcaoBotaoConfirma: (){
+                                              Navigator.of(context).pop();
+                                            },
+                                            funcaoBotaoExtra: (){},
+                                            funcaoBotaoCancela: (){});
+                                      },
                                     ),
                                     const Padding(padding: EdgeInsets.all(10.0)),
                                     SocialLoginButton(

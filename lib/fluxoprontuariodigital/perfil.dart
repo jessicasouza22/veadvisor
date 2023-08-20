@@ -142,15 +142,15 @@ class _PerfilPageState extends State<PerfilPage> {
                 backgroundColor: Colors.white,
                 child: ClipOval(
                     child: GestureDetector(
-                      child: File('${Constants.diretorioVetAdvisor}/avatar.png').existsSync() ?
-                      Image.file(File('${Constants.diretorioVetAdvisor}/avatar.png'),
+                      child: File('${Constants.diretorioVetAdvisor}/user.png').existsSync() ?
+                      Image.file(File('${Constants.diretorioVetAdvisor}/user.png'),
                         // um condicional
 
                         //maxSizeBytes: 3000 * 1000,
                         fit: BoxFit.cover,
                         width: 60,
                         height: 60,
-                      ) : Image.asset("imagens/avatar.png"),
+                      ) : Image.asset("imagens/user.png"),
 
                       onTap: (){
 
@@ -729,17 +729,6 @@ class _PerfilPageState extends State<PerfilPage> {
                         atualizaCadastro(usuario);
 
                       }
-
-
-                      /*
-                      Navigator.push(
-                        context,
-                        MaterialPageRoute(
-                            builder: (context) => const PerfilPaciente()),
-                      );
-
-                       */
-
 
                     },
                     style: ElevatedButton.styleFrom(

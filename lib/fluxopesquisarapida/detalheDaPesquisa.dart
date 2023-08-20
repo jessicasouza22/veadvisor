@@ -50,6 +50,7 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
 
   final _busca = TextEditingController();
 
+
   bool _buscandoSintomaNoBancoDeDados = false;
 
   bool _visibilidadeDoTituloResultadoDaPesquisa = true;
@@ -233,57 +234,48 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
                     decoration: const BoxDecoration(
                         color: Colors.white,
                         borderRadius: BorderRadius.all(Radius.circular(10))),
-                    child: Column(children: [
-                      Row(children: [
-                        SizedBox(
-                          height: 30,
-                          width: 350,
-                          child: TextFormField(
-                            controller: _busca,
-                            textAlign: TextAlign.center,
-                            style: const TextStyle(
-                                fontSize: 12),
-                            decoration: InputDecoration(
-                                border: InputBorder.none,
-                                // tira a borda do TextField
-                                //  fillColor: const Color(0xFF12EC1A),
-                                // contentPadding: EdgeInsets.fromLTRB(20, 0, 12, 0),
-                                prefixIcon: Builder(
-                                    builder: (context) => IconButton(
-                                        onPressed: () {},
-                                        icon: const Icon(Icons.search,
-                                            size: 15,
-                                            color: Color(0xFF979797)))),
-                                hintText: "Adicione mais informações",
-                                suffixIcon: Builder(
-                                    builder: (context) => IconButton(
-                                        onPressed: () {
+                    child: TextFormField(
+                      controller: _busca,
+                      textAlign: TextAlign.center,
+                      textAlignVertical: TextAlignVertical.center,
+                      style: const TextStyle(
+                          fontSize: 12),
+                      decoration: InputDecoration(
+                        border: InputBorder.none,
+                        // tira a borda do TextField
+                        //  fillColor: const Color(0xFF12EC1A),
+                        // contentPadding: EdgeInsets.fromLTRB(20, 0, 12, 0),
+                        prefixIcon: Builder(
+                            builder: (context) => IconButton(
+                                onPressed: () {},
+                                icon: const Icon(Icons.search,
+                                    size: 15,
+                                    color: Colors.transparent))),
+                        hintText: "Adicione mais informações",
+                        suffixIcon: Builder(
+                            builder: (context) => IconButton(
+                                onPressed: () {
 
-                                          final currentFocus = FocusScope.of(context);
-                                          currentFocus.unfocus();
+                                  final currentFocus = FocusScope.of(context);
+                                  currentFocus.unfocus();
 
-                                          DialogUtils.dialogBuscandoNoBanco(context);
+                                  DialogUtils.dialogBuscandoNoBanco(context);
 
-                                          setState(() {
-                                            if(!Variaveis.sintomaBuscado.contains(_busca.text)) {
+                                  setState(() {
+                                    if(!Variaveis.sintomaBuscado.contains(_busca.text)) {
 
-                                              buscarDoencas(_busca.text, Variaveis.especieSelecionada, Variaveis.buscaCompleta);
-                                            } else {
+                                      buscarDoencas(_busca.text, Variaveis.especieSelecionada, Variaveis.buscaCompleta);
+                                    } else {
 
-                                            }
+                                    }
 
-                                          });
+                                  });
 
-                                        },
-                                        icon: const Icon(Icons.add_circle_outline,
-                                            size: 15,
-                                            color: Color(0xFF979797)))),),
-                          ),
-
-                        ),
-
-                      ]),
-                    ]),
+                                },
+                                icon: const Icon(Icons.add_circle_outline,
+                                    size: 15,
+                                    color: Color(0xFF979797)))),),
+                    ),
                   ),
 
                   Container(
@@ -327,23 +319,6 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
                       ],
                     ),
                   ),
-
-
-                  /*
-                  Container(
-                    color: Colors.red,
-                    padding: EdgeInsets.all(10),
-                    margin: EdgeInsets.only(left: 20, right: 20, top: 10),
-                    child: Wrap(
-
-                      direction: Axis.horizontal, // Define o alinhamento horizontal do Wrap
-                      alignment: WrapAlignment.start, // Define o alinhamento horizontal dos elementos no Wrap
-                      children: Variaveis.sintomaBuscado.map((item) => itemBuscado(item)).toList(),
-                    ),
-                  ),
-
-                   */
-
 
 
                   Column(
@@ -421,11 +396,20 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
                       Builder(
                           builder: (context) => ElevatedButton(
                               onPressed: () {
-                                Navigator.push(
-                                  context,
-                                  MaterialPageRoute(
-                                      builder: (context) => const Home()),
-                                );
+
+                                DialogUtils.showCustomDialog(
+                                    context,
+                                    title: "Versão beta",
+                                    text: "Compartilhamento será liberado na próxima versão do Vet Advisor",
+                                    botaoConfirma: "OK",
+                                    botaoExtra: "",
+                                    botaoCancela: "",
+                                    funcaoBotaoConfirma: (){
+                                      Navigator.of(context).pop();
+                                    },
+                                    funcaoBotaoExtra: (){},
+                                    funcaoBotaoCancela: (){});
+
                               },
                               style: ElevatedButton.styleFrom(
                                   shape: const StadiumBorder(),
@@ -485,6 +469,8 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
   }
 
   buildRow(Doenca doenca, index) {
+
+    int _pontuacao = 0;
 
 
     return Padding(
@@ -607,6 +593,7 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
                                       ),
                                     ),
                                     const Padding(padding: EdgeInsets.only(top: 10)),
+
                                     const AutoSizeText("Exames recomendados",
 
                                         style: TextStyle(
@@ -615,12 +602,31 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
 
                                     ),
                                     const Padding(padding: EdgeInsets.only(top: 10)),
-                                    Center(
-                                      child: AutoSizeText(doenca.exComp!,
-                                          style: const TextStyle(
-                                              color: Color(0xFF59616E)
-                                          ), maxLines: 10),
+                                    Wrap(
+                                      spacing: 4,
+
+                                      children: (doenca.exComp ?? "")
+                                          .replaceAll("[", "")
+                                          .replaceAll("]", "")
+                                          .split('.')
+                                          .map((item) => Row(
+                                          mainAxisSize: MainAxisSize.min,
+
+                                          children: <Widget>[
+
+
+                                            outrosItens(item.trim())
+
+                                            /*
+                                          Text(item.trim(),
+                                              style: const TextStyle(color: Color(0xFF59616E))),
+                                          const Icon(Icons.add_circle_outline, color: Color(0xFF12EC1A), size: 10),
+
+                                           */
+                                          ]
+                                      )).toList(),
                                     ),
+
                                     const Padding(padding: EdgeInsets.only(top: 10)),
                                     const AutoSizeText("Fatores de risco",
 
@@ -630,14 +636,23 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
 
                                     ),
                                     const Padding(padding: EdgeInsets.only(top: 10)),
-                                    Center(
-                                      child: AutoSizeText(doenca.fatoresDeRisco!,
-                                          style: const TextStyle(
-                                              color: Color(0xFF59616E)
-                                          ), maxLines: 10),
+
+
+                                    Wrap(
+                                      spacing: 4,
+
+                                      children: (doenca.fatoresDeRisco ?? "")
+                                          .replaceAll("[", "")
+                                          .replaceAll("]", "")
+                                          .split('.')
+                                          .map((item) => Row(
+                                          mainAxisSize: MainAxisSize.min,
+
+                                          children: <Widget>[
+                                            outrosItens(item.trim())
+                                          ]
+                                      )).toList(),
                                     ),
-
-
                                   ],
                                 )
                             ),
@@ -671,7 +686,7 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
                           child: Icon(
                             doenca.cardExpandido! ? Icons.remove : Icons.add,
                             color: Colors.white,
-                            size: 10,
+                            size: 15,
                           ))
 
                     ),
@@ -758,21 +773,21 @@ class _DetalheDaPesquisaPageState extends State<DetalheDaPesquisaPage> {
 
       ],
     );
-    /*
-    return Chip(
-      label: Text(item),
-      backgroundColor: Colors.blue,
-      labelStyle: TextStyle(color: Colors.white),
-    );
-
-     */
-
-
-
-
-
-
   }
+
+  Widget outrosItens(String item) {
+
+
+    return Flexible(
+      child: AutoSizeText("$item ",
+
+        maxLines: 10,
+        style: const TextStyle(color: Color(0xFF8F90A6)),
+      ),
+    );
+  }
+
+
   Future<void> buscarDoencas(sinal, especie, buscaCompleta) async {
 
     List<Doenca> _doencasEncontradas = [];

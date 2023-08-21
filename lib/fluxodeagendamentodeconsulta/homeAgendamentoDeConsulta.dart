@@ -1,4 +1,4 @@
-//1.O HOME FLUXO PESQUISA
+//FLUXO DE AGENDAMENTO HOME AGENDAMENTO DA CONSULTA
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -8,8 +8,10 @@ import 'package:vetadvisor/fluxopesquisarapida/detalheDaPesquisa.dart';
 import 'package:vetadvisor/fluxopesquisarapida/detalheDaPesquisaDermatiteAtopica.dart';
 import 'package:vetadvisor/fluxopesquisarapida/servicos.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/consultaPaciente.dart';
+import 'package:vetadvisor/fluxoprontuariodigital/novaConsulta.dart';
 import 'package:vetadvisor/fluxoprontuariodigital/perfilPaciente.dart';
 import 'package:vetadvisor/minhaagenda/homeMinhaAgenda.dart';
+import 'package:vetadvisor/minhaagenda/reagendamento02.dart';
 import 'package:vetadvisor/prelogin/logado.dart';
 import 'package:vetadvisor/recursos/dialogUtils.dart';
 import 'dart:developer' as logDev;
@@ -221,7 +223,7 @@ class _HomeAgendamentoDeConsultaPageState extends State<HomeAgendamentoDeConsult
                   hasScrollBody: true,
                   child: Container(
                     padding: const EdgeInsets.only(left: 20, right: 20),
-                    color:  Color(0xFF3C10BB),
+                    //color:  Color(0xFF3C10BB),
                     child: SingleChildScrollView(
                         child:Column(
                             crossAxisAlignment: CrossAxisAlignment.start,
@@ -232,10 +234,10 @@ class _HomeAgendamentoDeConsultaPageState extends State<HomeAgendamentoDeConsult
                               const Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
-                                    Text("O que voce precisa hoje?",
+                                    Text("Selecione uma forma de\natendimento?",
                                         style: TextStyle(
-                                            color: Colors.white,
-                                            fontSize: 24)
+                                            color: Color(0xFF3C10BB),
+                                            fontSize: 20)
                                     )
                                   ]
                               ),
@@ -278,7 +280,7 @@ class _HomeAgendamentoDeConsultaPageState extends State<HomeAgendamentoDeConsult
                                         const Text("Presencial",
                                             style: TextStyle(
                                                 fontSize: 10,
-                                                color: Colors.white)
+                                                color: Color(0xFF3C10BB))
                                         )
                                       ]
                                   ),
@@ -300,7 +302,7 @@ class _HomeAgendamentoDeConsultaPageState extends State<HomeAgendamentoDeConsult
                                       const Text("Domicilio",
                                           style: TextStyle(
                                               fontSize: 10,
-                                              color: Colors.white
+                                              color: Color(0xFF3C10BB)
                                           )
                                       )
                                     ],
@@ -323,7 +325,7 @@ class _HomeAgendamentoDeConsultaPageState extends State<HomeAgendamentoDeConsult
                                         const Text("Online",
                                             style: TextStyle(
                                                 fontSize: 10,
-                                                color: Colors.white
+                                                color: Color(0xFF3C10BB)
                                             )
                                         )
                                       ]
@@ -408,220 +410,179 @@ class _HomeAgendamentoDeConsultaPageState extends State<HomeAgendamentoDeConsult
 
                               Padding(padding: EdgeInsets.all(15)),
 
+                              Row(
 
-                              Center(
-                                  child: Column(
+                                children: [
+                                  Column(
+                                      children: [
+                                        Container(
+                                          decoration: BoxDecoration(
+                                            color: Colors.lightGreenAccent,
+                                            borderRadius: BorderRadius.circular(20),
+                                          ),
+                                          child: Center(
+                                                  child:
+                                                  CircleAvatar(
+                                                    radius: 20,
+                                                    backgroundColor: Color(0xFF3C10BB),
+
+                                                    child: ClipOval(
+
+                                                      child:
+                                                      Image.asset("imagens/uhtred.jpeg"),
+
+                                                    ),
+                                                  ))),
+
+                                      ]),
+                                  Padding(padding: EdgeInsets.only(left: 10)),
+                                  Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
-                                        const Padding(
-                                            padding: EdgeInsets.only(left: 30, right: 30),
-                                            child: Text("Minha erea",
-                                                style: TextStyle(
-                                                    color: Colors.white,
-                                                    fontSize: 16
-                                                )
-                                            )
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          children: [
+                                            Text("João Clovis",
+                                              style: TextStyle(
+                                                fontSize: 12,
+                                                color: Colors.black,
+                                                fontWeight: FontWeight.bold,
+                                              ),)
+                                          ],
                                         ),
 
-                                        const Padding(padding: EdgeInsets.all(15)),
+                                        Padding(padding: EdgeInsets.all(2)),
 
                                         Row(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: [
-                                              Container(
-                                                  padding: const EdgeInsets.only(left: 40, right: 40, top: 5, bottom: 10),
-                                                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(20),
-                                                      color: Colors.white),
-                                                  child: Column(
-                                                      children: [
-                                                        Row(
-                                                            mainAxisAlignment: MainAxisAlignment.center,
-                                                            children:  [
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          children: [
+                                            Text("Dermatologista",
+                                              style: TextStyle(
+                                                fontSize: 12,
+                                                color: Color(0xFF82888A),
 
-                                                              Builder(
-                                                                  builder: (context) => IconButton(
-                                                                      onPressed: () {
-                                                                        Navigator.push(
-                                                                          context,
-                                                                          MaterialPageRoute(
-                                                                              builder: (
-                                                                                  context) => const HomeMinhaAgenda()),
-                                                                        );
-
-                                                                        //print("clicado na seta");
-                                                                      },
-                                                                      icon: const Icon(MdiIcons.calendarEdit,
-                                                                          color: Color(0xFF4116B4),
-                                                                          size: 60))),
-
-
-
-                                                            ]
-                                                        ),
-                                                        Padding(padding: EdgeInsets.all(10)),
-                                                        Row(
-                                                          mainAxisAlignment: MainAxisAlignment.center,
-                                                          children: [
-                                                            Text("Minha\nagenda",
-                                                              style: TextStyle(
-                                                                color: Color(0xFF4116B4),
-                                                                fontWeight: FontWeight.bold,
-                                                              ),),
-
-                                                          ],
-                                                        ),
-                                                      ]
-                                                  )
-                                              ),
-
-                                              const Padding(padding: EdgeInsets.only(left:10, right: 10)),
-
-                                              Container(
-                                                  padding: const EdgeInsets.only(
-                                                      left: 40, right: 40, top: 5, bottom: 10),
-                                                  decoration: BoxDecoration(borderRadius: BorderRadius.circular(20), color: Colors.white),
-                                                  child: const Column(
-                                                      children: [
-                                                        Row(
-                                                          mainAxisAlignment: MainAxisAlignment.center,
-                                                          children:  [
-                                                            Icon(MdiIcons.dogSide,
-                                                                color: Color(0xFF4116B4),
-                                                                size: 60)
-                                                          ],
-                                                        ),
-
-                                                        Padding(padding: EdgeInsets.all(10)),
-
-                                                        Row(
-                                                            mainAxisAlignment: MainAxisAlignment.center,
-                                                            children: [
-                                                              Text("Meus\npacientes",
-                                                                  style: TextStyle(
-                                                                      color: Color(0xFF4116B4),
-                                                                      fontWeight: FontWeight.bold
-                                                                  )
-                                                              )
-                                                            ]
-                                                        )
-                                                      ]
-                                                  )
-                                              )
-                                            ]
+                                              ),)
+                                          ],
                                         ),
 
-                                        const Padding(padding: EdgeInsets.only(top:20)),
+                                        Padding(padding: EdgeInsets.all(2)),
 
                                         Row(
-                                            mainAxisAlignment: MainAxisAlignment.center,
-                                            children: [
-                                              Container(
-                                                  padding: const EdgeInsets.only(
-                                                      left: 40, right: 40, top: 5, bottom: 10),
-                                                  decoration: BoxDecoration(
-                                                    borderRadius: BorderRadius.circular(20),
-                                                    color: Colors.white,
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          children: [
+
+                                            Text("150,00 a consulta",
+                                              style: TextStyle(
+                                                fontSize: 12,
+                                                color: Color(0xFF82888A),
+
+                                              ),)
+                                          ],
+                                        ),
+
+                                        Row(
+                                          children: [
+                                            Container(
+                                              width: 80,
+                                              height: 20,
+                                              child:
+                                               Builder(
+                                              builder: (context) => ElevatedButton(
+                                                  style: ElevatedButton.styleFrom(
+                                                      shape: const StadiumBorder(),
+                                                      backgroundColor: Color(0xff12EC1A),
+                                                     // minimumSize: MaterialStateProperty.all(Size(50, 100))
                                                   ),
-                                                  child: const Column(
-                                                      children: [
-
-                                                        Row(
-                                                          mainAxisAlignment: MainAxisAlignment.center,
-                                                          children:  [
-
-                                                            Icon(MdiIcons.notebookEditOutline,
-                                                              color: Color(0xFF4116B4),
-                                                              size: 60,),
-
-                                                          ],
-                                                        ),
-                                                        Padding(padding: EdgeInsets.all(10)),
-                                                        Row(
-                                                          mainAxisAlignment: MainAxisAlignment.center,
-                                                          children: [
-                                                            Text("Exames\nliberados",
-                                                              style: TextStyle(
-                                                                color: Color(0xFF4116B4),
-                                                                fontWeight: FontWeight.bold,
-                                                              ),),
-
-                                                          ],
-                                                        ),
-                                                      ]
-                                                  )
-                                              ),
-                                              const Padding(padding: EdgeInsets.only(left:10, right: 10)),
-                                              Container(
-                                                //  margin: const EdgeInsets.only(left: 80, right: 10, top: 10, bottom: 1),
-                                                  padding: const EdgeInsets.only(
-                                                      left: 40, right: 40, top: 5, bottom: 10),
-                                                  decoration: BoxDecoration(
-                                                    borderRadius: BorderRadius.circular(20),
-                                                    color: Colors.white,
-                                                  ),
-                                                  child: const Column(
-                                                      children: [
-
-                                                        Row(
-                                                            mainAxisAlignment: MainAxisAlignment.center,
-                                                            children:  [
-                                                              Icon(MdiIcons.bookOpenPageVariantOutline,
-                                                                  color: Color(0xFF4116B4),
-                                                                  size: 60)
-                                                            ]
-                                                        ),
-
-                                                        Padding(padding: EdgeInsets.all(10)),
-
-                                                        Row(
-                                                          mainAxisAlignment: MainAxisAlignment.center,
-                                                          children: [
-                                                            Text("Meus\nestudos",
-                                                                style: TextStyle(
-                                                                  color: Color(0xFF4116B4),
-                                                                  fontWeight: FontWeight.bold,
-                                                                )
-                                                            )
-                                                          ],
-                                                        ),
-                                                      ]
-                                                  )
-                                              )
-                                            ]
+                                                  onPressed: () {
+                                                    Navigator.push(
+                                                      context,
+                                                      MaterialPageRoute(
+                                                          builder: (context) =>
+                                                          const Reagendamento02()),
+                                                    );
+                                                  },
+                                                  child: const Text(
+                                                    'Agendar Consulta',
+                                                    style: TextStyle(color: Color(0xff1A3D8E), fontSize: 8),
+                                                  )),
+                                            ),),
+                                          ],
                                         )
-                                      ]
-                                  )
-                              ),
+                                      ]),
 
-                              const Padding(padding: EdgeInsets.all(10)),
+                                  Column(
 
-                              const Padding(padding: EdgeInsets.only(left:20, right: 20),
-                                  child: Center(
-                                    child: AutoSizeText("Cadastre-se gratuitamente",
-                                      style: TextStyle(
-                                          color: Color(0xFFFAD000),
-                                          fontSize: 24
+                                    children: [
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        children: [
+
+
+                                          Icon(Icons.star,
+                                          color: Color(0xFFFBB509),
+                                          size: 18,),
+
+                                          Text("(17 avaliações)",
+                                            style: TextStyle(
+                                              fontSize: 12,
+                                              color: Color(0xFF82888A),
+
+                                            ),),
+                                          Icon(MdiIcons.chevronRight,
+                                            color: Color(0xFF979797),
+                                            size: 12,),
+                                        ],
                                       ),
-                                    ),
-                                  )
-                              ),
-                              const Padding(padding: EdgeInsets.all(10)),
 
-                              const Padding(padding: EdgeInsets.only(left:20, right: 20),
-                                  child: Center(
-                                    child: AutoSizeText(
-                                      'Seu nome, especialidade e serviços poderão  aparecer para os tutores de pets de acordo com a sua região. Para começar é muito simples, cadastre-se agora mesmo!',
-                                      style: TextStyle(
-                                        fontSize: 240,
-                                        color: Colors.grey,
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        children: [
+                                          Text("ocupar espaço",
+                                            style: TextStyle(
+                                              fontSize: 12,
+                                              color: Colors.transparent,
+
+                                            ),)
+                                        ],
                                       ),
-                                      maxLines: 5,
-                                      textAlign: TextAlign.justify,
-                                    ),
+
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        children: [
+
+
+                                          Icon(MdiIcons.mapMarkerOutline,
+                                            color: Color(0xFF979797),
+                                            size: 18,),
+
+                                          Text("3 km de você",
+                                            style: TextStyle(
+                                              fontSize: 12,
+                                              color: Color(0xFF82888A),
+
+                                            ),),
+
+                                        ],
+                                      ),
+
+                                      Row(
+                                        mainAxisAlignment: MainAxisAlignment.start,
+                                        children: [
+                                          Text("Recomendado",
+                                            style: TextStyle(
+                                              fontSize: 12,
+                                              color: Color(0xFFFBB509),
+
+                                            ),)
+                                        ],
+                                      ),
+
+                                    ],
                                   )
+                                ],
                               ),
 
-                              const Padding(padding: EdgeInsets.all(10)),
+
                             ]
                         )
                     ),

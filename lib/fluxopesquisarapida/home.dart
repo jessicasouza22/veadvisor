@@ -123,14 +123,14 @@ class _HomePageState extends State<HomePage> {
                                   children: [
                                     Icon(Icons.person_outline_outlined),
                                     Padding(padding: EdgeInsets.only(left: 5)),
-                                    Text("Meus dados", style: TextStyle(color: Colors.black)),
+                                    Text("Agendamento de Consulta", style: TextStyle(color: Colors.black)),
                                   ],
                                 ),
                                 onTap: () {
 
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => const Perfil()),
+                                    MaterialPageRoute(builder: (context) => const HomeAgendamentoDeConsulta()),
                                   );
                                 },
                               ),
@@ -144,7 +144,7 @@ class _HomePageState extends State<HomePage> {
                                   children: [
                                     Icon(MdiIcons.pawOutline),
                                     Padding(padding: EdgeInsets.only(left: 5)),
-                                    Text("Meus pacientes", style: TextStyle(color: Colors.black)),
+                                    Text("Meus pppacientes", style: TextStyle(color: Colors.black)),
                                   ],
                                 ),
                                 onTap: () {

@@ -17,6 +17,7 @@ import 'package:vetadvisor/recursos/dialogUtils.dart';
 import 'dart:developer' as logDev;
 
 import '../firebase/doenca_service.dart';
+import '../fluxodehistoricodepesquisadesejavel/homeHistoricoPesquisaDesejavel.dart';
 import '../minhaagenda/proximaConsultaCall.dart';
 import '../objetos/doenca.dart';
 import '../recursos/Variaveis.dart';
@@ -48,7 +49,13 @@ class _HomeAgendamentoDeConsultaPageState extends State<HomeAgendamentoDeConsult
 
   final _busca = TextEditingController();
 
-
+  void initState() {
+    super.initState();
+    WidgetsBinding.instance!.addPostFrameCallback((_) {
+      // Chame o método para exibir o AlertDialog aqui
+      _showAlertDialog(context);
+    });
+  }
 
 
 
@@ -78,7 +85,6 @@ class _HomeAgendamentoDeConsultaPageState extends State<HomeAgendamentoDeConsult
       _selectedIndex = index;
     });
   }
-
 
 
   @override
@@ -235,8 +241,10 @@ class _HomeAgendamentoDeConsultaPageState extends State<HomeAgendamentoDeConsult
                                   mainAxisAlignment: MainAxisAlignment.center,
                                   children: [
                                     Text("Selecione uma forma de\natendimento?",
+                                        textAlign: TextAlign.center,
                                         style: TextStyle(
                                             color: Color(0xFF3C10BB),
+
                                             fontSize: 20)
                                     )
                                   ]
@@ -410,7 +418,21 @@ class _HomeAgendamentoDeConsultaPageState extends State<HomeAgendamentoDeConsult
 
                               Padding(padding: EdgeInsets.all(15)),
 
-                              Row(
+                              Container(
+
+
+                                margin: EdgeInsets.only(left: 15, right: 15),
+                                padding: EdgeInsets.all(10),
+                                decoration: BoxDecoration(
+                                  color: Colors.white, // Cor de fundo do Container
+                                  borderRadius: BorderRadius.circular(10), // Define o raio do arredondamento das bordas
+                                ),
+
+
+                                child:
+
+                                Row(
+                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
                                 children: [
                                   Column(
@@ -435,7 +457,9 @@ class _HomeAgendamentoDeConsultaPageState extends State<HomeAgendamentoDeConsult
                                                   ))),
 
                                       ]),
+
                                   Padding(padding: EdgeInsets.only(left: 10)),
+
                                   Column(
                                       crossAxisAlignment: CrossAxisAlignment.start,
                                       children: [
@@ -483,7 +507,7 @@ class _HomeAgendamentoDeConsultaPageState extends State<HomeAgendamentoDeConsult
                                         Row(
                                           children: [
                                             Container(
-                                              width: 80,
+                                              width: 100,
                                               height: 20,
                                               child:
                                                Builder(
@@ -498,7 +522,7 @@ class _HomeAgendamentoDeConsultaPageState extends State<HomeAgendamentoDeConsult
                                                       context,
                                                       MaterialPageRoute(
                                                           builder: (context) =>
-                                                          const Reagendamento02()),
+                                                          const DetalheDaPesquisa()),
                                                     );
                                                   },
                                                   child: const Text(
@@ -509,6 +533,8 @@ class _HomeAgendamentoDeConsultaPageState extends State<HomeAgendamentoDeConsult
                                           ],
                                         )
                                       ]),
+
+                                  Padding(padding: EdgeInsets.only(left: 10)),
 
                                   Column(
 
@@ -580,6 +606,7 @@ class _HomeAgendamentoDeConsultaPageState extends State<HomeAgendamentoDeConsult
                                     ],
                                   )
                                 ],
+                              ),
                               ),
 
 
@@ -1490,4 +1517,109 @@ class _HomeAgendamentoDeConsultaPageState extends State<HomeAgendamentoDeConsult
     );
   }
 
-}
+  void _showAlertDialog(BuildContext context) {
+    showCupertinoModalPopup<void>(
+      context: context,
+      builder: (BuildContext context) => CupertinoAlertDialog(
+        // title: const Text('Atenção'),
+        content:
+        Column(children: [
+
+          Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+
+                Icon(
+                  MdiIcons.close,
+                  color: Color(0xff59616E),
+                  size: 20,
+                ),
+                Icon(
+                  MdiIcons.close,
+                  color: Colors.transparent,
+                  size: 20,
+                )
+
+              ]),
+
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+              Text("Encontrou o \nespecialista que procurava?",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      color: Color(0xFF3C10BB),
+                      fontWeight: FontWeight.bold,
+
+                      fontSize: 15)
+              )
+
+
+            ],
+          ),
+          Padding(padding:EdgeInsets.all(5)),
+
+
+
+          Divider(
+
+            color: Color(0xff979797),
+            thickness: 0.6,
+            endIndent: 0,
+            indent: 0,
+
+          ),
+          //  Text('Atenção'),
+
+          Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  width: 70,
+                  height: 50,
+                  color: Colors.white,
+                  child: CupertinoTextField(
+                      placeholder: 'Deixe sua sugestão aqui!'
+                  ),
+                )
+              ,]),
+
+          Padding(padding:EdgeInsets.all(20)),
+
+          Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Builder(
+                  builder: (context) => ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        shape: const StadiumBorder(),
+                        backgroundColor: Color(0xFF4116B4)),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                            const HomeHistoricoPesquisaDesejavel()),
+                      );
+                    },
+                    child: const Text(
+                      'Enviar',
+                      style: TextStyle(color: Colors.white),
+                    ),),
+                ),
+              ])
+
+
+
+        ]),
+        actions: <CupertinoDialogAction>[
+
+        ],
+      ),
+    );
+  }
+
+  }
+
+
+

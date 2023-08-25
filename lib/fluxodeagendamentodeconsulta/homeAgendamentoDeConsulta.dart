@@ -1542,7 +1542,7 @@ class _HomeAgendamentoDeConsultaPageState extends State<HomeAgendamentoDeConsult
 
               ]),
 
-          Row(
+         Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text("Encontrou o \nespecialista que procurava?",
@@ -1575,14 +1575,139 @@ class _HomeAgendamentoDeConsultaPageState extends State<HomeAgendamentoDeConsult
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  width: 70,
-                  height: 50,
+                  width: 130,
                   color: Colors.white,
-                  child: CupertinoTextField(
-                      placeholder: 'Deixe sua sugestão aqui!'
+                  height: 50,
+                  child: const CupertinoTextField(
+                      placeholder: 'Deixe sua sugestão aqui!',
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: Colors.grey,
+                    ),
                   ),
                 )
               ,]),
+
+          Padding(padding:EdgeInsets.all(20)),
+
+          Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Builder(
+                  builder: (context) => ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        shape: const StadiumBorder(),
+                        backgroundColor: Color(0xFF4116B4)),
+                    onPressed: () {
+
+                                _AposEnviarShowAlertDialog(context);
+
+
+                    },
+                    child: const Text(
+                      'Enviar',
+                      style: TextStyle(color: Colors.white),
+                    ),),
+                ),
+              ])
+
+
+
+        ]),
+        actions: <CupertinoDialogAction>[
+
+        ],
+      ),
+    );
+  }
+
+  void _AposEnviarShowAlertDialog(BuildContext context) {
+    showCupertinoModalPopup<void>(
+      context: context,
+      builder: (BuildContext context) => CupertinoAlertDialog(
+        // title: const Text('Atenção'),
+        content:
+        Column(children: [
+
+          Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+
+                Icon(
+                  MdiIcons.close,
+                  color: Color(0xff59616E),
+                  size: 20,
+                ),
+                Icon(
+                  MdiIcons.close,
+                  color: Colors.transparent,
+                  size: 20,
+                )
+
+              ]),
+
+          Row(
+            children: [
+             Container(
+            padding: EdgeInsets.all(15),
+            // margin:  EdgeInsets.only(left: 5),
+            decoration: BoxDecoration(
+              borderRadius: BorderRadius.circular(50),
+              color: const Color(0xFFEE9393),),
+            child:
+            Icon(MdiIcons.check,
+              color: Colors.white,
+              size: 30,
+            ),),
+            ] ),
+
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+
+
+              Text("Obrigada por compartilhar \nsua sugestão!",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      color: Color(0xFF3C10BB),
+                      fontWeight: FontWeight.bold,
+
+                      fontSize: 15)
+              )
+
+
+            ],
+          ),
+          Padding(padding:EdgeInsets.all(5)),
+
+
+
+          Divider(
+
+            color: Color(0xff979797),
+            thickness: 0.6,
+            endIndent: 0,
+            indent: 0,
+
+          ),
+          //  Text('Atenção'),
+
+          Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  width: 130,
+                  color: Colors.white,
+                  height: 50,
+                  child: const CupertinoTextField(
+                    placeholder: 'Deixe sua sugestão aqui!',
+                    style: TextStyle(
+                      fontSize: 12,
+                      color: Colors.grey,
+                    ),
+                  ),
+                )
+                ,]),
 
           Padding(padding:EdgeInsets.all(20)),
 

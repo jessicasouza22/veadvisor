@@ -13,7 +13,6 @@ import 'package:vetadvisor/prelogin/logado.dart';
 import 'package:vetadvisor/prelogin/login.dart';
 import 'package:vetadvisor/prelogin/termos.dart';
 import 'package:vetadvisor/recursos/menuIniciar.dart';
-
 import 'firebase_options.dart';
 import 'fluxopesquisarapida/home.dart';
 

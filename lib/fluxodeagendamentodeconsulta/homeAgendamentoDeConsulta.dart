@@ -18,6 +18,7 @@ import 'dart:developer' as logDev;
 
 import '../firebase/doenca_service.dart';
 import '../fluxodehistoricodepesquisadesejavel/homeHistoricoPesquisaDesejavel.dart';
+import '../fluxopesquisarapida/detalheDaPesquisaRealizarNovaPesquisa.dart';
 import '../minhaagenda/proximaConsultaCall.dart';
 import '../objetos/doenca.dart';
 import '../recursos/Variaveis.dart';
@@ -398,7 +399,7 @@ class _HomeAgendamentoDeConsultaPageState extends State<HomeAgendamentoDeConsult
                                             context,
                                             MaterialPageRoute(
                                                 builder: (context) =>
-                                                const ProximaConsultaCall()),
+                                                const DetalheDaPesquisaRealizarNovaPesquisa()),
                                           );
                                         },
                                         child:
@@ -1575,14 +1576,28 @@ class _HomeAgendamentoDeConsultaPageState extends State<HomeAgendamentoDeConsult
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Container(
-                  width: 130,
-                  color: Colors.white,
-                  height: 50,
+                  width: 180,
+
+                  height: 120,
+                  decoration: BoxDecoration(
+                      borderRadius: BorderRadius.all(Radius.circular(10)),
+                      color: Colors.white,
+                    boxShadow: [
+                      BoxShadow(
+                        color: Colors.grey.withOpacity(0.5),  // Cor da sombra
+                        spreadRadius: 2,  // Raio da propagação da sombra
+                        blurRadius: 7,  // Raio do desfoque da sombra
+                        offset: Offset(0, 0),  // Deslocamento da sombra
+                      ),
+                    ],
+                  ),
                   child: const CupertinoTextField(
                       placeholder: 'Deixe sua sugestão aqui!',
+                    textAlign: TextAlign.center,
                     style: TextStyle(
-                      fontSize: 12,
+                      fontSize: 14,
                       color: Colors.grey,
+
                     ),
                   ),
                 )
@@ -1647,13 +1662,14 @@ class _HomeAgendamentoDeConsultaPageState extends State<HomeAgendamentoDeConsult
               ]),
 
           Row(
+            mainAxisAlignment: MainAxisAlignment.center,
             children: [
              Container(
             padding: EdgeInsets.all(15),
             // margin:  EdgeInsets.only(left: 5),
             decoration: BoxDecoration(
               borderRadius: BorderRadius.circular(50),
-              color: const Color(0xFFEE9393),),
+              color: const Color(0xFF12EC1A),),
             child:
             Icon(MdiIcons.check,
               color: Colors.white,
@@ -1666,7 +1682,7 @@ class _HomeAgendamentoDeConsultaPageState extends State<HomeAgendamentoDeConsult
             children: [
 
 
-              Text("Obrigada por compartilhar \nsua sugestão!",
+              Text("Mensagem enviada\n com sucesso!",
                   textAlign: TextAlign.center,
                   style: TextStyle(
                       color: Color(0xFF3C10BB),
@@ -1680,8 +1696,6 @@ class _HomeAgendamentoDeConsultaPageState extends State<HomeAgendamentoDeConsult
           ),
           Padding(padding:EdgeInsets.all(5)),
 
-
-
           Divider(
 
             color: Color(0xff979797),
@@ -1693,23 +1707,45 @@ class _HomeAgendamentoDeConsultaPageState extends State<HomeAgendamentoDeConsult
           //  Text('Atenção'),
 
           Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  width: 130,
-                  color: Colors.white,
-                  height: 50,
-                  child: const CupertinoTextField(
-                    placeholder: 'Deixe sua sugestão aqui!',
-                    style: TextStyle(
-                      fontSize: 12,
-                      color: Colors.grey,
-                    ),
-                  ),
-                )
-                ,]),
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
 
-          Padding(padding:EdgeInsets.all(20)),
+              Image.asset("imagens/mao.png",
+                  width: 45,
+                  height: 40,
+                  fit: BoxFit.contain // ajustar a imagem dentro do espaço
+                  ),
+
+              Text("Obrigada por compartilhar\n sua sugestão!",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      color: Color(0xFF3C10BB),
+                      fontSize: 12)
+              )
+
+
+            ],
+          ),
+
+          Padding(padding:EdgeInsets.all(10)),
+
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+
+
+              Text("Neste momento seguirá para análise!\n Em breve ela poderá aparecer aqui em nossa página.",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      color: Color(0xFF6C7589),
+                      fontSize: 8)
+              )
+
+
+            ],
+          ),
+
+          Padding(padding:EdgeInsets.all(10)),
 
           Row(
               mainAxisAlignment: MainAxisAlignment.center,
@@ -1718,7 +1754,7 @@ class _HomeAgendamentoDeConsultaPageState extends State<HomeAgendamentoDeConsult
                   builder: (context) => ElevatedButton(
                     style: ElevatedButton.styleFrom(
                         shape: const StadiumBorder(),
-                        backgroundColor: Color(0xFF4116B4)),
+                        backgroundColor: Colors.white),
                     onPressed: () {
                       Navigator.push(
                         context,
@@ -1729,7 +1765,7 @@ class _HomeAgendamentoDeConsultaPageState extends State<HomeAgendamentoDeConsult
                     },
                     child: const Text(
                       'Enviar',
-                      style: TextStyle(color: Colors.white),
+                      style: TextStyle(color: Color(0xFFBDBECB)),
                     ),),
                 ),
               ])

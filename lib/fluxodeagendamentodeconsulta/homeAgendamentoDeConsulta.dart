@@ -4,6 +4,7 @@ import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
+import 'package:vetadvisor/fluxodeagendamentodeconsulta/detalheDaPesquisaAgendamentoDeConsulta.dart';
 import 'package:vetadvisor/fluxopesquisarapida/detalheDaPesquisa.dart';
 import 'package:vetadvisor/fluxopesquisarapida/detalheDaPesquisaDermatiteAtopica.dart';
 import 'package:vetadvisor/fluxopesquisarapida/servicos.dart';
@@ -419,6 +420,7 @@ class _HomeAgendamentoDeConsultaPageState extends State<HomeAgendamentoDeConsult
 
                               Padding(padding: EdgeInsets.all(15)),
 
+
                               Container(
 
 
@@ -433,17 +435,17 @@ class _HomeAgendamentoDeConsultaPageState extends State<HomeAgendamentoDeConsult
                                 child:
 
                                 Row(
-                                mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                  mainAxisAlignment: MainAxisAlignment.spaceBetween,
 
-                                children: [
-                                  Column(
-                                      children: [
-                                        Container(
-                                          decoration: BoxDecoration(
-                                            color: Colors.lightGreenAccent,
-                                            borderRadius: BorderRadius.circular(20),
-                                          ),
-                                          child: Center(
+                                  children: [
+                                    Column(
+                                        children: [
+                                          Container(
+                                              decoration: BoxDecoration(
+                                                color: Colors.lightGreenAccent,
+                                                borderRadius: BorderRadius.circular(20),
+                                              ),
+                                              child: Center(
                                                   child:
                                                   CircleAvatar(
                                                     radius: 20,
@@ -457,159 +459,158 @@ class _HomeAgendamentoDeConsultaPageState extends State<HomeAgendamentoDeConsult
                                                     ),
                                                   ))),
 
-                                      ]),
+                                        ]),
 
-                                  Padding(padding: EdgeInsets.only(left: 10)),
+                                    Padding(padding: EdgeInsets.only(left: 10)),
 
-                                  Column(
-                                      crossAxisAlignment: CrossAxisAlignment.start,
+                                    Column(
+                                        crossAxisAlignment: CrossAxisAlignment.start,
+                                        children: [
+                                          Row(
+                                            mainAxisAlignment: MainAxisAlignment.start,
+                                            children: [
+                                              Text("João Clovis",
+                                                style: TextStyle(
+                                                  fontSize: 12,
+                                                  color: Colors.black,
+                                                  fontWeight: FontWeight.bold,
+                                                ),)
+                                            ],
+                                          ),
+
+                                          Padding(padding: EdgeInsets.all(2)),
+
+                                          Row(
+                                            mainAxisAlignment: MainAxisAlignment.start,
+                                            children: [
+                                              Text("Dermatologista",
+                                                style: TextStyle(
+                                                  fontSize: 12,
+                                                  color: Color(0xFF82888A),
+
+                                                ),)
+                                            ],
+                                          ),
+
+                                          Padding(padding: EdgeInsets.all(2)),
+
+                                          Row(
+                                            mainAxisAlignment: MainAxisAlignment.start,
+                                            children: [
+
+                                              Text("150,00 a consulta",
+                                                style: TextStyle(
+                                                  fontSize: 12,
+                                                  color: Color(0xFF82888A),
+
+                                                ),)
+                                            ],
+                                          ),
+
+                                          Row(
+                                            children: [
+                                              Container(
+                                                width: 100,
+                                                height: 20,
+                                                child:
+                                                Builder(
+                                                  builder: (context) => ElevatedButton(
+                                                      style: ElevatedButton.styleFrom(
+                                                        shape: const StadiumBorder(),
+                                                        backgroundColor: Color(0xff12EC1A),
+                                                        // minimumSize: MaterialStateProperty.all(Size(50, 100))
+                                                      ),
+                                                      onPressed: () {
+                                                        Navigator.push(
+                                                          context,
+                                                          MaterialPageRoute(
+                                                              builder: (context) =>
+                                                              const DetalheDaPesquisa()),
+                                                        );
+                                                      },
+                                                      child: const Text(
+                                                        'Agendar Consulta',
+                                                        style: TextStyle(color: Color(0xff1A3D8E), fontSize: 8),
+                                                      )),
+                                                ),),
+                                            ],
+                                          )
+                                        ]),
+
+                                    Padding(padding: EdgeInsets.only(left: 10)),
+
+                                    Column(
+
                                       children: [
                                         Row(
                                           mainAxisAlignment: MainAxisAlignment.start,
                                           children: [
-                                            Text("João Clovis",
-                                              style: TextStyle(
-                                                fontSize: 12,
-                                                color: Colors.black,
-                                                fontWeight: FontWeight.bold,
-                                              ),)
-                                          ],
-                                        ),
-
-                                        Padding(padding: EdgeInsets.all(2)),
-
-                                        Row(
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          children: [
-                                            Text("Dermatologista",
-                                              style: TextStyle(
-                                                fontSize: 12,
-                                                color: Color(0xFF82888A),
-
-                                              ),)
-                                          ],
-                                        ),
-
-                                        Padding(padding: EdgeInsets.all(2)),
-
-                                        Row(
-                                          mainAxisAlignment: MainAxisAlignment.start,
-                                          children: [
-
-                                            Text("150,00 a consulta",
-                                              style: TextStyle(
-                                                fontSize: 12,
-                                                color: Color(0xFF82888A),
-
-                                              ),)
-                                          ],
-                                        ),
-
-                                        Row(
-                                          children: [
-                                            Container(
-                                              width: 100,
-                                              height: 20,
-                                              child:
-                                               Builder(
-                                              builder: (context) => ElevatedButton(
-                                                  style: ElevatedButton.styleFrom(
-                                                      shape: const StadiumBorder(),
-                                                      backgroundColor: Color(0xff12EC1A),
-                                                     // minimumSize: MaterialStateProperty.all(Size(50, 100))
-                                                  ),
-                                                  onPressed: () {
-                                                    Navigator.push(
-                                                      context,
-                                                      MaterialPageRoute(
-                                                          builder: (context) =>
-                                                          const DetalheDaPesquisa()),
-                                                    );
-                                                  },
-                                                  child: const Text(
-                                                    'Agendar Consulta',
-                                                    style: TextStyle(color: Color(0xff1A3D8E), fontSize: 8),
-                                                  )),
-                                            ),),
-                                          ],
-                                        )
-                                      ]),
-
-                                  Padding(padding: EdgeInsets.only(left: 10)),
-
-                                  Column(
-
-                                    children: [
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.start,
-                                        children: [
 
 
-                                          Icon(Icons.star,
-                                          color: Color(0xFFFBB509),
-                                          size: 18,),
-
-                                          Text("(17 avaliações)",
-                                            style: TextStyle(
-                                              fontSize: 12,
-                                              color: Color(0xFF82888A),
-
-                                            ),),
-                                          Icon(MdiIcons.chevronRight,
-                                            color: Color(0xFF979797),
-                                            size: 12,),
-                                        ],
-                                      ),
-
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.start,
-                                        children: [
-                                          Text("ocupar espaço",
-                                            style: TextStyle(
-                                              fontSize: 12,
-                                              color: Colors.transparent,
-
-                                            ),)
-                                        ],
-                                      ),
-
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.start,
-                                        children: [
-
-
-                                          Icon(MdiIcons.mapMarkerOutline,
-                                            color: Color(0xFF979797),
-                                            size: 18,),
-
-                                          Text("3 km de você",
-                                            style: TextStyle(
-                                              fontSize: 12,
-                                              color: Color(0xFF82888A),
-
-                                            ),),
-
-                                        ],
-                                      ),
-
-                                      Row(
-                                        mainAxisAlignment: MainAxisAlignment.start,
-                                        children: [
-                                          Text("Recomendado",
-                                            style: TextStyle(
-                                              fontSize: 12,
+                                            Icon(Icons.star,
                                               color: Color(0xFFFBB509),
+                                              size: 18,),
 
-                                            ),)
-                                        ],
-                                      ),
+                                            Text("(17 avaliações)",
+                                              style: TextStyle(
+                                                fontSize: 12,
+                                                color: Color(0xFF82888A),
 
-                                    ],
-                                  )
-                                ],
+                                              ),),
+                                            Icon(MdiIcons.chevronRight,
+                                              color: Color(0xFF979797),
+                                              size: 12,),
+                                          ],
+                                        ),
+
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          children: [
+                                            Text("ocupar espaço",
+                                              style: TextStyle(
+                                                fontSize: 12,
+                                                color: Colors.transparent,
+
+                                              ),)
+                                          ],
+                                        ),
+
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          children: [
+
+
+                                            Icon(MdiIcons.mapMarkerOutline,
+                                              color: Color(0xFF979797),
+                                              size: 18,),
+
+                                            Text("3 km de você",
+                                              style: TextStyle(
+                                                fontSize: 12,
+                                                color: Color(0xFF82888A),
+
+                                              ),),
+
+                                          ],
+                                        ),
+
+                                        Row(
+                                          mainAxisAlignment: MainAxisAlignment.start,
+                                          children: [
+                                            Text("Recomendado",
+                                              style: TextStyle(
+                                                fontSize: 12,
+                                                color: Color(0xFFFBB509),
+
+                                              ),)
+                                          ],
+                                        ),
+
+                                      ],
+                                    )
+                                  ],
+                                ),
                               ),
-                              ),
-
 
                             ]
                         )
@@ -1760,7 +1761,7 @@ class _HomeAgendamentoDeConsultaPageState extends State<HomeAgendamentoDeConsult
                         context,
                         MaterialPageRoute(
                             builder: (context) =>
-                            const HomeHistoricoPesquisaDesejavel()),
+                            const DetalheDaPesquisaAgendamentoDaConsulta()),
                       );
                     },
                     child: const Text(

@@ -501,7 +501,7 @@ class _DetalheDaPesquisaRealizarNovaPesquisaState extends State<DetalheDaPesquis
 
             CarouselSlider(
                     options: CarouselOptions(
-                      height: 200,
+                      height: 100,
                       enlargeCenterPage: true,
                       autoPlay: true,
                     ),

@@ -5,7 +5,8 @@ import 'package:firebase_auth/firebase_auth.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
-import 'package:vetadvisor/fluxodeagendamentodeconsulta/homeAgendamentoDeConsulta.dart';
+import 'package:vetadvisor/fluxodeagendamentodeconsulta/detalheDaPesquisaAgendamentoDeConsulta.dart';
+import 'package:vetadvisor/fluxodeagendamentodeconsulta/msgDetalheDaPesquisaAgendamentoDeConsulta.dart';
 
 import 'package:vetadvisor/fluxopesquisarapida/detalheDaPesquisa.dart';
 import 'package:vetadvisor/fluxopesquisarapida/detalheDaPesquisaDermatiteAtopica.dart';
@@ -130,7 +131,7 @@ class _HomePageState extends State<HomePage> {
 
                                   Navigator.push(
                                     context,
-                                    MaterialPageRoute(builder: (context) => const HomeAgendamentoDeConsulta()),
+                                    MaterialPageRoute(builder: (context) => const DetalheDaPesquisaAgendamentoDaConsulta()),
                                   );
                                 },
                               ),

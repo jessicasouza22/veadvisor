@@ -10,6 +10,7 @@ import 'package:material_design_icons_flutter/material_design_icons_flutter.dart
 import 'package:flutter/material.dart';
 import 'package:flutter/cupertino.dart';
 import 'package:carousel_slider/carousel_slider.dart';
+import 'package:vetadvisor/fluxodeagendamentodeconsulta/msgDetalheDaPesquisaAgendamentoDeConsulta.dart';
 import 'package:vetadvisor/fluxopesquisarapida/detalheDaPesquisaDermatiteAtopica.dart';
 import 'package:vetadvisor/fluxopesquisarapida/home.dart';
 import 'package:vetadvisor/fluxopesquisarapida/resultadoDaPesquisa.dart';
@@ -1154,6 +1155,7 @@ class _DetalheDaPesquisaAgendamentoDaConsultaPageState extends State<DetalheDaPe
       builder: (BuildContext context) => CupertinoAlertDialog(
         // title: const Text('Atenção'),
         content:
+
         Column(children: [
 
           Row(
@@ -1181,7 +1183,7 @@ class _DetalheDaPesquisaAgendamentoDaConsultaPageState extends State<DetalheDaPe
           Padding(padding:EdgeInsets.all(10)),
 
           CupertinoTextField(
-            placeholder: 'Deixe um comentário ou depoimento de\n sua incrível experiência em nosso site.',
+            placeholder: 'Gostaríamos de te ouvir, deixe sua sugestão!\n deixe sua sugestão!',
             textAlign: TextAlign.center,
             style: TextStyle(
               fontSize: 10,
@@ -1193,17 +1195,37 @@ class _DetalheDaPesquisaAgendamentoDaConsultaPageState extends State<DetalheDaPe
           Padding(padding:EdgeInsets.all(10)),
 
           Row(
-            children: [
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text("Não encontrei um especialista próximo",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: Color(0xFF8F90A6),
+                        fontSize: 10)
+                )
+              ]),
 
-              Switch(value: false, onChanged: null),
+          Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text("O valor da consulta está alto para mim",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: Color(0xFF8F90A6),
+                        fontSize: 10)
+                )
+              ]),
 
-              Text("Não encontrei um especialista próximo",style: TextStyle(
-                fontSize: 10,
-                color: Colors.grey,
-              ))
-            ],
-          ),
-
+          Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children: [
+                Text("Isso não é útil",
+                    textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: Color(0xFF8F90A6),
+                        fontSize: 10)
+                )
+              ]),
 
           Row(
               mainAxisAlignment: MainAxisAlignment.end,
@@ -1214,7 +1236,12 @@ class _DetalheDaPesquisaAgendamentoDaConsultaPageState extends State<DetalheDaPe
                           shape: const StadiumBorder(),
                           backgroundColor: Color(0xFF3C10BB)),
                       onPressed: () {
-
+                        Navigator.push(
+                          context,
+                          MaterialPageRoute(
+                              builder: (context) =>
+                              const MsgDetalheDaPesquisaAgendamento(),
+                        ));
                       },
                       child: const Text(
                         'Enviar feedback',
@@ -1226,6 +1253,7 @@ class _DetalheDaPesquisaAgendamentoDaConsultaPageState extends State<DetalheDaPe
 
 
         ]),
+
         actions: <CupertinoDialogAction>[
 
         ],

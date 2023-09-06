@@ -1,4 +1,4 @@
-//FLUXO DE AGENDAMENTO HOME AGENDAMENTO DA CONSULTA
+// 1.2 e 1.3 MsgDetalheDaPesquisaAgendamento
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -27,23 +27,23 @@ import '../recursos/Variaveis.dart';
 enum SingingCharacterAreaMedica{ Oftalmicos, Infecciosos, Dermatologicos, MusculoEsqueletico, Neurologicos, MetabolicosEndocrinos, Oncologicos, Cardiologicos, NefrologicosUrologicos, Hematologicos, Respiratorios, Odontologicos, Toxocologicos, Teriogenologicos}
 
 
-class HomeAgendamentoDeConsulta extends StatelessWidget {
-  const HomeAgendamentoDeConsulta({super.key});
+class MsgDetalheDaPesquisaAgendamento extends StatelessWidget {
+  const MsgDetalheDaPesquisaAgendamento({super.key});
 
   @override
   Widget build(BuildContext context) {
-    return const HomeAgendamentoDeConsultaPage();
+    return const MsgDetalheDaPesquisaAgendamentoPage();
   }
 }
 
-class HomeAgendamentoDeConsultaPage extends StatefulWidget {
-  const HomeAgendamentoDeConsultaPage({Key? key}) : super(key: key);
+class MsgDetalheDaPesquisaAgendamentoPage extends StatefulWidget {
+  const MsgDetalheDaPesquisaAgendamentoPage({Key? key}) : super(key: key);
 
   @override
-  State<HomeAgendamentoDeConsultaPage> createState() => _HomeAgendamentoDeConsultaPageState();
+  State<MsgDetalheDaPesquisaAgendamentoPage> createState() => _MsgDetalheDaPesquisaAgendamentoPageState();
 }
 
-class _HomeAgendamentoDeConsultaPageState extends State<HomeAgendamentoDeConsultaPage> {
+class _MsgDetalheDaPesquisaAgendamentoPageState extends State<MsgDetalheDaPesquisaAgendamentoPage> {
 
   bool _buscandoSintomaNoBancoDeDados = false;
 
@@ -178,49 +178,7 @@ class _HomeAgendamentoDeConsultaPageState extends State<HomeAgendamentoDeConsult
               ),
 
 
-/*
-              Expanded(
-                  child: Padding(
-                      padding: const EdgeInsets.only(left: 5),
-                      child: Row(
-                        mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                        children: [
 
-
-                          Builder(
-                              builder: (context) => IconButton(
-                                  onPressed: () {
-
-                                    /*
-                                    Navigator.push(
-                                      context,
-                                      MaterialPageRoute(
-                                          builder: (
-                                              context) => const PerfilPaciente()));
-
-                                     */
-
-
-                                    },
-                                  icon: const Icon(MdiIcons.menu))),
-
-
-
-                          const Text("Serviços",
-                            style: TextStyle(
-                                fontWeight: FontWeight.bold
-                            ),
-                          ),
-                          IconButton(
-                              onPressed: () {
-                                },
-                              icon: const Icon(MdiIcons.bellBadgeOutline))
-                        ]
-                      )
-                  )
-              )
-
- */
 
 
             ]
@@ -344,48 +302,48 @@ class _HomeAgendamentoDeConsultaPageState extends State<HomeAgendamentoDeConsult
                               ),
 
 
-                        Container(
-                        margin: EdgeInsets.only(left: 20, right: 20, top: 10),
-                        decoration: BoxDecoration(
-                            color: Colors.white,
-                            borderRadius: BorderRadius.all(Radius.circular(10))),
-                        child: Column(children: [
-                          Row(
-                            // mainAxisAlignment: MainAxisAlignment.spaceBetween,
-                              children: [
-                                SizedBox(
-                                  height: 30,
-                                  width: 300,
-                                  child: TextFormField(
-                                    //para senha: obscureText: true,
+                              Container(
+                                margin: EdgeInsets.only(left: 20, right: 20, top: 10),
+                                decoration: BoxDecoration(
+                                    color: Colors.white,
+                                    borderRadius: BorderRadius.all(Radius.circular(10))),
+                                child: Column(children: [
+                                  Row(
+                                    // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                                      children: [
+                                        SizedBox(
+                                          height: 30,
+                                          width: 300,
+                                          child: TextFormField(
+                                            //para senha: obscureText: true,
 
-                                    textAlign: TextAlign.center,
+                                            textAlign: TextAlign.center,
 
-                                    style: const TextStyle(
-                                      fontSize: 12,
-                                    ),
-                                    decoration: InputDecoration(
-                                      border: InputBorder.none, // tira a borda do TextField
-                                      //  fillColor: const Color(0xFF12EC1A),
+                                            style: const TextStyle(
+                                              fontSize: 12,
+                                            ),
+                                            decoration: InputDecoration(
+                                              border: InputBorder.none, // tira a borda do TextField
+                                              //  fillColor: const Color(0xFF12EC1A),
 
-                                      // contentPadding: EdgeInsets.fromLTRB(20, 0, 12, 0),
-                                      suffixIcon: Builder(
-                                          builder: (context) => IconButton(
-                                              onPressed: () {},
-                                              icon: const
-                                              Icon(
-                                                Icons.search,
-                                                size: 20,
-                                                color: Color(0xFF979797),
-                                              ))),
-                                      hintText: "Filtre por especialidade médica.\nEx: Clínico geral",
+                                              // contentPadding: EdgeInsets.fromLTRB(20, 0, 12, 0),
+                                              suffixIcon: Builder(
+                                                  builder: (context) => IconButton(
+                                                      onPressed: () {},
+                                                      icon: const
+                                                      Icon(
+                                                        Icons.search,
+                                                        size: 20,
+                                                        color: Color(0xFF979797),
+                                                      ))),
+                                              hintText: "Filtre por especialidade médica.\nEx: Clínico geral",
 
-                                    ),
-                                  ),
-                                ),
-                              ]),
-                        ]),
-                      ),
+                                            ),
+                                          ),
+                                        ),
+                                      ]),
+                                ]),
+                              ),
 
                               Row(
                                   children: [
@@ -407,8 +365,14 @@ class _HomeAgendamentoDeConsultaPageState extends State<HomeAgendamentoDeConsult
                                         Row(
                                             children: [
 
-                                              Icon(MdiIcons.filterVariantMinus,
-                                                  color: Color(0xff000000)),
+
+                                              IconButton(
+                                                icon: Icon(MdiIcons.filterVariantMinus,
+                                            color: Color(0xff000000)),
+                                                onPressed: () {
+                                                  _FiltroShowAlertDialog(context); // Chama a função _showDialog quando o botão é pressionado.
+                                                },
+                                              ),
 
                                               Padding(padding: EdgeInsets.only(left: 10)),
 
@@ -1544,7 +1508,7 @@ class _HomeAgendamentoDeConsultaPageState extends State<HomeAgendamentoDeConsult
 
               ]),
 
-         Row(
+          Row(
             mainAxisAlignment: MainAxisAlignment.center,
             children: [
               Text("Encontrou o \nespecialista que procurava?",
@@ -1581,8 +1545,8 @@ class _HomeAgendamentoDeConsultaPageState extends State<HomeAgendamentoDeConsult
 
                   height: 120,
                   decoration: BoxDecoration(
-                      borderRadius: BorderRadius.all(Radius.circular(10)),
-                      color: Colors.white,
+                    borderRadius: BorderRadius.all(Radius.circular(10)),
+                    color: Colors.white,
                     boxShadow: [
                       BoxShadow(
                         color: Colors.grey.withOpacity(0.5),  // Cor da sombra
@@ -1593,7 +1557,7 @@ class _HomeAgendamentoDeConsultaPageState extends State<HomeAgendamentoDeConsult
                     ],
                   ),
                   child: const CupertinoTextField(
-                      placeholder: 'Deixe sua sugestão aqui!',
+                    placeholder: 'Deixe sua sugestão aqui!',
                     textAlign: TextAlign.center,
                     style: TextStyle(
                       fontSize: 14,
@@ -1602,7 +1566,7 @@ class _HomeAgendamentoDeConsultaPageState extends State<HomeAgendamentoDeConsult
                     ),
                   ),
                 )
-              ,]),
+                ,]),
 
           Padding(padding:EdgeInsets.all(20)),
 
@@ -1616,7 +1580,7 @@ class _HomeAgendamentoDeConsultaPageState extends State<HomeAgendamentoDeConsult
                         backgroundColor: Color(0xFF4116B4)),
                     onPressed: () {
 
-                                _AposEnviarShowAlertDialog(context);
+                      _AposEnviarShowAlertDialog(context);
 
 
                     },
@@ -1663,20 +1627,20 @@ class _HomeAgendamentoDeConsultaPageState extends State<HomeAgendamentoDeConsult
               ]),
 
           Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-             Container(
-            padding: EdgeInsets.all(15),
-            // margin:  EdgeInsets.only(left: 5),
-            decoration: BoxDecoration(
-              borderRadius: BorderRadius.circular(50),
-              color: const Color(0xFF12EC1A),),
-            child:
-            Icon(MdiIcons.check,
-              color: Colors.white,
-              size: 30,
-            ),),
-            ] ),
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  padding: EdgeInsets.all(15),
+                  // margin:  EdgeInsets.only(left: 5),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(50),
+                    color: const Color(0xFF12EC1A),),
+                  child:
+                  Icon(MdiIcons.check,
+                    color: Colors.white,
+                    size: 30,
+                  ),),
+              ] ),
 
           Row(
             mainAxisAlignment: MainAxisAlignment.center,
@@ -1715,7 +1679,7 @@ class _HomeAgendamentoDeConsultaPageState extends State<HomeAgendamentoDeConsult
                   width: 45,
                   height: 40,
                   fit: BoxFit.contain // ajustar a imagem dentro do espaço
-                  ),
+              ),
 
               Text("Obrigada por compartilhar\n sua sugestão!",
                   textAlign: TextAlign.center,
@@ -1781,7 +1745,157 @@ class _HomeAgendamentoDeConsultaPageState extends State<HomeAgendamentoDeConsult
     );
   }
 
+
+  void _FiltroShowAlertDialog(BuildContext context) {
+    showCupertinoModalPopup<void>(
+      context: context,
+      builder: (BuildContext context) => CupertinoAlertDialog(
+         title: const Text('Filtros', textAlign: TextAlign.center,
+             style: TextStyle(
+                 color: Color(0xFF3C10BB),
+                 fontWeight: FontWeight.bold,
+
+                 fontSize: 18)
+         ),
+        content:
+        Column(children: [
+
+          Row(
+              mainAxisAlignment: MainAxisAlignment.end,
+              children: [
+
+                Icon(
+                  MdiIcons.close,
+                  color: Color(0xff59616E),
+                  size: 20,
+                ),
+                Icon(
+                  MdiIcons.close,
+                  color: Colors.transparent,
+                  size: 20,
+                )
+
+              ]),
+
+          Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Container(
+                  padding: EdgeInsets.all(15),
+                  // margin:  EdgeInsets.only(left: 5),
+                  decoration: BoxDecoration(
+                    borderRadius: BorderRadius.circular(50),
+                    color: const Color(0xFF12EC1A),),
+                  child:
+                  Icon(MdiIcons.check,
+                    color: Colors.white,
+                    size: 30,
+                  ),),
+              ] ),
+
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+
+
+              Text("Mensagem enviada\n com sucesso!",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      color: Color(0xFF3C10BB),
+                      fontWeight: FontWeight.bold,
+
+                      fontSize: 15)
+              )
+
+
+            ],
+          ),
+          Padding(padding:EdgeInsets.all(5)),
+
+          Divider(
+
+            color: Color(0xff979797),
+            thickness: 0.6,
+            endIndent: 0,
+            indent: 0,
+
+          ),
+          //  Text('Atenção'),
+
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+
+              Image.asset("imagens/mao.png",
+                  width: 45,
+                  height: 40,
+                  fit: BoxFit.contain // ajustar a imagem dentro do espaço
+              ),
+
+              Text("Obrigada por compartilhar\n sua sugestão!",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      color: Color(0xFF3C10BB),
+                      fontSize: 12)
+              )
+
+
+            ],
+          ),
+
+          Padding(padding:EdgeInsets.all(10)),
+
+          Row(
+            mainAxisAlignment: MainAxisAlignment.center,
+            children: [
+
+
+              Text("Neste momento seguirá para análise!\n Em breve ela poderá aparecer aqui em nossa página.",
+                  textAlign: TextAlign.center,
+                  style: TextStyle(
+                      color: Color(0xFF6C7589),
+                      fontSize: 8)
+              )
+
+
+            ],
+          ),
+
+          Padding(padding:EdgeInsets.all(10)),
+
+          Row(
+              mainAxisAlignment: MainAxisAlignment.center,
+              children: [
+                Builder(
+                  builder: (context) => ElevatedButton(
+                    style: ElevatedButton.styleFrom(
+                        shape: const StadiumBorder(),
+                        backgroundColor: Colors.white),
+                    onPressed: () {
+                      Navigator.push(
+                        context,
+                        MaterialPageRoute(
+                            builder: (context) =>
+                            const DetalheDaPesquisaAgendamentoDaConsulta()),
+                      );
+                    },
+                    child: const Text(
+                      'Enviar',
+                      style: TextStyle(color: Color(0xFFBDBECB)),
+                    ),),
+                ),
+              ])
+
+
+
+        ]),
+        actions: <CupertinoDialogAction>[
+
+        ],
+      ),
+    );
   }
 
+}
 
 

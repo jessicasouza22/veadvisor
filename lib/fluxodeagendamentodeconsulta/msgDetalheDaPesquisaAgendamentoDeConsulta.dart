@@ -1729,7 +1729,7 @@ class _MsgDetalheDaPesquisaAgendamentoPageState extends State<MsgDetalheDaPesqui
                       );
                     },
                     child: const Text(
-                      'Enviar',
+                      'Sair',
                       style: TextStyle(color: Color(0xFFBDBECB)),
                     ),),
                 ),
@@ -1748,69 +1748,43 @@ class _MsgDetalheDaPesquisaAgendamentoPageState extends State<MsgDetalheDaPesqui
 
   void _FiltroShowAlertDialog(BuildContext context) {
     showCupertinoModalPopup<void>(
+
       context: context,
       builder: (BuildContext context) => CupertinoAlertDialog(
-         title: const Text('Filtros', textAlign: TextAlign.center,
-             style: TextStyle(
-                 color: Color(0xFF3C10BB),
-                 fontWeight: FontWeight.bold,
-
-                 fontSize: 18)
-         ),
         content:
+        Container(
+          width: double.infinity,
+          height: double.infinity,
+        color: Colors.redAccent,
+        child:
         Column(children: [
 
           Row(
-              mainAxisAlignment: MainAxisAlignment.end,
+              mainAxisAlignment: MainAxisAlignment.spaceEvenly,
               children: [
+
+                Icon(
+                  MdiIcons.close,
+                  color: Colors.transparent,
+                  size: 20,
+                ),
+
+                Text('Filtros', textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: Color(0xFF3C10BB),
+                        fontWeight: FontWeight.bold,
+
+                        fontSize: 18)
+                ),
 
                 Icon(
                   MdiIcons.close,
                   color: Color(0xff59616E),
                   size: 20,
                 ),
-                Icon(
-                  MdiIcons.close,
-                  color: Colors.transparent,
-                  size: 20,
-                )
+
 
               ]),
-
-          Row(
-              mainAxisAlignment: MainAxisAlignment.center,
-              children: [
-                Container(
-                  padding: EdgeInsets.all(15),
-                  // margin:  EdgeInsets.only(left: 5),
-                  decoration: BoxDecoration(
-                    borderRadius: BorderRadius.circular(50),
-                    color: const Color(0xFF12EC1A),),
-                  child:
-                  Icon(MdiIcons.check,
-                    color: Colors.white,
-                    size: 30,
-                  ),),
-              ] ),
-
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
-
-
-              Text("Mensagem enviada\n com sucesso!",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: Color(0xFF3C10BB),
-                      fontWeight: FontWeight.bold,
-
-                      fontSize: 15)
-              )
-
-
-            ],
-          ),
-          Padding(padding:EdgeInsets.all(5)),
 
           Divider(
 
@@ -1820,43 +1794,35 @@ class _MsgDetalheDaPesquisaAgendamentoPageState extends State<MsgDetalheDaPesqui
             indent: 0,
 
           ),
-          //  Text('Atenção'),
 
-          Row(
-            mainAxisAlignment: MainAxisAlignment.center,
-            children: [
+          Container(
+            // margin: EdgeInsets.only(left: 20, right: 20, top: 10),
+            decoration: const BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.all(Radius.circular(30))),
+            child: TextFormField(
+              // controller: _busca,
 
-              Image.asset("imagens/mao.png",
-                  width: 45,
-                  height: 40,
-                  fit: BoxFit.contain // ajustar a imagem dentro do espaço
-              ),
+              textAlign: TextAlign.center,
+              textAlignVertical: TextAlignVertical.center,
+              style: const TextStyle(
+                  fontSize: 8),
+              decoration: const InputDecoration(
+                border: InputBorder.none,
+                // tira a borda do TextField
+                //  fillColor: const Color(0xFF12EC1A),
+                // contentPadding: EdgeInsets.fromLTRB(20, 0, 12, 0),
 
-              Text("Obrigada por compartilhar\n sua sugestão!",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: Color(0xFF3C10BB),
-                      fontSize: 12)
-              )
-
-
-            ],
+                hintText: "Busque por especialidade",
+                suffixIcon:
+                Icon(Icons.search,
+                    size: 8,
+                    color: Color(0xFF979797)),),
+            ),
           ),
 
-          Padding(padding:EdgeInsets.all(10)),
-
           Row(
-            mainAxisAlignment: MainAxisAlignment.center,
             children: [
-
-
-              Text("Neste momento seguirá para análise!\n Em breve ela poderá aparecer aqui em nossa página.",
-                  textAlign: TextAlign.center,
-                  style: TextStyle(
-                      color: Color(0xFF6C7589),
-                      fontSize: 8)
-              )
-
 
             ],
           ),
@@ -1888,7 +1854,7 @@ class _MsgDetalheDaPesquisaAgendamentoPageState extends State<MsgDetalheDaPesqui
 
 
 
-        ]),
+        ])),
         actions: <CupertinoDialogAction>[
 
         ],

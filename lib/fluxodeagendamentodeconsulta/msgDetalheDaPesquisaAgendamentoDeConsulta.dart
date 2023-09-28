@@ -1,4 +1,5 @@
 // 1.2 e 1.3 MsgDetalheDaPesquisaAgendamento
+import 'package:fl_chart/fl_chart.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
 import 'package:material_design_icons_flutter/material_design_icons_flutter.dart';
@@ -44,6 +45,8 @@ class MsgDetalheDaPesquisaAgendamentoPage extends StatefulWidget {
 }
 
 class _MsgDetalheDaPesquisaAgendamentoPageState extends State<MsgDetalheDaPesquisaAgendamentoPage> {
+
+  double valorDoGrafico = 0.0; //estado para armazenar
 
   bool _buscandoSintomaNoBancoDeDados = false;
 
@@ -195,7 +198,7 @@ class _MsgDetalheDaPesquisaAgendamentoPageState extends State<MsgDetalheDaPesqui
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
 
-                              const Padding(padding: EdgeInsets.only(top: 15)),
+                            /*  const Padding(padding: EdgeInsets.only(top: 15)),
 
                               const Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -575,6 +578,57 @@ class _MsgDetalheDaPesquisaAgendamentoPageState extends State<MsgDetalheDaPesqui
                                   ],
                                 ),
                               ),
+
+                              Padding(padding: EdgeInsets.all(50)),*/
+
+                              Text("Testanto"),
+
+                              Text(
+                                'Valor do Gráfico: $valorDoGrafico',
+                                style: TextStyle(fontSize: 18),
+                              ),
+                              SizedBox(height: 20),
+                              LineChart(
+                                LineChartData(
+                                  gridData: FlGridData(show: false),
+                                  titlesData: FlTitlesData(show: false),
+                                  borderData: FlBorderData(
+                                    show: true,
+                                    border: Border.all(color: Colors.red),
+                                  ),
+                                  minX: 0,
+                                  maxX: 100,
+                                  minY: 0,
+                                  maxY: 100,
+                                  lineBarsData: [
+                                    LineChartBarData(
+                                      spots: [FlSpot(0, valorDoGrafico)],
+                                      isCurved: true,
+                                      //colors: [Colors.red],
+                                      dotData: FlDotData(show: false),
+                                      belowBarData: BarAreaData(show: false),
+                                    ),
+                                  ],
+                                ),
+                              ),
+                              SizedBox(height: 20),
+                              TextField(
+                                keyboardType: TextInputType.number,
+                                onChanged: (text) {
+                                  setState(() {
+                                    valorDoGrafico = double.tryParse(text) ?? 0.0;
+                                    if (valorDoGrafico > 100) {
+                                      valorDoGrafico = 100;
+                                    }
+                                  });
+                                },
+                                decoration: InputDecoration(
+                                  labelText: 'Inserir Valor (0-100)',
+                                  border: OutlineInputBorder(),
+                                ),
+                              ),
+
+
 
                             ]
                         )
@@ -1747,16 +1801,23 @@ class _MsgDetalheDaPesquisaAgendamentoPageState extends State<MsgDetalheDaPesqui
 
 
   void _FiltroShowAlertDialog(BuildContext context) {
+    final double customWidth = 500.0; // Largura personalizada desejada
+    final double customHeight = 800.0; // Altura personalizada desejada
     showCupertinoModalPopup<void>(
+        context: context,
 
-      context: context,
-      builder: (BuildContext context) => CupertinoAlertDialog(
+
+        builder: (BuildContext context) =>  CupertinoAlertDialog(
+
+
         content:
+
         Container(
-          width: double.infinity,
-          height: double.infinity,
-        color: Colors.redAccent,
-        child:
+          //width: double.infinity, // Ocupa toda a largura horizontal
+          width: customWidth,
+          height: customHeight,
+          color: Colors.redAccent,
+          child:
         Column(children: [
 
           Row(
@@ -1795,31 +1856,38 @@ class _MsgDetalheDaPesquisaAgendamentoPageState extends State<MsgDetalheDaPesqui
 
           ),
 
-          Container(
-            // margin: EdgeInsets.only(left: 20, right: 20, top: 10),
-            decoration: const BoxDecoration(
-                color: Colors.white,
-                borderRadius: BorderRadius.all(Radius.circular(30))),
-            child: TextFormField(
-              // controller: _busca,
+          Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text('Faixa de preço', textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: Color(0xFF3C10BB),
+                        fontWeight: FontWeight.bold,
+                        fontSize: 12)
+                ),
 
-              textAlign: TextAlign.center,
-              textAlignVertical: TextAlignVertical.center,
-              style: const TextStyle(
-                  fontSize: 8),
-              decoration: const InputDecoration(
-                border: InputBorder.none,
-                // tira a borda do TextField
-                //  fillColor: const Color(0xFF12EC1A),
-                // contentPadding: EdgeInsets.fromLTRB(20, 0, 12, 0),
+              ]),
 
-                hintText: "Busque por especialidade",
-                suffixIcon:
-                Icon(Icons.search,
-                    size: 8,
-                    color: Color(0xFF979797)),),
-            ),
-          ),
+          Row(
+              mainAxisAlignment: MainAxisAlignment.start,
+              children: [
+                Text('O preço médio por consulta é de 150,00', textAlign: TextAlign.center,
+                    style: TextStyle(
+                        color: Color(0xFF3C10BB),
+                        //fontWeight: FontWeight.bold,
+                        fontSize: 11)
+                ),
+
+              ]),
+
+
+
+
+
+
+
+
+
 
           Row(
             children: [
@@ -1829,7 +1897,7 @@ class _MsgDetalheDaPesquisaAgendamentoPageState extends State<MsgDetalheDaPesqui
 
           Padding(padding:EdgeInsets.all(10)),
 
-          Row(
+         /* Row(
               mainAxisAlignment: MainAxisAlignment.center,
               children: [
                 Builder(
@@ -1850,12 +1918,12 @@ class _MsgDetalheDaPesquisaAgendamentoPageState extends State<MsgDetalheDaPesqui
                       style: TextStyle(color: Color(0xFFBDBECB)),
                     ),),
                 ),
-              ])
+              ])*/
 
 
 
         ])),
-        actions: <CupertinoDialogAction>[
+        actions: const <CupertinoDialogAction>[
 
         ],
       ),

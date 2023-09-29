@@ -1,4 +1,10 @@
 // 1.2 e 1.3 MsgDetalheDaPesquisaAgendamento
+import 'package:d_chart/commons/data_model.dart';
+import 'package:d_chart/d_chart.dart';
+import 'package:d_chart/numeric/line.dart';
+import 'package:d_chart/ordinal/bar.dart';
+import 'package:d_chart/time/bar.dart';
+import 'package:d_chart/time/line.dart';
 import 'package:fl_chart/fl_chart.dart';
 import 'package:auto_size_text/auto_size_text.dart';
 import 'package:cloud_firestore/cloud_firestore.dart';
@@ -27,6 +33,19 @@ import '../recursos/Variaveis.dart';
 
 enum SingingCharacterAreaMedica{ Oftalmicos, Infecciosos, Dermatologicos, MusculoEsqueletico, Neurologicos, MetabolicosEndocrinos, Oncologicos, Cardiologicos, NefrologicosUrologicos, Hematologicos, Respiratorios, Odontologicos, Toxocologicos, Teriogenologicos}
 
+List<NumericData> numericDataList = [
+
+  NumericData(domain: 1, measure: 3),
+
+  NumericData(domain: 2, measure: 5),
+
+  NumericData(domain: 3, measure: 9),
+
+  NumericData(domain: 4, measure: 6.5),
+
+];
+
+
 
 class MsgDetalheDaPesquisaAgendamento extends StatelessWidget {
   const MsgDetalheDaPesquisaAgendamento({super.key});
@@ -53,6 +72,20 @@ class _MsgDetalheDaPesquisaAgendamentoPageState extends State<MsgDetalheDaPesqui
   final _formKey = GlobalKey<FormState>();
 
   final _busca = TextEditingController();
+
+
+  final numericGroupList = [
+
+    NumericGroup(
+
+      id: '5',
+
+      data: numericDataList,
+
+    ),
+
+  ];
+
 
   void initState() {
     super.initState();
@@ -198,7 +231,7 @@ class _MsgDetalheDaPesquisaAgendamentoPageState extends State<MsgDetalheDaPesqui
                             crossAxisAlignment: CrossAxisAlignment.start,
                             children: [
 
-                            /*  const Padding(padding: EdgeInsets.only(top: 15)),
+                              const Padding(padding: EdgeInsets.only(top: 15)),
 
                               const Row(
                                   mainAxisAlignment: MainAxisAlignment.center,
@@ -579,54 +612,14 @@ class _MsgDetalheDaPesquisaAgendamentoPageState extends State<MsgDetalheDaPesqui
                                 ),
                               ),
 
-                              Padding(padding: EdgeInsets.all(50)),*/
+                              Padding(padding: EdgeInsets.all(50)),
 
-                              Text("Testanto"),
 
-                              Text(
-                                'Valor do Gráfico: $valorDoGrafico',
-                                style: TextStyle(fontSize: 18),
-                              ),
-                              SizedBox(height: 20),
-                              LineChart(
-                                LineChartData(
-                                  gridData: FlGridData(show: false),
-                                  titlesData: FlTitlesData(show: false),
-                                  borderData: FlBorderData(
-                                    show: true,
-                                    border: Border.all(color: Colors.red),
-                                  ),
-                                  minX: 0,
-                                  maxX: 100,
-                                  minY: 0,
-                                  maxY: 100,
-                                  lineBarsData: [
-                                    LineChartBarData(
-                                      spots: [FlSpot(0, valorDoGrafico)],
-                                      isCurved: true,
-                                      //colors: [Colors.red],
-                                      dotData: FlDotData(show: false),
-                                      belowBarData: BarAreaData(show: false),
-                                    ),
-                                  ],
-                                ),
-                              ),
-                              SizedBox(height: 20),
-                              TextField(
-                                keyboardType: TextInputType.number,
-                                onChanged: (text) {
-                                  setState(() {
-                                    valorDoGrafico = double.tryParse(text) ?? 0.0;
-                                    if (valorDoGrafico > 100) {
-                                      valorDoGrafico = 100;
-                                    }
-                                  });
-                                },
-                                decoration: InputDecoration(
-                                  labelText: 'Inserir Valor (0-100)',
-                                  border: OutlineInputBorder(),
-                                ),
-                              ),
+
+
+
+
+
 
 
 
@@ -1811,13 +1804,6 @@ class _MsgDetalheDaPesquisaAgendamentoPageState extends State<MsgDetalheDaPesqui
 
 
         content:
-
-        Container(
-          //width: double.infinity, // Ocupa toda a largura horizontal
-          width: customWidth,
-          height: customHeight,
-          color: Colors.redAccent,
-          child:
         Column(children: [
 
           Row(
@@ -1880,6 +1866,113 @@ class _MsgDetalheDaPesquisaAgendamentoPageState extends State<MsgDetalheDaPesqui
 
               ]),
 
+          Padding(padding: EdgeInsets.all(10)),
+
+          AspectRatio(
+
+            aspectRatio: 16 / 9,
+
+            child: DChartLineN(
+
+
+              groupList: numericGroupList,
+
+
+
+            ),
+
+          ),
+
+          Padding(padding: EdgeInsets.all(10)),
+
+          Row(
+            children:[
+
+          Column(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.white, // Cor de fundo branca
+                  borderRadius: BorderRadius.circular(10.0), // Borda arredondada
+                  border: Border.all(
+                    color: Colors.grey, // Cor cinza da borda
+                    width: 1.0, // Largura da borda
+                  ),
+                ),
+                child:  Column(
+                  children: [
+
+                  Row(
+                    children: [
+                    Text("Valor mínimo da consulta",
+                    style: TextStyle(
+                      fontSize: 12, // Tamanho da fonte
+                      color: Color(0xFF59616E)
+                      //fontWeight: FontWeight.bold, // Peso da fonte (negrito)
+                    ),
+                  ),
+                  ]),
+
+                  Row(
+                      children: [
+                    Text("R50,00",
+                      style: TextStyle(
+                        fontSize: 12, // Tamanho da fonte
+                        fontWeight: FontWeight.bold, // Peso da fonte (negrito)
+                      ),
+                    ),
+                  ]),
+                ]),
+                ),
+
+
+            ],
+          ),
+
+          Column(
+            children: [
+              Container(
+                decoration: BoxDecoration(
+                  color: Colors.white, // Cor de fundo branca
+                  borderRadius: BorderRadius.circular(10.0), // Borda arredondada
+                  border: Border.all(
+                    color: Colors.grey, // Cor cinza da borda
+                    width: 1.0, // Largura da borda
+                  ),
+                ),
+                child:  Column(
+                    children: [
+
+                      Row(
+                          children: [
+                            Text("Valor mínimo da consulta",
+                              style: TextStyle(
+                                  fontSize: 12, // Tamanho da fonte
+                                  color: Color(0xFF59616E)
+                                //fontWeight: FontWeight.bold, // Peso da fonte (negrito)
+                              ),
+                            ),
+                          ]),
+
+                      Row(
+                          children: [
+                            Text("R50,00",
+                              style: TextStyle(
+                                fontSize: 12, // Tamanho da fonte
+                                fontWeight: FontWeight.bold, // Peso da fonte (negrito)
+                              ),
+                            ),
+                          ]),
+                    ]),
+              ),
+
+
+            ],
+          ),
+
+          ]),
+
+
 
 
 
@@ -1922,7 +2015,7 @@ class _MsgDetalheDaPesquisaAgendamentoPageState extends State<MsgDetalheDaPesqui
 
 
 
-        ])),
+        ]),
         actions: const <CupertinoDialogAction>[
 
         ],

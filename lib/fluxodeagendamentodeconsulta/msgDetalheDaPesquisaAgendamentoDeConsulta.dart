@@ -1842,6 +1842,49 @@ class _MsgDetalheDaPesquisaAgendamentoPageState extends State<MsgDetalheDaPesqui
 
           ),
 
+          Container(
+           // margin: EdgeInsets.only(left: 20, right: 20, top: 10),
+            decoration: BoxDecoration(
+                color: Colors.white,
+                borderRadius: BorderRadius.all(Radius.circular(10))),
+            child: Column(children: [
+              Row(
+                // mainAxisAlignment: MainAxisAlignment.spaceBetween,
+                  children: [
+                    SizedBox(
+                      height: 20,
+                      width: 100,
+                      child: TextFormField(
+                        //para senha: obscureText: true,
+
+                        textAlign: TextAlign.center,
+
+                        style: const TextStyle(
+                          fontSize: 8,
+                        ),
+                        decoration: InputDecoration(
+                          border: InputBorder.none, // tira a borda do TextField
+                          //  fillColor: const Color(0xFF12EC1A),
+
+                          // contentPadding: EdgeInsets.fromLTRB(20, 0, 12, 0),
+                          suffixIcon: Builder(
+                              builder: (context) => IconButton(
+                                  onPressed: () {},
+                                  icon: const
+                                  Icon(
+                                    Icons.search,
+                                    size: 15,
+                                    color: Color(0xFF979797),
+                                  ))),
+                          hintText: "Busque por especialidade",
+
+                        ),
+                      ),
+                    ),
+                  ]),
+            ]),
+          ),
+
           Row(
               mainAxisAlignment: MainAxisAlignment.start,
               children: [
@@ -1886,16 +1929,19 @@ class _MsgDetalheDaPesquisaAgendamentoPageState extends State<MsgDetalheDaPesqui
           Padding(padding: EdgeInsets.all(10)),
 
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children:[
 
           Column(
             children: [
               Container(
+                margin: EdgeInsets.all(5),
+                padding: EdgeInsets.all(5),
                 decoration: BoxDecoration(
                   color: Colors.white, // Cor de fundo branca
                   borderRadius: BorderRadius.circular(10.0), // Borda arredondada
                   border: Border.all(
-                    color: Colors.grey, // Cor cinza da borda
+                    color: Color(0xFFE0E2E3), // Cor cinza da borda
                     width: 1.0, // Largura da borda
                   ),
                 ),
@@ -1904,7 +1950,7 @@ class _MsgDetalheDaPesquisaAgendamentoPageState extends State<MsgDetalheDaPesqui
 
                   Row(
                     children: [
-                    Text("Valor mínimo da consulta",
+                    Text("Valor mínimo\nda consulta",
                     style: TextStyle(
                       fontSize: 12, // Tamanho da fonte
                       color: Color(0xFF59616E)
@@ -1932,11 +1978,13 @@ class _MsgDetalheDaPesquisaAgendamentoPageState extends State<MsgDetalheDaPesqui
           Column(
             children: [
               Container(
+                margin: EdgeInsets.all(5),
+                padding: EdgeInsets.all(5),
                 decoration: BoxDecoration(
                   color: Colors.white, // Cor de fundo branca
                   borderRadius: BorderRadius.circular(10.0), // Borda arredondada
                   border: Border.all(
-                    color: Colors.grey, // Cor cinza da borda
+                    color: Color(0xFFE0E2E3), // Cor cinza da borda
                     width: 1.0, // Largura da borda
                   ),
                 ),
@@ -1945,7 +1993,7 @@ class _MsgDetalheDaPesquisaAgendamentoPageState extends State<MsgDetalheDaPesqui
 
                       Row(
                           children: [
-                            Text("Valor mínimo da consulta",
+                            Text("Valor mínimo\nda consulta",
                               style: TextStyle(
                                   fontSize: 12, // Tamanho da fonte
                                   color: Color(0xFF59616E)
@@ -1972,18 +2020,143 @@ class _MsgDetalheDaPesquisaAgendamentoPageState extends State<MsgDetalheDaPesqui
 
           ]),
 
+          Row(
+              mainAxisAlignment: MainAxisAlignment.spaceBetween,
+              children:[
+
+                Column(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.all(5),
+                      padding: EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                        color: Colors.white, // Cor de fundo branca
+                        borderRadius: BorderRadius.circular(10.0), // Borda arredondada
+                        border: Border.all(
+                          color: Color(0xFFE0E2E3), // Cor cinza da borda
+                          width: 1.0, // Largura da borda
+                        ),
+                      ),
+                      child:  Column(
+                          children: [
+
+                            Row(
+                                children: [
+                                  Text("Valor mínimo\nda consulta",
+                                    style: TextStyle(
+                                        fontSize: 12, // Tamanho da fonte
+                                        color: Color(0xFF59616E)
+                                      //fontWeight: FontWeight.bold, // Peso da fonte (negrito)
+                                    ),
+                                  ),
+                                ]),
+
+                            Row(
+                                children: [
+                                  Text("R50,00",
+                                    style: TextStyle(
+                                      fontSize: 12, // Tamanho da fonte
+                                      fontWeight: FontWeight.bold, // Peso da fonte (negrito)
+                                    ),
+                                  ),
+                                ]),
+                          ]),
+                    ),
 
 
+                  ],
+                ),
+
+                Column(
+                  children: [
+                    Container(
+                      margin: EdgeInsets.all(5),
+                      padding: EdgeInsets.all(5),
+                      decoration: BoxDecoration(
+                        color: Colors.white, // Cor de fundo branca
+                        borderRadius: BorderRadius.circular(10.0), // Borda arredondada
+                        border: Border.all(
+                          color: Color(0xFFE0E2E3), // Cor cinza da borda
+                          width: 1.0, // Largura da borda
+                        ),
+                      ),
+                      child:  Column(
+                          children: [
+
+                            Row(
+                                children: [
+                                  Text("Valor mínimo\nda consulta",
+                                    style: TextStyle(
+                                        fontSize: 12, // Tamanho da fonte
+                                        color: Color(0xFF59616E)
+                                      //fontWeight: FontWeight.bold, // Peso da fonte (negrito)
+                                    ),
+                                  ),
+                                ]),
+
+                            Row(
+                                children: [
+                                  Text("R50,00",
+                                    style: TextStyle(
+                                      fontSize: 12, // Tamanho da fonte
+                                      fontWeight: FontWeight.bold, // Peso da fonte (negrito)
+                                    ),
+                                  ),
+                                ]),
+                          ]),
+                    ),
 
 
+                  ],
+                ),
 
+              ]),
 
+          Divider(
 
+            color: Color(0xff979797),
+            thickness: 0.6,
+            endIndent: 0,
+            indent: 0,
 
-
+          ),
 
           Row(
+            mainAxisAlignment: MainAxisAlignment.spaceBetween,
             children: [
+
+              Column(
+                children: [
+                  Text("Remover filtro",
+                  style: TextStyle(
+                    fontSize: 10,
+                    color: Color(0xFF4116B4)
+                  ),)
+
+                ],
+              ),
+
+              Column(
+                children: [
+                  Builder(
+                    builder: (context) => ElevatedButton(
+                      style: ElevatedButton.styleFrom(
+                          shape: const StadiumBorder(),
+                          backgroundColor: Color(0xFF4116B4)),
+                      onPressed: () {
+
+                       // _AposEnviarShowAlertDialog(context);
+
+
+                      },
+                      child: const Text(
+                        'Enviar',
+                        style: TextStyle(color: Colors.white),
+                      ),),
+                  ),
+
+                ],
+              )
 
             ],
           ),

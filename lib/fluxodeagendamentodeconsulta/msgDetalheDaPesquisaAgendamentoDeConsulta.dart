@@ -30,6 +30,7 @@ import '../fluxopesquisarapida/detalheDaPesquisaRealizarNovaPesquisa.dart';
 import '../minhaagenda/proximaConsultaCall.dart';
 import '../objetos/doenca.dart';
 import '../recursos/Variaveis.dart';
+import 'marcarConsultaAgendamentoDeConsulta.dart';
 
 enum SingingCharacterAreaMedica{ Oftalmicos, Infecciosos, Dermatologicos, MusculoEsqueletico, Neurologicos, MetabolicosEndocrinos, Oncologicos, Cardiologicos, NefrologicosUrologicos, Hematologicos, Respiratorios, Odontologicos, Toxocologicos, Teriogenologicos}
 
@@ -525,7 +526,7 @@ class _MsgDetalheDaPesquisaAgendamentoPageState extends State<MsgDetalheDaPesqui
                                                           context,
                                                           MaterialPageRoute(
                                                               builder: (context) =>
-                                                              const DetalheDaPesquisa()),
+                                                              const MarcarConsultaAgendamento()),
                                                         );
                                                       },
                                                       child: const Text(
